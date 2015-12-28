@@ -17,6 +17,7 @@
 		4949D46E1C2F4A81003C84DA /* CafBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4949D46D1C2F4A81003C84DA /* CafBuddyUITests.swift */; };
 		4949D47C1C2F56E1003C84DA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4949D47B1C2F56E1003C84DA /* RegisterViewController.swift */; };
 		4949D47E1C2F6E03003C84DA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4949D47D1C2F6E03003C84DA /* LoginViewController.swift */; };
+		4949D4801C307767003C84DA /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4949D47F1C307767003C84DA /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		4949D46F1C2F4A81003C84DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4949D47B1C2F56E1003C84DA /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		4949D47D1C2F6E03003C84DA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4949D47F1C307767003C84DA /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				4949D4541C2F4A81003C84DA /* Assets.xcassets */,
 				4949D4561C2F4A81003C84DA /* LaunchScreen.storyboard */,
 				4949D4591C2F4A81003C84DA /* Info.plist */,
+				4949D47F1C307767003C84DA /* Utilities.swift */,
 			);
 			path = CafBuddy;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4949D4801C307767003C84DA /* Utilities.swift in Sources */,
 				4949D47C1C2F56E1003C84DA /* RegisterViewController.swift in Sources */,
 				4949D4501C2F4A80003C84DA /* SecondViewController.swift in Sources */,
 				4949D44C1C2F4A80003C84DA /* AppDelegate.swift in Sources */,
