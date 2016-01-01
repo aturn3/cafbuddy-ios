@@ -15,19 +15,19 @@
 //   userService/v1.011
 // Description:
 //   API for working with a User
-
-#import "GTLUserServiceConstants.m"
-
-#import "GTLUserServiceApisUserApiLogInUserRequestMessage.m"
-#import "GTLUserServiceApisUserApiLogInUserResponseMessage.m"
-#import "GTLUserServiceApisUserApiLogOutUserRequestMessage.m"
-#import "GTLUserServiceApisUserApiLogOutUserResponseMessage.m"
-#import "GTLUserServiceApisUserApiSendNewEmailVerificationRequestMessage.m"
-#import "GTLUserServiceApisUserApiSendNewEmailVerificationResponseMessage.m"
-#import "GTLUserServiceApisUserApiSignUpUserRequestMessage.m"
-#import "GTLUserServiceApisUserApiSignUpUserResponseMessage.m"
-#import "GTLUserServiceApisUserApiValidateUserRequestMessage.m"
-#import "GTLUserServiceApisUserApiValidateUserResponseMessage.m"
-
-#import "GTLQueryUserService.m"
-#import "GTLServiceUserService.m"
+//
+//#import "GTLUserServiceConstants.m"
+//
+//#import "GTLUserServiceApisUserApiLogInUserRequestMessage.m"
+//#import "GTLUserServiceApisUserApiLogInUserResponseMessage.m"
+//#import "GTLUserServiceApisUserApiLogOutUserRequestMessage.m"
+//#import "GTLUserServiceApisUserApiLogOutUserResponseMessage.m"
+//#import "GTLUserServiceApisUserApiSendNewEmailVerificationRequestMessage.m"
+//#import "GTLUserServiceApisUserApiSendNewEmailVerificationResponseMessage.m"
+//#import "GTLUserServiceApisUserApiSignUpUserRequestMessage.m"
+//#import "GTLUserServiceApisUserApiSignUpUserResponseMessage.m"
+//#import "GTLUserServiceApisUserApiValidateUserRequestMessage.m"
+//#import "GTLUserServiceApisUserApiValidateUserResponseMessage.m"
+//
+//#import "GTLQueryUserService.m"
+//#import "GTLServiceUserService.m"
