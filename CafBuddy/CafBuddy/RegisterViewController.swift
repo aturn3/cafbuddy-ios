@@ -37,10 +37,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         view.backgroundColor = COLOR_BLUE
         
         // Necessary for using auto layout - disables problematic automatic constraints being set
-        view.translatesAutoresizingMaskIntoConstraints = false
+        self.view.translatesAutoresizingMaskIntoConstraints = false
         
         // Username Field
-//        self.usernameField.frame = CGRectMake(SCREEN_WIDTH/2 - 125, SCREEN_HEIGHT/3, 250, 50)
         self.usernameField.placeholder = "Username"
         self.usernameField.font = UIFont.systemFontOfSize(12)
         self.usernameField.borderStyle = UITextBorderStyle.RoundedRect
@@ -52,10 +51,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         self.usernameField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
         self.usernameField.returnKeyType = UIReturnKeyType.Next
         self.usernameField.delegate = self
+        self.usernameField.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.usernameField)
         
         // Password Field
-//        self.passwordField.frame = CGRectMake(SCREEN_WIDTH/2 - 125, SCREEN_HEIGHT/3 + 60, 250, 50)
         self.passwordField.placeholder = "Password"
         self.passwordField.font = UIFont.systemFontOfSize(12)
         self.passwordField.borderStyle = UITextBorderStyle.RoundedRect
@@ -68,10 +67,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         self.passwordField.returnKeyType = UIReturnKeyType.Next
         self.passwordField.delegate = self
         self.passwordField.secureTextEntry = true
+        self.passwordField.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.passwordField)
         
         // Re-enter Password Field
-//        self.reEnterPasswordField.frame = CGRectMake(SCREEN_WIDTH/2 - 125, SCREEN_HEIGHT/3 + 120, 250, 50)
         self.reEnterPasswordField.placeholder = "Re-Enter Password"
         self.reEnterPasswordField.font = UIFont.systemFontOfSize(12)
         self.reEnterPasswordField.borderStyle = UITextBorderStyle.RoundedRect
@@ -84,6 +83,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         self.reEnterPasswordField.returnKeyType = UIReturnKeyType.Default
         self.reEnterPasswordField.delegate = self
         self.reEnterPasswordField.secureTextEntry = true
+        self.reEnterPasswordField.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.reEnterPasswordField)
         
         // Register Button
@@ -92,8 +92,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         self.registerButton.setTitleColor(COLOR_BLACK, forState: UIControlState.Normal)
         self.registerButton.backgroundColor = COLOR_RED
         self.registerButton.layer.cornerRadius = 10
-//        self.registerButton.frame = CGRectMake(SCREEN_WIDTH/2 - 100, SCREEN_HEIGHT/2 + 100, 200, 50)
         self.registerButton.addTarget(self, action: "registerButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.registerButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.registerButton)
         
         // Goto Login Button
@@ -102,46 +102,45 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         self.loginButton.setTitleColor(COLOR_BLACK, forState: UIControlState.Normal)
         self.loginButton.backgroundColor = COLOR_RED
         self.loginButton.layer.cornerRadius = 10
-//        self.loginButton.frame = CGRectMake(SCREEN_WIDTH/2 - 100, SCREEN_HEIGHT/2 + 160, 200, 50)
         self.loginButton.addTarget(self, action: "gotoLoginButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.loginButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.loginButton)
         
         // MARK: - Constraints
         
         // Username Field
-        let usernameFieldConstraintHeight = NSLayoutConstraint(item: usernameField, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.GreaterThanOrEqual, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 50.0)
-        let usernameFieldConstraintWidth = NSLayoutConstraint(item: usernameField, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.GreaterThanOrEqual, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 250.0)
-        let usernameFieldConstraintLocationX = NSLayoutConstraint(item: usernameField, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: SCREEN_WIDTH/2)
-        let usernameFieldConstraintLocationY = NSLayoutConstraint(item: usernameField, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: SCREEN_HEIGHT/3)
+        let usernameFieldConstraintLeft = NSLayoutConstraint(item: usernameField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (1/6)*SCREEN_WIDTH)
+        let usernameFieldConstraintRight = NSLayoutConstraint(item: usernameField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-1/6)*SCREEN_WIDTH)
+        let usernameFieldConstraintTop = NSLayoutConstraint(item: usernameField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: (1/3)*SCREEN_HEIGHT)
+        let usernameFieldConstraintBottom = NSLayoutConstraint(item: usernameField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
         
         // Password Field
-        let passwordFieldConstraintEqualHeightUsernameField = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: usernameField, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 0.0)
-        let passwordFieldConstraintEqualWidthUsernameField = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: usernameField, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 0.0)
-        let passwordFieldConstraintEqualLocationXUsernameField = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: usernameField, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
-        let passwordFieldConstraintLocationYUsernameField = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: usernameField, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 60.0)
+        let passwordFieldConstraintLeft = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
+        let passwordFieldConstraintRight = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
+        let passwordFieldConstraintTop = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+        let passwordFieldConstraintBottom = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.passwordField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
         
         // ReEnter Password Field
-        let reEnterPasswordFieldConstraintEqualHeightUsernameField = NSLayoutConstraint(item: reEnterPasswordField, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: usernameField, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 0.0)
-        let reEnterPasswordFieldConstraintEqualWidthUsernameField = NSLayoutConstraint(item: reEnterPasswordField, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: usernameField, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 0.0)
-        let reEnterPasswordFieldConstraintEqualLocationXUsernameField = NSLayoutConstraint(item: reEnterPasswordField, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: usernameField, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
-        let reEnterPasswordFieldConstraintLocationYPasswordField = NSLayoutConstraint(item: reEnterPasswordField, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: passwordField, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 60.0)
+        let reEnterPasswordFieldConstraintLeft = NSLayoutConstraint(item: reEnterPasswordField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
+        let reEnterPasswordFieldConstraintRight = NSLayoutConstraint(item: reEnterPasswordField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
+        let reEnterPasswordFieldConstraintTop = NSLayoutConstraint(item: reEnterPasswordField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.passwordField, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+        let reEnterPasswordFieldConstraintBottom = NSLayoutConstraint(item: reEnterPasswordField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.reEnterPasswordField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
         
         // Register Button
-        let registerButtonConstraintHeight = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.GreaterThanOrEqual, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 50.0)
-        let registerButtonConstraintWidth = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.GreaterThanOrEqual, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 200.0)
-        let registerButtonConstraintLocationX = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: usernameField, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
-        let registerButtonConstraintLocationYReEnterPasswordField = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: reEnterPasswordField, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 60.0)
-        
+        let registerButtonConstraintLeft = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
+        let registerButtonConstraintRight = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
+        let registerButtonConstraintTop = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.reEnterPasswordField, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+        let registerButtonConstraintBottom = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.registerButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
         
         // Goto Login Button
-        let loginButtonConstraintEqualHeightRegisterButton = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: registerButton, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 0.0)
-        let loginButtonConstraintEqualWidthRegisterButton = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: registerButton, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 0.0)
-        let loginButtonConstraintEqualLocationXRegisterButton = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: registerButton, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
-        let loginButtonConstraintLocationYRegisterButton = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: registerButton, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 60.0)
+        let loginButtonConstraintLeft = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
+        let loginButtonConstraintRight = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
+        let loginButtonConstraintTop = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.registerButton, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+        let loginButtonConstraintBottom = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.loginButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
         
         
         // Activate all constraints
-        NSLayoutConstraint.activateConstraints([usernameFieldConstraintHeight, usernameFieldConstraintWidth, usernameFieldConstraintLocationX, usernameFieldConstraintLocationY, passwordFieldConstraintEqualHeightUsernameField, passwordFieldConstraintEqualWidthUsernameField, passwordFieldConstraintEqualLocationXUsernameField, passwordFieldConstraintLocationYUsernameField, reEnterPasswordFieldConstraintEqualHeightUsernameField, reEnterPasswordFieldConstraintEqualWidthUsernameField, reEnterPasswordFieldConstraintEqualLocationXUsernameField, reEnterPasswordFieldConstraintLocationYPasswordField, registerButtonConstraintHeight, registerButtonConstraintWidth, registerButtonConstraintLocationX, registerButtonConstraintLocationYReEnterPasswordField, loginButtonConstraintEqualHeightRegisterButton, loginButtonConstraintEqualWidthRegisterButton, loginButtonConstraintEqualLocationXRegisterButton, loginButtonConstraintLocationYRegisterButton])
+        NSLayoutConstraint.activateConstraints([usernameFieldConstraintLeft, usernameFieldConstraintRight, usernameFieldConstraintTop, usernameFieldConstraintBottom, passwordFieldConstraintLeft, passwordFieldConstraintRight, passwordFieldConstraintTop, passwordFieldConstraintBottom, reEnterPasswordFieldConstraintLeft, reEnterPasswordFieldConstraintRight, reEnterPasswordFieldConstraintTop, reEnterPasswordFieldConstraintBottom, registerButtonConstraintLeft, registerButtonConstraintRight, registerButtonConstraintTop, registerButtonConstraintBottom, loginButtonConstraintLeft, loginButtonConstraintRight, loginButtonConstraintTop, loginButtonConstraintBottom])
     }
     
     // MARK: - Action Methods
