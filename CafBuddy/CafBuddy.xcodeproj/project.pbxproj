@@ -12,7 +12,6 @@
 		4949D4501C2F4A80003C84DA /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4949D44F1C2F4A80003C84DA /* SecondViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4949D4531C2F4A80003C84DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4949D4511C2F4A80003C84DA /* Main.storyboard */; };
 		4949D4551C2F4A81003C84DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4949D4541C2F4A81003C84DA /* Assets.xcassets */; };
-		4949D4581C2F4A81003C84DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4949D4561C2F4A81003C84DA /* LaunchScreen.storyboard */; };
 		4949D4631C2F4A81003C84DA /* CafBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4949D4621C2F4A81003C84DA /* CafBuddyTests.swift */; };
 		4949D46E1C2F4A81003C84DA /* CafBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4949D46D1C2F4A81003C84DA /* CafBuddyUITests.swift */; };
 		4949D47C1C2F56E1003C84DA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4949D47B1C2F56E1003C84DA /* RegisterViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -81,7 +80,6 @@
 		4949D44F1C2F4A80003C84DA /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		4949D4521C2F4A80003C84DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4949D4541C2F4A81003C84DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4949D4571C2F4A81003C84DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4949D4591C2F4A81003C84DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4949D45E1C2F4A81003C84DA /* CafBuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CafBuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4949D4621C2F4A81003C84DA /* CafBuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafBuddyTests.swift; sourceTree = "<group>"; };
@@ -227,7 +225,6 @@
 				4949D44F1C2F4A80003C84DA /* SecondViewController.swift */,
 				4949D4511C2F4A80003C84DA /* Main.storyboard */,
 				4949D4541C2F4A81003C84DA /* Assets.xcassets */,
-				4949D4561C2F4A81003C84DA /* LaunchScreen.storyboard */,
 				4949D4591C2F4A81003C84DA /* Info.plist */,
 				4949D47F1C307767003C84DA /* Utilities.swift */,
 			);
@@ -459,7 +456,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4949D4581C2F4A81003C84DA /* LaunchScreen.storyboard in Resources */,
 				4949D4551C2F4A81003C84DA /* Assets.xcassets in Resources */,
 				4949D4531C2F4A80003C84DA /* Main.storyboard in Resources */,
 			);
@@ -570,14 +566,6 @@
 				4949D4521C2F4A80003C84DA /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		4949D4561C2F4A81003C84DA /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4949D4571C2F4A81003C84DA /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
