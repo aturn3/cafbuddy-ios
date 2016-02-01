@@ -1,0 +1,6 @@
+framework module Pods_CafBuddy {
+  umbrella header "Pods-CafBuddy-umbrella.h"
+
+  export *
+  module * { export * }
+}
