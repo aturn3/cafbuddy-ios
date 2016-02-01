@@ -11,25 +11,24 @@ import Foundation
 @objc protocol APICallback {
     // MARK: - Methods
     
-    optional func createAccountAPICallback(success: Bool, errorMessage: String)
+    optional func createAccountAPICallback(success: Bool, errorMessage: String) -> Void
 }
 
 class User: NSObject {
     // MARK: - Properties
     
-    var firstName: String? = String()
-    var lastName: String? = String()
-    var emailAddress: String? = String()
-    var authenticationToken: String? = String()
+    var firstName = String()
+    var lastName = String()
+    var emailAddress = String()
+    var authenticationToken = String()
+    
+    var userCallback: APICallback?
+    
+    let keychainWrapper = KeychainWrapper()
     
     // MARK: - Initializers
     
-    override init() {
-        self.firstName = nil
-        self.lastName = nil
-        self.emailAddress = nil
-        self.authenticationToken = nil
-    }
+    override init() {}
     
     init(firstAndLastName: String, emailAddress: String, authenticationToken: String) {
         // Extract first name and last name from firstAndLastName
@@ -43,7 +42,7 @@ class User: NSObject {
     
     // MARK: - Methods
     
-    func createAccount(firstAndLastName: String, emailAddress: String, password: String) {
+    func createAccount(firstAndLastName: String!, emailAddress: String!, password: String!) {
         // Build regular expression for emails
         let emailRegularExpressionPattern = "([a-zA-Z0-9]+@[a-zA-Z0-9]+[.][a-zA-Z0-9]+)"
         let emailRegex = try! NSRegularExpression(pattern: emailRegularExpressionPattern, options: [])
@@ -54,51 +53,79 @@ class User: NSObject {
         let lastName = fullNameArray[1]
         
         // Check if firstName, lastName, emailAddress, or password is blank
-        if firstName.isEmpty || lastName.isEmpty || emailAddress.isEmpty || password.isEmpty {
+        if firstName.isEmpty || lastName.isEmpty {
+            self.userCallback!.createAccountAPICallback!(false, errorMessage: "Please enter a first and last name")
+        }
             
+        else if emailAddress.isEmpty || password.isEmpty {
+            self.userCallback!.createAccountAPICallback!(false, errorMessage: "All fields are required")
         }
         
         // Check validity of email
         else if emailRegex.numberOfMatchesInString(emailAddress, options: [], range: NSMakeRange(0, emailAddress.characters.count)) == 0 {
-            
+            self.userCallback!.createAccountAPICallback!(false, errorMessage: "Please enter a valid email address")
         }
         
         // Email is valid and password is not blank
         else {
             // Create User Service Object
-            let userServiceObject = GTLServiceUserService()
+//            let userServiceObject = GTLServiceUserService()
+            var userServiceObject: GTLServiceUserService? = nil
+            if userServiceObject == nil {
+                userServiceObject = GTLServiceUserService()
+                userServiceObject?.retryEnabled = true
+            }
             
             // Create User Service Request Message
-            
             let userMessage = GTLUserServiceApisUserApiSignUpUserRequestMessage()
-            userMessage.setProperty(emailAddress, forKey: userMessage.emailAddress)
-            userMessage.setProperty(firstName, forKey: userMessage.firstName)
-            userMessage.setProperty(lastName, forKey: userMessage.lastName)
-            userMessage.setProperty(password, forKey: userMessage.password)
+            userMessage.setProperty(userMessage.emailAddress, forKey: emailAddress)
+            userMessage.setProperty(userMessage.firstName, forKey: firstName)
+            userMessage.setProperty(userMessage.lastName, forKey: lastName)
+            userMessage.setProperty(userMessage.password, forKey: password)
             
             // Create User Service Query
-            let query = GTLQueryUserService.queryForSignupUserWithObject(userMessage)
+            let query: GTLQueryUserService = GTLQueryUserService.queryForSignupUserWithObject(userMessage)
+            
+            print(query.dynamicType)
             
             // Call API with query
             var ticket = GTLServiceTicket()
-            ticket = userServiceObject.executeQuery(query, completionHandler: { (ticket: GTLServiceTicket!, object: AnyObject!, error: NSError!) -> Void in
+            ticket = userServiceObject!.executeQuery(query, completionHandler: { (ticket: GTLServiceTicket!, object: AnyObject!, error: NSError!) -> Void in 
                 
-                let response = object as! GTLUserServiceApisUserApiSignUpUserResponseMessage
+                let response: GTLUserServiceApisUserApiSignUpUserResponseMessage = object as! GTLUserServiceApisUserApiSignUpUserResponseMessage
                 
-                // Check error number to see if call was successful
+                // API call successful
                 if response.errorNumber == 200 {
-                    //
+                    // Store username and authenticationToken in keychain
+                    self.keychainWrapper.mySetObject(emailAddress, forKey: "emailAddress")
+                    self.keychainWrapper.mySetObject(response.authToken, forKey: "authenticationToken")
+                    
+                    // Store emailAddress and authenticationToken in User object
+                    self.emailAddress = emailAddress
+                    self.authenticationToken = response.authToken
+                    
+                    self.userCallback!.createAccountAPICallback!(false, errorMessage: response.errorMessage)
                 }
 
                 // API call unsuccessful
-                else if response.errorNumber == 12 {
-                    
+                else if response.errorNumber == 2 {
+                    self.userCallback!.createAccountAPICallback!(false, errorMessage: response.errorMessage)
                 }
                 
+                // API call unsuccessful
+                else if response.errorNumber == 3 {
+                    self.userCallback!.createAccountAPICallback!(false, errorMessage: response.errorMessage)
+                }
+                
+                // API call unsuccessful
+                else if response.errorNumber == 4 {
+                    self.userCallback!.createAccountAPICallback!(false, errorMessage: response.errorMessage)
+                }
+                
+                // API call unsuccessful
                 else {
-                    
+                    self.userCallback!.createAccountAPICallback!(false, errorMessage: APPLICATION_ERROR_OR_NETWORK_PROBLEM)
                 }
-                
             })
         }
     }
