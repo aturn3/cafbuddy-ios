@@ -15,9 +15,14 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     let registerButton = UIButton(type: UIButtonType.System)
     let loginButton = UIButton(type: UIButtonType.System)
     
+    let firstAndLastNameField = UITextField()
     let usernameField = UITextField()
     let passwordField = UITextField()
-    let reEnterPasswordField = UITextField()
+    
+    var firstAndLastNameFieldConstraintLeft = NSLayoutConstraint()
+    var firstAndLastNameFieldConstraintRight = NSLayoutConstraint()
+    var firstAndLastNameFieldConstraintTop = NSLayoutConstraint()
+    var firstAndLastNameFieldConstraintBottom = NSLayoutConstraint()
     
     var usernameFieldConstraintLeft = NSLayoutConstraint()
     var usernameFieldConstraintRight = NSLayoutConstraint()
@@ -28,11 +33,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     var passwordFieldConstraintRight = NSLayoutConstraint()
     var passwordFieldConstraintTop = NSLayoutConstraint()
     var passwordFieldConstraintBottom = NSLayoutConstraint()
-    
-    var reEnterPasswordFieldConstraintLeft = NSLayoutConstraint()
-    var reEnterPasswordFieldConstraintRight = NSLayoutConstraint()
-    var reEnterPasswordFieldConstraintTop = NSLayoutConstraint()
-    var reEnterPasswordFieldConstraintBottom = NSLayoutConstraint()
     
     var registerButtonConstraintLeft = NSLayoutConstraint()
     var registerButtonConstraintRight = NSLayoutConstraint()
@@ -65,6 +65,22 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     func initInterface() {
         view.backgroundColor = COLOR_BLUE
         
+        // First And Last Name Field
+        self.firstAndLastNameField.placeholder = "First and last name"
+        self.firstAndLastNameField.font = UIFont.systemFontOfSize(12)
+        self.firstAndLastNameField.borderStyle = UITextBorderStyle.RoundedRect
+        self.firstAndLastNameField.autocorrectionType = UITextAutocorrectionType.No
+        self.firstAndLastNameField.autocapitalizationType = UITextAutocapitalizationType.Words
+        self.firstAndLastNameField.keyboardType = UIKeyboardType.Default
+        self.firstAndLastNameField.returnKeyType = UIReturnKeyType.Done
+        self.firstAndLastNameField.clearButtonMode = UITextFieldViewMode.WhileEditing;
+        self.firstAndLastNameField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
+        self.firstAndLastNameField.returnKeyType = UIReturnKeyType.Next
+        self.firstAndLastNameField.delegate = self
+        self.firstAndLastNameField.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.firstAndLastNameField)
+        
+        
         // Username Field
         self.usernameField.placeholder = "Username"
         self.usernameField.font = UIFont.systemFontOfSize(12)
@@ -90,27 +106,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         self.passwordField.returnKeyType = UIReturnKeyType.Done
         self.passwordField.clearButtonMode = UITextFieldViewMode.WhileEditing;
         self.passwordField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
-        self.passwordField.returnKeyType = UIReturnKeyType.Next
+        self.passwordField.returnKeyType = UIReturnKeyType.Default
         self.passwordField.delegate = self
         self.passwordField.secureTextEntry = true
         self.passwordField.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.passwordField)
-        
-        // Re-enter Password Field
-        self.reEnterPasswordField.placeholder = "Re-Enter Password"
-        self.reEnterPasswordField.font = UIFont.systemFontOfSize(12)
-        self.reEnterPasswordField.borderStyle = UITextBorderStyle.RoundedRect
-        self.reEnterPasswordField.autocorrectionType = UITextAutocorrectionType.No
-        self.reEnterPasswordField.autocapitalizationType = UITextAutocapitalizationType.None
-        self.reEnterPasswordField.keyboardType = UIKeyboardType.Default
-        self.reEnterPasswordField.returnKeyType = UIReturnKeyType.Done
-        self.reEnterPasswordField.clearButtonMode = UITextFieldViewMode.WhileEditing;
-        self.reEnterPasswordField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
-        self.reEnterPasswordField.returnKeyType = UIReturnKeyType.Default
-        self.reEnterPasswordField.delegate = self
-        self.reEnterPasswordField.secureTextEntry = true
-        self.reEnterPasswordField.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(self.reEnterPasswordField)
         
         // Register Button
         self.registerButton.titleLabel!.font = UIFont.systemFontOfSize(12)
@@ -134,42 +134,47 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         
         // MARK: - Constraints
         
+        // First And Last Name Field
+        self.firstAndLastNameFieldConstraintLeft = NSLayoutConstraint(item: firstAndLastNameField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (1/6)*SCREEN_WIDTH)
+        self.firstAndLastNameFieldConstraintRight = NSLayoutConstraint(item: firstAndLastNameField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-1/6)*SCREEN_WIDTH)
+        self.firstAndLastNameFieldConstraintTop = NSLayoutConstraint(item: firstAndLastNameField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: (1/3)*SCREEN_HEIGHT)
+        self.firstAndLastNameFieldConstraintBottom = NSLayoutConstraint(item: firstAndLastNameField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.firstAndLastNameField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
+        
         // Username Field
-        self.usernameFieldConstraintLeft = NSLayoutConstraint(item: usernameField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (1/6)*SCREEN_WIDTH)
-        self.usernameFieldConstraintRight = NSLayoutConstraint(item: usernameField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-1/6)*SCREEN_WIDTH)
-        self.usernameFieldConstraintTop = NSLayoutConstraint(item: usernameField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: (1/3)*SCREEN_HEIGHT)
+        self.usernameFieldConstraintLeft = NSLayoutConstraint(item: usernameField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.firstAndLastNameField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
+        self.usernameFieldConstraintRight = NSLayoutConstraint(item: usernameField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.firstAndLastNameField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
+        self.usernameFieldConstraintTop = NSLayoutConstraint(item: usernameField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.firstAndLastNameField, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
         self.usernameFieldConstraintBottom = NSLayoutConstraint(item: usernameField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
         
         // Password Field
-        self.passwordFieldConstraintLeft = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
-        self.passwordFieldConstraintRight = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
+        self.passwordFieldConstraintLeft = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.firstAndLastNameField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
+        self.passwordFieldConstraintRight = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.firstAndLastNameField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
         self.passwordFieldConstraintTop = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
         self.passwordFieldConstraintBottom = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.passwordField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
         
-        // ReEnter Password Field
-        self.reEnterPasswordFieldConstraintLeft = NSLayoutConstraint(item: reEnterPasswordField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
-        self.reEnterPasswordFieldConstraintRight = NSLayoutConstraint(item: reEnterPasswordField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
-        self.reEnterPasswordFieldConstraintTop = NSLayoutConstraint(item: reEnterPasswordField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.passwordField, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
-        self.reEnterPasswordFieldConstraintBottom = NSLayoutConstraint(item: reEnterPasswordField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.reEnterPasswordField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
-        
         // Register Button
-        self.registerButtonConstraintLeft = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
-        self.registerButtonConstraintRight = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
-        self.registerButtonConstraintTop = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.reEnterPasswordField, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+        self.registerButtonConstraintLeft = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.firstAndLastNameField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
+        self.registerButtonConstraintRight = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.firstAndLastNameField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
+        self.registerButtonConstraintTop = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.passwordField, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
         self.registerButtonConstraintBottom = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.registerButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
         
         // Goto Login Button
-        self.loginButtonConstraintLeft = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
-        self.loginButtonConstraintRight = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
+        self.loginButtonConstraintLeft = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.firstAndLastNameField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
+        self.loginButtonConstraintRight = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.firstAndLastNameField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
         self.loginButtonConstraintTop = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.registerButton, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
         self.loginButtonConstraintBottom = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.loginButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
         
         
         // Activate all constraints
-        NSLayoutConstraint.activateConstraints([self.usernameFieldConstraintLeft, self.usernameFieldConstraintRight, self.usernameFieldConstraintTop, self.usernameFieldConstraintBottom, self.passwordFieldConstraintLeft, self.passwordFieldConstraintRight, self.passwordFieldConstraintTop, self.passwordFieldConstraintBottom, self.reEnterPasswordFieldConstraintLeft, self.reEnterPasswordFieldConstraintRight, self.reEnterPasswordFieldConstraintTop, self.reEnterPasswordFieldConstraintBottom, self.registerButtonConstraintLeft, self.registerButtonConstraintRight, self.registerButtonConstraintTop, self.registerButtonConstraintBottom, self.loginButtonConstraintLeft, self.loginButtonConstraintRight, self.loginButtonConstraintTop, self.loginButtonConstraintBottom])
+        NSLayoutConstraint.activateConstraints([self.firstAndLastNameFieldConstraintLeft, self.firstAndLastNameFieldConstraintRight, self.firstAndLastNameFieldConstraintTop, self.firstAndLastNameFieldConstraintBottom, self.usernameFieldConstraintLeft, self.usernameFieldConstraintRight, self.usernameFieldConstraintTop, self.usernameFieldConstraintBottom, self.passwordFieldConstraintLeft, self.passwordFieldConstraintRight, self.passwordFieldConstraintTop, self.passwordFieldConstraintBottom, self.registerButtonConstraintLeft, self.registerButtonConstraintRight, self.registerButtonConstraintTop, self.registerButtonConstraintBottom, self.loginButtonConstraintLeft, self.loginButtonConstraintRight, self.loginButtonConstraintTop, self.loginButtonConstraintBottom])
     }
     
     // MARK: - Action Methods
+    
+    // Register Button Action
+    func registerButtonPressed(sender: UIButton) {
+        
+    }
     
     // Goto Login Button Action
     func gotoLoginButtonPressed(sender: UIButton) {
@@ -198,15 +203,15 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        // Go from firstAndLastNameField to usernameField
+        if (textField == firstAndLastNameField) {
+            firstAndLastNameField.resignFirstResponder()
+            usernameField.becomeFirstResponder()
+        }
         // Go from usernameField to passwordField
         if (textField == usernameField) {
             usernameField.resignFirstResponder()
             passwordField.becomeFirstResponder()
-        }
-        // Go from passwordField to reEnterPasswordField
-        else if (textField == passwordField) {
-            passwordField.resignFirstResponder()
-            reEnterPasswordField.becomeFirstResponder()
         }
         // Resign text field when "return" button is pressed
         else {
