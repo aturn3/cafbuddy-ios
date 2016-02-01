@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+// MARK: - String Constants
+
+let APPLICATION_ERROR_OR_NETWORK_PROBLEM = "Servers unavailable. Please try again later"
+
 // MARK: - Colors
 
 // credit to @Luca Torella and @Mike Milla http://stackoverflow.com/a/33397427
@@ -49,3 +53,13 @@ let SCREEN_HEIGHT = SCREEN_SIZE.height
 let STATUS_BAR_HEIGHT = 20 as CGFloat
 let NAV_BAR_HEIGHT = 44 as CGFloat
 let TAB_BAR_HEIGHT = 49 as CGFloat
+
+// MARK: - General Functions
+
+func displayAlert(title: String, message: String, actionMessage: String) -> UIAlertController {
+    let alertView = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+    let action = UIAlertAction(title: actionMessage, style: .Default, handler: nil)
+    alertView.addAction(action)
+    
+    return alertView
+}

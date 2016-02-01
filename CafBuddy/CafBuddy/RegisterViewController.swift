@@ -16,7 +16,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback
     let loginButton = UIButton(type: UIButtonType.System)
     
     let firstAndLastNameField = UITextField()
-    let emailField = UITextField()
+    let emailAddressField = UITextField()
     let passwordField = UITextField()
     
     var firstAndLastNameFieldConstraintLeft = NSLayoutConstraint()
@@ -24,10 +24,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback
     var firstAndLastNameFieldConstraintTop = NSLayoutConstraint()
     var firstAndLastNameFieldConstraintBottom = NSLayoutConstraint()
     
-    var emailFieldConstraintLeft = NSLayoutConstraint()
-    var emailFieldConstraintRight = NSLayoutConstraint()
-    var emailFieldConstraintTop = NSLayoutConstraint()
-    var emailFieldConstraintBottom = NSLayoutConstraint()
+    var emailAddressFieldConstraintLeft = NSLayoutConstraint()
+    var emailAddressFieldConstraintRight = NSLayoutConstraint()
+    var emailAddressFieldConstraintTop = NSLayoutConstraint()
+    var emailAddressFieldConstraintBottom = NSLayoutConstraint()
     
     var passwordFieldConstraintLeft = NSLayoutConstraint()
     var passwordFieldConstraintRight = NSLayoutConstraint()
@@ -53,8 +53,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback
         
         self.initInterface()
         // Do any additional setup after loading the view, typically from a nib.
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: self.view.window)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: self.view.window)
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: self.view.window)
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: self.view.window)
     }
     
     override func didReceiveMemoryWarning() {
@@ -82,19 +82,19 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback
         
         
         // Email Field
-        self.emailField.placeholder = "Email Address"
-        self.emailField.font = UIFont.systemFontOfSize(12)
-        self.emailField.borderStyle = UITextBorderStyle.RoundedRect
-        self.emailField.autocorrectionType = UITextAutocorrectionType.No
-        self.emailField.autocapitalizationType = UITextAutocapitalizationType.None
-        self.emailField.keyboardType = UIKeyboardType.Default
-        self.emailField.returnKeyType = UIReturnKeyType.Done
-        self.emailField.clearButtonMode = UITextFieldViewMode.WhileEditing;
-        self.emailField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
-        self.emailField.returnKeyType = UIReturnKeyType.Next
-        self.emailField.delegate = self
-        self.emailField.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(self.emailField)
+        self.emailAddressField.placeholder = "Email Address"
+        self.emailAddressField.font = UIFont.systemFontOfSize(12)
+        self.emailAddressField.borderStyle = UITextBorderStyle.RoundedRect
+        self.emailAddressField.autocorrectionType = UITextAutocorrectionType.No
+        self.emailAddressField.autocapitalizationType = UITextAutocapitalizationType.None
+        self.emailAddressField.keyboardType = UIKeyboardType.Default
+        self.emailAddressField.returnKeyType = UIReturnKeyType.Done
+        self.emailAddressField.clearButtonMode = UITextFieldViewMode.WhileEditing;
+        self.emailAddressField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
+        self.emailAddressField.returnKeyType = UIReturnKeyType.Next
+        self.emailAddressField.delegate = self
+        self.emailAddressField.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.emailAddressField)
         
         // Password Field
         self.passwordField.placeholder = "Password"
@@ -140,16 +140,16 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback
         self.firstAndLastNameFieldConstraintTop = NSLayoutConstraint(item: firstAndLastNameField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: (1/3)*SCREEN_HEIGHT)
         self.firstAndLastNameFieldConstraintBottom = NSLayoutConstraint(item: firstAndLastNameField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.firstAndLastNameField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
         
-        // Email Field
-        self.emailFieldConstraintLeft = NSLayoutConstraint(item: emailField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.firstAndLastNameField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
-        self.emailFieldConstraintRight = NSLayoutConstraint(item: emailField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.firstAndLastNameField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
-        self.emailFieldConstraintTop = NSLayoutConstraint(item: emailField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.firstAndLastNameField, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
-        self.emailFieldConstraintBottom = NSLayoutConstraint(item: emailField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.emailField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
+        // Email Address Field
+        self.emailAddressFieldConstraintLeft = NSLayoutConstraint(item: emailAddressField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.firstAndLastNameField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
+        self.emailAddressFieldConstraintRight = NSLayoutConstraint(item: emailAddressField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.firstAndLastNameField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
+        self.emailAddressFieldConstraintTop = NSLayoutConstraint(item: emailAddressField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.firstAndLastNameField, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+        self.emailAddressFieldConstraintBottom = NSLayoutConstraint(item: emailAddressField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.emailAddressField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
         
         // Password Field
         self.passwordFieldConstraintLeft = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.firstAndLastNameField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
         self.passwordFieldConstraintRight = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.firstAndLastNameField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
-        self.passwordFieldConstraintTop = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.emailField, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+        self.passwordFieldConstraintTop = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.emailAddressField, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
         self.passwordFieldConstraintBottom = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.passwordField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
         
         // Register Button
@@ -166,7 +166,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback
         
         
         // Activate all constraints
-        NSLayoutConstraint.activateConstraints([self.firstAndLastNameFieldConstraintLeft, self.firstAndLastNameFieldConstraintRight, self.firstAndLastNameFieldConstraintTop, self.firstAndLastNameFieldConstraintBottom, self.emailFieldConstraintLeft, self.emailFieldConstraintRight, self.emailFieldConstraintTop, self.emailFieldConstraintBottom, self.passwordFieldConstraintLeft, self.passwordFieldConstraintRight, self.passwordFieldConstraintTop, self.passwordFieldConstraintBottom, self.registerButtonConstraintLeft, self.registerButtonConstraintRight, self.registerButtonConstraintTop, self.registerButtonConstraintBottom, self.loginButtonConstraintLeft, self.loginButtonConstraintRight, self.loginButtonConstraintTop, self.loginButtonConstraintBottom])
+        NSLayoutConstraint.activateConstraints([self.firstAndLastNameFieldConstraintLeft, self.firstAndLastNameFieldConstraintRight, self.firstAndLastNameFieldConstraintTop, self.firstAndLastNameFieldConstraintBottom, self.emailAddressFieldConstraintLeft, self.emailAddressFieldConstraintRight, self.emailAddressFieldConstraintTop, self.emailAddressFieldConstraintBottom, self.passwordFieldConstraintLeft, self.passwordFieldConstraintRight, self.passwordFieldConstraintTop, self.passwordFieldConstraintBottom, self.registerButtonConstraintLeft, self.registerButtonConstraintRight, self.registerButtonConstraintTop, self.registerButtonConstraintBottom, self.loginButtonConstraintLeft, self.loginButtonConstraintRight, self.loginButtonConstraintTop, self.loginButtonConstraintBottom])
     }
     
     // MARK: - Action Methods
@@ -174,11 +174,14 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback
     // Register Button Action
     func registerButtonPressed(sender: UIButton) {
         let firstAndLastName = self.firstAndLastNameField.text
-        let emailAddress = self.emailField.text
+        let emailAddress = self.emailAddressField.text
         let password = self.passwordField.text
         
         let newUser = User()
-        newUser.createAccount(firstAndLastName!, emailAddress: emailAddress!, password: password!)
+        print("firstAndLastName: ", firstAndLastName)
+        print("emailAddress: ", emailAddress)
+        print("password: ", password)
+        newUser.createAccount(firstAndLastName, emailAddress: emailAddress, password: password)
     }
     
     // Goto Login Button Action
@@ -186,44 +189,48 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback
         self.performSegueWithIdentifier("toLoginFromRegister", sender: self)
     }
     
+    // Goto Meal Scene
+    func gotoMealScene() {
+        self.performSegueWithIdentifier("registerSuccessfulSegue", sender: self)
+    }
+    
     // MARK: - Text Field Delegate Methods
     
-    func keyboardWillShow(notification: NSNotification) {
-        let info = notification.userInfo!
-        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
-        
-        print("before", self.emailFieldConstraintTop)
-        
-        UIView.animateWithDuration(0.1, animations: { () -> Void in
-            self.emailFieldConstraintTop.constant = keyboardFrame.size.height + 55
-        })
-        
-        print("after", self.emailFieldConstraintTop)
-    }
-    
-    func keyboardWillHide(sender: NSNotification) {
-        let userInfo: [NSObject : AnyObject] = sender.userInfo!
-        let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
-        self.view.frame.origin.y += keyboardSize.height
-    }
+//    func keyboardWillShow(notification: NSNotification) {
+//        let info = notification.userInfo!
+//        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+//        
+//        print("before", self.emailAddressFieldConstraintTop)
+//        
+//        UIView.animateWithDuration(0.1, animations: { () -> Void in
+//            self.emailAddressFieldConstraintTop.constant = keyboardFrame.size.height + 55
+//        })
+//        
+//        print("after", self.emailAddressFieldConstraintTop)
+//    }
+//    
+//    func keyboardWillHide(sender: NSNotification) {
+//        let userInfo: [NSObject : AnyObject] = sender.userInfo!
+//        let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
+//        self.view.frame.origin.y += keyboardSize.height
+//    }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        // Go from firstAndLastNameField to emailField
+        // Go from firstAndLastNameField to emailAddressField
         if (textField == firstAndLastNameField) {
             firstAndLastNameField.resignFirstResponder()
-            emailField.becomeFirstResponder()
+            emailAddressField.becomeFirstResponder()
         }
-        // Go from emailField to passwordField
-        else if (textField == emailField) {
-            emailField.resignFirstResponder()
+        // Go from emailAddressField to passwordField
+        else if (textField == emailAddressField) {
+            emailAddressField.resignFirstResponder()
             passwordField.becomeFirstResponder()
         }
-        
         // Resign text field when "return" button is pressed
         else {
             textField.resignFirstResponder()
         }
-
+        
         return true
     }
     
@@ -240,6 +247,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback
     
     // MARK: - API Callback
     func createAccountAPICallback(success: Bool, errorMessage: String) {
-        
+        if success {
+            self.gotoMealScene()
+        }
+        else {
+            let alertView = displayAlert("Error", message: errorMessage, actionMessage: "Ok")
+            self.presentViewController(alertView, animated: true, completion: nil)
+        }
     }
 }
