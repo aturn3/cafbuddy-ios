@@ -4,3 +4,4 @@
 
 #import "GTLUserService.h"
 #import "KeychainWrapper.h"
+#import <Google/CloudMessaging.h>
