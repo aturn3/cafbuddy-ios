@@ -15,14 +15,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     let registerButton = UIButton(type: UIButtonType.System)
     let loginButton = UIButton(type: UIButtonType.System)
     
-    let usernameField = UITextField()
+    let emailField = UITextField()
     let passwordField = UITextField()
     let reEnterPasswordField = UITextField()
     
-    var usernameFieldConstraintLeft = NSLayoutConstraint()
-    var usernameFieldConstraintRight = NSLayoutConstraint()
-    var usernameFieldConstraintTop = NSLayoutConstraint()
-    var usernameFieldConstraintBottom = NSLayoutConstraint()
+    var emailFieldConstraintLeft = NSLayoutConstraint()
+    var emailFieldConstraintRight = NSLayoutConstraint()
+    var emailFieldConstraintTop = NSLayoutConstraint()
+    var emailFieldConstraintBottom = NSLayoutConstraint()
     
     var passwordFieldConstraintLeft = NSLayoutConstraint()
     var passwordFieldConstraintRight = NSLayoutConstraint()
@@ -56,20 +56,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func initInterface() {
         view.backgroundColor = COLOR_BLUE
         
-        // Username Field
-        self.usernameField.placeholder = "Username"
-        self.usernameField.font = UIFont.systemFontOfSize(12)
-        self.usernameField.borderStyle = UITextBorderStyle.RoundedRect
-        self.usernameField.autocorrectionType = UITextAutocorrectionType.No
-        self.usernameField.autocapitalizationType = UITextAutocapitalizationType.None
-        self.usernameField.keyboardType = UIKeyboardType.Default
-        self.usernameField.returnKeyType = UIReturnKeyType.Done
-        self.usernameField.clearButtonMode = UITextFieldViewMode.WhileEditing;
-        self.usernameField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
-        self.usernameField.returnKeyType = UIReturnKeyType.Next
-        self.usernameField.delegate = self
-        self.usernameField.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(self.usernameField)
+        // Email Field
+        self.emailField.placeholder = "Email Address"
+        self.emailField.font = UIFont.systemFontOfSize(12)
+        self.emailField.borderStyle = UITextBorderStyle.RoundedRect
+        self.emailField.autocorrectionType = UITextAutocorrectionType.No
+        self.emailField.autocapitalizationType = UITextAutocapitalizationType.None
+        self.emailField.keyboardType = UIKeyboardType.Default
+        self.emailField.returnKeyType = UIReturnKeyType.Done
+        self.emailField.clearButtonMode = UITextFieldViewMode.WhileEditing;
+        self.emailField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
+        self.emailField.returnKeyType = UIReturnKeyType.Next
+        self.emailField.delegate = self
+        self.emailField.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.emailField)
         
         // Password Field
         self.passwordField.placeholder = "Password"
@@ -109,32 +109,32 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
         // MARK: - Constraints
         
-        // Username Field
-        self.usernameFieldConstraintLeft = NSLayoutConstraint(item: usernameField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (1/6)*SCREEN_WIDTH)
-        self.usernameFieldConstraintRight = NSLayoutConstraint(item: usernameField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-1/6)*SCREEN_WIDTH)
-        self.usernameFieldConstraintTop = NSLayoutConstraint(item: usernameField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: (1/3)*SCREEN_HEIGHT)
-        self.usernameFieldConstraintBottom = NSLayoutConstraint(item: usernameField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
+        // Email Field
+        self.emailFieldConstraintLeft = NSLayoutConstraint(item: emailField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (1/6)*SCREEN_WIDTH)
+        self.emailFieldConstraintRight = NSLayoutConstraint(item: emailField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-1/6)*SCREEN_WIDTH)
+        self.emailFieldConstraintTop = NSLayoutConstraint(item: emailField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: (1/3)*SCREEN_HEIGHT)
+        self.emailFieldConstraintBottom = NSLayoutConstraint(item: emailField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.emailField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
         
         // Password Field
-        self.passwordFieldConstraintLeft = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
-        self.passwordFieldConstraintRight = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
-        self.passwordFieldConstraintTop = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+        self.passwordFieldConstraintLeft = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.emailField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
+        self.passwordFieldConstraintRight = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.emailField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
+        self.passwordFieldConstraintTop = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.emailField, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
         self.passwordFieldConstraintBottom = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.passwordField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
         
         // Login Button
-        self.loginButtonConstraintLeft = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
-        self.loginButtonConstraintRight = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
+        self.loginButtonConstraintLeft = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.emailField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
+        self.loginButtonConstraintRight = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.emailField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
         self.loginButtonConstraintTop = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.passwordField, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
         self.loginButtonConstraintBottom = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.loginButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
         
         // Goto Register Button
-        self.registerButtonConstraintLeft = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
-        self.registerButtonConstraintRight = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.usernameField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
+        self.registerButtonConstraintLeft = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.emailField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
+        self.registerButtonConstraintRight = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.emailField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
         self.registerButtonConstraintTop = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.loginButton, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
         self.registerButtonConstraintBottom = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.registerButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
         
         // Activate all constraints
-        NSLayoutConstraint.activateConstraints([self.usernameFieldConstraintLeft, self.usernameFieldConstraintRight, self.usernameFieldConstraintTop, self.usernameFieldConstraintBottom, self.passwordFieldConstraintLeft, self.passwordFieldConstraintRight, self.passwordFieldConstraintTop, self.passwordFieldConstraintBottom, self.loginButtonConstraintLeft, self.loginButtonConstraintRight, self.loginButtonConstraintTop, self.loginButtonConstraintBottom, self.registerButtonConstraintLeft, self.registerButtonConstraintRight, self.registerButtonConstraintTop, self.registerButtonConstraintBottom])
+        NSLayoutConstraint.activateConstraints([self.emailFieldConstraintLeft, self.emailFieldConstraintRight, self.emailFieldConstraintTop, self.emailFieldConstraintBottom, self.passwordFieldConstraintLeft, self.passwordFieldConstraintRight, self.passwordFieldConstraintTop, self.passwordFieldConstraintBottom, self.loginButtonConstraintLeft, self.loginButtonConstraintRight, self.loginButtonConstraintTop, self.loginButtonConstraintBottom, self.registerButtonConstraintLeft, self.registerButtonConstraintRight, self.registerButtonConstraintTop, self.registerButtonConstraintBottom])
     }
     
     // MARK: - Action Methods
@@ -150,13 +150,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 //        let info = notification.userInfo!
 //        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
 //        
-//        print("before", self.usernameFieldConstraintTop)
+//        print("before", self.emailFieldConstraintTop)
 //        
 //        UIView.animateWithDuration(0.1, animations: { () -> Void in
-//            self.usernameFieldConstraintTop.constant = keyboardFrame.size.height + 55
+//            self.emailFieldConstraintTop.constant = keyboardFrame.size.height + 55
 //        })
 //        
-//        print("after", self.usernameFieldConstraintTop)
+//        print("after", self.emailFieldConstraintTop)
 //    }
 //    
 //    func keyboardWillHide(sender: NSNotification) {
@@ -166,9 +166,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 //    }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        // Go from usernameField to passwordField
-        if (textField == usernameField) {
-            usernameField.resignFirstResponder()
+        // Go from emailField to passwordField
+        if (textField == emailField) {
+            emailField.resignFirstResponder()
             passwordField.becomeFirstResponder()
         }
         // Resign text field when "return" button is pressed

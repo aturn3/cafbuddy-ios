@@ -8,41 +8,58 @@
 
 import Foundation
 
+@objc protocol APICallback {
+    // MARK: - Methods
+    
+    optional func createAccountAPICallback(success: Bool, errorMessage: String)
+}
+
 class User: NSObject {
     // MARK: - Properties
     
-    var firstName = NSString()
-    var lastName = NSString()
-    var email = NSString()
-    var authenticationToken = NSString()
+    var firstName: String? = String()
+    var lastName: String? = String()
+    var emailAddress: String? = String()
+    var authenticationToken: String? = String()
     
-    // MARK: - Methods
+    // MARK: - Initializers
     
-    init(firstName: NSString, lastName: NSString, email: NSString, authenticationToken: NSString) {
-        self.firstName = firstName
-        self.lastName = lastName
-        self.email = email
+    override init() {
+        self.firstName = nil
+        self.lastName = nil
+        self.emailAddress = nil
+        self.authenticationToken = nil
+    }
+    
+    init(firstAndLastName: String, emailAddress: String, authenticationToken: String) {
+        // Extract first name and last name from firstAndLastName
+        let fullNameArray = firstAndLastName.componentsSeparatedByString(" ")
+        
+        self.firstName = fullNameArray[0]
+        self.lastName = fullNameArray[1]
+        self.emailAddress = emailAddress
         self.authenticationToken = authenticationToken
     }
     
-    func createAccount(firstAndLastName: NSString, email: NSString, password: NSString) {
+    // MARK: - Methods
+    
+    func createAccount(firstAndLastName: String, emailAddress: String, password: String) {
         // Build regular expression for emails
         let emailRegularExpressionPattern = "([a-zA-Z0-9]+@[a-zA-Z0-9]+[.][a-zA-Z0-9]+)"
         let emailRegex = try! NSRegularExpression(pattern: emailRegularExpressionPattern, options: [])
         
         // Extract first name and last name from firstAndLastName
-        let nameRegularExpressionPattern = "([a-zA-Z]+)"
-        let nameRegex = try! NSRegularExpression(pattern: nameRegularExpressionPattern, options: [])
-        let firstName = NSString()
-        let lastName = NSString()
+        let fullNameArray = firstAndLastName.componentsSeparatedByString(" ")
+        let firstName = fullNameArray[0]
+        let lastName = fullNameArray[1]
         
-        // Check if either email or password is blank
-        if email.length == 0 || password.length == 0 {
+        // Check if firstName, lastName, emailAddress, or password is blank
+        if firstName.isEmpty || lastName.isEmpty || emailAddress.isEmpty || password.isEmpty {
             
         }
         
         // Check validity of email
-        else if emailRegex.numberOfMatchesInString(email as String, options: [], range: NSMakeRange(0, email.length)) == 0 {
+        else if emailRegex.numberOfMatchesInString(emailAddress, options: [], range: NSMakeRange(0, emailAddress.characters.count)) == 0 {
             
         }
         
@@ -54,7 +71,7 @@ class User: NSObject {
             // Create User Service Request Message
             
             let userMessage = GTLUserServiceApisUserApiSignUpUserRequestMessage()
-            userMessage.setProperty(email, forKey: userMessage.emailAddress)
+            userMessage.setProperty(emailAddress, forKey: userMessage.emailAddress)
             userMessage.setProperty(firstName, forKey: userMessage.firstName)
             userMessage.setProperty(lastName, forKey: userMessage.lastName)
             userMessage.setProperty(password, forKey: userMessage.password)
