@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Locksmith
 
 @objc protocol APICallback {
     // MARK: - Methods
@@ -23,8 +24,6 @@ class User: NSObject {
     var authenticationToken = String()
     
     var userCallback: APICallback?
-    
-    let keychainWrapper = KeychainWrapper()
     
     // MARK: - Initializers
     
@@ -69,7 +68,6 @@ class User: NSObject {
         // Email is valid and password is not blank
         else {
             // Create User Service Object
-//            let userServiceObject = GTLServiceUserService()
             var userServiceObject: GTLServiceUserService? = nil
             if userServiceObject == nil {
                 userServiceObject = GTLServiceUserService()
@@ -78,33 +76,31 @@ class User: NSObject {
             
             // Create User Service Request Message
             let userMessage = GTLUserServiceApisUserApiSignUpUserRequestMessage()
-            userMessage.setProperty(userMessage.emailAddress, forKey: emailAddress)
-            userMessage.setProperty(userMessage.firstName, forKey: firstName)
-            userMessage.setProperty(userMessage.lastName, forKey: lastName)
-            userMessage.setProperty(userMessage.password, forKey: password)
+            userMessage.emailAddress = emailAddress
+            userMessage.firstName = firstName
+            userMessage.lastName = lastName
+            userMessage.password = password
             
             // Create User Service Query
             let query: GTLQueryUserService = GTLQueryUserService.queryForSignupUserWithObject(userMessage)
             
-            print(query.dynamicType)
-            
             // Call API with query
             var ticket = GTLServiceTicket()
-            ticket = userServiceObject!.executeQuery(query, completionHandler: { (ticket: GTLServiceTicket!, object: AnyObject!, error: NSError!) -> Void in 
+            ticket = userServiceObject!.executeQuery(query, completionHandler: { (ticket: GTLServiceTicket!, object: AnyObject!, error: NSError!) -> Void in
                 
                 let response: GTLUserServiceApisUserApiSignUpUserResponseMessage = object as! GTLUserServiceApisUserApiSignUpUserResponseMessage
                 
                 // API call successful
                 if response.errorNumber == 200 {
                     // Store username and authenticationToken in keychain
-                    self.keychainWrapper.mySetObject(emailAddress, forKey: "emailAddress")
-                    self.keychainWrapper.mySetObject(response.authToken, forKey: "authenticationToken")
+                    try Locksmith.updateData(["userEmailAddress": emailAddress], forUserAccount: USER_ACCOUNT)
+                    try Locksmith.updateData(["userAuthenticationToken": response.authToken], forUserAccount: USER_ACCOUNT)
                     
                     // Store emailAddress and authenticationToken in User object
                     self.emailAddress = emailAddress
                     self.authenticationToken = response.authToken
                     
-                    self.userCallback!.createAccountAPICallback!(false, errorMessage: response.errorMessage)
+                    self.userCallback!.createAccountAPICallback!(false, errorMessage: "Succcessfully registered! Please confirm registration via email")
                 }
 
                 // API call unsuccessful

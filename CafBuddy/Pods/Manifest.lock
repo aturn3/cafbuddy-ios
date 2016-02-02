@@ -29,9 +29,11 @@ PODS:
   - GoogleSymbolUtilities (1.0.3)
   - GoogleUtilities (1.1.0):
     - GoogleSymbolUtilities (~> 1.0.0)
+  - Locksmith (2.0.6)
 
 DEPENDENCIES:
   - Google/CloudMessaging
+  - Locksmith (~> 2.0)
 
 SPEC CHECKSUMS:
   GGLInstanceID: 4be9a86f27e87f8cedc9694f521f12949813a7ba
@@ -42,5 +44,6 @@ SPEC CHECKSUMS:
   GoogleNetworkingUtilities: 292992ab31b7b4ba32809a0e8b40e324cdfb2c0c
   GoogleSymbolUtilities: 82ad9f93d3615244b3f4ce440f5ab2515e8b4f56
   GoogleUtilities: 8ed9134debe11719097881711464752900668f10
+  Locksmith: 42ec3d535448e3c218f4342782b07a222b1acfd1
 
 COCOAPODS: 0.39.0

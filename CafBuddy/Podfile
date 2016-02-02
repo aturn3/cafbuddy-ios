@@ -6,6 +6,7 @@ use_frameworks!
 target 'CafBuddy' do
 
 pod 'Google/CloudMessaging'
+pod 'Locksmith', '~> 2.0'
 
 end
 

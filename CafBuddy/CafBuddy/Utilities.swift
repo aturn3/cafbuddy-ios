@@ -13,6 +13,8 @@ import UIKit
 
 let APPLICATION_ERROR_OR_NETWORK_PROBLEM = "Servers unavailable. Please try again later"
 
+let USER_ACCOUNT = "userAccount"
+
 // MARK: - Colors
 
 // credit to @Luca Torella and @Mike Milla http://stackoverflow.com/a/33397427
