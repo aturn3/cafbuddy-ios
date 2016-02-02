@@ -1,14 +1,13 @@
 //
-//  FirstViewController.swift
+//  NewMealViewController.swift
 //  CafBuddy
 //
-//  Created by Andrew Turnblad on 12/26/15.
 //  Copyright © 2015 CafBuddy. All rights reserved.
 //
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class NewMealViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
