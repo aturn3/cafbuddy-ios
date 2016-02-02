@@ -251,7 +251,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback
             self.gotoMealScene()
         }
         else {
-            let alertView = displayAlert("Error", message: errorMessage, actionMessage: "Ok")
+            let alertView = createAlert("Error", message: errorMessage, actionMessage: "Ok")
             self.presentViewController(alertView, animated: true, completion: nil)
         }
     }
