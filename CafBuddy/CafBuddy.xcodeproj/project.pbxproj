@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		492096F81C5A7AB100B6C204 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492096F71C5A7AB100B6C204 /* User.swift */; };
-		492097011C5FE0E100B6C204 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 492097001C5FE0E100B6C204 /* KeychainWrapper.m */; };
 		4949D44C1C2F4A80003C84DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4949D44B1C2F4A80003C84DA /* AppDelegate.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4949D44E1C2F4A80003C84DA /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4949D44D1C2F4A80003C84DA /* FirstViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4949D4501C2F4A80003C84DA /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4949D44F1C2F4A80003C84DA /* SecondViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -83,8 +82,6 @@
 /* Begin PBXFileReference section */
 		306FB029FA4EED1C0DCAAA9C /* Pods_CafBuddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CafBuddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		492096F71C5A7AB100B6C204 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		492096FF1C5FE0E100B6C204 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
-		492097001C5FE0E100B6C204 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
 		4949D4481C2F4A80003C84DA /* CafBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CafBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4949D44B1C2F4A80003C84DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4949D44D1C2F4A80003C84DA /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -210,15 +207,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		492096FE1C5FDFDF00B6C204 /* Keychain Wrapper */ = {
-			isa = PBXGroup;
-			children = (
-				492096FF1C5FE0E100B6C204 /* KeychainWrapper.h */,
-				492097001C5FE0E100B6C204 /* KeychainWrapper.m */,
-			);
-			name = "Keychain Wrapper";
-			sourceTree = "<group>";
-		};
 		4949D43F1C2F4A80003C84DA = {
 			isa = PBXGroup;
 			children = (
@@ -228,7 +216,6 @@
 				4949D44A1C2F4A80003C84DA /* CafBuddy */,
 				4949D4611C2F4A81003C84DA /* CafBuddyTests */,
 				4949D46C1C2F4A81003C84DA /* CafBuddyUITests */,
-				492096FE1C5FDFDF00B6C204 /* Keychain Wrapper */,
 				4949D4491C2F4A80003C84DA /* Products */,
 				CC02776679CA5946555430AB /* Pods */,
 				FF39525B365882F53F59D072 /* Frameworks */,
@@ -594,7 +581,6 @@
 				FF72B9D71C322796009B7308 /* GTLUserServiceApisUserApiSignUpUserResponseMessage.m in Sources */,
 				FF72B9971C32269B009B7308 /* GTLBatchQuery.m in Sources */,
 				FF72B9D21C322796009B7308 /* GTLUserServiceApisUserApiLogOutUserRequestMessage.m in Sources */,
-				492097011C5FE0E100B6C204 /* KeychainWrapper.m in Sources */,
 				FF72B99F1C32269B009B7308 /* GTLJSONParser.m in Sources */,
 				FF72B9CE1C322796009B7308 /* GTLServiceUserService.m in Sources */,
 				4949D47C1C2F56E1003C84DA /* RegisterViewController.swift in Sources */,
