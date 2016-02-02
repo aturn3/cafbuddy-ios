@@ -179,15 +179,22 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback
         
         let newUser = User()
         newUser.userCallback = self;
-        print("firstAndLastName: ", firstAndLastName)
-        print("emailAddress: ", emailAddress)
-        print("password: ", password)
         newUser.createAccount(firstAndLastName, emailAddress: emailAddress, password: password)
     }
     
     // Goto Login Button Action
     func gotoLoginButtonPressed(sender: UIButton) {
         self.performSegueWithIdentifier("toLoginFromRegister", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "registerSuccessfulSegue" {
+            
+        }
+        
+        else if segue.identifier == "toLoginFromRegister" {
+            
+        }
     }
     
     // Goto Meal Scene

@@ -13,6 +13,7 @@ import Locksmith
     // MARK: - Methods
     
     optional func createAccountAPICallback(success: Bool, errorMessage: String) -> Void
+    optional func loginAccountAPICallback(success: Bool, errorMessage: String) -> Void
 }
 
 class User: NSObject {
@@ -86,8 +87,6 @@ class User: NSObject {
                 
                 let response: GTLUserServiceApisUserApiSignUpUserResponseMessage = object as! GTLUserServiceApisUserApiSignUpUserResponseMessage
                 
-                print("The error message is: " + response.errorMessage)
-                
                 // API call successful
                 if response.errorNumber == 200 {
                     // Store username and authenticationToken in keychain
@@ -97,6 +96,7 @@ class User: NSObject {
                     } catch _ {
                         // this is where it could fail.. do something on failure
                     }
+                    
                     // Store emailAddress and authenticationToken in User object
                     self.emailAddress = emailAddress
                     self.authenticationToken = response.authToken
@@ -125,5 +125,9 @@ class User: NSObject {
                 }
             })
         }
+    }
+    
+    func login(emailAddress: String!, password: String!) {
+        
     }
 }
