@@ -4,3 +4,4 @@
 
 #import <Google/CloudMessaging.h>
 #import "GTLUserService.h"
+#import "GTLMealService.h"
