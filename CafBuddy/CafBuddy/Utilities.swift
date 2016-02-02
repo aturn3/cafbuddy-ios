@@ -58,10 +58,20 @@ let TAB_BAR_HEIGHT = 49 as CGFloat
 
 // MARK: - General Functions
 
-func displayAlert(title: String, message: String, actionMessage: String) -> UIAlertController {
+func createAlert(title: String, message: String, actionMessage: String) -> UIAlertController {
     let alertView = UIAlertController(title: title, message: message, preferredStyle: .Alert)
     let action = UIAlertAction(title: actionMessage, style: .Default, handler: nil)
     alertView.addAction(action)
     
     return alertView
+}
+
+func createUserServiceObject() -> GTLServiceUserService? {
+    var userServiceObject: GTLServiceUserService? = nil
+    if userServiceObject == nil {
+        userServiceObject = GTLServiceUserService()
+        userServiceObject?.retryEnabled = true
+    }
+    
+    return userServiceObject
 }

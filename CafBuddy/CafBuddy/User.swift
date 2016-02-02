@@ -68,11 +68,7 @@ class User: NSObject {
         // Email is valid and password is not blank
         else {
             // Create User Service Object
-            var userServiceObject: GTLServiceUserService? = nil
-            if userServiceObject == nil {
-                userServiceObject = GTLServiceUserService()
-                userServiceObject?.retryEnabled = true
-            }
+            let userServiceObject = createUserServiceObject()
             
             // Create User Service Request Message
             let userMessage = GTLUserServiceApisUserApiSignUpUserRequestMessage()
