@@ -93,9 +93,12 @@ class User: NSObject {
                 // API call successful
                 if response.errorNumber == 200 {
                     // Store username and authenticationToken in keychain
-                    try Locksmith.updateData(["userEmailAddress": emailAddress], forUserAccount: USER_ACCOUNT)
-                    try Locksmith.updateData(["userAuthenticationToken": response.authToken], forUserAccount: USER_ACCOUNT)
-                    
+                    do {
+                        try Locksmith.updateData(["userEmailAddress": emailAddress], forUserAccount: USER_ACCOUNT)
+                        try Locksmith.updateData(["userAuthenticationToken": response.authToken], forUserAccount: USER_ACCOUNT)
+                    } catch _ {
+                        // this is where it could fail.. do something on failure
+                    }
                     // Store emailAddress and authenticationToken in User object
                     self.emailAddress = emailAddress
                     self.authenticationToken = response.authToken
