@@ -46,20 +46,40 @@
 		FF72B9A91C32269B009B7308 /* GTMReadMonitorInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B9941C32269B009B7308 /* GTMReadMonitorInputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FF72B9AC1C3226F3009B7308 /* GTMSessionFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B9AB1C3226F3009B7308 /* GTMSessionFetcher.m */; };
 		FF72B9AF1C322713009B7308 /* GTMSessionFetcherService.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B9AE1C322713009B7308 /* GTMSessionFetcherService.m */; };
-		FF72B9CD1C322796009B7308 /* GTLQueryUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B9B21C322796009B7308 /* GTLQueryUserService.m */; };
-		FF72B9CE1C322796009B7308 /* GTLServiceUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B9B41C322796009B7308 /* GTLServiceUserService.m */; };
-		FF72B9CF1C322796009B7308 /* GTLUserService_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B9B51C322796009B7308 /* GTLUserService_Sources.m */; };
-		FF72B9D01C322796009B7308 /* GTLUserServiceApisUserApiLogInUserRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B9B81C322796009B7308 /* GTLUserServiceApisUserApiLogInUserRequestMessage.m */; };
-		FF72B9D11C322796009B7308 /* GTLUserServiceApisUserApiLogInUserResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B9BA1C322796009B7308 /* GTLUserServiceApisUserApiLogInUserResponseMessage.m */; };
-		FF72B9D21C322796009B7308 /* GTLUserServiceApisUserApiLogOutUserRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B9BC1C322796009B7308 /* GTLUserServiceApisUserApiLogOutUserRequestMessage.m */; };
-		FF72B9D31C322796009B7308 /* GTLUserServiceApisUserApiLogOutUserResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B9BE1C322796009B7308 /* GTLUserServiceApisUserApiLogOutUserResponseMessage.m */; };
-		FF72B9D41C322796009B7308 /* GTLUserServiceApisUserApiSendNewEmailVerificationRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B9C01C322796009B7308 /* GTLUserServiceApisUserApiSendNewEmailVerificationRequestMessage.m */; };
-		FF72B9D51C322796009B7308 /* GTLUserServiceApisUserApiSendNewEmailVerificationResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B9C21C322796009B7308 /* GTLUserServiceApisUserApiSendNewEmailVerificationResponseMessage.m */; };
-		FF72B9D61C322796009B7308 /* GTLUserServiceApisUserApiSignUpUserRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B9C41C322796009B7308 /* GTLUserServiceApisUserApiSignUpUserRequestMessage.m */; };
-		FF72B9D71C322796009B7308 /* GTLUserServiceApisUserApiSignUpUserResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B9C61C322796009B7308 /* GTLUserServiceApisUserApiSignUpUserResponseMessage.m */; };
-		FF72B9D81C322796009B7308 /* GTLUserServiceApisUserApiValidateUserRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B9C81C322796009B7308 /* GTLUserServiceApisUserApiValidateUserRequestMessage.m */; };
-		FF72B9D91C322796009B7308 /* GTLUserServiceApisUserApiValidateUserResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B9CA1C322796009B7308 /* GTLUserServiceApisUserApiValidateUserResponseMessage.m */; };
-		FF72B9DA1C322796009B7308 /* GTLUserServiceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B9CC1C322796009B7308 /* GTLUserServiceConstants.m */; };
+		FFFB21FE1C608C60005D7816 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21B81C608C60005D7816 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.m */; };
+		FFFB21FF1C608C60005D7816 /* GTLMealServiceApisMealApiCreateNewMealResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21BA1C608C60005D7816 /* GTLMealServiceApisMealApiCreateNewMealResponseMessage.m */; };
+		FFFB22001C608C60005D7816 /* GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21BC1C608C60005D7816 /* GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.m */; };
+		FFFB22011C608C60005D7816 /* GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21BE1C608C60005D7816 /* GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.m */; };
+		FFFB22021C608C60005D7816 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21C01C608C60005D7816 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.m */; };
+		FFFB22031C608C60005D7816 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21C21C608C60005D7816 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.m */; };
+		FFFB22041C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21C41C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.m */; };
+		FFFB22051C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21C61C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.m */; };
+		FFFB22061C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21C81C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.m */; };
+		FFFB22071C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21CA1C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.m */; };
+		FFFB22081C608C60005D7816 /* GTLMealServiceApisMealApiMatchedMealMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21CC1C608C60005D7816 /* GTLMealServiceApisMealApiMatchedMealMessage.m */; };
+		FFFB22091C608C60005D7816 /* GTLMealServiceApisMealApiUnMatchedMealMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21CE1C608C60005D7816 /* GTLMealServiceApisMealApiUnMatchedMealMessage.m */; };
+		FFFB220A1C608C60005D7816 /* GTLMealServiceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21D01C608C60005D7816 /* GTLMealServiceConstants.m */; };
+		FFFB220B1C608C60005D7816 /* GTLQueryMealService.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21D21C608C60005D7816 /* GTLQueryMealService.m */; };
+		FFFB220C1C608C60005D7816 /* GTLQueryUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21D41C608C60005D7816 /* GTLQueryUserService.m */; };
+		FFFB220D1C608C60005D7816 /* GTLServiceMealService.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21D61C608C60005D7816 /* GTLServiceMealService.m */; };
+		FFFB220E1C608C60005D7816 /* GTLServiceUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21D81C608C60005D7816 /* GTLServiceUserService.m */; };
+		FFFB22101C608C60005D7816 /* GTLUserServiceApisUserApiAddReportToUserRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21DC1C608C60005D7816 /* GTLUserServiceApisUserApiAddReportToUserRequestMessage.m */; };
+		FFFB22111C608C60005D7816 /* GTLUserServiceApisUserApiAddReportToUserResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21DE1C608C60005D7816 /* GTLUserServiceApisUserApiAddReportToUserResponseMessage.m */; };
+		FFFB22121C608C60005D7816 /* GTLUserServiceApisUserApiIncrementNegativeRatingRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21E01C608C60005D7816 /* GTLUserServiceApisUserApiIncrementNegativeRatingRequestMessage.m */; };
+		FFFB22131C608C60005D7816 /* GTLUserServiceApisUserApiIncrementNegativeRatingResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21E21C608C60005D7816 /* GTLUserServiceApisUserApiIncrementNegativeRatingResponseMessage.m */; };
+		FFFB22141C608C60005D7816 /* GTLUserServiceApisUserApiIncrementPositiveRatingRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21E41C608C60005D7816 /* GTLUserServiceApisUserApiIncrementPositiveRatingRequestMessage.m */; };
+		FFFB22151C608C60005D7816 /* GTLUserServiceApisUserApiIncrementPositiveRatingResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21E61C608C60005D7816 /* GTLUserServiceApisUserApiIncrementPositiveRatingResponseMessage.m */; };
+		FFFB22161C608C60005D7816 /* GTLUserServiceApisUserApiLogInUserRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21E81C608C60005D7816 /* GTLUserServiceApisUserApiLogInUserRequestMessage.m */; };
+		FFFB22171C608C60005D7816 /* GTLUserServiceApisUserApiLogInUserResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21EA1C608C60005D7816 /* GTLUserServiceApisUserApiLogInUserResponseMessage.m */; };
+		FFFB22181C608C60005D7816 /* GTLUserServiceApisUserApiLogOutUserRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21EC1C608C60005D7816 /* GTLUserServiceApisUserApiLogOutUserRequestMessage.m */; };
+		FFFB22191C608C60005D7816 /* GTLUserServiceApisUserApiLogOutUserResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21EE1C608C60005D7816 /* GTLUserServiceApisUserApiLogOutUserResponseMessage.m */; };
+		FFFB221A1C608C60005D7816 /* GTLUserServiceApisUserApiSendNewEmailVerificationRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21F01C608C60005D7816 /* GTLUserServiceApisUserApiSendNewEmailVerificationRequestMessage.m */; };
+		FFFB221B1C608C60005D7816 /* GTLUserServiceApisUserApiSendNewEmailVerificationResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21F21C608C60005D7816 /* GTLUserServiceApisUserApiSendNewEmailVerificationResponseMessage.m */; };
+		FFFB221C1C608C60005D7816 /* GTLUserServiceApisUserApiSignUpUserRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21F41C608C60005D7816 /* GTLUserServiceApisUserApiSignUpUserRequestMessage.m */; };
+		FFFB221D1C608C60005D7816 /* GTLUserServiceApisUserApiSignUpUserResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21F61C608C60005D7816 /* GTLUserServiceApisUserApiSignUpUserResponseMessage.m */; };
+		FFFB221E1C608C60005D7816 /* GTLUserServiceApisUserApiValidateUserRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21F81C608C60005D7816 /* GTLUserServiceApisUserApiValidateUserRequestMessage.m */; };
+		FFFB221F1C608C60005D7816 /* GTLUserServiceApisUserApiValidateUserResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21FA1C608C60005D7816 /* GTLUserServiceApisUserApiValidateUserResponseMessage.m */; };
+		FFFB22201C608C60005D7816 /* GTLUserServiceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21FC1C608C60005D7816 /* GTLUserServiceConstants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,34 +171,76 @@
 		FF72B9AB1C3226F3009B7308 /* GTMSessionFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMSessionFetcher.m; sourceTree = "<group>"; };
 		FF72B9AD1C322713009B7308 /* GTMSessionFetcherService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMSessionFetcherService.h; sourceTree = "<group>"; };
 		FF72B9AE1C322713009B7308 /* GTMSessionFetcherService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMSessionFetcherService.m; sourceTree = "<group>"; };
-		FF72B9B11C322796009B7308 /* GTLQueryUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLQueryUserService.h; sourceTree = "<group>"; };
-		FF72B9B21C322796009B7308 /* GTLQueryUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLQueryUserService.m; sourceTree = "<group>"; };
-		FF72B9B31C322796009B7308 /* GTLServiceUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLServiceUserService.h; sourceTree = "<group>"; };
-		FF72B9B41C322796009B7308 /* GTLServiceUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLServiceUserService.m; sourceTree = "<group>"; };
-		FF72B9B51C322796009B7308 /* GTLUserService_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserService_Sources.m; sourceTree = "<group>"; };
-		FF72B9B61C322796009B7308 /* GTLUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserService.h; sourceTree = "<group>"; };
-		FF72B9B71C322796009B7308 /* GTLUserServiceApisUserApiLogInUserRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceApisUserApiLogInUserRequestMessage.h; sourceTree = "<group>"; };
-		FF72B9B81C322796009B7308 /* GTLUserServiceApisUserApiLogInUserRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiLogInUserRequestMessage.m; sourceTree = "<group>"; };
-		FF72B9B91C322796009B7308 /* GTLUserServiceApisUserApiLogInUserResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceApisUserApiLogInUserResponseMessage.h; sourceTree = "<group>"; };
-		FF72B9BA1C322796009B7308 /* GTLUserServiceApisUserApiLogInUserResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiLogInUserResponseMessage.m; sourceTree = "<group>"; };
-		FF72B9BB1C322796009B7308 /* GTLUserServiceApisUserApiLogOutUserRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceApisUserApiLogOutUserRequestMessage.h; sourceTree = "<group>"; };
-		FF72B9BC1C322796009B7308 /* GTLUserServiceApisUserApiLogOutUserRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiLogOutUserRequestMessage.m; sourceTree = "<group>"; };
-		FF72B9BD1C322796009B7308 /* GTLUserServiceApisUserApiLogOutUserResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceApisUserApiLogOutUserResponseMessage.h; sourceTree = "<group>"; };
-		FF72B9BE1C322796009B7308 /* GTLUserServiceApisUserApiLogOutUserResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiLogOutUserResponseMessage.m; sourceTree = "<group>"; };
-		FF72B9BF1C322796009B7308 /* GTLUserServiceApisUserApiSendNewEmailVerificationRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceApisUserApiSendNewEmailVerificationRequestMessage.h; sourceTree = "<group>"; };
-		FF72B9C01C322796009B7308 /* GTLUserServiceApisUserApiSendNewEmailVerificationRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiSendNewEmailVerificationRequestMessage.m; sourceTree = "<group>"; };
-		FF72B9C11C322796009B7308 /* GTLUserServiceApisUserApiSendNewEmailVerificationResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceApisUserApiSendNewEmailVerificationResponseMessage.h; sourceTree = "<group>"; };
-		FF72B9C21C322796009B7308 /* GTLUserServiceApisUserApiSendNewEmailVerificationResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiSendNewEmailVerificationResponseMessage.m; sourceTree = "<group>"; };
-		FF72B9C31C322796009B7308 /* GTLUserServiceApisUserApiSignUpUserRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceApisUserApiSignUpUserRequestMessage.h; sourceTree = "<group>"; };
-		FF72B9C41C322796009B7308 /* GTLUserServiceApisUserApiSignUpUserRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiSignUpUserRequestMessage.m; sourceTree = "<group>"; };
-		FF72B9C51C322796009B7308 /* GTLUserServiceApisUserApiSignUpUserResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceApisUserApiSignUpUserResponseMessage.h; sourceTree = "<group>"; };
-		FF72B9C61C322796009B7308 /* GTLUserServiceApisUserApiSignUpUserResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiSignUpUserResponseMessage.m; sourceTree = "<group>"; };
-		FF72B9C71C322796009B7308 /* GTLUserServiceApisUserApiValidateUserRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceApisUserApiValidateUserRequestMessage.h; sourceTree = "<group>"; };
-		FF72B9C81C322796009B7308 /* GTLUserServiceApisUserApiValidateUserRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiValidateUserRequestMessage.m; sourceTree = "<group>"; };
-		FF72B9C91C322796009B7308 /* GTLUserServiceApisUserApiValidateUserResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceApisUserApiValidateUserResponseMessage.h; sourceTree = "<group>"; };
-		FF72B9CA1C322796009B7308 /* GTLUserServiceApisUserApiValidateUserResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiValidateUserResponseMessage.m; sourceTree = "<group>"; };
-		FF72B9CB1C322796009B7308 /* GTLUserServiceConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceConstants.h; sourceTree = "<group>"; };
-		FF72B9CC1C322796009B7308 /* GTLUserServiceConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceConstants.m; sourceTree = "<group>"; };
+		FFFB21B61C608C60005D7816 /* GTLMealService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealService.h; sourceTree = "<group>"; };
+		FFFB21B71C608C60005D7816 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiCreateNewMealRequestMessage.h; sourceTree = "<group>"; };
+		FFFB21B81C608C60005D7816 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiCreateNewMealRequestMessage.m; sourceTree = "<group>"; };
+		FFFB21B91C608C60005D7816 /* GTLMealServiceApisMealApiCreateNewMealResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiCreateNewMealResponseMessage.h; sourceTree = "<group>"; };
+		FFFB21BA1C608C60005D7816 /* GTLMealServiceApisMealApiCreateNewMealResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiCreateNewMealResponseMessage.m; sourceTree = "<group>"; };
+		FFFB21BB1C608C60005D7816 /* GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.h; sourceTree = "<group>"; };
+		FFFB21BC1C608C60005D7816 /* GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.m; sourceTree = "<group>"; };
+		FFFB21BD1C608C60005D7816 /* GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.h; sourceTree = "<group>"; };
+		FFFB21BE1C608C60005D7816 /* GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.m; sourceTree = "<group>"; };
+		FFFB21BF1C608C60005D7816 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.h; sourceTree = "<group>"; };
+		FFFB21C01C608C60005D7816 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.m; sourceTree = "<group>"; };
+		FFFB21C11C608C60005D7816 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.h; sourceTree = "<group>"; };
+		FFFB21C21C608C60005D7816 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.m; sourceTree = "<group>"; };
+		FFFB21C31C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.h; sourceTree = "<group>"; };
+		FFFB21C41C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.m; sourceTree = "<group>"; };
+		FFFB21C51C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.h; sourceTree = "<group>"; };
+		FFFB21C61C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.m; sourceTree = "<group>"; };
+		FFFB21C71C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.h; sourceTree = "<group>"; };
+		FFFB21C81C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.m; sourceTree = "<group>"; };
+		FFFB21C91C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.h; sourceTree = "<group>"; };
+		FFFB21CA1C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.m; sourceTree = "<group>"; };
+		FFFB21CB1C608C60005D7816 /* GTLMealServiceApisMealApiMatchedMealMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiMatchedMealMessage.h; sourceTree = "<group>"; };
+		FFFB21CC1C608C60005D7816 /* GTLMealServiceApisMealApiMatchedMealMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiMatchedMealMessage.m; sourceTree = "<group>"; };
+		FFFB21CD1C608C60005D7816 /* GTLMealServiceApisMealApiUnMatchedMealMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiUnMatchedMealMessage.h; sourceTree = "<group>"; };
+		FFFB21CE1C608C60005D7816 /* GTLMealServiceApisMealApiUnMatchedMealMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiUnMatchedMealMessage.m; sourceTree = "<group>"; };
+		FFFB21CF1C608C60005D7816 /* GTLMealServiceConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceConstants.h; sourceTree = "<group>"; };
+		FFFB21D01C608C60005D7816 /* GTLMealServiceConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceConstants.m; sourceTree = "<group>"; };
+		FFFB21D11C608C60005D7816 /* GTLQueryMealService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLQueryMealService.h; sourceTree = "<group>"; };
+		FFFB21D21C608C60005D7816 /* GTLQueryMealService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLQueryMealService.m; sourceTree = "<group>"; };
+		FFFB21D31C608C60005D7816 /* GTLQueryUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLQueryUserService.h; sourceTree = "<group>"; };
+		FFFB21D41C608C60005D7816 /* GTLQueryUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLQueryUserService.m; sourceTree = "<group>"; };
+		FFFB21D51C608C60005D7816 /* GTLServiceMealService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLServiceMealService.h; sourceTree = "<group>"; };
+		FFFB21D61C608C60005D7816 /* GTLServiceMealService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLServiceMealService.m; sourceTree = "<group>"; };
+		FFFB21D71C608C60005D7816 /* GTLServiceUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLServiceUserService.h; sourceTree = "<group>"; };
+		FFFB21D81C608C60005D7816 /* GTLServiceUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLServiceUserService.m; sourceTree = "<group>"; };
+		FFFB21DA1C608C60005D7816 /* GTLUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserService.h; sourceTree = "<group>"; };
+		FFFB21DB1C608C60005D7816 /* GTLUserServiceApisUserApiAddReportToUserRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceApisUserApiAddReportToUserRequestMessage.h; sourceTree = "<group>"; };
+		FFFB21DC1C608C60005D7816 /* GTLUserServiceApisUserApiAddReportToUserRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiAddReportToUserRequestMessage.m; sourceTree = "<group>"; };
+		FFFB21DD1C608C60005D7816 /* GTLUserServiceApisUserApiAddReportToUserResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceApisUserApiAddReportToUserResponseMessage.h; sourceTree = "<group>"; };
+		FFFB21DE1C608C60005D7816 /* GTLUserServiceApisUserApiAddReportToUserResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiAddReportToUserResponseMessage.m; sourceTree = "<group>"; };
+		FFFB21DF1C608C60005D7816 /* GTLUserServiceApisUserApiIncrementNegativeRatingRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceApisUserApiIncrementNegativeRatingRequestMessage.h; sourceTree = "<group>"; };
+		FFFB21E01C608C60005D7816 /* GTLUserServiceApisUserApiIncrementNegativeRatingRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiIncrementNegativeRatingRequestMessage.m; sourceTree = "<group>"; };
+		FFFB21E11C608C60005D7816 /* GTLUserServiceApisUserApiIncrementNegativeRatingResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceApisUserApiIncrementNegativeRatingResponseMessage.h; sourceTree = "<group>"; };
+		FFFB21E21C608C60005D7816 /* GTLUserServiceApisUserApiIncrementNegativeRatingResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiIncrementNegativeRatingResponseMessage.m; sourceTree = "<group>"; };
+		FFFB21E31C608C60005D7816 /* GTLUserServiceApisUserApiIncrementPositiveRatingRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceApisUserApiIncrementPositiveRatingRequestMessage.h; sourceTree = "<group>"; };
+		FFFB21E41C608C60005D7816 /* GTLUserServiceApisUserApiIncrementPositiveRatingRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiIncrementPositiveRatingRequestMessage.m; sourceTree = "<group>"; };
+		FFFB21E51C608C60005D7816 /* GTLUserServiceApisUserApiIncrementPositiveRatingResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceApisUserApiIncrementPositiveRatingResponseMessage.h; sourceTree = "<group>"; };
+		FFFB21E61C608C60005D7816 /* GTLUserServiceApisUserApiIncrementPositiveRatingResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiIncrementPositiveRatingResponseMessage.m; sourceTree = "<group>"; };
+		FFFB21E71C608C60005D7816 /* GTLUserServiceApisUserApiLogInUserRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceApisUserApiLogInUserRequestMessage.h; sourceTree = "<group>"; };
+		FFFB21E81C608C60005D7816 /* GTLUserServiceApisUserApiLogInUserRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiLogInUserRequestMessage.m; sourceTree = "<group>"; };
+		FFFB21E91C608C60005D7816 /* GTLUserServiceApisUserApiLogInUserResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceApisUserApiLogInUserResponseMessage.h; sourceTree = "<group>"; };
+		FFFB21EA1C608C60005D7816 /* GTLUserServiceApisUserApiLogInUserResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiLogInUserResponseMessage.m; sourceTree = "<group>"; };
+		FFFB21EB1C608C60005D7816 /* GTLUserServiceApisUserApiLogOutUserRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceApisUserApiLogOutUserRequestMessage.h; sourceTree = "<group>"; };
+		FFFB21EC1C608C60005D7816 /* GTLUserServiceApisUserApiLogOutUserRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiLogOutUserRequestMessage.m; sourceTree = "<group>"; };
+		FFFB21ED1C608C60005D7816 /* GTLUserServiceApisUserApiLogOutUserResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceApisUserApiLogOutUserResponseMessage.h; sourceTree = "<group>"; };
+		FFFB21EE1C608C60005D7816 /* GTLUserServiceApisUserApiLogOutUserResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiLogOutUserResponseMessage.m; sourceTree = "<group>"; };
+		FFFB21EF1C608C60005D7816 /* GTLUserServiceApisUserApiSendNewEmailVerificationRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceApisUserApiSendNewEmailVerificationRequestMessage.h; sourceTree = "<group>"; };
+		FFFB21F01C608C60005D7816 /* GTLUserServiceApisUserApiSendNewEmailVerificationRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiSendNewEmailVerificationRequestMessage.m; sourceTree = "<group>"; };
+		FFFB21F11C608C60005D7816 /* GTLUserServiceApisUserApiSendNewEmailVerificationResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceApisUserApiSendNewEmailVerificationResponseMessage.h; sourceTree = "<group>"; };
+		FFFB21F21C608C60005D7816 /* GTLUserServiceApisUserApiSendNewEmailVerificationResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiSendNewEmailVerificationResponseMessage.m; sourceTree = "<group>"; };
+		FFFB21F31C608C60005D7816 /* GTLUserServiceApisUserApiSignUpUserRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceApisUserApiSignUpUserRequestMessage.h; sourceTree = "<group>"; };
+		FFFB21F41C608C60005D7816 /* GTLUserServiceApisUserApiSignUpUserRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiSignUpUserRequestMessage.m; sourceTree = "<group>"; };
+		FFFB21F51C608C60005D7816 /* GTLUserServiceApisUserApiSignUpUserResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceApisUserApiSignUpUserResponseMessage.h; sourceTree = "<group>"; };
+		FFFB21F61C608C60005D7816 /* GTLUserServiceApisUserApiSignUpUserResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiSignUpUserResponseMessage.m; sourceTree = "<group>"; };
+		FFFB21F71C608C60005D7816 /* GTLUserServiceApisUserApiValidateUserRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceApisUserApiValidateUserRequestMessage.h; sourceTree = "<group>"; };
+		FFFB21F81C608C60005D7816 /* GTLUserServiceApisUserApiValidateUserRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiValidateUserRequestMessage.m; sourceTree = "<group>"; };
+		FFFB21F91C608C60005D7816 /* GTLUserServiceApisUserApiValidateUserResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceApisUserApiValidateUserResponseMessage.h; sourceTree = "<group>"; };
+		FFFB21FA1C608C60005D7816 /* GTLUserServiceApisUserApiValidateUserResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiValidateUserResponseMessage.m; sourceTree = "<group>"; };
+		FFFB21FB1C608C60005D7816 /* GTLUserServiceConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceConstants.h; sourceTree = "<group>"; };
+		FFFB21FC1C608C60005D7816 /* GTLUserServiceConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceConstants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +350,76 @@
 		FF72B9661C322674009B7308 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				FFFB21B61C608C60005D7816 /* GTLMealService.h */,
+				FFFB21B71C608C60005D7816 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.h */,
+				FFFB21B81C608C60005D7816 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.m */,
+				FFFB21B91C608C60005D7816 /* GTLMealServiceApisMealApiCreateNewMealResponseMessage.h */,
+				FFFB21BA1C608C60005D7816 /* GTLMealServiceApisMealApiCreateNewMealResponseMessage.m */,
+				FFFB21BB1C608C60005D7816 /* GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.h */,
+				FFFB21BC1C608C60005D7816 /* GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.m */,
+				FFFB21BD1C608C60005D7816 /* GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.h */,
+				FFFB21BE1C608C60005D7816 /* GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.m */,
+				FFFB21BF1C608C60005D7816 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.h */,
+				FFFB21C01C608C60005D7816 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.m */,
+				FFFB21C11C608C60005D7816 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.h */,
+				FFFB21C21C608C60005D7816 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.m */,
+				FFFB21C31C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.h */,
+				FFFB21C41C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.m */,
+				FFFB21C51C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.h */,
+				FFFB21C61C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.m */,
+				FFFB21C71C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.h */,
+				FFFB21C81C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.m */,
+				FFFB21C91C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.h */,
+				FFFB21CA1C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.m */,
+				FFFB21CB1C608C60005D7816 /* GTLMealServiceApisMealApiMatchedMealMessage.h */,
+				FFFB21CC1C608C60005D7816 /* GTLMealServiceApisMealApiMatchedMealMessage.m */,
+				FFFB21CD1C608C60005D7816 /* GTLMealServiceApisMealApiUnMatchedMealMessage.h */,
+				FFFB21CE1C608C60005D7816 /* GTLMealServiceApisMealApiUnMatchedMealMessage.m */,
+				FFFB21CF1C608C60005D7816 /* GTLMealServiceConstants.h */,
+				FFFB21D01C608C60005D7816 /* GTLMealServiceConstants.m */,
+				FFFB21D11C608C60005D7816 /* GTLQueryMealService.h */,
+				FFFB21D21C608C60005D7816 /* GTLQueryMealService.m */,
+				FFFB21D31C608C60005D7816 /* GTLQueryUserService.h */,
+				FFFB21D41C608C60005D7816 /* GTLQueryUserService.m */,
+				FFFB21D51C608C60005D7816 /* GTLServiceMealService.h */,
+				FFFB21D61C608C60005D7816 /* GTLServiceMealService.m */,
+				FFFB21D71C608C60005D7816 /* GTLServiceUserService.h */,
+				FFFB21D81C608C60005D7816 /* GTLServiceUserService.m */,
+				FFFB21DA1C608C60005D7816 /* GTLUserService.h */,
+				FFFB21DB1C608C60005D7816 /* GTLUserServiceApisUserApiAddReportToUserRequestMessage.h */,
+				FFFB21DC1C608C60005D7816 /* GTLUserServiceApisUserApiAddReportToUserRequestMessage.m */,
+				FFFB21DD1C608C60005D7816 /* GTLUserServiceApisUserApiAddReportToUserResponseMessage.h */,
+				FFFB21DE1C608C60005D7816 /* GTLUserServiceApisUserApiAddReportToUserResponseMessage.m */,
+				FFFB21DF1C608C60005D7816 /* GTLUserServiceApisUserApiIncrementNegativeRatingRequestMessage.h */,
+				FFFB21E01C608C60005D7816 /* GTLUserServiceApisUserApiIncrementNegativeRatingRequestMessage.m */,
+				FFFB21E11C608C60005D7816 /* GTLUserServiceApisUserApiIncrementNegativeRatingResponseMessage.h */,
+				FFFB21E21C608C60005D7816 /* GTLUserServiceApisUserApiIncrementNegativeRatingResponseMessage.m */,
+				FFFB21E31C608C60005D7816 /* GTLUserServiceApisUserApiIncrementPositiveRatingRequestMessage.h */,
+				FFFB21E41C608C60005D7816 /* GTLUserServiceApisUserApiIncrementPositiveRatingRequestMessage.m */,
+				FFFB21E51C608C60005D7816 /* GTLUserServiceApisUserApiIncrementPositiveRatingResponseMessage.h */,
+				FFFB21E61C608C60005D7816 /* GTLUserServiceApisUserApiIncrementPositiveRatingResponseMessage.m */,
+				FFFB21E71C608C60005D7816 /* GTLUserServiceApisUserApiLogInUserRequestMessage.h */,
+				FFFB21E81C608C60005D7816 /* GTLUserServiceApisUserApiLogInUserRequestMessage.m */,
+				FFFB21E91C608C60005D7816 /* GTLUserServiceApisUserApiLogInUserResponseMessage.h */,
+				FFFB21EA1C608C60005D7816 /* GTLUserServiceApisUserApiLogInUserResponseMessage.m */,
+				FFFB21EB1C608C60005D7816 /* GTLUserServiceApisUserApiLogOutUserRequestMessage.h */,
+				FFFB21EC1C608C60005D7816 /* GTLUserServiceApisUserApiLogOutUserRequestMessage.m */,
+				FFFB21ED1C608C60005D7816 /* GTLUserServiceApisUserApiLogOutUserResponseMessage.h */,
+				FFFB21EE1C608C60005D7816 /* GTLUserServiceApisUserApiLogOutUserResponseMessage.m */,
+				FFFB21EF1C608C60005D7816 /* GTLUserServiceApisUserApiSendNewEmailVerificationRequestMessage.h */,
+				FFFB21F01C608C60005D7816 /* GTLUserServiceApisUserApiSendNewEmailVerificationRequestMessage.m */,
+				FFFB21F11C608C60005D7816 /* GTLUserServiceApisUserApiSendNewEmailVerificationResponseMessage.h */,
+				FFFB21F21C608C60005D7816 /* GTLUserServiceApisUserApiSendNewEmailVerificationResponseMessage.m */,
+				FFFB21F31C608C60005D7816 /* GTLUserServiceApisUserApiSignUpUserRequestMessage.h */,
+				FFFB21F41C608C60005D7816 /* GTLUserServiceApisUserApiSignUpUserRequestMessage.m */,
+				FFFB21F51C608C60005D7816 /* GTLUserServiceApisUserApiSignUpUserResponseMessage.h */,
+				FFFB21F61C608C60005D7816 /* GTLUserServiceApisUserApiSignUpUserResponseMessage.m */,
+				FFFB21F71C608C60005D7816 /* GTLUserServiceApisUserApiValidateUserRequestMessage.h */,
+				FFFB21F81C608C60005D7816 /* GTLUserServiceApisUserApiValidateUserRequestMessage.m */,
+				FFFB21F91C608C60005D7816 /* GTLUserServiceApisUserApiValidateUserResponseMessage.h */,
+				FFFB21FA1C608C60005D7816 /* GTLUserServiceApisUserApiValidateUserResponseMessage.m */,
+				FFFB21FB1C608C60005D7816 /* GTLUserServiceConstants.h */,
+				FFFB21FC1C608C60005D7816 /* GTLUserServiceConstants.m */,
 				FF72B9B01C322772009B7308 /* CafBuddy API */,
 				FF72B9671C322684009B7308 /* Google Client Library */,
 			);
@@ -352,34 +484,6 @@
 		FF72B9B01C322772009B7308 /* CafBuddy API */ = {
 			isa = PBXGroup;
 			children = (
-				FF72B9B11C322796009B7308 /* GTLQueryUserService.h */,
-				FF72B9B21C322796009B7308 /* GTLQueryUserService.m */,
-				FF72B9B31C322796009B7308 /* GTLServiceUserService.h */,
-				FF72B9B41C322796009B7308 /* GTLServiceUserService.m */,
-				FF72B9B51C322796009B7308 /* GTLUserService_Sources.m */,
-				FF72B9B61C322796009B7308 /* GTLUserService.h */,
-				FF72B9B71C322796009B7308 /* GTLUserServiceApisUserApiLogInUserRequestMessage.h */,
-				FF72B9B81C322796009B7308 /* GTLUserServiceApisUserApiLogInUserRequestMessage.m */,
-				FF72B9B91C322796009B7308 /* GTLUserServiceApisUserApiLogInUserResponseMessage.h */,
-				FF72B9BA1C322796009B7308 /* GTLUserServiceApisUserApiLogInUserResponseMessage.m */,
-				FF72B9BB1C322796009B7308 /* GTLUserServiceApisUserApiLogOutUserRequestMessage.h */,
-				FF72B9BC1C322796009B7308 /* GTLUserServiceApisUserApiLogOutUserRequestMessage.m */,
-				FF72B9BD1C322796009B7308 /* GTLUserServiceApisUserApiLogOutUserResponseMessage.h */,
-				FF72B9BE1C322796009B7308 /* GTLUserServiceApisUserApiLogOutUserResponseMessage.m */,
-				FF72B9BF1C322796009B7308 /* GTLUserServiceApisUserApiSendNewEmailVerificationRequestMessage.h */,
-				FF72B9C01C322796009B7308 /* GTLUserServiceApisUserApiSendNewEmailVerificationRequestMessage.m */,
-				FF72B9C11C322796009B7308 /* GTLUserServiceApisUserApiSendNewEmailVerificationResponseMessage.h */,
-				FF72B9C21C322796009B7308 /* GTLUserServiceApisUserApiSendNewEmailVerificationResponseMessage.m */,
-				FF72B9C31C322796009B7308 /* GTLUserServiceApisUserApiSignUpUserRequestMessage.h */,
-				FF72B9C41C322796009B7308 /* GTLUserServiceApisUserApiSignUpUserRequestMessage.m */,
-				FF72B9C51C322796009B7308 /* GTLUserServiceApisUserApiSignUpUserResponseMessage.h */,
-				FF72B9C61C322796009B7308 /* GTLUserServiceApisUserApiSignUpUserResponseMessage.m */,
-				FF72B9C71C322796009B7308 /* GTLUserServiceApisUserApiValidateUserRequestMessage.h */,
-				FF72B9C81C322796009B7308 /* GTLUserServiceApisUserApiValidateUserRequestMessage.m */,
-				FF72B9C91C322796009B7308 /* GTLUserServiceApisUserApiValidateUserResponseMessage.h */,
-				FF72B9CA1C322796009B7308 /* GTLUserServiceApisUserApiValidateUserResponseMessage.m */,
-				FF72B9CB1C322796009B7308 /* GTLUserServiceConstants.h */,
-				FF72B9CC1C322796009B7308 /* GTLUserServiceConstants.m */,
 			);
 			name = "CafBuddy API";
 			sourceTree = "<group>";
@@ -573,49 +677,69 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF72B99A1C32269B009B7308 /* GTLUploadParameters.m in Sources */,
-				FF72B9D31C322796009B7308 /* GTLUserServiceApisUserApiLogOutUserResponseMessage.m in Sources */,
 				4949D4801C307767003C84DA /* Utilities.swift in Sources */,
 				FF72B9A01C32269B009B7308 /* GTLUtilities.m in Sources */,
 				FF72B9AC1C3226F3009B7308 /* GTMSessionFetcher.m in Sources */,
-				FF72B9D81C322796009B7308 /* GTLUserServiceApisUserApiValidateUserRequestMessage.m in Sources */,
-				FF72B9D71C322796009B7308 /* GTLUserServiceApisUserApiSignUpUserResponseMessage.m in Sources */,
+				FFFB220B1C608C60005D7816 /* GTLQueryMealService.m in Sources */,
+				FFFB220D1C608C60005D7816 /* GTLServiceMealService.m in Sources */,
+				FFFB22121C608C60005D7816 /* GTLUserServiceApisUserApiIncrementNegativeRatingRequestMessage.m in Sources */,
 				FF72B9971C32269B009B7308 /* GTLBatchQuery.m in Sources */,
-				FF72B9D21C322796009B7308 /* GTLUserServiceApisUserApiLogOutUserRequestMessage.m in Sources */,
+				FFFB221D1C608C60005D7816 /* GTLUserServiceApisUserApiSignUpUserResponseMessage.m in Sources */,
 				FF72B99F1C32269B009B7308 /* GTLJSONParser.m in Sources */,
-				FF72B9CE1C322796009B7308 /* GTLServiceUserService.m in Sources */,
+				FFFB22031C608C60005D7816 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.m in Sources */,
+				FFFB221C1C608C60005D7816 /* GTLUserServiceApisUserApiSignUpUserRequestMessage.m in Sources */,
+				FFFB22171C608C60005D7816 /* GTLUserServiceApisUserApiLogInUserResponseMessage.m in Sources */,
 				4949D47C1C2F56E1003C84DA /* RegisterViewController.swift in Sources */,
+				FFFB221F1C608C60005D7816 /* GTLUserServiceApisUserApiValidateUserResponseMessage.m in Sources */,
+				FFFB220E1C608C60005D7816 /* GTLServiceUserService.m in Sources */,
+				FFFB22051C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.m in Sources */,
+				FFFB22061C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.m in Sources */,
 				FF72B99B1C32269B009B7308 /* GTLDateTime.m in Sources */,
-				FF72B9D91C322796009B7308 /* GTLUserServiceApisUserApiValidateUserResponseMessage.m in Sources */,
+				FFFB22191C608C60005D7816 /* GTLUserServiceApisUserApiLogOutUserResponseMessage.m in Sources */,
+				FFFB21FF1C608C60005D7816 /* GTLMealServiceApisMealApiCreateNewMealResponseMessage.m in Sources */,
 				FF72B9A71C32269B009B7308 /* GTMGatherInputStream.m in Sources */,
 				FF72B9A61C32269B009B7308 /* GTMHTTPUploadFetcher.m in Sources */,
-				FF72B9D51C322796009B7308 /* GTLUserServiceApisUserApiSendNewEmailVerificationResponseMessage.m in Sources */,
 				FF72B9991C32269B009B7308 /* GTLBatchResult.m in Sources */,
-				FF72B9D61C322796009B7308 /* GTLUserServiceApisUserApiSignUpUserRequestMessage.m in Sources */,
+				FFFB22091C608C60005D7816 /* GTLMealServiceApisMealApiUnMatchedMealMessage.m in Sources */,
+				FFFB221A1C608C60005D7816 /* GTLUserServiceApisUserApiSendNewEmailVerificationRequestMessage.m in Sources */,
 				FF72B9A21C32269B009B7308 /* GTMHTTPFetcherService.m in Sources */,
-				FF72B9CF1C322796009B7308 /* GTLUserService_Sources.m in Sources */,
+				FFFB22001C608C60005D7816 /* GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.m in Sources */,
+				FFFB22081C608C60005D7816 /* GTLMealServiceApisMealApiMatchedMealMessage.m in Sources */,
 				FF72B9981C32269B009B7308 /* GTLService.m in Sources */,
+				FFFB221B1C608C60005D7816 /* GTLUserServiceApisUserApiSendNewEmailVerificationResponseMessage.m in Sources */,
+				FFFB22161C608C60005D7816 /* GTLUserServiceApisUserApiLogInUserRequestMessage.m in Sources */,
 				FF72B99C1C32269B009B7308 /* GTLErrorObject.m in Sources */,
 				FF72B9961C32269B009B7308 /* GTLQuery.m in Sources */,
 				FF72B9A91C32269B009B7308 /* GTMReadMonitorInputStream.m in Sources */,
+				FFFB221E1C608C60005D7816 /* GTLUserServiceApisUserApiValidateUserRequestMessage.m in Sources */,
+				FFFB22041C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.m in Sources */,
+				FFFB22141C608C60005D7816 /* GTLUserServiceApisUserApiIncrementPositiveRatingRequestMessage.m in Sources */,
 				FF72B9AF1C322713009B7308 /* GTMSessionFetcherService.m in Sources */,
+				FFFB220C1C608C60005D7816 /* GTLQueryUserService.m in Sources */,
 				FF72B9A11C32269B009B7308 /* GTLBase64.m in Sources */,
-				FF72B9DA1C322796009B7308 /* GTLUserServiceConstants.m in Sources */,
-				FF72B9D41C322796009B7308 /* GTLUserServiceApisUserApiSendNewEmailVerificationRequestMessage.m in Sources */,
+				FFFB22011C608C60005D7816 /* GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.m in Sources */,
+				FFFB220A1C608C60005D7816 /* GTLMealServiceConstants.m in Sources */,
 				FF72B9951C32269B009B7308 /* GTLObject.m in Sources */,
 				FF72B9A41C32269B009B7308 /* GTMHTTPFetcherLogging.m in Sources */,
+				FFFB22181C608C60005D7816 /* GTLUserServiceApisUserApiLogOutUserRequestMessage.m in Sources */,
+				FFFB22131C608C60005D7816 /* GTLUserServiceApisUserApiIncrementNegativeRatingResponseMessage.m in Sources */,
 				FF72B99D1C32269B009B7308 /* GTLRuntimeCommon.m in Sources */,
+				FFFB22201C608C60005D7816 /* GTLUserServiceConstants.m in Sources */,
+				FFFB22101C608C60005D7816 /* GTLUserServiceApisUserApiAddReportToUserRequestMessage.m in Sources */,
+				FFFB22021C608C60005D7816 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.m in Sources */,
 				492096F81C5A7AB100B6C204 /* User.swift in Sources */,
+				FFFB22071C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.m in Sources */,
 				FF72B9A31C32269B009B7308 /* GTMHTTPFetcher.m in Sources */,
+				FFFB22151C608C60005D7816 /* GTLUserServiceApisUserApiIncrementPositiveRatingResponseMessage.m in Sources */,
 				4949D4501C2F4A80003C84DA /* SecondViewController.swift in Sources */,
+				FFFB21FE1C608C60005D7816 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.m in Sources */,
 				4949D44C1C2F4A80003C84DA /* AppDelegate.swift in Sources */,
 				4949D47E1C2F6E03003C84DA /* LoginViewController.swift in Sources */,
-				FF72B9D11C322796009B7308 /* GTLUserServiceApisUserApiLogInUserResponseMessage.m in Sources */,
-				FF72B9CD1C322796009B7308 /* GTLQueryUserService.m in Sources */,
 				FF72B99E1C32269B009B7308 /* GTLFramework.m in Sources */,
 				FF72B9A81C32269B009B7308 /* GTMMIMEDocument.m in Sources */,
 				4949D44E1C2F4A80003C84DA /* FirstViewController.swift in Sources */,
 				FF72B9A51C32269B009B7308 /* GTMHTTPFetchHistory.m in Sources */,
-				FF72B9D01C322796009B7308 /* GTLUserServiceApisUserApiLogInUserRequestMessage.m in Sources */,
+				FFFB22111C608C60005D7816 /* GTLUserServiceApisUserApiAddReportToUserResponseMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
