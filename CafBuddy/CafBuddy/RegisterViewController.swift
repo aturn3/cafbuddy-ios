@@ -178,6 +178,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback
         let password = self.passwordField.text
         
         let newUser = User()
+        newUser.userCallback = self;
         print("firstAndLastName: ", firstAndLastName)
         print("emailAddress: ", emailAddress)
         print("password: ", password)

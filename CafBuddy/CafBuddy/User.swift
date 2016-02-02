@@ -53,16 +53,16 @@ class User: NSObject {
         
         // Check if firstName, lastName, emailAddress, or password is blank
         if firstName.isEmpty || lastName.isEmpty {
-            self.userCallback!.createAccountAPICallback!(false, errorMessage: "Please enter a first and last name")
+            self.userCallback?.createAccountAPICallback?(false, errorMessage: "Please enter a first and last name")
         }
             
         else if emailAddress.isEmpty || password.isEmpty {
-            self.userCallback!.createAccountAPICallback!(false, errorMessage: "All fields are required")
+            self.userCallback?.createAccountAPICallback?(false, errorMessage: "All fields are required")
         }
         
         // Check validity of email
         else if emailRegex.numberOfMatchesInString(emailAddress, options: [], range: NSMakeRange(0, emailAddress.characters.count)) == 0 {
-            self.userCallback!.createAccountAPICallback!(false, errorMessage: "Please enter a valid email address")
+            self.userCallback?.createAccountAPICallback?(false, errorMessage: "Please enter a valid email address")
         }
         
         // Email is valid and password is not blank
@@ -86,6 +86,8 @@ class User: NSObject {
                 
                 let response: GTLUserServiceApisUserApiSignUpUserResponseMessage = object as! GTLUserServiceApisUserApiSignUpUserResponseMessage
                 
+                print("The error message is: " + response.errorMessage)
+                
                 // API call successful
                 if response.errorNumber == 200 {
                     // Store username and authenticationToken in keychain
@@ -99,27 +101,27 @@ class User: NSObject {
                     self.emailAddress = emailAddress
                     self.authenticationToken = response.authToken
                     
-                    self.userCallback!.createAccountAPICallback!(false, errorMessage: "Succcessfully registered! Please confirm registration via email")
+                    self.userCallback?.createAccountAPICallback?(false, errorMessage: "Succcessfully registered! Please confirm your registration via email.")
                 }
 
                 // API call unsuccessful
                 else if response.errorNumber == -2 {
-                    self.userCallback!.createAccountAPICallback!(false, errorMessage: response.errorMessage)
+                    self.userCallback?.createAccountAPICallback?(false, errorMessage: response.errorMessage)
                 }
                 
                 // API call unsuccessful
                 else if response.errorNumber == -3 {
-                    self.userCallback!.createAccountAPICallback!(false, errorMessage: response.errorMessage)
+                    self.userCallback?.createAccountAPICallback?(false, errorMessage: response.errorMessage)
                 }
                 
                 // API call unsuccessful
                 else if response.errorNumber == -4 {
-                    self.userCallback!.createAccountAPICallback!(false, errorMessage: response.errorMessage)
+                    self.userCallback?.createAccountAPICallback?(false, errorMessage: response.errorMessage)
                 }
                 
                 // API call unsuccessful
                 else {
-                    self.userCallback!.createAccountAPICallback!(false, errorMessage: APPLICATION_ERROR_OR_NETWORK_PROBLEM)
+                    self.userCallback?.createAccountAPICallback?(false, errorMessage: APPLICATION_ERROR_OR_NETWORK_PROBLEM)
                 }
             })
         }
