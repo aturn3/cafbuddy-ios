@@ -107,17 +107,17 @@ class User: NSObject {
                 }
 
                 // API call unsuccessful
-                else if response.errorNumber == 2 {
+                else if response.errorNumber == -2 {
                     self.userCallback!.createAccountAPICallback!(false, errorMessage: response.errorMessage)
                 }
                 
                 // API call unsuccessful
-                else if response.errorNumber == 3 {
+                else if response.errorNumber == -3 {
                     self.userCallback!.createAccountAPICallback!(false, errorMessage: response.errorMessage)
                 }
                 
                 // API call unsuccessful
-                else if response.errorNumber == 4 {
+                else if response.errorNumber == -4 {
                     self.userCallback!.createAccountAPICallback!(false, errorMessage: response.errorMessage)
                 }
                 
