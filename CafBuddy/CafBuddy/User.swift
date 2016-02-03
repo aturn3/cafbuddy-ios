@@ -82,8 +82,7 @@ class User: NSObject {
             let query: GTLQueryUserService = GTLQueryUserService.queryForSignupUserWithObject(userMessage)
             
             // Call API with query
-            var ticket = GTLServiceTicket()
-            ticket = userServiceObject!.executeQuery(query, completionHandler: { (ticket: GTLServiceTicket!, object: AnyObject!, error: NSError!) -> Void in
+            userServiceObject!.executeQuery(query, completionHandler: { (ticket: GTLServiceTicket!, object: AnyObject!, error: NSError!) -> Void in
                 
                 let response: GTLUserServiceApisUserApiSignUpUserResponseMessage = object as! GTLUserServiceApisUserApiSignUpUserResponseMessage
                 

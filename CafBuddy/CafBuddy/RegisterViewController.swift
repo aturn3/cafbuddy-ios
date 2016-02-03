@@ -12,6 +12,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback
     
     // MARK: - Properties
     
+    var user = User()
+    
     let registerButton = UIButton(type: UIButtonType.System)
     let loginButton = UIButton(type: UIButtonType.System)
     
@@ -177,9 +179,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback
         let emailAddress = self.emailAddressField.text
         let password = self.passwordField.text
         
-        let newUser = User()
-        newUser.userCallback = self;
-        newUser.createAccount(firstAndLastName, emailAddress: emailAddress, password: password)
+        self.user.userCallback = self;
+        user.createAccount(firstAndLastName, emailAddress: emailAddress, password: password)
     }
     
     // Goto Login Button Action
@@ -189,11 +190,16 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "registerSuccessfulSegue" {
-            
+            let destinationViewController = TabBarViewController()
+            destinationViewController.user = self.user
         }
         
         else if segue.identifier == "toLoginFromRegister" {
+            let destinationViewController = LoginViewController()
             
+            // In case user has typed in their info and then realizes they need to login
+            destinationViewController.emailField.text = self.emailAddressField.text
+            destinationViewController.passwordField.text = self.passwordField.text
         }
     }
     

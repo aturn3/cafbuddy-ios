@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		492096F81C5A7AB100B6C204 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492096F71C5A7AB100B6C204 /* User.swift */; };
+		492097031C6159CE00B6C204 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492097021C6159CE00B6C204 /* TabBarViewController.swift */; };
 		4949D44C1C2F4A80003C84DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4949D44B1C2F4A80003C84DA /* AppDelegate.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4949D44E1C2F4A80003C84DA /* UpcomingMealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4949D44D1C2F4A80003C84DA /* UpcomingMealsViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4949D4501C2F4A80003C84DA /* NewMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4949D44F1C2F4A80003C84DA /* NewMealViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -104,6 +105,7 @@
 /* Begin PBXFileReference section */
 		306FB029FA4EED1C0DCAAA9C /* Pods_CafBuddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CafBuddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		492096F71C5A7AB100B6C204 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		492097021C6159CE00B6C204 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		4949D4481C2F4A80003C84DA /* CafBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CafBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4949D44B1C2F4A80003C84DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4949D44D1C2F4A80003C84DA /* UpcomingMealsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMealsViewController.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				4949D4591C2F4A81003C84DA /* Info.plist */,
 				4949D47F1C307767003C84DA /* Utilities.swift */,
 				492096F71C5A7AB100B6C204 /* User.swift */,
+				492097021C6159CE00B6C204 /* TabBarViewController.swift */,
 			);
 			path = CafBuddy;
 			sourceTree = "<group>";
@@ -746,6 +749,7 @@
 				FF72B99E1C32269B009B7308 /* GTLFramework.m in Sources */,
 				FF72B9A81C32269B009B7308 /* GTMMIMEDocument.m in Sources */,
 				4949D44E1C2F4A80003C84DA /* UpcomingMealsViewController.swift in Sources */,
+				492097031C6159CE00B6C204 /* TabBarViewController.swift in Sources */,
 				FF72B9A51C32269B009B7308 /* GTMHTTPFetchHistory.m in Sources */,
 				FFFB22111C608C60005D7816 /* GTLUserServiceApisUserApiAddReportToUserResponseMessage.m in Sources */,
 			);
