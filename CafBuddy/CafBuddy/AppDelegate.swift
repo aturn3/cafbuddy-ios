@@ -23,6 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GCMReceiverDelegate, GGLI
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //set the tint of the tab bar
+        UITabBar.appearance().tintColor = COLOR_MAIN
+        
+        
         // Configure the Google context: parses the GoogleService-Info.plist, and initializes
         // the services that have entries in the file
         var configureError:NSError?
