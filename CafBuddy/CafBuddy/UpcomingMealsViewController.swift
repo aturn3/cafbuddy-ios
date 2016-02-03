@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UpcomingMealsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class UpcomingMealsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MealAPICallback {
 
     let screenSize: CGRect = UIScreen.mainScreen().bounds
     var collectionViewMain : UICollectionView?
@@ -30,6 +30,10 @@ class UpcomingMealsViewController: UIViewController, UICollectionViewDataSource,
 
     func initInterface() {
         
+        let mealObject = Meal()
+        mealObject.mealCallback = self
+        mealObject.getAllUpcomingMeals("forsterj@stolaf.edu", authToken: "8UPKkyFUc5vU67PZlHIsGG")
+        
         let collectionViewLayout : UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionViewLayout.minimumLineSpacing = 15
         collectionViewLayout.sectionInset = UIEdgeInsetsMake(15, 15, 15, 15)
@@ -46,6 +50,10 @@ class UpcomingMealsViewController: UIViewController, UICollectionViewDataSource,
         collectionViewMain!.backgroundColor = COLOR_NEUTRAL_BACKGROUND
         
         self.view.addSubview(collectionViewMain!)
+    }
+    
+    func getAllUpcomingMealsAPICallback(success: Bool, errorMessage: String, unMatchedMeals: [GTLMealServiceApisMealApiUnMatchedMealMessage], matchedMeals: [GTLMealServiceApisMealApiMatchedMealMessage]) -> Void {
+
     }
 
     
