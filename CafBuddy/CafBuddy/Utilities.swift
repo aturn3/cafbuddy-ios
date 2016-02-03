@@ -70,6 +70,8 @@ func createAlert(title: String, message: String, actionMessage: String) -> UIAle
     return alertView
 }
 
+// MARK: - Service Object Methods
+
 func createUserServiceObject() -> GTLServiceUserService? {
     var userServiceObject: GTLServiceUserService? = nil
     if userServiceObject == nil {
@@ -78,4 +80,14 @@ func createUserServiceObject() -> GTLServiceUserService? {
     }
     
     return userServiceObject
+}
+
+func createMealServiceObject() -> GTLServiceMealService? {
+    var mealServiceObject: GTLServiceMealService? = nil
+    if mealServiceObject == nil {
+        mealServiceObject = GTLServiceMealService()
+        mealServiceObject?.retryEnabled = true
+    }
+    
+    return mealServiceObject
 }
