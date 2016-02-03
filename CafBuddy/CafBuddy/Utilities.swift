@@ -38,6 +38,9 @@ extension UIColor {
     }
 }
 
+let COLOR_MAIN = UIColor(hexString: "#0bbedf")
+let COLOR_ACCENT_ONE = UIColor(hexString: "##0bdf96")
+
 let COLOR_BLACK = UIColor(hexString: "#000000")
 let COLOR_WHITE = UIColor(hexString: "#FFFFFF")
 let COLOR_RED = UIColor(hexString: "#FF0000")
