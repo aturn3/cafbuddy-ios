@@ -49,15 +49,18 @@ class User: NSObject {
         }
     }
     
-    func loadUser() -> User {
-        let dictionary = Locksmith.loadDataForUserAccount(USER_ACCOUNT)
+    func loadUser() {
+        let firstNameDictionary = Locksmith.loadDataForUserAccount(USER_FIRST_NAME_KEY)
+        let lastNameDictionary = Locksmith.loadDataForUserAccount(USER_LAST_NAME_KEY)
+        let emailAddressDictionary = Locksmith.loadDataForUserAccount(USER_EMAIL_ADDRESS_KEY)
+        let authenticationTokenDictionary = Locksmith.loadDataForUserAccount(USER_AUTHENTICATION_TOKEN_KEY)
         
-        self.firstName = dictionary?["firstName"] as! String
-        self.lastName = dictionary?["lastName"] as! String
-        self.emailAddress = dictionary?["emailAddress"] as! String
-        self.authenticationToken = dictionary?["authenticationToken"] as! String
-        
-        return self
+        if firstNameDictionary != nil && lastNameDictionary != nil && emailAddressDictionary != nil && authenticationTokenDictionary != nil {
+            self.firstName = firstNameDictionary?[USER_FIRST_NAME_KEY] as! String
+            self.lastName = lastNameDictionary?[USER_LAST_NAME_KEY] as! String
+            self.emailAddress = emailAddressDictionary?[USER_EMAIL_ADDRESS_KEY] as! String
+            self.authenticationToken = authenticationTokenDictionary?[USER_AUTHENTICATION_TOKEN_KEY] as! String
+        }
     }
     
     func createAccount(firstAndLastName: String!, emailAddress: String!, password: String!) {
@@ -109,10 +112,10 @@ class User: NSObject {
                 if response.errorNumber == 200 {
                     // Store username and authenticationToken in keychain
                     do {
-                        try Locksmith.updateData(["userEmailAddress": firstName], forUserAccount: USER_ACCOUNT)
-                        try Locksmith.updateData(["userAuthenticationToken": lastName], forUserAccount: USER_ACCOUNT)
-                        try Locksmith.updateData(["userEmailAddress": emailAddress], forUserAccount: USER_ACCOUNT)
-                        try Locksmith.updateData(["userAuthenticationToken": response.authToken], forUserAccount: USER_ACCOUNT)
+                        try Locksmith.updateData([USER_FIRST_NAME_KEY: firstName], forUserAccount: USER_FIRST_NAME_KEY)
+                        try Locksmith.updateData([USER_LAST_NAME_KEY: lastName], forUserAccount: USER_LAST_NAME_KEY)
+                        try Locksmith.updateData([USER_EMAIL_ADDRESS_KEY: emailAddress], forUserAccount: USER_EMAIL_ADDRESS_KEY)
+                        try Locksmith.updateData([USER_AUTHENTICATION_TOKEN_KEY: response.authToken], forUserAccount: USER_AUTHENTICATION_TOKEN_KEY)
                     } catch _ {
                         // this is where it could fail.. do something on failure
                     }
@@ -188,10 +191,10 @@ class User: NSObject {
                 if response.errorNumber == 200 {
                     // Store username and authenticationToken in keychain
                     do {
-                        try Locksmith.updateData(["userEmailAddress": response.firstName], forUserAccount: USER_ACCOUNT)
-                        try Locksmith.updateData(["userAuthenticationToken": response.lastName], forUserAccount: USER_ACCOUNT)
-                        try Locksmith.updateData(["userEmailAddress": emailAddress], forUserAccount: USER_ACCOUNT)
-                        try Locksmith.updateData(["userAuthenticationToken": response.authToken], forUserAccount: USER_ACCOUNT)
+                        try Locksmith.updateData([USER_FIRST_NAME_KEY: response.firstName], forUserAccount: USER_FIRST_NAME_KEY)
+                        try Locksmith.updateData([USER_LAST_NAME_KEY: response.lastName], forUserAccount: USER_LAST_NAME_KEY)
+                        try Locksmith.updateData([USER_EMAIL_ADDRESS_KEY: emailAddress], forUserAccount: USER_EMAIL_ADDRESS_KEY)
+                        try Locksmith.updateData([USER_AUTHENTICATION_TOKEN_KEY: response.authToken], forUserAccount: USER_AUTHENTICATION_TOKEN_KEY)
                     } catch _ {
                         // this is where it could fail.. do something on failure
                     }
