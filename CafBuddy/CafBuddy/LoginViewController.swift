@@ -12,6 +12,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Properties
     
+    let user = User()
+    
     let registerButton = UIButton(type: UIButtonType.System)
     let loginButton = UIButton(type: UIButtonType.System)
     
