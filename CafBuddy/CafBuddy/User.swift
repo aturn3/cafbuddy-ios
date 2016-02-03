@@ -49,7 +49,7 @@ class User: NSObject {
         }
     }
     
-    func loadUser() {
+    func loadUserFromKeychain() {
         let firstNameDictionary = Locksmith.loadDataForUserAccount(USER_FIRST_NAME_KEY)
         let lastNameDictionary = Locksmith.loadDataForUserAccount(USER_LAST_NAME_KEY)
         let emailAddressDictionary = Locksmith.loadDataForUserAccount(USER_EMAIL_ADDRESS_KEY)
@@ -60,6 +60,17 @@ class User: NSObject {
             self.lastName = lastNameDictionary?[USER_LAST_NAME_KEY] as! String
             self.emailAddress = emailAddressDictionary?[USER_EMAIL_ADDRESS_KEY] as! String
             self.authenticationToken = authenticationTokenDictionary?[USER_AUTHENTICATION_TOKEN_KEY] as! String
+        }
+    }
+    
+    func deleteUserFromKeychain() {
+        do {
+            try Locksmith.deleteDataForUserAccount(USER_FIRST_NAME_KEY)
+            try Locksmith.deleteDataForUserAccount(USER_LAST_NAME_KEY)
+            try Locksmith.deleteDataForUserAccount(USER_EMAIL_ADDRESS_KEY)
+            try Locksmith.deleteDataForUserAccount(USER_AUTHENTICATION_TOKEN_KEY)
+        } catch _ {
+            // this is where it could fail.. do something on failure
         }
     }
     
@@ -226,5 +237,11 @@ class User: NSObject {
                 }
             })
         }
+    }
+    
+    func logout() {
+        // Save user as logged out
+        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isLoggedIn")
+        NSUserDefaults.standardUserDefaults().synchronize()
     }
 }

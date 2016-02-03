@@ -58,7 +58,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UserAPICallbac
     
     override func viewDidAppear(animated: Bool) {
         if self.user.isLoggedIn() {
-            self.user.loadUser()
+            self.user.loadUserFromKeychain()
             
             self.gotoMealScene()
         }
@@ -166,14 +166,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UserAPICallbac
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "loginSuccessfulSegue" {
-            let destinationViewController = TabBarViewController()
-            destinationViewController.user = self.user
+            let destinationController = segue.destinationViewController as! TabBarController
+            destinationController.user = self.user
         }
             
         else if segue.identifier == "toRegisterFromLogin" {
-            let destinationViewController = LoginViewController()
+            let destinationViewController = segue.destinationViewController as! RegisterViewController
             
-            // In case user has typed in their info and then realizes they need to login
+            // In case user has typed in their info and then realizes they need to register
             destinationViewController.emailAddressField.text = self.emailAddressField.text
             destinationViewController.passwordField.text = self.passwordField.text
         }
