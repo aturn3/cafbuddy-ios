@@ -9,11 +9,11 @@
 import Foundation
 import Locksmith
 
-@objc protocol APICallback {
+@objc protocol UserAPICallback {
     // MARK: - Methods
     
-    optional func createAccountAPICallback(success: Bool, errorMessage: String) -> Void
-    optional func loginAccountAPICallback(success: Bool, errorMessage: String) -> Void
+    optional func createAccountUserAPICallback(success: Bool, errorMessage: String) -> Void
+    optional func loginAccountUserAPICallback(success: Bool, errorMessage: String) -> Void
 }
 
 class User: NSObject {
@@ -24,23 +24,41 @@ class User: NSObject {
     var emailAddress = String()
     var authenticationToken = String()
     
-    var userCallback: APICallback?
+    var userCallback: UserAPICallback?
     
     // MARK: - Initializers
     
     override init() {}
     
-    init(firstAndLastName: String, emailAddress: String, authenticationToken: String) {
-        // Extract first name and last name from firstAndLastName
-        let fullNameArray = firstAndLastName.componentsSeparatedByString(" ")
-        
-        self.firstName = fullNameArray[0]
-        self.lastName = fullNameArray[1]
+    init(firstName: String, lastName: String, emailAddress: String, authenticationToken: String) {
+        self.firstName = firstName
+        self.lastName = lastName
         self.emailAddress = emailAddress
         self.authenticationToken = authenticationToken
     }
     
     // MARK: - Methods
+    
+    func isLoggedIn() -> Bool {
+        // Check if user is saved as logged in
+        if NSUserDefaults.standardUserDefaults().boolForKey("isLoggedIn") {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    func loadUser() -> User {
+        let dictionary = Locksmith.loadDataForUserAccount(USER_ACCOUNT)
+        
+        self.firstName = dictionary?["firstName"] as! String
+        self.lastName = dictionary?["lastName"] as! String
+        self.emailAddress = dictionary?["emailAddress"] as! String
+        self.authenticationToken = dictionary?["authenticationToken"] as! String
+        
+        return self
+    }
     
     func createAccount(firstAndLastName: String!, emailAddress: String!, password: String!) {
         // Build regular expression for emails
@@ -54,16 +72,16 @@ class User: NSObject {
         
         // Check if firstName, lastName, emailAddress, or password is blank
         if firstName.isEmpty || lastName.isEmpty {
-            self.userCallback?.createAccountAPICallback?(false, errorMessage: "Please enter a first and last name")
+            self.userCallback?.createAccountUserAPICallback?(false, errorMessage: "Please enter a first and last name")
         }
             
         else if emailAddress.isEmpty || password.isEmpty {
-            self.userCallback?.createAccountAPICallback?(false, errorMessage: "All fields are required")
+            self.userCallback?.createAccountUserAPICallback?(false, errorMessage: "All fields are required")
         }
         
         // Check validity of email
         else if emailRegex.numberOfMatchesInString(emailAddress, options: [], range: NSMakeRange(0, emailAddress.characters.count)) == 0 {
-            self.userCallback?.createAccountAPICallback?(false, errorMessage: "Please enter a valid email address")
+            self.userCallback?.createAccountUserAPICallback?(false, errorMessage: "Please enter a valid email address")
         }
         
         // Email is valid and password is not blank
@@ -82,7 +100,8 @@ class User: NSObject {
             let query: GTLQueryUserService = GTLQueryUserService.queryForSignupUserWithObject(userMessage)
             
             // Call API with query
-            userServiceObject!.executeQuery(query, completionHandler: { (ticket: GTLServiceTicket!, object: AnyObject!, error: NSError!) -> Void in
+            var ticket = GTLServiceTicket()
+            ticket = userServiceObject!.executeQuery(query, completionHandler: { (ticket: GTLServiceTicket!, object: AnyObject!, error: NSError!) -> Void in
                 
                 let response: GTLUserServiceApisUserApiSignUpUserResponseMessage = object as! GTLUserServiceApisUserApiSignUpUserResponseMessage
                 
@@ -90,43 +109,119 @@ class User: NSObject {
                 if response.errorNumber == 200 {
                     // Store username and authenticationToken in keychain
                     do {
+                        try Locksmith.updateData(["userEmailAddress": firstName], forUserAccount: USER_ACCOUNT)
+                        try Locksmith.updateData(["userAuthenticationToken": lastName], forUserAccount: USER_ACCOUNT)
                         try Locksmith.updateData(["userEmailAddress": emailAddress], forUserAccount: USER_ACCOUNT)
                         try Locksmith.updateData(["userAuthenticationToken": response.authToken], forUserAccount: USER_ACCOUNT)
                     } catch _ {
                         // this is where it could fail.. do something on failure
                     }
                     
+                    // Save user as logged in
+                    NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isLoggedIn")
+                    NSUserDefaults.standardUserDefaults().synchronize()
+                    
                     // Store emailAddress and authenticationToken in User object
                     self.emailAddress = emailAddress
                     self.authenticationToken = response.authToken
                     
-                    self.userCallback?.createAccountAPICallback?(false, errorMessage: "Succcessfully registered! Please confirm your registration via email.")
+                    self.userCallback?.createAccountUserAPICallback?(true, errorMessage: "Succcessfully registered! Please confirm your registration via email.")
                 }
 
                 // API call unsuccessful
                 else if response.errorNumber == -2 {
-                    self.userCallback?.createAccountAPICallback?(false, errorMessage: response.errorMessage)
+                    self.userCallback?.createAccountUserAPICallback?(false, errorMessage: response.errorMessage)
                 }
                 
                 // API call unsuccessful
                 else if response.errorNumber == -3 {
-                    self.userCallback?.createAccountAPICallback?(false, errorMessage: response.errorMessage)
+                    self.userCallback?.createAccountUserAPICallback?(false, errorMessage: response.errorMessage)
                 }
                 
                 // API call unsuccessful
                 else if response.errorNumber == -4 {
-                    self.userCallback?.createAccountAPICallback?(false, errorMessage: response.errorMessage)
+                    self.userCallback?.createAccountUserAPICallback?(false, errorMessage: response.errorMessage)
                 }
                 
                 // API call unsuccessful
                 else {
-                    self.userCallback?.createAccountAPICallback?(false, errorMessage: APPLICATION_ERROR_OR_NETWORK_PROBLEM)
+                    self.userCallback?.createAccountUserAPICallback?(false, errorMessage: APPLICATION_ERROR_OR_NETWORK_PROBLEM)
                 }
             })
         }
     }
     
     func login(emailAddress: String!, password: String!) {
-        
+        // Build regular expression for emails
+        let emailRegularExpressionPattern = "([a-zA-Z0-9]+@[a-zA-Z0-9]+[.][a-zA-Z0-9]+)"
+        let emailRegex = try! NSRegularExpression(pattern: emailRegularExpressionPattern, options: [])
+            
+        if emailAddress.isEmpty || password.isEmpty {
+            self.userCallback?.loginAccountUserAPICallback?(false, errorMessage: "All fields are required")
+        }
+            
+        // Check validity of email
+        else if emailRegex.numberOfMatchesInString(emailAddress, options: [], range: NSMakeRange(0, emailAddress.characters.count)) == 0 {
+            self.userCallback?.loginAccountUserAPICallback?(false, errorMessage: "Please enter a valid email address")
+        }
+            
+        // Email is valid and password is not blank
+        else {
+            // Create User Service Object
+            let userServiceObject = createUserServiceObject()
+            
+            // Create User Service Request Message
+            let userMessage = GTLUserServiceApisUserApiLogInUserRequestMessage()
+            userMessage.emailAddress = emailAddress
+            userMessage.password = password
+            
+            // Create User Service Query
+            let query: GTLQueryUserService = GTLQueryUserService.queryForLoginUserWithObject(userMessage)
+            
+            // Call API with query
+            var ticket = GTLServiceTicket()
+            ticket = userServiceObject!.executeQuery(query, completionHandler: { (ticket: GTLServiceTicket!, object: AnyObject!, error: NSError!) -> Void in
+                
+                let response: GTLUserServiceApisUserApiLogInUserResponseMessage = object as! GTLUserServiceApisUserApiLogInUserResponseMessage
+                
+                // API call successful
+                if response.errorNumber == 200 {
+                    // Store username and authenticationToken in keychain
+                    do {
+                        try Locksmith.updateData(["userEmailAddress": response.firstName], forUserAccount: USER_ACCOUNT)
+                        try Locksmith.updateData(["userAuthenticationToken": response.lastName], forUserAccount: USER_ACCOUNT)
+                        try Locksmith.updateData(["userEmailAddress": emailAddress], forUserAccount: USER_ACCOUNT)
+                        try Locksmith.updateData(["userAuthenticationToken": response.authToken], forUserAccount: USER_ACCOUNT)
+                    } catch _ {
+                        // this is where it could fail.. do something on failure
+                    }
+                    
+                    // Save user as logged in
+                    NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isLoggedIn")
+                    NSUserDefaults.standardUserDefaults().synchronize()
+                    
+                    // Store emailAddress and authenticationToken in User object
+                    self.emailAddress = emailAddress
+                    self.authenticationToken = response.authToken
+                    
+                    self.userCallback?.loginAccountUserAPICallback?(true, errorMessage: "Login successful")
+                }
+                    
+                // API call unsuccessful
+                else if response.errorNumber == -1 {
+                    self.userCallback?.loginAccountUserAPICallback?(false, errorMessage: response.errorMessage)
+                }
+                    
+                // API call unsuccessful
+                else if response.errorNumber == -3 {
+                    self.userCallback?.loginAccountUserAPICallback?(false, errorMessage: response.errorMessage)
+                }
+                    
+                // API call unsuccessful
+                else {
+                    self.userCallback?.loginAccountUserAPICallback?(false, errorMessage: APPLICATION_ERROR_OR_NETWORK_PROBLEM)
+                }
+            })
+        }
     }
 }
