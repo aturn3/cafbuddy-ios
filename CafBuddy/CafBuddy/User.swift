@@ -2,7 +2,6 @@
 //  User.swift
 //  CafBuddy
 //
-//  Created by Andrew Turnblad on 1/28/16.
 //  Copyright © 2016 CafBuddy. All rights reserved.
 //
 
