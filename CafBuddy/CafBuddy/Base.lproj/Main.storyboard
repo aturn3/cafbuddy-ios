@@ -173,7 +173,7 @@
                     </view>
                     <connections>
                         <segue destination="NCy-qe-ddk" kind="show" identifier="toRegisterFromLogin" id="Xqa-kx-Niw"/>
-                        <segue destination="49e-Tb-3d3" kind="show" identifier="loginSuccessfulSegueIdentifier" id="dvo-c2-CrA"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="loginSuccessfulSegue" id="dvo-c2-CrA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VgW-Je-h99" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -205,7 +205,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="TabBarController" customModule="CafBuddy" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
