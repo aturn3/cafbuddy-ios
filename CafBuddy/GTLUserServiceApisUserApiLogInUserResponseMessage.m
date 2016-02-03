@@ -13,7 +13,7 @@
 // Description:
 //   API for working with a User
 // Classes:
-//   GTLUserServiceApisUserApiLogInUserResponseMessage (0 custom class methods, 3 custom properties)
+//   GTLUserServiceApisUserApiLogInUserResponseMessage (0 custom class methods, 5 custom properties)
 
 #import "GTLUserServiceApisUserApiLogInUserResponseMessage.h"
 
@@ -23,5 +23,5 @@
 //
 
 @implementation GTLUserServiceApisUserApiLogInUserResponseMessage
-@dynamic authToken, errorMessage, errorNumber;
+@dynamic authToken, errorMessage, errorNumber, firstName, lastName;
 @end
