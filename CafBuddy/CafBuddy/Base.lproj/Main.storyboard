@@ -14,10 +14,10 @@
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Upcoming" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-1w-vlD">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" text="Upcoming" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-1w-vlD">
                                 <rect key="frame" x="219" y="279" width="163" height="42"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
@@ -39,11 +39,13 @@
                             <constraint firstAttribute="centerY" secondItem="KQZ-1w-vlD" secondAttribute="centerY" id="exm-UA-ej4"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Upcoming" image="upcomingMealsIcon.png" id="acW-dT-cKf"/>
+                    <navigationItem key="navigationItem" id="wmC-an-UyN"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="774" y="-1262"/>
+            <point key="canvasLocation" x="1866" y="-1351"/>
         </scene>
         <!--New Meal-->
         <scene sceneID="wg7-f3-ORb">
@@ -54,7 +56,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" text="New Meal" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
@@ -71,11 +73,13 @@
                             <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="New Meal" image="addMealIcon.png" id="cPa-gy-q4n"/>
+                    <navigationItem key="navigationItem" id="vVc-jV-yi0"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="766" y="-464"/>
+            <point key="canvasLocation" x="1866" y="-509"/>
         </scene>
         <!--History-->
         <scene sceneID="oGn-Yv-dbS">
@@ -86,7 +90,7 @@
                         <viewControllerLayoutGuide type="bottom" id="4Uj-dL-j0U"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="y0u-ty-fIW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="History" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vm4-qa-Wof">
@@ -99,11 +103,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="History" image="mealHistoryIcon.png" id="wLG-RS-Y7e"/>
+                    <navigationItem key="navigationItem" id="yXC-Zz-dZd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="izg-VX-OQ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="766" y="324"/>
+            <point key="canvasLocation" x="1886" y="332"/>
         </scene>
         <!--Settings-->
         <scene sceneID="jz2-mN-zqJ">
@@ -114,7 +120,7 @@
                         <viewControllerLayoutGuide type="bottom" id="R9O-bR-C2F"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mCE-pf-iu9">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Profile" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2IZ-c1-YnU">
@@ -127,11 +133,30 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Settings" image="settingsIcon.png" id="god-HX-dWq"/>
+                    <navigationItem key="navigationItem" id="uWH-Lt-o4N"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ODK-a0-I8t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="766" y="1117"/>
+            <point key="canvasLocation" x="1898" y="1081"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="bfP-BX-R8h">
+            <objects>
+                <navigationController id="7eh-hR-IgM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="settingsIcon.png" id="d4Q-EM-mWg"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="emI-jm-7Jm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="6pC-rh-wxS" kind="relationship" relationship="rootViewController" id="cxD-tj-GjG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NkF-3c-DTw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="796" y="1081"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="SUo-M2-Qy9">
@@ -188,15 +213,70 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="Iln-Ad-EWc" kind="relationship" relationship="viewControllers" id="gfo-6f-FNB"/>
-                        <segue destination="6pC-rh-wxS" kind="relationship" relationship="viewControllers" id="PaX-I3-PhN"/>
+                        <segue destination="Jji-LQ-XcS" kind="relationship" relationship="viewControllers" id="UbL-Hx-eKt"/>
+                        <segue destination="4eH-mf-QaJ" kind="relationship" relationship="viewControllers" id="xdh-TU-GFg"/>
+                        <segue destination="Agc-RJ-vim" kind="relationship" relationship="viewControllers" id="tRr-hL-7MJ"/>
+                        <segue destination="7eh-hR-IgM" kind="relationship" relationship="viewControllers" id="kaF-e0-7QP"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-100" y="34"/>
+        </scene>
+        <!--Upcoming-->
+        <scene sceneID="mD8-km-Qsl">
+            <objects>
+                <navigationController id="Jji-LQ-XcS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Upcoming" image="upcomingMealsIcon.png" id="vjY-XA-jdP"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wNE-Iy-0OZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="BDW-lv-2Ct">
+                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="X8p-dI-hdf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="46X-UE-cGd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="803" y="-1351"/>
+        </scene>
+        <!--New Meal-->
+        <scene sceneID="81m-bf-x0y">
+            <objects>
+                <navigationController id="4eH-mf-QaJ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="New Meal" image="addMealIcon.png" id="JP5-JE-tfH"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vMI-FN-gyS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="rootViewController" id="3Yw-Gy-Pg2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jLT-5g-bYl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="803" y="-509"/>
+        </scene>
+        <!--History-->
+        <scene sceneID="kF1-eF-cBv">
+            <objects>
+                <navigationController id="Agc-RJ-vim" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="History" image="mealHistoryIcon.png" id="dWW-Ho-hoY"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sP8-gd-BGB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Iln-Ad-EWc" kind="relationship" relationship="rootViewController" id="dmI-6P-SAZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KGd-Ow-H8F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="815" y="332"/>
         </scene>
     </scenes>
     <resources>
