@@ -92,13 +92,13 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UserAPICall
         self.view.addSubview(self.firstAndLastNameField)
         
         
-        // Email Field
+        // Email Address Field
         self.emailAddressField.placeholder = "Email Address"
         self.emailAddressField.font = UIFont.systemFontOfSize(12)
         self.emailAddressField.borderStyle = UITextBorderStyle.RoundedRect
         self.emailAddressField.autocorrectionType = UITextAutocorrectionType.No
         self.emailAddressField.autocapitalizationType = UITextAutocapitalizationType.None
-        self.emailAddressField.keyboardType = UIKeyboardType.Default
+        self.emailAddressField.keyboardType = UIKeyboardType.EmailAddress
         self.emailAddressField.returnKeyType = UIReturnKeyType.Done
         self.emailAddressField.clearButtonMode = UITextFieldViewMode.WhileEditing;
         self.emailAddressField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
