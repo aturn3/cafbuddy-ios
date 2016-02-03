@@ -75,6 +75,111 @@ func createAlert(title: String, message: String, actionMessage: String) -> UIAle
     return alertView
 }
 
+//MARK: - Extensions Dealing With Dates
+
+extension NSDate {
+    // converts it into a string of the format (in UTC instead of local)
+    // 'Month Day Year Hour(24):Minute:Second' (e.g. 'January 03 2016 00:43:58') as used by the database
+    func toDatabaseString() -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.timeZone = NSTimeZone(name: "UTC")
+        dateFormatter.dateFormat = "MMMM dd yyyy HH:mm:ss"
+        return dateFormatter.stringFromDate(self)
+    }
+    
+    // returns a string of the date in database representation
+    // but in local time instead of UTC as used by the database
+    func toReadableStringInDatabaseRepresentation() -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.timeZone = NSTimeZone.localTimeZone()
+        dateFormatter.dateFormat = "MMMM dd yyyy HH:mm:ss"
+        return dateFormatter.stringFromDate(self)
+    }
+    
+    // returns a string of only the time in local time in AM/PM form
+    // Format: "hour:minute AM/PM" e.g. "2:36 PM"
+    func toReadableTimeOnlyString() -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.timeZone = NSTimeZone.localTimeZone()
+        dateFormatter.dateFormat = "h:mm a"
+        return dateFormatter.stringFromDate(self)
+    }
+    
+    // returns a string of only the date in local time in short format
+    // Format: "Weekday abr, month abr date" if more than a week away or past e.g. "Mon, Feb 15"
+    //         "Weekday long" if less than a week away or past e.g. "Monday"
+    func toReadableDateOnlyStringShort() -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.timeZone = NSTimeZone.localTimeZone()
+        
+        //get a date for a week ago
+        let dateComponentsPast = NSDateComponents()
+        dateComponentsPast.setValue(-1, forComponent: NSCalendarUnit.WeekOfYear);
+        let weekPast = NSCalendar.currentCalendar().dateByAddingComponents(dateComponentsPast, toDate: NSDate(), options:NSCalendarOptions(rawValue: 0))
+        
+        //get a date for a week in the future
+        let dateComponentsFuture = NSDateComponents()
+        dateComponentsFuture.setValue(1, forComponent: NSCalendarUnit.WeekOfYear);
+        let weekFuture = NSCalendar.currentCalendar().dateByAddingComponents(dateComponentsFuture, toDate: NSDate(), options:NSCalendarOptions(rawValue: 0))
+        
+        if (self.isBetweenDates(weekPast!, endDate: weekFuture!)) {
+            dateFormatter.dateFormat = "EEEE"
+        }
+        else {
+            dateFormatter.dateFormat = "EE, MMM d"
+        }
+        
+        return dateFormatter.stringFromDate(self)
+    }
+    
+    // returns a string of only the date in local time in long format
+    // Format: "Weekday, month date year"  if not this year e.g. "Monday, February 15 2017"
+    //         "Weekday, month date" if this year e.g. "Monday, February 15"
+    func toReadableDateOnlyStringLong() -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.timeZone = NSTimeZone.localTimeZone()
+        
+        //get the current year
+        dateFormatter.dateFormat = "yyyy"
+        let currentYearString = dateFormatter.stringFromDate(NSDate())
+        
+        //get dates for the beginnig and end of current year
+        dateFormatter.dateFormat = "MMMM dd yyyy HH:mm:ss"
+        let beginningOfYear = dateFormatter.dateFromString("January 01 " + currentYearString + " 00:00:00")
+        let endOfYear = dateFormatter.dateFromString("December 31 " + currentYearString + " 23:59:59")
+        
+        if (self.isBetweenDates(beginningOfYear!, endDate: endOfYear!)) {
+            dateFormatter.dateFormat = "EEE, MMMM d"
+        }
+        else {
+            dateFormatter.dateFormat = "EEEE, MMMM d yyyy"
+        }
+        
+        return dateFormatter.stringFromDate(self)
+    }
+
+    func isBetweenDates(beginDate: NSDate, endDate: NSDate) -> Bool {
+        if (self.compare(beginDate) == NSComparisonResult.OrderedAscending) {
+            return false
+        }
+        if (self.compare(endDate) == NSComparisonResult.OrderedDescending) {
+            return false
+        }
+        return true
+    }
+}
+
+extension String {
+    // converts string of the format 'Month Day Year Hour(24):Minute:Second' (e.g. 'January 03 2016 00:43:58') from the database
+    // and converts it to a NSDate in UTC time (just like the database)
+    func fromDatabaseStringToNSDate() -> NSDate {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.timeZone = NSTimeZone(name: "UTC")
+        dateFormatter.dateFormat = "MMMM dd yyyy HH:mm:ss"
+        return dateFormatter.dateFromString(self)!
+    }
+}
+
 // MARK: - Service Object Methods
 
 func createUserServiceObject() -> GTLServiceUserService? {
