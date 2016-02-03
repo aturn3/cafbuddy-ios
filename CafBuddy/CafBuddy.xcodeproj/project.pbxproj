@@ -80,6 +80,7 @@
 		FFCF47B01C61D7BB003E682A /* GTLUserServiceApisUserApiValidateUserRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFCF479A1C61D7BB003E682A /* GTLUserServiceApisUserApiValidateUserRequestMessage.m */; };
 		FFCF47B11C61D7BB003E682A /* GTLUserServiceApisUserApiValidateUserResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFCF479C1C61D7BB003E682A /* GTLUserServiceApisUserApiValidateUserResponseMessage.m */; };
 		FFCF47B21C61D7BB003E682A /* GTLUserServiceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FFCF479E1C61D7BB003E682A /* GTLUserServiceConstants.m */; };
+		FFCF47B41C61D875003E682A /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCF47B31C61D875003E682A /* Meal.swift */; };
 		FFFB21FE1C608C60005D7816 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21B81C608C60005D7816 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.m */; };
 		FFFB21FF1C608C60005D7816 /* GTLMealServiceApisMealApiCreateNewMealResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21BA1C608C60005D7816 /* GTLMealServiceApisMealApiCreateNewMealResponseMessage.m */; };
 		FFFB22001C608C60005D7816 /* GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21BC1C608C60005D7816 /* GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.m */; };
@@ -242,6 +243,7 @@
 		FFCF479C1C61D7BB003E682A /* GTLUserServiceApisUserApiValidateUserResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceApisUserApiValidateUserResponseMessage.m; sourceTree = "<group>"; };
 		FFCF479D1C61D7BB003E682A /* GTLUserServiceConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceConstants.h; sourceTree = "<group>"; };
 		FFCF479E1C61D7BB003E682A /* GTLUserServiceConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceConstants.m; sourceTree = "<group>"; };
+		FFCF47B31C61D875003E682A /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		FFFB21B61C608C60005D7816 /* GTLMealService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealService.h; sourceTree = "<group>"; };
 		FFFB21B71C608C60005D7816 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiCreateNewMealRequestMessage.h; sourceTree = "<group>"; };
 		FFFB21B81C608C60005D7816 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiCreateNewMealRequestMessage.m; sourceTree = "<group>"; };
@@ -575,6 +577,7 @@
 			isa = PBXGroup;
 			children = (
 				492096F71C5A7AB100B6C204 /* User.swift */,
+				FFCF47B31C61D875003E682A /* Meal.swift */,
 			);
 			name = "Api Classes";
 			sourceTree = "<group>";
@@ -650,7 +653,7 @@
 				TargetAttributes = {
 					4949D4471C2F4A80003C84DA = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = MSHR782CLG;
+						DevelopmentTeam = 9ZZ2B2C5U2;
 					};
 					4949D45D1C2F4A81003C84DA = {
 						CreatedOnToolsVersion = 7.2;
@@ -809,6 +812,7 @@
 				FFFB22091C608C60005D7816 /* GTLMealServiceApisMealApiUnMatchedMealMessage.m in Sources */,
 				FF72B9A21C32269B009B7308 /* GTMHTTPFetcherService.m in Sources */,
 				FFCF47B11C61D7BB003E682A /* GTLUserServiceApisUserApiValidateUserResponseMessage.m in Sources */,
+				FFCF47B41C61D875003E682A /* Meal.swift in Sources */,
 				FFFB22221C615373005D7816 /* MealHistoryViewController.swift in Sources */,
 				FFFB22001C608C60005D7816 /* GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.m in Sources */,
 				FFCF47AE1C61D7BB003E682A /* GTLUserServiceApisUserApiSignUpUserRequestMessage.m in Sources */,
@@ -987,7 +991,7 @@
 				INFOPLIST_FILE = CafBuddy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.quokka.andrew.cafbuddy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.quokka.cafbuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CafBuddy-Bridging-Header.h";
@@ -1007,7 +1011,7 @@
 				INFOPLIST_FILE = CafBuddy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.quokka.andrew.cafbuddy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.quokka.cafbuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CafBuddy-Bridging-Header.h";
