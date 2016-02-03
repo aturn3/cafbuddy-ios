@@ -13,7 +13,7 @@
 // Description:
 //   API for working with a User
 // Classes:
-//   GTLUserServiceApisUserApiLogInUserResponseMessage (0 custom class methods, 3 custom properties)
+//   GTLUserServiceApisUserApiLogInUserResponseMessage (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -30,4 +30,6 @@
 @property (nonatomic, copy) NSString *authToken;
 @property (nonatomic, copy) NSString *errorMessage;
 @property (nonatomic, retain) NSNumber *errorNumber;  // longLongValue
+@property (nonatomic, copy) NSString *firstName;
+@property (nonatomic, copy) NSString *lastName;
 @end
