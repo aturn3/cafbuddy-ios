@@ -67,13 +67,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UserAPICallbac
     func initInterface() {
         view.backgroundColor = COLOR_BLUE
         
-        // Email Field
+        // Email Address Field
         self.emailAddressField.placeholder = "Email Address"
         self.emailAddressField.font = UIFont.systemFontOfSize(12)
         self.emailAddressField.borderStyle = UITextBorderStyle.RoundedRect
         self.emailAddressField.autocorrectionType = UITextAutocorrectionType.No
         self.emailAddressField.autocapitalizationType = UITextAutocapitalizationType.None
-        self.emailAddressField.keyboardType = UIKeyboardType.Default
+        self.emailAddressField.keyboardType = UIKeyboardType.EmailAddress
         self.emailAddressField.returnKeyType = UIReturnKeyType.Done
         self.emailAddressField.clearButtonMode = UITextFieldViewMode.WhileEditing;
         self.emailAddressField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
@@ -120,7 +120,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UserAPICallbac
 
         // MARK: - Constraints
         
-        // Email Field
+        // Email Address Field
         self.emailAddressFieldConstraintLeft = NSLayoutConstraint(item: emailAddressField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (1/6)*SCREEN_WIDTH)
         self.emailAddressFieldConstraintRight = NSLayoutConstraint(item: emailAddressField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-1/6)*SCREEN_WIDTH)
         self.emailAddressFieldConstraintTop = NSLayoutConstraint(item: emailAddressField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: (1/3)*SCREEN_HEIGHT)
