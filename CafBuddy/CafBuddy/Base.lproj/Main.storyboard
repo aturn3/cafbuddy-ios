@@ -39,7 +39,7 @@
                             <constraint firstAttribute="centerY" secondItem="KQZ-1w-vlD" secondAttribute="centerY" id="exm-UA-ej4"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Upcoming" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Upcoming" image="upcomingMealsIcon.png" id="acW-dT-cKf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -71,7 +71,7 @@
                             <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="New Meal" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="New Meal" image="addMealIcon.png" id="cPa-gy-q4n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -99,13 +99,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="History" id="wLG-RS-Y7e"/>
+                    <tabBarItem key="tabBarItem" title="History" image="mealHistoryIcon.png" id="wLG-RS-Y7e"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="izg-VX-OQ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="766" y="324"/>
         </scene>
-        <!--Profile-->
+        <!--Settings-->
         <scene sceneID="jz2-mN-zqJ">
             <objects>
                 <viewController id="6pC-rh-wxS" customClass="ProfileViewController" customModule="CafBuddy" customModuleProvider="target" sceneMemberID="viewController">
@@ -127,7 +127,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" id="god-HX-dWq"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settingsIcon.png" id="god-HX-dWq"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ODK-a0-I8t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -200,7 +200,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="second" width="30" height="30"/>
+        <image name="addMealIcon.png" width="32" height="32"/>
+        <image name="mealHistoryIcon.png" width="32" height="32"/>
+        <image name="settingsIcon.png" width="32" height="32"/>
+        <image name="upcomingMealsIcon.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="O68-Mh-C7y"/>
