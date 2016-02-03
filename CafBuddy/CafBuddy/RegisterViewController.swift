@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback {
+class RegisterViewController: UIViewController, UITextFieldDelegate, UserAPICallback {
     
     // MARK: - Properties
     
@@ -54,6 +54,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback
         super.viewDidLoad()
         
         self.initInterface()
+        
+        if self.user.isLoggedIn() {
+            self.user.loadUser()
+            
+            self.gotoMealScene()
+        }
         // Do any additional setup after loading the view, typically from a nib.
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: self.view.window)
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: self.view.window)
@@ -180,7 +186,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback
         let password = self.passwordField.text
         
         self.user.userCallback = self;
-        user.createAccount(firstAndLastName, emailAddress: emailAddress, password: password)
+        self.user.createAccount(firstAndLastName, emailAddress: emailAddress, password: password)
     }
     
     // Goto Login Button Action
@@ -198,7 +204,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback
             let destinationViewController = LoginViewController()
             
             // In case user has typed in their info and then realizes they need to login
-            destinationViewController.emailField.text = self.emailAddressField.text
+            destinationViewController.emailAddressField.text = self.emailAddressField.text
             destinationViewController.passwordField.text = self.passwordField.text
         }
     }
@@ -260,7 +266,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback
     }
     
     // MARK: - API Callback
-    func createAccountAPICallback(success: Bool, errorMessage: String) {
+    func createAccountUserAPICallback(success: Bool, errorMessage: String) {
         if success {
             self.gotoMealScene()
         }

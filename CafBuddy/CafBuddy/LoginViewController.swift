@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate, UserAPICallback {
     
     // MARK: - Properties
     
@@ -17,14 +17,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     let registerButton = UIButton(type: UIButtonType.System)
     let loginButton = UIButton(type: UIButtonType.System)
     
-    let emailField = UITextField()
+    let emailAddressField = UITextField()
     let passwordField = UITextField()
     let reEnterPasswordField = UITextField()
     
-    var emailFieldConstraintLeft = NSLayoutConstraint()
-    var emailFieldConstraintRight = NSLayoutConstraint()
-    var emailFieldConstraintTop = NSLayoutConstraint()
-    var emailFieldConstraintBottom = NSLayoutConstraint()
+    var emailAddressFieldConstraintLeft = NSLayoutConstraint()
+    var emailAddressFieldConstraintRight = NSLayoutConstraint()
+    var emailAddressFieldConstraintTop = NSLayoutConstraint()
+    var emailAddressFieldConstraintBottom = NSLayoutConstraint()
     
     var passwordFieldConstraintLeft = NSLayoutConstraint()
     var passwordFieldConstraintRight = NSLayoutConstraint()
@@ -59,19 +59,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         view.backgroundColor = COLOR_BLUE
         
         // Email Field
-        self.emailField.placeholder = "Email Address"
-        self.emailField.font = UIFont.systemFontOfSize(12)
-        self.emailField.borderStyle = UITextBorderStyle.RoundedRect
-        self.emailField.autocorrectionType = UITextAutocorrectionType.No
-        self.emailField.autocapitalizationType = UITextAutocapitalizationType.None
-        self.emailField.keyboardType = UIKeyboardType.Default
-        self.emailField.returnKeyType = UIReturnKeyType.Done
-        self.emailField.clearButtonMode = UITextFieldViewMode.WhileEditing;
-        self.emailField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
-        self.emailField.returnKeyType = UIReturnKeyType.Next
-        self.emailField.delegate = self
-        self.emailField.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(self.emailField)
+        self.emailAddressField.placeholder = "Email Address"
+        self.emailAddressField.font = UIFont.systemFontOfSize(12)
+        self.emailAddressField.borderStyle = UITextBorderStyle.RoundedRect
+        self.emailAddressField.autocorrectionType = UITextAutocorrectionType.No
+        self.emailAddressField.autocapitalizationType = UITextAutocapitalizationType.None
+        self.emailAddressField.keyboardType = UIKeyboardType.Default
+        self.emailAddressField.returnKeyType = UIReturnKeyType.Done
+        self.emailAddressField.clearButtonMode = UITextFieldViewMode.WhileEditing;
+        self.emailAddressField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
+        self.emailAddressField.returnKeyType = UIReturnKeyType.Next
+        self.emailAddressField.delegate = self
+        self.emailAddressField.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.emailAddressField)
         
         // Password Field
         self.passwordField.placeholder = "Password"
@@ -95,7 +95,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.loginButton.setTitleColor(COLOR_BLACK, forState: UIControlState.Normal)
         self.loginButton.backgroundColor = COLOR_RED
         self.loginButton.layer.cornerRadius = 10
-        //self.loginButton.addTarget(self, action: "loginButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.loginButton.addTarget(self, action: "loginButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         self.loginButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.loginButton)
         
@@ -112,31 +112,31 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // MARK: - Constraints
         
         // Email Field
-        self.emailFieldConstraintLeft = NSLayoutConstraint(item: emailField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (1/6)*SCREEN_WIDTH)
-        self.emailFieldConstraintRight = NSLayoutConstraint(item: emailField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-1/6)*SCREEN_WIDTH)
-        self.emailFieldConstraintTop = NSLayoutConstraint(item: emailField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: (1/3)*SCREEN_HEIGHT)
-        self.emailFieldConstraintBottom = NSLayoutConstraint(item: emailField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.emailField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
+        self.emailAddressFieldConstraintLeft = NSLayoutConstraint(item: emailAddressField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (1/6)*SCREEN_WIDTH)
+        self.emailAddressFieldConstraintRight = NSLayoutConstraint(item: emailAddressField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-1/6)*SCREEN_WIDTH)
+        self.emailAddressFieldConstraintTop = NSLayoutConstraint(item: emailAddressField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: (1/3)*SCREEN_HEIGHT)
+        self.emailAddressFieldConstraintBottom = NSLayoutConstraint(item: emailAddressField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.emailAddressField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
         
         // Password Field
-        self.passwordFieldConstraintLeft = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.emailField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
-        self.passwordFieldConstraintRight = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.emailField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
-        self.passwordFieldConstraintTop = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.emailField, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+        self.passwordFieldConstraintLeft = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.emailAddressField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
+        self.passwordFieldConstraintRight = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.emailAddressField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
+        self.passwordFieldConstraintTop = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.emailAddressField, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
         self.passwordFieldConstraintBottom = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.passwordField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
         
         // Login Button
-        self.loginButtonConstraintLeft = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.emailField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
-        self.loginButtonConstraintRight = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.emailField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
+        self.loginButtonConstraintLeft = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.emailAddressField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
+        self.loginButtonConstraintRight = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.emailAddressField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
         self.loginButtonConstraintTop = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.passwordField, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
         self.loginButtonConstraintBottom = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.loginButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
         
         // Goto Register Button
-        self.registerButtonConstraintLeft = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.emailField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
-        self.registerButtonConstraintRight = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.emailField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
+        self.registerButtonConstraintLeft = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.emailAddressField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
+        self.registerButtonConstraintRight = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.emailAddressField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
         self.registerButtonConstraintTop = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.loginButton, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
         self.registerButtonConstraintBottom = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.registerButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
         
         // Activate all constraints
-        NSLayoutConstraint.activateConstraints([self.emailFieldConstraintLeft, self.emailFieldConstraintRight, self.emailFieldConstraintTop, self.emailFieldConstraintBottom, self.passwordFieldConstraintLeft, self.passwordFieldConstraintRight, self.passwordFieldConstraintTop, self.passwordFieldConstraintBottom, self.loginButtonConstraintLeft, self.loginButtonConstraintRight, self.loginButtonConstraintTop, self.loginButtonConstraintBottom, self.registerButtonConstraintLeft, self.registerButtonConstraintRight, self.registerButtonConstraintTop, self.registerButtonConstraintBottom])
+        NSLayoutConstraint.activateConstraints([self.emailAddressFieldConstraintLeft, self.emailAddressFieldConstraintRight, self.emailAddressFieldConstraintTop, self.emailAddressFieldConstraintBottom, self.passwordFieldConstraintLeft, self.passwordFieldConstraintRight, self.passwordFieldConstraintTop, self.passwordFieldConstraintBottom, self.loginButtonConstraintLeft, self.loginButtonConstraintRight, self.loginButtonConstraintTop, self.loginButtonConstraintBottom, self.registerButtonConstraintLeft, self.registerButtonConstraintRight, self.registerButtonConstraintTop, self.registerButtonConstraintBottom])
     }
     
     // MARK: - Action Methods
@@ -144,6 +144,35 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // Goto Register Button Action
     func gotoRegisterButtonPressed(sender: UIButton) {
         self.performSegueWithIdentifier("toRegisterFromLogin", sender: self)
+    }
+    
+    // Login Button Action
+    func loginButtonPressed(sender: UIButton) {
+        let emailAddress = self.emailAddressField.text
+        let password = self.passwordField.text
+        
+        self.user.userCallback = self;
+        self.user.login(emailAddress, password: password)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "loginSuccessfulSegue" {
+            let destinationViewController = TabBarViewController()
+            destinationViewController.user = self.user
+        }
+            
+        else if segue.identifier == "toRegisterFromLogin" {
+            let destinationViewController = LoginViewController()
+            
+            // In case user has typed in their info and then realizes they need to login
+            destinationViewController.emailAddressField.text = self.emailAddressField.text
+            destinationViewController.passwordField.text = self.passwordField.text
+        }
+    }
+    
+    // Goto Meal Scene
+    func gotoMealScene() {
+        self.performSegueWithIdentifier("loginSuccessfulSegue", sender: self)
     }
     
     // MARK: - Text Field Delegate Methods
@@ -169,8 +198,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // Go from emailField to passwordField
-        if (textField == emailField) {
-            emailField.resignFirstResponder()
+        if (textField == emailAddressField) {
+            emailAddressField.resignFirstResponder()
             passwordField.becomeFirstResponder()
         }
         // Resign text field when "return" button is pressed
@@ -185,5 +214,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.resignFirstResponder()
         view.endEditing(true)
+    }
+    
+    // MARK: - API Callback
+    func loginAccountUserAPICallback(success: Bool, errorMessage: String) {
+        if success {
+            self.gotoMealScene()
+        }
+        else {
+            let alertView = createAlert("Error", message: errorMessage, actionMessage: "Ok")
+            self.presentViewController(alertView, animated: true, completion: nil)
+        }
     }
 }
