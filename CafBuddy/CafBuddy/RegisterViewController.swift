@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback {
+class RegisterViewController: UIViewController, UITextFieldDelegate, UserAPICallback {
     
     // MARK: - Properties
     
@@ -54,6 +54,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback
         super.viewDidLoad()
         
         self.initInterface()
+
         // Do any additional setup after loading the view, typically from a nib.
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: self.view.window)
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: self.view.window)
@@ -62,6 +63,14 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if self.user.isLoggedIn() {
+            self.user.loadUserFromKeychain()
+            
+            self.gotoMealScene()
+        }
     }
     
     func initInterface() {
@@ -83,13 +92,13 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback
         self.view.addSubview(self.firstAndLastNameField)
         
         
-        // Email Field
+        // Email Address Field
         self.emailAddressField.placeholder = "Email Address"
         self.emailAddressField.font = UIFont.systemFontOfSize(12)
         self.emailAddressField.borderStyle = UITextBorderStyle.RoundedRect
         self.emailAddressField.autocorrectionType = UITextAutocorrectionType.No
         self.emailAddressField.autocapitalizationType = UITextAutocapitalizationType.None
-        self.emailAddressField.keyboardType = UIKeyboardType.Default
+        self.emailAddressField.keyboardType = UIKeyboardType.EmailAddress
         self.emailAddressField.returnKeyType = UIReturnKeyType.Done
         self.emailAddressField.clearButtonMode = UITextFieldViewMode.WhileEditing;
         self.emailAddressField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
@@ -180,7 +189,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback
         let password = self.passwordField.text
         
         self.user.userCallback = self;
-        user.createAccount(firstAndLastName, emailAddress: emailAddress, password: password)
+        self.user.createAccount(firstAndLastName, emailAddress: emailAddress, password: password)
     }
     
     // Goto Login Button Action
@@ -190,15 +199,15 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "registerSuccessfulSegue" {
-            let destinationViewController = TabBarViewController()
-            destinationViewController.user = self.user
+            let destinationController = segue.destinationViewController as! TabBarController
+            destinationController.user = self.user
         }
         
         else if segue.identifier == "toLoginFromRegister" {
-            let destinationViewController = LoginViewController()
+            let destinationViewController = segue.destinationViewController as! LoginViewController
             
             // In case user has typed in their info and then realizes they need to login
-            destinationViewController.emailField.text = self.emailAddressField.text
+            destinationViewController.emailAddressField.text = self.emailAddressField.text
             destinationViewController.passwordField.text = self.passwordField.text
         }
     }
@@ -260,7 +269,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, APICallback
     }
     
     // MARK: - API Callback
-    func createAccountAPICallback(success: Bool, errorMessage: String) {
+    func createAccountUserAPICallback(success: Bool, errorMessage: String) {
         if success {
             self.gotoMealScene()
         }

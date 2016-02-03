@@ -13,7 +13,12 @@ import UIKit
 
 let APPLICATION_ERROR_OR_NETWORK_PROBLEM = "Servers unavailable. Please try again later"
 
-let USER_ACCOUNT = "userAccount"
+// MARK: - User Keychain Constants
+
+let USER_FIRST_NAME_KEY = "userFirstName"
+let USER_LAST_NAME_KEY = "userLastName"
+let USER_EMAIL_ADDRESS_KEY = "userEmailAddress"
+let USER_AUTHENTICATION_TOKEN_KEY = "userAuthenticationToken"
 
 // MARK: - Colors
 

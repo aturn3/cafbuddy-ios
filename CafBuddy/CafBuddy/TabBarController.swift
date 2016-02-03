@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TabBarViewController: UITabBarController {
+class TabBarController: UITabBarController {
     // MARK: - Properties
     
     var user = User()
