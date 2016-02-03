@@ -169,7 +169,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="49e-Tb-3d3" kind="show" identifier="registerSuccessfulSegueIdentifier" id="O68-Mh-C7y"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="registerSuccessfulSegue" id="O68-Mh-C7y"/>
                         <segue destination="h2v-Sd-UaA" kind="showDetail" identifier="toLoginFromRegister" id="3gB-32-GsG"/>
                     </connections>
                 </viewController>
