@@ -6,15 +6,17 @@
 //
 
 import UIKit
+import Foundation
 
-class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MealAPICallback {
+class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MealAPICallback, MealCollectionCellCallBack {
 
-    var collectionViewMain : UICollectionView?
+    var collectionViewMeals : UICollectionView?
     
     let mealObject = Meal()
     
     var matchedMeals = [MatchedMeal]()
     var unMatchedMeals = [UnMatchedMeal]()
+//    var meals: [AnyObject] = [[, ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,15 +45,17 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
         
         //the screen starts after the top bar but extends below the navbar
         let collectionViewHeight = screenSize.height - TAB_BAR_HEIGHT - NAV_BAR_HEIGHT - STATUS_BAR_HEIGHT
-        collectionViewMain = UICollectionView(frame: CGRectMake(0, 0, screenSize.width, collectionViewHeight), collectionViewLayout: collectionViewLayout)
+        collectionViewMeals = UICollectionView(frame: CGRectMake(0, 0, screenSize.width, collectionViewHeight), collectionViewLayout: collectionViewLayout)
         
-        collectionViewMain!.delegate = self;
-        collectionViewMain!.dataSource = self;
-        collectionViewMain!.alwaysBounceVertical = true
-        collectionViewMain!.registerClass(MealCollectionCellTemplate.self, forCellWithReuseIdentifier: "upcomingMealCell")
-        collectionViewMain!.backgroundColor = COLOR_NEUTRAL_BACKGROUND
+        collectionViewMeals!.delegate = self;
+        collectionViewMeals!.dataSource = self;
+        collectionViewMeals!.alwaysBounceVertical = true
+        collectionViewMeals!.registerClass(UpcomingMealListingCell.self, forCellWithReuseIdentifier: "upcomingMealCell")
+        collectionViewMeals!.backgroundColor = COLOR_NEUTRAL_BACKGROUND
         
-        self.view.addSubview(collectionViewMain!)
+        self.view.addSubview(collectionViewMeals!)
+        
+        updateAllMealsFromDatabase()
     }
     
     func updateAllMealsFromDatabase() {
@@ -60,14 +64,35 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
     }
     
     func getAllUpcomingMealsAPICallback(success: Bool, errorMessage: String, unMatchedMeals: [UnMatchedMeal], matchedMeals: [MatchedMeal]) -> Void {
-        
+        if (success) {
+            self.matchedMeals = matchedMeals
+            self.unMatchedMeals = unMatchedMeals
+            collectionViewMeals?.reloadData()
+        }
     }
 
+    func mealCellButtonWasPressed(buttonIndex: Int, sectionIndex: Int) {
+        print("The button that was pressed was: " + String(buttonIndex) + " in the section: " + String(sectionIndex))
+    }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let mealCollectionCell = collectionViewMain!.dequeueReusableCellWithReuseIdentifier("upcomingMealCell", forIndexPath: indexPath) as! MealCollectionCellTemplate
-        mealCollectionCell.backgroundColor = UIColor.whiteColor()
+        let mealCollectionCell = collectionViewMeals!.dequeueReusableCellWithReuseIdentifier("upcomingMealCell", forIndexPath: indexPath) as! UpcomingMealListingCell
+        
+        // needed to receive the button presses from the cells
+        mealCollectionCell.buttonCallBack = self;
+        mealCollectionCell.cellSectionIndex = indexPath.section
+        
+        //if the seciton is MatchedMeals
+        if (indexPath.section == 0) {
+            mealCollectionCell.initializeUpcomingMealCellContents(MealStatus(rawValue: indexPath.section)!, mealType: (matchedMeals[indexPath.row].mealType)!)
+        }
+        else {
+            mealCollectionCell.initializeUpcomingMealCellContents(MealStatus(rawValue: indexPath.section)!, mealType: (unMatchedMeals[indexPath.row].mealType)!)
+        }
+        
+        
+        
         
 //        //set some default values
 //        var theMealType = MealType.Breakfast
@@ -80,9 +105,6 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
 //        else {
 //            historyCell.setMealDetails(MealType.Dinner)
 //        }
-        
-        //need to set the target of the feedback button appropriately
-//        historyCell.buttonFullBottom.addTarget(self, action: "leaveFeedbackWasPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         
         return mealCollectionCell
     }

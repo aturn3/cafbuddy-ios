@@ -43,8 +43,15 @@ extension UIColor {
     }
 }
 
-let COLOR_MAIN = UIColor(hexString: "#0bbedf")
-let COLOR_ACCENT_ONE = UIColor(hexString: "##0bdf96")
+let COLOR_MAIN = UIColor(hexString: "#0bbedf") // currently an aqua blue color
+let COLOR_MAIN_DARK = UIColor(hexString: "#1FB1C3")
+let COLOR_ACCENT_ONE = UIColor(hexString: "#0bdf96") // color a green color
+let COLOR_ACCENT_ONE_DARK = UIColor(hexString: "#0dd480")
+let COLOR_ACCENT_TWO = UIColor(hexString: "#e53b76")//"#DF0B54") // currently a red color
+
+let COLOR_LIGHT_GRAY = UIColor(hexString: "#f4f4f4")
+let COLOR_DARK_GRAY = UIColor(hexString: "#e7e7e7")
+
 let COLOR_NEUTRAL_BACKGROUND = UIColor(hexString: "#eaeaea")
 
 let COLOR_BLACK = UIColor(hexString: "#000000")
@@ -73,6 +80,53 @@ func createAlert(title: String, message: String, actionMessage: String) -> UIAle
     alertView.addAction(action)
     
     return alertView
+}
+
+// creates an image of the specified size as a block of the specified color
+func getImageWithColor(color: UIColor, width: CGFloat, height: CGFloat) -> UIImage {
+    let rect = CGRectMake(0, 0, width, height)
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(width, height), false, 0)
+    color.setFill()
+    UIRectFill(rect)
+    let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return image
+}
+
+
+func filledImageFrom(source : UIImage, color : UIColor) -> UIImage {
+    // begin a new image context, to draw our colored image onto with the right scale
+    UIGraphicsBeginImageContextWithOptions(source.size, false, UIScreen.mainScreen().scale)
+    // get a reference to that context we created
+    let context : CGContextRef = UIGraphicsGetCurrentContext()!
+    // set the fill color
+    color.setFill()
+    // translate/flip the graphics context (for transforming from CG* coords to UI* coords
+    CGContextTranslateCTM(context, 0, source.size.height)
+    CGContextScaleCTM(context, 1.0, -1.0)
+    CGContextSetBlendMode(context, CGBlendMode.ColorBurn)
+    let rect : CGRect = CGRectMake(0, 0, source.size.width, source.size.height)
+    CGContextDrawImage(context, rect, source.CGImage)
+    CGContextSetBlendMode(context, CGBlendMode.SourceIn)
+    CGContextAddRect(context, rect)
+    CGContextDrawPath(context, CGPathDrawingMode.Fill)
+    // generate a new UIImage from the graphics context we drew onto
+    let coloredImg : UIImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    
+    //return the color-burned image
+    return coloredImg;
+}
+// credit to @Paul Lynch http://stackoverflow.com/a/2658801/2580204 (converted to swift compatible)
+func scaledImage(image : UIImage, scaledToSize newSize:CGSize) -> UIImage {
+    //UIGraphicsBeginImageContext(newSize);
+    // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
+    // Pass 1.0 to force exact pixel size.
+    UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0);
+    image.drawInRect(CGRectMake(0, 0, newSize.width, newSize.height))
+    let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 //MARK: - Extensions Dealing With Dates
