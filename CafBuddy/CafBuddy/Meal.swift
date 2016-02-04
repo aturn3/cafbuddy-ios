@@ -23,6 +23,10 @@ enum MealType: Int {
     case Breakfast = 0, Lunch = 1, Dinner = 2
 }
 
+enum MealStatus: Int {
+    case Matched = 0, UnMatched = 1
+}
+
 var firstName = String()
 var lastName = String()
 var emailAddress = String()
@@ -88,7 +92,7 @@ class Meal: NSObject {
                     theUnMatchedMeals = self.convertAPIUnMatchedMealsArrayToClientUnMatchedMealsArray(response.unMatchedMeals)
                 }
 
-                self.mealCallback?.getAllUpcomingMealsAPICallback(false, errorMessage: "Success", unMatchedMeals: theUnMatchedMeals, matchedMeals: theMatchedMeals)
+                self.mealCallback?.getAllUpcomingMealsAPICallback(true, errorMessage: "Success", unMatchedMeals: theUnMatchedMeals, matchedMeals: theMatchedMeals)
             }
                 
                 // API call unsuccessful
@@ -110,7 +114,7 @@ class Meal: NSObject {
         for theMatchedMeal in matchedMealsAPI {
             matchedMeals.append(convertAPIMatchedMealToClientMatchedMeal(theMatchedMeal as! GTLMealServiceApisMealApiMatchedMealMessage))
         }
-        return [MatchedMeal]()
+        return matchedMeals
     }
 
     func convertAPIUnMatchedMealsArrayToClientUnMatchedMealsArray(unMatchedMealsAPI: NSArray) -> [UnMatchedMeal] {
@@ -118,7 +122,7 @@ class Meal: NSObject {
         for theUnMatchedMeal in unMatchedMealsAPI {
             unMatchedMeals.append(convertAPIUnMatchedMealToClientUnMatchedMeal(theUnMatchedMeal as! GTLMealServiceApisMealApiUnMatchedMealMessage))
         }
-        return [UnMatchedMeal]()
+        return unMatchedMeals
     }
     
     func convertAPIMatchedMealToClientMatchedMeal(matchedMealAPI : GTLMealServiceApisMealApiMatchedMealMessage) -> MatchedMeal {

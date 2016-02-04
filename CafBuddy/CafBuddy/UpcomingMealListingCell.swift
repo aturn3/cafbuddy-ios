@@ -9,42 +9,75 @@
 //import Foundation
 //import UIKit
 //
-//class MealListingCell : CollectionListingTemplateCell {
-//    
+
+
+class UpcomingMealListingCell : MealCollectionCellTemplate {
+    
 //    var labelMealDate = UILabel()
 //    var labelMealTime = UILabel()
-//    
-//    
-//    //initializes everything in the cell
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        initializeAdditionalCellContents()
-//    }
-//    //just needed to initialize the parent cell
-//    required init(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//    }
-//    
-//    
-//    func initializeAdditionalCellContents() {
-//        
-//        /*additional meal details needed*/
+    
+    
+    //initializes everything in the cell
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initializeButtonsAndImage(2, shouldShowImage: true)
+    }
+    //just needed to initialize the parent cell
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+
+    func initializeUpcomingMealCellContents(mealStatus : MealStatus, mealType : MealType) {
+        self.backgroundColor = COLOR_WHITE
+        
+        decorateButtons(mealStatus)
+        setMealImage(mealType)
+        
+        
+        /*additional meal details needed*/
 //        labelMealDate.font = UIFont.systemFontOfSize(15)
 //        labelMealDate.textAlignment = NSTextAlignment.Center
-//        //labelMealType.textColor = colorWithHexString()
+        //labelMealType.textColor = colorWithHexString()
 //        labelMealDate.frame = CGRectMake(0, labelMealType.frame.origin.y + labelMealType.frame.height + 10, contentView.frame.size.width, 20)
 //        
 //        labelMealTime.font = UIFont.systemFontOfSize(15)
 //        labelMealTime.textAlignment = NSTextAlignment.Center
-//        //labelMealType.textColor = colorWithHexString()
-//        labelMealTime.frame = CGRectMake(0, labelMealDate.frame.origin.y + labelMealDate.frame.height + 5, contentView.frame.size.width, 20)
-//        
-//        
+        //labelMealType.textColor = colorWithHexString()
+//    labelMealTime.frame = CGRectMake(0, labelMealDate.frame.origin.y + labelMealDate.frame.height + 5, contentView.frame.size.width, 20)
+
+        
 //        self.contentView.addSubview(labelMealDate)
 //        self.contentView.addSubview(labelMealTime)
-//        
-//    }
-//    
+//
+    }
+    
+    private func decorateButtons(mealStatus : MealStatus) {
+        // in this case there are two buttons
+        if (mealStatus == MealStatus.Matched) {
+            decorateButton(withIndex: 0, title: "Add To Calendar", icon: UIImage(named: "addCalendarIcon"))
+            decorateButton(withIndex: 1, title: "Chat", icon: UIImage(named: "chatIcon"))
+        }
+        // in this case there is only one button
+        else {
+            decorateButton(withIndex: 0, title: "Cancel Meal", color: COLOR_ACCENT_TWO)
+            decorateButton(withIndex: 1, title: "Edit Time", icon: UIImage(named: "timeIcon"))
+        }
+    }
+    
+    private func setMealImage(theMealType : MealType) {
+        if (theMealType == MealType.Dinner) {
+            decorateImage(withImage: UIImage(named: "dinnerIcon")!, coloredAs: COLOR_MAIN_DARK)
+        }
+        else if (theMealType == MealType.Lunch){
+            decorateImage(withImage: UIImage(named: "lunchIcon")!, coloredAs: COLOR_MAIN_DARK)
+        }
+        else {
+            decorateImage(withImage: UIImage(named: "breakfastIcon")!, coloredAs: COLOR_MAIN_DARK)
+        }
+    }
+    
+//
 //    func setMealDetails(theMealType : MealType, theMealStatus : MealStatus) {
 //        
 //        
@@ -80,4 +113,4 @@
 //    
 //    
 //    
-//}
+}
