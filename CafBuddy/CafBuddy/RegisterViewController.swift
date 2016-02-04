@@ -46,7 +46,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UserAPICall
     var loginButtonConstraintTop = NSLayoutConstraint()
     var loginButtonConstraintBottom = NSLayoutConstraint()
     
-    var keyboardShowing = false
+    var layoutVerticalOffset = 0
     
     // MARK: - Methods
     
@@ -56,8 +56,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UserAPICall
         self.initInterface()
 
         // Do any additional setup after loading the view, typically from a nib.
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: self.view.window)
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: self.view.window)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: self.view.window)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: self.view.window)
     }
     
     override func didReceiveMemoryWarning() {
@@ -66,6 +66,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UserAPICall
     }
     
     override func viewDidAppear(animated: Bool) {
+        self.user.logout()
+        self.user.deleteUserFromKeychain()
         if self.user.isLoggedIn() {
             self.user.loadUserFromKeychain()
             
@@ -184,6 +186,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UserAPICall
     
     // Register Button Action
     func registerButtonPressed(sender: UIButton) {
+        self.view.endEditing(true)
+        
         let firstAndLastName = self.firstAndLastNameField.text
         let emailAddress = self.emailAddressField.text
         let password = self.passwordField.text
@@ -219,7 +223,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UserAPICall
     
     // MARK: - Text Field Delegate Methods
     
-//    func keyboardWillShow(notification: NSNotification) {
+    func keyboardWillShow(notification: NSNotification) {
 //        let info = notification.userInfo!
 //        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
 //        
@@ -230,13 +234,22 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UserAPICall
 //        })
 //        
 //        print("after", self.emailAddressFieldConstraintTop)
-//    }
-//    
-//    func keyboardWillHide(sender: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
+            print(keyboardSize.maxY)
+            print(self.passwordFieldConstraintBottom.constant)
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
 //        let userInfo: [NSObject : AnyObject] = sender.userInfo!
 //        let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
 //        self.view.frame.origin.y += keyboardSize.height
-//    }
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
+//            print("before", self.view.frame.origin.y)
+//            self.view.frame.origin.y += keyboardSize.height
+//            print("after", self.view.frame.origin.y)
+        }
+    }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // Go from firstAndLastNameField to emailAddressField
