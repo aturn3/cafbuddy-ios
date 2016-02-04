@@ -55,8 +55,8 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
     }
     
     func updateAllMealsFromDatabase() {
-//        getCurrentUser()
-        mealObject.getAllUpcomingMeals("forsterj@stolaf.edu", authToken: "8UPKkyFUc5vU67PZlHIsGG")
+        let curUser = getCurrentUser()
+        mealObject.getAllUpcomingMeals(curUser.emailAddress, authToken: curUser.authenticationToken)
     }
     
     func getAllUpcomingMealsAPICallback(success: Bool, errorMessage: String, unMatchedMeals: [UnMatchedMeal], matchedMeals: [MatchedMeal]) -> Void {

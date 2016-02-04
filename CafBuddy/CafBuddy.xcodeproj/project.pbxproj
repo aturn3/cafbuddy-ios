@@ -24,6 +24,10 @@
 		FF074D5A1C5F186B000DBBC1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF074D581C5F186B000DBBC1 /* GoogleService-Info.plist */; };
 		FF074D5B1C5F186B000DBBC1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF074D581C5F186B000DBBC1 /* GoogleService-Info.plist */; };
 		FF33D5961C5F12ED00A9A320 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = FF33D5951C5F12ED00A9A320 /* Podfile */; };
+		FF5F6AA61C631157008131A9 /* addMealIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5F6AA51C631157008131A9 /* addMealIcon@2x.png */; };
+		FF5F6AA81C6311DB008131A9 /* settingsIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5F6AA71C6311DB008131A9 /* settingsIcon@2x.png */; };
+		FF5F6AAA1C631244008131A9 /* mealHistoryIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5F6AA91C631244008131A9 /* mealHistoryIcon@2x.png */; };
+		FF5F6AAC1C63126E008131A9 /* mealHistoryIconOrig64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5F6AAB1C63126E008131A9 /* mealHistoryIconOrig64@2x.png */; };
 		FF72B9951C32269B009B7308 /* GTLObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B96B1C32269B009B7308 /* GTLObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FF72B9961C32269B009B7308 /* GTLQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B96D1C32269B009B7308 /* GTLQuery.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FF72B9971C32269B009B7308 /* GTLBatchQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B96F1C32269B009B7308 /* GTLBatchQuery.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -51,12 +55,11 @@
 		FFCF475B1C619451003E682A /* upcomingMealsIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCF475A1C619451003E682A /* upcomingMealsIcon@2x.png */; };
 		FFCF475D1C619462003E682A /* upcomingMealsIcon@3x -- too big.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCF475C1C619462003E682A /* upcomingMealsIcon@3x -- too big.png */; };
 		FFCF475F1C61957B003E682A /* addMealIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCF475E1C61957B003E682A /* addMealIcon.png */; };
-		FFCF47611C61958A003E682A /* addMealIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCF47601C61958A003E682A /* addMealIcon@2x.png */; };
+		FFCF47611C61958A003E682A /* addMealIconOrig64px@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCF47601C61958A003E682A /* addMealIconOrig64px@2x.png */; };
 		FFCF47631C619595003E682A /* addMealIcon@3x -- too big.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCF47621C619595003E682A /* addMealIcon@3x -- too big.png */; };
-		FFCF47671C6195D3003E682A /* settingsIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCF47641C6195D3003E682A /* settingsIcon@2x.png */; };
+		FFCF47671C6195D3003E682A /* settingsIconOrig64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCF47641C6195D3003E682A /* settingsIconOrig64@2x.png */; };
 		FFCF47681C6195D3003E682A /* settingsIcon@3x -- too big.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCF47651C6195D3003E682A /* settingsIcon@3x -- too big.png */; };
 		FFCF47691C6195D3003E682A /* settingsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCF47661C6195D3003E682A /* settingsIcon.png */; };
-		FFCF476D1C619614003E682A /* mealHistoryIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCF476A1C619614003E682A /* mealHistoryIcon@2x.png */; };
 		FFCF476E1C619614003E682A /* mealHistoryIcon@3x -- too big.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCF476B1C619614003E682A /* mealHistoryIcon@3x -- too big.png */; };
 		FFCF476F1C619614003E682A /* mealHistoryIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCF476C1C619614003E682A /* mealHistoryIcon.png */; };
 		FFCF47721C61C777003E682A /* UpcomingMealCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCF47711C61C777003E682A /* UpcomingMealCollectionViewCell.swift */; };
@@ -142,6 +145,10 @@
 		E337D8867002A5D30DB14F01 /* Pods-CafBuddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CafBuddy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CafBuddy/Pods-CafBuddy.debug.xcconfig"; sourceTree = "<group>"; };
 		FF074D581C5F186B000DBBC1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FF33D5951C5F12ED00A9A320 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		FF5F6AA51C631157008131A9 /* addMealIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addMealIcon@2x.png"; sourceTree = "<group>"; };
+		FF5F6AA71C6311DB008131A9 /* settingsIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingsIcon@2x.png"; sourceTree = "<group>"; };
+		FF5F6AA91C631244008131A9 /* mealHistoryIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mealHistoryIcon@2x.png"; sourceTree = "<group>"; };
+		FF5F6AAB1C63126E008131A9 /* mealHistoryIconOrig64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mealHistoryIconOrig64@2x.png"; sourceTree = "<group>"; };
 		FF72B9681C32269A009B7308 /* CafBuddy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CafBuddy-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		FF72B9691C32269B009B7308 /* GTLDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLDefines.h; sourceTree = "<group>"; };
 		FF72B96A1C32269B009B7308 /* GTLObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLObject.h; sourceTree = "<group>"; };
@@ -195,12 +202,11 @@
 		FFCF475A1C619451003E682A /* upcomingMealsIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upcomingMealsIcon@2x.png"; sourceTree = "<group>"; };
 		FFCF475C1C619462003E682A /* upcomingMealsIcon@3x -- too big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "upcomingMealsIcon@3x -- too big.png"; path = "CafBuddy/upcomingMealsIcon@3x -- too big.png"; sourceTree = "<group>"; };
 		FFCF475E1C61957B003E682A /* addMealIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addMealIcon.png; sourceTree = "<group>"; };
-		FFCF47601C61958A003E682A /* addMealIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addMealIcon@2x.png"; sourceTree = "<group>"; };
+		FFCF47601C61958A003E682A /* addMealIconOrig64px@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addMealIconOrig64px@2x.png"; sourceTree = "<group>"; };
 		FFCF47621C619595003E682A /* addMealIcon@3x -- too big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addMealIcon@3x -- too big.png"; sourceTree = "<group>"; };
-		FFCF47641C6195D3003E682A /* settingsIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingsIcon@2x.png"; sourceTree = "<group>"; };
+		FFCF47641C6195D3003E682A /* settingsIconOrig64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingsIconOrig64@2x.png"; sourceTree = "<group>"; };
 		FFCF47651C6195D3003E682A /* settingsIcon@3x -- too big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingsIcon@3x -- too big.png"; sourceTree = "<group>"; };
 		FFCF47661C6195D3003E682A /* settingsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsIcon.png; sourceTree = "<group>"; };
-		FFCF476A1C619614003E682A /* mealHistoryIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mealHistoryIcon@2x.png"; sourceTree = "<group>"; };
 		FFCF476B1C619614003E682A /* mealHistoryIcon@3x -- too big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mealHistoryIcon@3x -- too big.png"; sourceTree = "<group>"; };
 		FFCF476C1C619614003E682A /* mealHistoryIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mealHistoryIcon.png; sourceTree = "<group>"; };
 		FFCF47711C61C777003E682A /* UpcomingMealCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingMealCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -540,13 +546,16 @@
 				FFCF475A1C619451003E682A /* upcomingMealsIcon@2x.png */,
 				FFCF475C1C619462003E682A /* upcomingMealsIcon@3x -- too big.png */,
 				FFCF475E1C61957B003E682A /* addMealIcon.png */,
-				FFCF47601C61958A003E682A /* addMealIcon@2x.png */,
+				FF5F6AA51C631157008131A9 /* addMealIcon@2x.png */,
+				FFCF47601C61958A003E682A /* addMealIconOrig64px@2x.png */,
 				FFCF47621C619595003E682A /* addMealIcon@3x -- too big.png */,
 				FFCF47661C6195D3003E682A /* settingsIcon.png */,
-				FFCF47641C6195D3003E682A /* settingsIcon@2x.png */,
+				FF5F6AA71C6311DB008131A9 /* settingsIcon@2x.png */,
+				FFCF47641C6195D3003E682A /* settingsIconOrig64@2x.png */,
 				FFCF47651C6195D3003E682A /* settingsIcon@3x -- too big.png */,
 				FFCF476C1C619614003E682A /* mealHistoryIcon.png */,
-				FFCF476A1C619614003E682A /* mealHistoryIcon@2x.png */,
+				FF5F6AA91C631244008131A9 /* mealHistoryIcon@2x.png */,
+				FF5F6AAB1C63126E008131A9 /* mealHistoryIconOrig64@2x.png */,
 				FFCF476B1C619614003E682A /* mealHistoryIcon@3x -- too big.png */,
 			);
 			name = "Tab Bar Images";
@@ -695,18 +704,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFCF47671C6195D3003E682A /* settingsIcon@2x.png in Resources */,
+				FFCF47671C6195D3003E682A /* settingsIconOrig64@2x.png in Resources */,
 				FF33D5961C5F12ED00A9A320 /* Podfile in Resources */,
+				FF5F6AAC1C63126E008131A9 /* mealHistoryIconOrig64@2x.png in Resources */,
 				FFCF47591C61943A003E682A /* upcomingMealsIcon.png in Resources */,
+				FF5F6AAA1C631244008131A9 /* mealHistoryIcon@2x.png in Resources */,
 				FFCF475F1C61957B003E682A /* addMealIcon.png in Resources */,
+				FF5F6AA81C6311DB008131A9 /* settingsIcon@2x.png in Resources */,
 				FFCF475D1C619462003E682A /* upcomingMealsIcon@3x -- too big.png in Resources */,
-				FFCF47611C61958A003E682A /* addMealIcon@2x.png in Resources */,
+				FFCF47611C61958A003E682A /* addMealIconOrig64px@2x.png in Resources */,
 				FFCF47681C6195D3003E682A /* settingsIcon@3x -- too big.png in Resources */,
 				FFCF476F1C619614003E682A /* mealHistoryIcon.png in Resources */,
 				FF074D591C5F186B000DBBC1 /* GoogleService-Info.plist in Resources */,
 				FFCF47631C619595003E682A /* addMealIcon@3x -- too big.png in Resources */,
 				4949D4551C2F4A81003C84DA /* Assets.xcassets in Resources */,
-				FFCF476D1C619614003E682A /* mealHistoryIcon@2x.png in Resources */,
+				FF5F6AA61C631157008131A9 /* addMealIcon@2x.png in Resources */,
 				4949D4531C2F4A80003C84DA /* Main.storyboard in Resources */,
 				FFCF476E1C619614003E682A /* mealHistoryIcon@3x -- too big.png in Resources */,
 				FFCF47691C6195D3003E682A /* settingsIcon.png in Resources */,
