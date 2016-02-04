@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MealHistoryViewController: UIViewController {
+class MealHistoryViewController: MainScreenViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
