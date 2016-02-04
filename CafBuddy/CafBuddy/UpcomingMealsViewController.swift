@@ -7,10 +7,14 @@
 
 import UIKit
 
-class UpcomingMealsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MealAPICallback {
+class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MealAPICallback {
 
-    let screenSize: CGRect = UIScreen.mainScreen().bounds
     var collectionViewMain : UICollectionView?
+    
+    let mealObject = Meal()
+    
+    var matchedMeals = [MatchedMeal]()
+    var unMatchedMeals = [UnMatchedMeal]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +34,7 @@ class UpcomingMealsViewController: UIViewController, UICollectionViewDataSource,
 
     func initInterface() {
         
-        let mealObject = Meal()
         mealObject.mealCallback = self
-        mealObject.getAllUpcomingMeals("forsterj@stolaf.edu", authToken: "8UPKkyFUc5vU67PZlHIsGG")
         
         let collectionViewLayout : UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionViewLayout.minimumLineSpacing = 15
@@ -52,8 +54,13 @@ class UpcomingMealsViewController: UIViewController, UICollectionViewDataSource,
         self.view.addSubview(collectionViewMain!)
     }
     
-    func getAllUpcomingMealsAPICallback(success: Bool, errorMessage: String, unMatchedMeals: [GTLMealServiceApisMealApiUnMatchedMealMessage], matchedMeals: [GTLMealServiceApisMealApiMatchedMealMessage]) -> Void {
-
+    func updateAllMealsFromDatabase() {
+        let curUser = getCurrentUser()
+        mealObject.getAllUpcomingMeals(curUser.emailAddress, authToken: curUser.authenticationToken)
+    }
+    
+    func getAllUpcomingMealsAPICallback(success: Bool, errorMessage: String, unMatchedMeals: [UnMatchedMeal], matchedMeals: [MatchedMeal]) -> Void {
+        
     }
 
     
@@ -81,11 +88,14 @@ class UpcomingMealsViewController: UIViewController, UICollectionViewDataSource,
     }
     
     func numberOfSectionsInCollectionView(collectionView:UICollectionView) -> Int{
-        return 1
+        return 2
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        if (section == 0){
+            return matchedMeals.count
+        }
+        return unMatchedMeals.count
     }
 }
 

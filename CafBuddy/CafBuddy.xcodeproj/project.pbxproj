@@ -24,6 +24,10 @@
 		FF074D5A1C5F186B000DBBC1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF074D581C5F186B000DBBC1 /* GoogleService-Info.plist */; };
 		FF074D5B1C5F186B000DBBC1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF074D581C5F186B000DBBC1 /* GoogleService-Info.plist */; };
 		FF33D5961C5F12ED00A9A320 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = FF33D5951C5F12ED00A9A320 /* Podfile */; };
+		FF5F6AA61C631157008131A9 /* addMealIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5F6AA51C631157008131A9 /* addMealIcon@2x.png */; };
+		FF5F6AA81C6311DB008131A9 /* settingsIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5F6AA71C6311DB008131A9 /* settingsIcon@2x.png */; };
+		FF5F6AAA1C631244008131A9 /* mealHistoryIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5F6AA91C631244008131A9 /* mealHistoryIcon@2x.png */; };
+		FF5F6AAC1C63126E008131A9 /* mealHistoryIconOrig64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5F6AAB1C63126E008131A9 /* mealHistoryIconOrig64@2x.png */; };
 		FF72B9951C32269B009B7308 /* GTLObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B96B1C32269B009B7308 /* GTLObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FF72B9961C32269B009B7308 /* GTLQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B96D1C32269B009B7308 /* GTLQuery.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FF72B9971C32269B009B7308 /* GTLBatchQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B96F1C32269B009B7308 /* GTLBatchQuery.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -51,12 +55,11 @@
 		FFCF475B1C619451003E682A /* upcomingMealsIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCF475A1C619451003E682A /* upcomingMealsIcon@2x.png */; };
 		FFCF475D1C619462003E682A /* upcomingMealsIcon@3x -- too big.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCF475C1C619462003E682A /* upcomingMealsIcon@3x -- too big.png */; };
 		FFCF475F1C61957B003E682A /* addMealIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCF475E1C61957B003E682A /* addMealIcon.png */; };
-		FFCF47611C61958A003E682A /* addMealIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCF47601C61958A003E682A /* addMealIcon@2x.png */; };
+		FFCF47611C61958A003E682A /* addMealIconOrig64px@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCF47601C61958A003E682A /* addMealIconOrig64px@2x.png */; };
 		FFCF47631C619595003E682A /* addMealIcon@3x -- too big.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCF47621C619595003E682A /* addMealIcon@3x -- too big.png */; };
-		FFCF47671C6195D3003E682A /* settingsIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCF47641C6195D3003E682A /* settingsIcon@2x.png */; };
+		FFCF47671C6195D3003E682A /* settingsIconOrig64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCF47641C6195D3003E682A /* settingsIconOrig64@2x.png */; };
 		FFCF47681C6195D3003E682A /* settingsIcon@3x -- too big.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCF47651C6195D3003E682A /* settingsIcon@3x -- too big.png */; };
 		FFCF47691C6195D3003E682A /* settingsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCF47661C6195D3003E682A /* settingsIcon.png */; };
-		FFCF476D1C619614003E682A /* mealHistoryIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCF476A1C619614003E682A /* mealHistoryIcon@2x.png */; };
 		FFCF476E1C619614003E682A /* mealHistoryIcon@3x -- too big.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCF476B1C619614003E682A /* mealHistoryIcon@3x -- too big.png */; };
 		FFCF476F1C619614003E682A /* mealHistoryIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = FFCF476C1C619614003E682A /* mealHistoryIcon.png */; };
 		FFCF47721C61C777003E682A /* UpcomingMealCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCF47711C61C777003E682A /* UpcomingMealCollectionViewCell.swift */; };
@@ -81,6 +84,7 @@
 		FFCF47B11C61D7BB003E682A /* GTLUserServiceApisUserApiValidateUserResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFCF479C1C61D7BB003E682A /* GTLUserServiceApisUserApiValidateUserResponseMessage.m */; };
 		FFCF47B21C61D7BB003E682A /* GTLUserServiceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FFCF479E1C61D7BB003E682A /* GTLUserServiceConstants.m */; };
 		FFCF47B41C61D875003E682A /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCF47B31C61D875003E682A /* Meal.swift */; };
+		FFCF47B61C62CEE3003E682A /* MainScreenViewControlller.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCF47B51C62CEE3003E682A /* MainScreenViewControlller.swift */; };
 		FFFB21FE1C608C60005D7816 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21B81C608C60005D7816 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.m */; };
 		FFFB21FF1C608C60005D7816 /* GTLMealServiceApisMealApiCreateNewMealResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21BA1C608C60005D7816 /* GTLMealServiceApisMealApiCreateNewMealResponseMessage.m */; };
 		FFFB22001C608C60005D7816 /* GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFB21BC1C608C60005D7816 /* GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.m */; };
@@ -141,6 +145,10 @@
 		E337D8867002A5D30DB14F01 /* Pods-CafBuddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CafBuddy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CafBuddy/Pods-CafBuddy.debug.xcconfig"; sourceTree = "<group>"; };
 		FF074D581C5F186B000DBBC1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FF33D5951C5F12ED00A9A320 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		FF5F6AA51C631157008131A9 /* addMealIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addMealIcon@2x.png"; sourceTree = "<group>"; };
+		FF5F6AA71C6311DB008131A9 /* settingsIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingsIcon@2x.png"; sourceTree = "<group>"; };
+		FF5F6AA91C631244008131A9 /* mealHistoryIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mealHistoryIcon@2x.png"; sourceTree = "<group>"; };
+		FF5F6AAB1C63126E008131A9 /* mealHistoryIconOrig64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mealHistoryIconOrig64@2x.png"; sourceTree = "<group>"; };
 		FF72B9681C32269A009B7308 /* CafBuddy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CafBuddy-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		FF72B9691C32269B009B7308 /* GTLDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLDefines.h; sourceTree = "<group>"; };
 		FF72B96A1C32269B009B7308 /* GTLObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLObject.h; sourceTree = "<group>"; };
@@ -194,12 +202,11 @@
 		FFCF475A1C619451003E682A /* upcomingMealsIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upcomingMealsIcon@2x.png"; sourceTree = "<group>"; };
 		FFCF475C1C619462003E682A /* upcomingMealsIcon@3x -- too big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "upcomingMealsIcon@3x -- too big.png"; path = "CafBuddy/upcomingMealsIcon@3x -- too big.png"; sourceTree = "<group>"; };
 		FFCF475E1C61957B003E682A /* addMealIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addMealIcon.png; sourceTree = "<group>"; };
-		FFCF47601C61958A003E682A /* addMealIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addMealIcon@2x.png"; sourceTree = "<group>"; };
+		FFCF47601C61958A003E682A /* addMealIconOrig64px@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addMealIconOrig64px@2x.png"; sourceTree = "<group>"; };
 		FFCF47621C619595003E682A /* addMealIcon@3x -- too big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addMealIcon@3x -- too big.png"; sourceTree = "<group>"; };
-		FFCF47641C6195D3003E682A /* settingsIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingsIcon@2x.png"; sourceTree = "<group>"; };
+		FFCF47641C6195D3003E682A /* settingsIconOrig64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingsIconOrig64@2x.png"; sourceTree = "<group>"; };
 		FFCF47651C6195D3003E682A /* settingsIcon@3x -- too big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingsIcon@3x -- too big.png"; sourceTree = "<group>"; };
 		FFCF47661C6195D3003E682A /* settingsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsIcon.png; sourceTree = "<group>"; };
-		FFCF476A1C619614003E682A /* mealHistoryIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mealHistoryIcon@2x.png"; sourceTree = "<group>"; };
 		FFCF476B1C619614003E682A /* mealHistoryIcon@3x -- too big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mealHistoryIcon@3x -- too big.png"; sourceTree = "<group>"; };
 		FFCF476C1C619614003E682A /* mealHistoryIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mealHistoryIcon.png; sourceTree = "<group>"; };
 		FFCF47711C61C777003E682A /* UpcomingMealCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingMealCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -244,6 +251,7 @@
 		FFCF479D1C61D7BB003E682A /* GTLUserServiceConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLUserServiceConstants.h; sourceTree = "<group>"; };
 		FFCF479E1C61D7BB003E682A /* GTLUserServiceConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceConstants.m; sourceTree = "<group>"; };
 		FFCF47B31C61D875003E682A /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		FFCF47B51C62CEE3003E682A /* MainScreenViewControlller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenViewControlller.swift; sourceTree = "<group>"; };
 		FFFB21B61C608C60005D7816 /* GTLMealService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealService.h; sourceTree = "<group>"; };
 		FFFB21B71C608C60005D7816 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiCreateNewMealRequestMessage.h; sourceTree = "<group>"; };
 		FFFB21B81C608C60005D7816 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiCreateNewMealRequestMessage.m; sourceTree = "<group>"; };
@@ -538,13 +546,16 @@
 				FFCF475A1C619451003E682A /* upcomingMealsIcon@2x.png */,
 				FFCF475C1C619462003E682A /* upcomingMealsIcon@3x -- too big.png */,
 				FFCF475E1C61957B003E682A /* addMealIcon.png */,
-				FFCF47601C61958A003E682A /* addMealIcon@2x.png */,
+				FF5F6AA51C631157008131A9 /* addMealIcon@2x.png */,
+				FFCF47601C61958A003E682A /* addMealIconOrig64px@2x.png */,
 				FFCF47621C619595003E682A /* addMealIcon@3x -- too big.png */,
 				FFCF47661C6195D3003E682A /* settingsIcon.png */,
-				FFCF47641C6195D3003E682A /* settingsIcon@2x.png */,
+				FF5F6AA71C6311DB008131A9 /* settingsIcon@2x.png */,
+				FFCF47641C6195D3003E682A /* settingsIconOrig64@2x.png */,
 				FFCF47651C6195D3003E682A /* settingsIcon@3x -- too big.png */,
 				FFCF476C1C619614003E682A /* mealHistoryIcon.png */,
-				FFCF476A1C619614003E682A /* mealHistoryIcon@2x.png */,
+				FF5F6AA91C631244008131A9 /* mealHistoryIcon@2x.png */,
+				FF5F6AAB1C63126E008131A9 /* mealHistoryIconOrig64@2x.png */,
 				FFCF476B1C619614003E682A /* mealHistoryIcon@3x -- too big.png */,
 			);
 			name = "Tab Bar Images";
@@ -566,6 +577,7 @@
 				4949D47D1C2F6E03003C84DA /* LoginViewController.swift */,
 				4949D47B1C2F56E1003C84DA /* RegisterViewController.swift */,
 				4949D44D1C2F4A80003C84DA /* UpcomingMealsViewController.swift */,
+				FFCF47B51C62CEE3003E682A /* MainScreenViewControlller.swift */,
 				4949D44F1C2F4A80003C84DA /* NewMealViewController.swift */,
 				FFFB22211C615373005D7816 /* MealHistoryViewController.swift */,
 				FFFB22231C6153BE005D7816 /* ProfileViewController.swift */,
@@ -692,18 +704,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFCF47671C6195D3003E682A /* settingsIcon@2x.png in Resources */,
+				FFCF47671C6195D3003E682A /* settingsIconOrig64@2x.png in Resources */,
 				FF33D5961C5F12ED00A9A320 /* Podfile in Resources */,
+				FF5F6AAC1C63126E008131A9 /* mealHistoryIconOrig64@2x.png in Resources */,
 				FFCF47591C61943A003E682A /* upcomingMealsIcon.png in Resources */,
+				FF5F6AAA1C631244008131A9 /* mealHistoryIcon@2x.png in Resources */,
 				FFCF475F1C61957B003E682A /* addMealIcon.png in Resources */,
+				FF5F6AA81C6311DB008131A9 /* settingsIcon@2x.png in Resources */,
 				FFCF475D1C619462003E682A /* upcomingMealsIcon@3x -- too big.png in Resources */,
-				FFCF47611C61958A003E682A /* addMealIcon@2x.png in Resources */,
+				FFCF47611C61958A003E682A /* addMealIconOrig64px@2x.png in Resources */,
 				FFCF47681C6195D3003E682A /* settingsIcon@3x -- too big.png in Resources */,
 				FFCF476F1C619614003E682A /* mealHistoryIcon.png in Resources */,
 				FF074D591C5F186B000DBBC1 /* GoogleService-Info.plist in Resources */,
 				FFCF47631C619595003E682A /* addMealIcon@3x -- too big.png in Resources */,
 				4949D4551C2F4A81003C84DA /* Assets.xcassets in Resources */,
-				FFCF476D1C619614003E682A /* mealHistoryIcon@2x.png in Resources */,
+				FF5F6AA61C631157008131A9 /* addMealIcon@2x.png in Resources */,
 				4949D4531C2F4A80003C84DA /* Main.storyboard in Resources */,
 				FFCF476E1C619614003E682A /* mealHistoryIcon@3x -- too big.png in Resources */,
 				FFCF47691C6195D3003E682A /* settingsIcon.png in Resources */,
@@ -797,6 +812,7 @@
 				FFFB22241C6153BE005D7816 /* ProfileViewController.swift in Sources */,
 				FF72B9971C32269B009B7308 /* GTLBatchQuery.m in Sources */,
 				FF72B99F1C32269B009B7308 /* GTLJSONParser.m in Sources */,
+				FFCF47B61C62CEE3003E682A /* MainScreenViewControlller.swift in Sources */,
 				FFFB22031C608C60005D7816 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.m in Sources */,
 				4949D47C1C2F56E1003C84DA /* RegisterViewController.swift in Sources */,
 				FFFB22051C608C60005D7816 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.m in Sources */,
