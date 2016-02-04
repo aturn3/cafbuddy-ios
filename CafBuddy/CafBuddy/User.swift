@@ -8,11 +8,20 @@
 import Foundation
 import Locksmith
 
-@objc protocol UserAPICallback {
+protocol UserAPICallback {
     // MARK: - Methods
     
-    optional func createAccountUserAPICallback(success: Bool, errorMessage: String) -> Void
-    optional func loginAccountUserAPICallback(success: Bool, errorMessage: String) -> Void
+    func createAccountUserAPICallback(success: Bool, errorMessage: String) -> Void
+    func loginAccountUserAPICallback(success: Bool, errorMessage: String) -> Void
+}
+
+extension UserAPICallback {
+    func createAccountUserAPICallback(success: Bool, errorMessage: String) -> Void {
+        // Default implementation
+    }
+    func loginAccountUserAPICallback(success: Bool, errorMessage: String) -> Void {
+        // Default implementation
+    }
 }
 
 class User: NSObject {
@@ -81,20 +90,20 @@ class User: NSObject {
         // Extract first name and last name from firstAndLastName
         let fullNameArray = firstAndLastName.componentsSeparatedByString(" ")
         let firstName = fullNameArray[0]
-        let lastName = fullNameArray[1]
+        let lastName = fullNameArray.count > 1 ? fullNameArray[1] : String()
         
         // Check if firstName, lastName, emailAddress, or password is blank
         if firstName.isEmpty || lastName.isEmpty {
-            self.userCallback?.createAccountUserAPICallback?(false, errorMessage: "Please enter a first and last name")
+            self.userCallback?.createAccountUserAPICallback(false, errorMessage: "Please enter a first and last name")
         }
             
         else if emailAddress.isEmpty || password.isEmpty {
-            self.userCallback?.createAccountUserAPICallback?(false, errorMessage: "All fields are required")
+            self.userCallback?.createAccountUserAPICallback(false, errorMessage: "All fields are required")
         }
         
         // Check validity of email
         else if emailRegex.numberOfMatchesInString(emailAddress, options: [], range: NSMakeRange(0, emailAddress.characters.count)) == 0 {
-            self.userCallback?.createAccountUserAPICallback?(false, errorMessage: "Please enter a valid email address")
+            self.userCallback?.createAccountUserAPICallback(false, errorMessage: "Please enter a valid email address")
         }
         
         // Email is valid and password is not blank
@@ -138,27 +147,27 @@ class User: NSObject {
                     self.emailAddress = emailAddress
                     self.authenticationToken = response.authToken
                     
-                    self.userCallback?.createAccountUserAPICallback?(true, errorMessage: "Succcessfully registered! Please confirm your registration via email.")
+                    self.userCallback?.createAccountUserAPICallback(true, errorMessage: "Succcessfully registered! Please confirm your registration via email.")
                 }
 
                 // API call unsuccessful
                 else if response.errorNumber == -2 {
-                    self.userCallback?.createAccountUserAPICallback?(false, errorMessage: response.errorMessage)
+                    self.userCallback?.createAccountUserAPICallback(false, errorMessage: response.errorMessage)
                 }
                 
                 // API call unsuccessful
                 else if response.errorNumber == -3 {
-                    self.userCallback?.createAccountUserAPICallback?(false, errorMessage: response.errorMessage)
+                    self.userCallback?.createAccountUserAPICallback(false, errorMessage: response.errorMessage)
                 }
                 
                 // API call unsuccessful
                 else if response.errorNumber == -4 {
-                    self.userCallback?.createAccountUserAPICallback?(false, errorMessage: response.errorMessage)
+                    self.userCallback?.createAccountUserAPICallback(false, errorMessage: response.errorMessage)
                 }
                 
                 // API call unsuccessful
                 else {
-                    self.userCallback?.createAccountUserAPICallback?(false, errorMessage: APPLICATION_ERROR_OR_NETWORK_PROBLEM)
+                    self.userCallback?.createAccountUserAPICallback(false, errorMessage: APPLICATION_ERROR_OR_NETWORK_PROBLEM)
                 }
             })
         }
@@ -170,12 +179,12 @@ class User: NSObject {
         let emailRegex = try! NSRegularExpression(pattern: emailRegularExpressionPattern, options: [])
             
         if emailAddress.isEmpty || password.isEmpty {
-            self.userCallback?.loginAccountUserAPICallback?(false, errorMessage: "All fields are required")
+            self.userCallback?.loginAccountUserAPICallback(false, errorMessage: "All fields are required")
         }
             
         // Check validity of email
         else if emailRegex.numberOfMatchesInString(emailAddress, options: [], range: NSMakeRange(0, emailAddress.characters.count)) == 0 {
-            self.userCallback?.loginAccountUserAPICallback?(false, errorMessage: "Please enter a valid email address")
+            self.userCallback?.loginAccountUserAPICallback(false, errorMessage: "Please enter a valid email address")
         }
             
         // Email is valid and password is not blank
@@ -217,22 +226,22 @@ class User: NSObject {
                     self.emailAddress = emailAddress
                     self.authenticationToken = response.authToken
                     
-                    self.userCallback?.loginAccountUserAPICallback?(true, errorMessage: "Login successful")
+                    self.userCallback?.loginAccountUserAPICallback(true, errorMessage: "Login successful")
                 }
                     
                 // API call unsuccessful
                 else if response.errorNumber == -1 {
-                    self.userCallback?.loginAccountUserAPICallback?(false, errorMessage: response.errorMessage)
+                    self.userCallback?.loginAccountUserAPICallback(false, errorMessage: response.errorMessage)
                 }
                     
                 // API call unsuccessful
                 else if response.errorNumber == -3 {
-                    self.userCallback?.loginAccountUserAPICallback?(false, errorMessage: response.errorMessage)
+                    self.userCallback?.loginAccountUserAPICallback(false, errorMessage: response.errorMessage)
                 }
                     
                 // API call unsuccessful
                 else {
-                    self.userCallback?.loginAccountUserAPICallback?(false, errorMessage: APPLICATION_ERROR_OR_NETWORK_PROBLEM)
+                    self.userCallback?.loginAccountUserAPICallback(false, errorMessage: APPLICATION_ERROR_OR_NETWORK_PROBLEM)
                 }
             })
         }

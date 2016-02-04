@@ -157,6 +157,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UserAPICallbac
     
     // Login Button Action
     func loginButtonPressed(sender: UIButton) {
+        self.view.endEditing(true)
+        
         let emailAddress = self.emailAddressField.text
         let password = self.passwordField.text
         
