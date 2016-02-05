@@ -42,6 +42,7 @@ class UnMatchedMeal {
     var creatorKey : String? // the key for the creator the meal
     var mealType : MealType? // the type of the meal
     var numPeople : Int? // the number of people who are request in the meal (including the creator)
+    var mealKey : String? // the unique identifier of the UnMatchedMeal in the backend database
 }
 
 class MatchedMeal {
@@ -50,6 +51,7 @@ class MatchedMeal {
     var numPeople : Int? // the number of people attending the meal total
     var mealType : MealType? // the type of the meal
     var peopleKeys = [String]() // the keys of all the people in the meal
+    var mealKey : String? // the unique identifier of the MatchedMeal in the backend database
 }
 
 class Meal: NSObject {
@@ -133,6 +135,7 @@ class Meal: NSObject {
         theMatchedMeal.numPeople = matchedMealAPI.numPeople as Int
         theMatchedMeal.peopleKeys = matchedMealAPI.peopleKeys as! [String]
         theMatchedMeal.mealType = MealType(rawValue: matchedMealAPI.mealType as Int)
+        theMatchedMeal.mealKey = matchedMealAPI.mealKey
         return theMatchedMeal
     }
     
@@ -144,6 +147,7 @@ class Meal: NSObject {
         theUnMatchedMeal.numPeople = unMatchedMealApi.numPeople as Int
         theUnMatchedMeal.creatorKey = unMatchedMealApi.creatorKey
         theUnMatchedMeal.mealType = MealType(rawValue: unMatchedMealApi.mealType as Int)
+        theUnMatchedMeal.mealKey = unMatchedMealApi.mealKey
         return theUnMatchedMeal
     }
 
