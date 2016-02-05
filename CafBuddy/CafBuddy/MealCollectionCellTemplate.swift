@@ -57,12 +57,16 @@ class MealCollectionCellTemplate : UICollectionViewCell {
         numButtons = numButtonsInBar
         showImage = shouldShowImage
         
+        self.backgroundColor = COLOR_WHITE
+        
+        // create the image view if should
         if (showImage) {
             // no constraints here because this should be pretty static and not change much
             imageMealType.frame = CGRectMake(self.contentView.frame.width - 15 - 32, 10, 32, 32)
             self.contentView.addSubview(imageMealType)
         }
         
+        // create the correct number of buttons
         let buttonHeight : CGFloat = 40
         for (var i = 0; i < numButtons; i++) {
             let button = UIButton()
@@ -108,6 +112,11 @@ class MealCollectionCellTemplate : UICollectionViewCell {
             if (icon != nil) {
                 let newIcon = scaledImage(icon!, scaledToSize: CGSize(width: 20,height: 20))
                 buttons[index].setImage(filledImageFrom(newIcon, color: color), forState: UIControlState.Normal)
+            }
+            else {
+                // have to actually set it to nil, or, since cells are reused, it will show the old icon if
+                // no new icon replaces the old icon that was there already
+                buttons[index].setImage(nil, forState: UIControlState.Normal)
             }
             buttons[index].enabled = isClickable
         }
