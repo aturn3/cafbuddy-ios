@@ -2,13 +2,11 @@
 //  MealListingCell.swift
 //  Caf Buddy
 //
-//  Created by Jacob Forster on 2/26/15.
-//  Copyright (c) 2015 St. Olaf Acm. All rights reserved.
-//
-//
-//import Foundation
-//import UIKit
-//
+//  Copyright (c) 2015 Caf Buddy. All rights reserved.
+
+
+import Foundation
+import UIKit
 
 
 class UpcomingMealListingCell : MealCollectionCellTemplate {
@@ -32,67 +30,86 @@ class UpcomingMealListingCell : MealCollectionCellTemplate {
         
         decorateButtons(mealStatus)
         setMealImage(mealType)
-    
-        // b{Breakfast}
-        // with b{1} other person
-        // on b{Monday}
-        // between b{11:00 AM} and b{12:00 PM}
         
-        //this is the string that will ultimately be displayed.. lets build it up from this point
-        var totalMealTextString = String()
-        
-        if (mealType == MealType.Breakfast) {
-            totalMealTextString = "Breakfast"
-        }
-        else if (mealType == MealType.Lunch) {
-            totalMealTextString = "Lunch"
-        }
-        else {
-            totalMealTextString = "Dinner"
-        }
-        
-        totalMealTextString += "\nwith "
-        
-        let numBuddiesNSNumber = NSNumber(integer: numBuddies - 1)
-        let numberFormatter = NSNumberFormatter()
-        numberFormatter.numberStyle = NSNumberFormatterStyle.SpellOutStyle
-        totalMealTextString += numberFormatter.stringFromNumber(numBuddiesNSNumber)!
-        
-        if (numBuddies - 1 < 2) { totalMealTextString += " other buddy\non" }
-        else { totalMealTextString += " other buddies\non" }
-        
-        totalMealTextString += startTime.toReadableDateOnlyStringShort()
-        
-        totalMealTextString += "\nbetween "
-        
-        totalMealTextString += startTime.toReadableTimeOnlyString() + " and " + endTime!.toReadableTimeOnlyString()
-        
-        
-        /*additional meal details needed*/
+        // set up the label that will hold all of the text
         labelMealText.font = UIFont.systemFontOfSize(15)
         labelMealText.textAlignment = NSTextAlignment.Left
-//        labelMealText.textColor = colorWithHexString()
         labelMealText.frame = CGRectMake(15, 10, contentView.frame.size.width, contentView.frame.size.height)
+        // next two lines allow the label to wrap on the text at a newline character
         labelMealText.lineBreakMode = NSLineBreakMode.ByWordWrapping
         labelMealText.numberOfLines = 0
         
+        // these are all the parts of the string that will ultimately be displayed - building up as an array so can bold certain parts and change font sizes
+        var totalStringArr = [String]()
+        
+        // get the meal type string
+        if (mealType == MealType.Breakfast) {
+            totalStringArr.append("Breakfast")
+        }
+        else if (mealType == MealType.Lunch) {
+            totalStringArr.append("Lunch")
+        }
+        else {
+           totalStringArr.append("Dinner")
+        }
+        
+        totalStringArr.append("\nwith ")
+        
+        // get the number of buddies string
+        let numBuddiesNSNumber = NSNumber(integer: numBuddies - 1)
+        let numberFormatter = NSNumberFormatter()
+        numberFormatter.numberStyle = NSNumberFormatterStyle.SpellOutStyle
+        totalStringArr.append(numberFormatter.stringFromNumber(numBuddiesNSNumber)!)
+        
+        if (numBuddies - 1 < 2) { totalStringArr.append(" other buddy\non ") }
+        else { totalStringArr.append(" other buddies\non") }
+        
+        // get the meal date string
+        totalStringArr.append(startTime.toReadableDateOnlyStringShort())
+        
+        if (mealStatus == MealStatus.UnMatched) {
+            totalStringArr.append("\nbetween ")
+        }
+        else {
+            totalStringArr.append("\nat ")
+        }
+        
+        // get the meal start time (if matched) or range (if unmatched)
+        totalStringArr.append(startTime.toReadableTimeOnlyString())
+        if (mealStatus == MealStatus.UnMatched && endTime != nil) {
+            totalStringArr.append(" and ")
+            totalStringArr.append(endTime!.toReadableTimeOnlyString())
+        }
+        
+        // first go through once to build up the string
+        var totalMealTextString = String()
+        for stringPart in totalStringArr {
+            totalMealTextString += stringPart
+        }
+        
+        // now initialize the string as all normal font
         let mealText = NSMutableAttributedString(string: totalMealTextString,attributes: [NSFontAttributeName:UIFont.systemFontOfSize(15)])
-        mealText.addAttribute(NSFontAttributeName, value: UIFont.boldSystemFontOfSize(17), range: NSRange(location: 0, length: 9))
+        var curIndx = 0
+        // now go through and bold the appropriate parts of the array
+        for (index, stringPart) in totalStringArr.enumerate() {
+            // if its a part that should be bolded (odd index of array since starts out with meal type)
+            var fontSize = CGFloat(15)
+            if (index%2 == 0) {
+                if (index == 0) { fontSize = CGFloat(17) }
+                mealText.addAttribute(NSFontAttributeName, value: UIFont.boldSystemFontOfSize(fontSize), range: NSRange(location: curIndx, length: stringPart.characters.count))
+            }
+            curIndx += stringPart.characters.count
+        }
+        
+        // now lets space out the lines a bit more..
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 3
+        mealText.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, mealText.length))
 
-        
-        
         labelMealText.attributedText = mealText
-        labelMealText.sizeToFit()
-//
-//        labelMealTime.font = UIFont.systemFontOfSize(15)
-//        labelMealTime.textAlignment = NSTextAlignment.Center
-        //labelMealType.textColor = colorWithHexString()
-//    labelMealTime.frame = CGRectMake(0, labelMealDate.frame.origin.y + labelMealDate.frame.height + 5, contentView.frame.size.width, 20)
-
+        labelMealText.sizeToFit() // resizes the label to as small as possible in upper left of the cell
         
         self.contentView.addSubview(labelMealText)
-//        self.contentView.addSubview(labelMealTime)
-//
     }
     
     private func decorateButtons(mealStatus : MealStatus) {
