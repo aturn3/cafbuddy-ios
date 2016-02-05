@@ -7,6 +7,7 @@
 
 import UIKit
 import Foundation
+import EventKit
 
 class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MealAPICallback, MealCollectionCellCallBack {
 
@@ -72,7 +73,56 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
     }
 
     func mealCellButtonWasPressed(buttonIndex: Int, sectionIndex: Int, rowIndex: Int) {
-        print("The button that was pressed was: " + String(buttonIndex) + " in the section: " + String(sectionIndex))
+        // if dealing with matched meal buttons
+        if (sectionIndex == 0) {
+            // if clicked the add to calendar button
+            if (buttonIndex == 0) {
+                addMealToCalendar(rowIndex)
+            }
+        }
+        //  if dealing with unmatched meal buttons
+        else {
+            
+        }
+        
+    }
+    
+    // add a matched meal to the calendar
+    func addMealToCalendar(cellRowIndex : Int) {
+        // get the actual meal
+        let theMeal = matchedMeals[cellRowIndex]
+
+        // create the meal title
+        var eventTitle = String()
+        eventTitle += MealTypeStrings[theMeal.mealType!.rawValue] + " with " + convertIntToWordEquivalent(theMeal.numPeople! - 1)
+        if (theMeal.numPeople > 2) { eventTitle += " buddies" }
+        else { eventTitle += " buddy" }
+        
+        // now lets save the actual meal
+        let calendarStore = EKEventStore()
+        calendarStore.requestAccessToEntityType(.Event) {
+            (accessGranted: Bool, error: NSError?) in
+            // if the user has not granted us acess
+            if (!accessGranted) {
+                createAlert("Oh no!", message: "You didn't grant CafBuddy access to your calendar. You can change this in settings.", actionMessage: "Okay")
+                return
+            }
+            // if they have granted us access... then lets create the actual event
+            let theMealEvent = EKEvent(eventStore: calendarStore)
+            theMealEvent.title = eventTitle
+            theMealEvent.startDate = theMeal.startTime!
+            theMealEvent.endDate = theMealEvent.startDate.dateByAddingTimeInterval(60*45) //assume 45 minutes long
+            theMealEvent.calendar = calendarStore.defaultCalendarForNewEvents
+            theMealEvent.addAlarm(EKAlarm(relativeOffset: -60*60*2)) // adds an alarm that will fire two hours before the event starts
+            //actually add the event
+            do {
+                try calendarStore.saveEvent(theMealEvent, span: EKSpan.ThisEvent, commit: true)
+                //self.savedEventId = event.eventIdentifier //the event identifier.. we dont need this now but if want to access later at some point we will need this
+                createAlert("Meal Reminder Created", message: "The meal '" + eventTitle + "' was saved to your calendar with a reminder set for two hours before the meal starts.", actionMessage: "Okay")
+            } catch {
+                createAlert("Oh no!", message: "There was a problem adding the event to your calendar. Please try again.", actionMessage: "Okay")
+            }
+        }
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -83,17 +133,27 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
         mealCollectionCell.buttonCallBack = self;
         mealCollectionCell.cellSectionIndex = indexPath.section
         mealCollectionCell.cellRowIndex = indexPath.row
-        
-        //if the seciton is MatchedMeals
-        var theMealType = MealType.Breakfast
+
+        // if matched meals
         if (indexPath.section == 0) {
-            theMealType = (matchedMeals[indexPath.row].mealType)!
+            mealCollectionCell.initializeUpcomingMealCellContents(
+                MealStatus(rawValue: indexPath.section)!,
+                mealType: (matchedMeals[indexPath.row].mealType)!,
+                numBuddies: matchedMeals[indexPath.row].numPeople!,
+                startTime: matchedMeals[indexPath.row].startTime!
+            )
         }
+        // if unmatched meals
         else {
-            theMealType = (unMatchedMeals[indexPath.row].mealType)!
+            mealCollectionCell.initializeUpcomingMealCellContents(
+                MealStatus(rawValue: indexPath.section)!,
+                mealType: (unMatchedMeals[indexPath.row].mealType)!,
+                numBuddies: unMatchedMeals[indexPath.row].numPeople!,
+                startTime: unMatchedMeals[indexPath.row].startRange!,
+                endTime: unMatchedMeals[indexPath.row].endRange!
+            )
         }
-//        mealCollectionCell.initializeUpcomingMealCellContents(MealStatus(rawValue: indexPath.section)!, mealType: theMealType, )
-        mealCollectionCell.initializeUpcomingMealCellContents(MealStatus(rawValue: indexPath.section)!, mealType: theMealType, numBuddies: unMatchedMeals[indexPath.row].numPeople!, startTime: unMatchedMeals[indexPath.row].startRange!, endTime: unMatchedMeals[indexPath.row].endRange!)
+        
         return mealCollectionCell
     }
     
