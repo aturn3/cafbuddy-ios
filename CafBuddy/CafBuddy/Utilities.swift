@@ -64,6 +64,7 @@ let SCREEN_HEIGHT = SCREEN_SIZE.height
 let STATUS_BAR_HEIGHT = 20 as CGFloat
 let NAV_BAR_HEIGHT = 44 as CGFloat
 let TAB_BAR_HEIGHT = 49 as CGFloat
+let MAIN_VIEW_HEIGHT = SCREEN_HEIGHT - STATUS_BAR_HEIGHT - NAV_BAR_HEIGHT - TAB_BAR_HEIGHT
 
 // MARK: - General Functions
 
@@ -178,6 +179,30 @@ extension String {
         dateFormatter.dateFormat = "MMMM dd yyyy HH:mm:ss"
         return dateFormatter.dateFromString(self)!
     }
+}
+
+func getCurrentTime() -> NSDateComponents {
+    // get the current date and time
+    let currentDateTime = NSDate()
+    
+    // get the user's calendar
+    let userCalendar = NSCalendar.currentCalendar()
+    
+    // choose which date and time components are needed
+    let requestedComponents: NSCalendarUnit = [
+        NSCalendarUnit.Year,
+        NSCalendarUnit.Month,
+        NSCalendarUnit.Day,
+        NSCalendarUnit.Hour,
+        NSCalendarUnit.Minute,
+        NSCalendarUnit.Second,
+        NSCalendarUnit.Nanosecond
+    ]
+    
+    // get the components
+    let dateTimeComponents = userCalendar.components(requestedComponents, fromDate: currentDateTime)
+    
+    return dateTimeComponents
 }
 
 // MARK: - Service Object Methods

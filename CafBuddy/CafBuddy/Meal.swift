@@ -11,11 +11,15 @@ protocol MealAPICallback {
     // MARK: - Methods
     
     func getAllUpcomingMealsAPICallback(success: Bool, errorMessage: String, unMatchedMeals: [UnMatchedMeal], matchedMeals: [MatchedMeal]) -> Void
+    func createMealAPICallback(success: Bool, errorMessage: String) -> Void
 }
 
 extension MealAPICallback {
     func getAllUpcomingMealsAPICallback(success: Bool, errorMessage: String, unMatchedMeals: [UnMatchedMeal], matchedMeals: [MatchedMeal]) -> Void {
         //nothing happens in default implementation
+    }
+    func createMealAPICallback(success: Bool, errorMessage: String) {
+        // Default implementation
     }
 }
 
@@ -141,5 +145,8 @@ class Meal: NSObject {
         theUnMatchedMeal.mealType = MealType(rawValue: unMatchedMealApi.mealType as Int)
         return theUnMatchedMeal
     }
-
+    
+    func createMeal(user: User, day: String, time: String, numberOfPeople: String) {
+        
+    }
 }
