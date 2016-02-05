@@ -3,7 +3,7 @@
  */
 
 //
-//  GTLMealServiceApisMealApiMatchedMealMessage.h
+//  GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage.h
 //
 
 // ----------------------------------------------------------------------------
@@ -13,7 +13,7 @@
 // Description:
 //   API for dealing with meals
 // Classes:
-//   GTLMealServiceApisMealApiMatchedMealMessage (0 custom class methods, 6 custom properties)
+//   GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -23,14 +23,11 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLMealServiceApisMealApiMatchedMealMessage
+//   GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage
 //
 
-@interface GTLMealServiceApisMealApiMatchedMealMessage : GTLObject
-@property (nonatomic, copy) NSString *matchedDate;
+@interface GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage : GTLObject
+@property (nonatomic, copy) NSString *authToken;
+@property (nonatomic, copy) NSString *emailAddress;
 @property (nonatomic, copy) NSString *mealKey;
-@property (nonatomic, retain) NSNumber *mealType;  // longLongValue
-@property (nonatomic, retain) NSNumber *numPeople;  // longLongValue
-@property (nonatomic, retain) NSArray *peopleKeys;  // of NSString
-@property (nonatomic, copy) NSString *startTime;
 @end
