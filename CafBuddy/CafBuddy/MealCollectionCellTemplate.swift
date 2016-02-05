@@ -2,8 +2,7 @@
 //  CollectionListingTemplateCell.swift
 //  Caf Buddy
 //
-//  Created by Jacob Forster on 3/29/15.
-//  Copyright (c) 2015 St. Olaf Acm. All rights reserved.
+//  Copyright (c) 2015 Caf Buddy. All rights reserved.
 //
 
 import Foundation
