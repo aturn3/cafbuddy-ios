@@ -11,11 +11,15 @@ protocol MealAPICallback {
     // MARK: - Methods
     
     func getAllUpcomingMealsAPICallback(success: Bool, errorMessage: String, unMatchedMeals: [UnMatchedMeal], matchedMeals: [MatchedMeal]) -> Void
+    func deleteUnMatchedMeal(success: Bool, errorMessage: String, mealKeyDeleted: String)
 }
 
 extension MealAPICallback {
     func getAllUpcomingMealsAPICallback(success: Bool, errorMessage: String, unMatchedMeals: [UnMatchedMeal], matchedMeals: [MatchedMeal]) -> Void {
         //nothing happens in default implementation
+    }
+    func deleteUnMatchedMeal(success: Bool, errorMessage: String, mealKeyDeleted: String) {
+        //nothing happens in default implmentation
     }
 }
 
@@ -64,7 +68,7 @@ class Meal: NSObject {
     
     override init() {}
     
-    // MARK: - Methods
+    // MARK: - API Call Methods
     
     func getAllUpcomingMeals(emailAddress: String, authToken: String) {
         // Create Meal Service Object
@@ -111,6 +115,46 @@ class Meal: NSObject {
 
     }
     
+    func deleteUnMatchedMeal(emailAddress: String, authToken: String, mealKey: String) {
+        // Create Meal Service Object
+        let mealServiceObject = createMealServiceObject()
+        
+        // Create User Service Request Message
+        let mealMessage = GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage()
+        mealMessage.emailAddress = emailAddress
+        mealMessage.authToken = authToken
+        if (mealKey.characters.count > 0) {
+            mealMessage.mealKey = mealKey
+        }
+        
+        // Create User Service Query
+        let query: GTLQueryMealService = GTLQueryMealService.queryForDeleteUnMatchedMealWithObject(mealMessage)
+        
+        // Call API with query
+        mealServiceObject!.executeQuery(query, completionHandler: { (ticket: GTLServiceTicket!, object: AnyObject!, error: NSError!) -> Void in
+            
+            let response: GTLMealServiceApisMealApiDeleteUnMatchedMealResponseMessage = object as! GTLMealServiceApisMealApiDeleteUnMatchedMealResponseMessage
+            
+            // API call successful
+            if response.errorNumber == 200 {
+                self.mealCallback?.deleteUnMatchedMeal(true, errorMessage: "Success", mealKeyDeleted: mealKey)
+            }
+                
+                // API call unsuccessful
+            else if (response.errorNumber == -100 || response.errorNumber == -2 || response.errorNumber == -3 || response.errorNumber == -4) {
+                self.mealCallback?.deleteUnMatchedMeal(false, errorMessage: response.errorMessage, mealKeyDeleted: "")
+            }
+                
+                // API call unsuccessful
+            else {
+                self.mealCallback?.deleteUnMatchedMeal(false, errorMessage: APPLICATION_ERROR_OR_NETWORK_PROBLEM, mealKeyDeleted: "")
+            }
+        })
+
+    }
+    
+    
+    // MARK: - Helper Methods
     
     func convertAPIMatchedMealsArrayToClientMatchedMealsArray(matchedMealsAPI: NSArray) -> [MatchedMeal] {
         var matchedMeals = [MatchedMeal]()
