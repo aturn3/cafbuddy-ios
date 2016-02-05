@@ -72,28 +72,9 @@ let STATUS_BAR_HEIGHT = 20 as CGFloat
 let NAV_BAR_HEIGHT = 44 as CGFloat
 let TAB_BAR_HEIGHT = 49 as CGFloat
 
-// MARK: - General Functions
+// MARK: Image Functions
 
-func createAlert(title: String, message: String, actionMessage: String) -> UIAlertController {
-    let alertView = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-    let action = UIAlertAction(title: actionMessage, style: .Default, handler: nil)
-    alertView.addAction(action)
-    
-    return alertView
-}
-
-// creates an image of the specified size as a block of the specified color
-func getImageWithColor(color: UIColor, width: CGFloat, height: CGFloat) -> UIImage {
-    let rect = CGRectMake(0, 0, width, height)
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(width, height), false, 0)
-    color.setFill()
-    UIRectFill(rect)
-    let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    return image
-}
-
-
+// modifies the given image to be filled with the given color
 func filledImageFrom(source : UIImage, color : UIColor) -> UIImage {
     // begin a new image context, to draw our colored image onto with the right scale
     UIGraphicsBeginImageContextWithOptions(source.size, false, UIScreen.mainScreen().scale)
@@ -117,6 +98,18 @@ func filledImageFrom(source : UIImage, color : UIColor) -> UIImage {
     //return the color-burned image
     return coloredImg;
 }
+
+// creates an image of the specified size as a block of the specified color
+func getImageWithColor(color: UIColor, width: CGFloat, height: CGFloat) -> UIImage {
+    let rect = CGRectMake(0, 0, width, height)
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(width, height), false, 0)
+    color.setFill()
+    UIRectFill(rect)
+    let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return image
+}
+
 // credit to @Paul Lynch http://stackoverflow.com/a/2658801/2580204 (converted to swift compatible)
 func scaledImage(image : UIImage, scaledToSize newSize:CGSize) -> UIImage {
     //UIGraphicsBeginImageContext(newSize);
@@ -127,6 +120,23 @@ func scaledImage(image : UIImage, scaledToSize newSize:CGSize) -> UIImage {
     let newImage = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext();
     return newImage;
+}
+
+// MARK: - General Functions
+
+func createAlert(title: String, message: String, actionMessage: String) -> UIAlertController {
+    let alertView = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+    let action = UIAlertAction(title: actionMessage, style: .Default, handler: nil)
+    alertView.addAction(action)
+    
+    return alertView
+}
+
+func convertIntToWordEquivalent(theNum : Int) -> String {
+    let theNumNSNumber = NSNumber(integer: theNum)
+    let numberFormatter = NSNumberFormatter()
+    numberFormatter.numberStyle = NSNumberFormatterStyle.SpellOutStyle
+    return numberFormatter.stringFromNumber(theNumNSNumber)!
 }
 
 //MARK: - Extensions Dealing With Dates

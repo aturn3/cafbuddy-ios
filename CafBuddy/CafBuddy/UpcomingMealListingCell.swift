@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import EventKit
 
 
 class UpcomingMealListingCell : MealCollectionCellTemplate {
@@ -43,23 +42,12 @@ class UpcomingMealListingCell : MealCollectionCellTemplate {
         var totalStringArr = [String]()
         
         // get the meal type string
-        if (mealType == MealType.Breakfast) {
-            totalStringArr.append("Breakfast")
-        }
-        else if (mealType == MealType.Lunch) {
-            totalStringArr.append("Lunch")
-        }
-        else {
-           totalStringArr.append("Dinner")
-        }
+        totalStringArr.append(MealTypeStrings[mealType.rawValue])
         
         totalStringArr.append("\nwith ")
         
         // get the number of buddies string
-        let numBuddiesNSNumber = NSNumber(integer: numBuddies - 1)
-        let numberFormatter = NSNumberFormatter()
-        numberFormatter.numberStyle = NSNumberFormatterStyle.SpellOutStyle
-        totalStringArr.append(numberFormatter.stringFromNumber(numBuddiesNSNumber)!)
+        totalStringArr.append(convertIntToWordEquivalent(numBuddies - 1))
         
         if (numBuddies - 1 < 2) { totalStringArr.append(" other buddy\non ") }
         else { totalStringArr.append(" other buddies\non") }
@@ -120,7 +108,7 @@ class UpcomingMealListingCell : MealCollectionCellTemplate {
         }
         // in this case there is only one button
         else {
-            decorateButton(withIndex: 0, title: "Cancel Meal", color: COLOR_ACCENT_TWO)
+            decorateButton(withIndex: 0, title: "Cancel Plan", color: COLOR_ACCENT_TWO)
             decorateButton(withIndex: 1, title: "Edit Time", icon: UIImage(named: "timeIcon"))
         }
     }
