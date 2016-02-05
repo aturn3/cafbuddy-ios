@@ -3,7 +3,7 @@
  */
 
 //
-//  GTLMealServiceApisMealApiUnMatchedMealMessage.m
+//  GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage.m
 //
 
 // ----------------------------------------------------------------------------
@@ -13,16 +13,15 @@
 // Description:
 //   API for dealing with meals
 // Classes:
-//   GTLMealServiceApisMealApiUnMatchedMealMessage (0 custom class methods, 7 custom properties)
+//   GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage (0 custom class methods, 3 custom properties)
 
-#import "GTLMealServiceApisMealApiUnMatchedMealMessage.h"
+#import "GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLMealServiceApisMealApiUnMatchedMealMessage
+//   GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage
 //
 
-@implementation GTLMealServiceApisMealApiUnMatchedMealMessage
-@dynamic created, creatorKey, endRange, mealKey, mealType, numPeople,
-         startRange;
+@implementation GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage
+@dynamic authToken, emailAddress, mealKey;
 @end

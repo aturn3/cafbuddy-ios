@@ -17,6 +17,10 @@
 
 #import "GTLMealServiceApisMealApiCreateNewMealRequestMessage.h"
 #import "GTLMealServiceApisMealApiCreateNewMealResponseMessage.h"
+#import "GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage.h"
+#import "GTLMealServiceApisMealApiDeleteUnMatchedMealResponseMessage.h"
+#import "GTLMealServiceApisMealApiEditUnMatchedMealRequestMessage.h"
+#import "GTLMealServiceApisMealApiEditUnMatchedMealResponseMessage.h"
 #import "GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.h"
 #import "GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.h"
 #import "GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.h"

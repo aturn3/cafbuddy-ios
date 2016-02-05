@@ -13,7 +13,7 @@
 // Description:
 //   API for dealing with meals
 // Classes:
-//   GTLMealServiceApisMealApiUnMatchedMealMessage (0 custom class methods, 6 custom properties)
+//   GTLMealServiceApisMealApiUnMatchedMealMessage (0 custom class methods, 7 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -30,6 +30,7 @@
 @property (nonatomic, copy) NSString *created;
 @property (nonatomic, copy) NSString *creatorKey;
 @property (nonatomic, copy) NSString *endRange;
+@property (nonatomic, copy) NSString *mealKey;
 @property (nonatomic, retain) NSNumber *mealType;  // longLongValue
 @property (nonatomic, retain) NSNumber *numPeople;  // longLongValue
 @property (nonatomic, copy) NSString *startRange;
