@@ -132,7 +132,7 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
             do {
                 try calendarStore.saveEvent(theMealEvent, span: EKSpan.ThisEvent, commit: true)
                 dispatch_async(dispatch_get_main_queue(), {
-                    let theAlertView = createAlert("Meal Reminder Created", message: "The meal '" + eventTitle + "' was saved to your calendar on " + theMeal.startTime!.toReadableDateOnlyStringShort() + " with a reminder set for two hours before the meal starts.", actionMessage: "Okay")
+                    let theAlertView = createAlert("Calendar Event Created", message: "The meal '" + eventTitle + "' was saved to your calendar on " + theMeal.startTime!.toReadableDateOnlyStringShort() + " with a reminder set for two hours before the meal starts.", actionMessage: "Okay")
                     self.presentViewController(theAlertView, animated: true, completion: nil)
 
                 })
