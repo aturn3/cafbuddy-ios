@@ -26,6 +26,11 @@ extension MealAPICallback {
 enum MealType: Int {
     case Breakfast = 0, Lunch = 1, Dinner = 2
 }
+let MealTypeStrings = ["Breakfast", "Lunch", "Dinner"]
+
+enum MealStatus: Int {
+    case Matched = 0, UnMatched = 1
+}
 
 var firstName = String()
 var lastName = String()
@@ -41,6 +46,7 @@ class UnMatchedMeal {
     var creatorKey : String? // the key for the creator the meal
     var mealType : MealType? // the type of the meal
     var numPeople : Int? // the number of people who are request in the meal (including the creator)
+    var mealKey : String? // the unique identifier of the UnMatchedMeal in the backend database
 }
 
 class MatchedMeal {
@@ -49,6 +55,7 @@ class MatchedMeal {
     var numPeople : Int? // the number of people attending the meal total
     var mealType : MealType? // the type of the meal
     var peopleKeys = [String]() // the keys of all the people in the meal
+    var mealKey : String? // the unique identifier of the MatchedMeal in the backend database
 }
 
 class Meal: NSObject {
@@ -61,7 +68,7 @@ class Meal: NSObject {
     
     override init() {}
     
-    // MARK: - Methods
+    // MARK: - API Call Methods
     
     func getAllUpcomingMeals(emailAddress: String, authToken: String) {
         // Create Meal Service Object
@@ -92,7 +99,7 @@ class Meal: NSObject {
                     theUnMatchedMeals = self.convertAPIUnMatchedMealsArrayToClientUnMatchedMealsArray(response.unMatchedMeals)
                 }
 
-                self.mealCallback?.getAllUpcomingMealsAPICallback(false, errorMessage: "Success", unMatchedMeals: theUnMatchedMeals, matchedMeals: theMatchedMeals)
+                self.mealCallback?.getAllUpcomingMealsAPICallback(true, errorMessage: "Success", unMatchedMeals: theUnMatchedMeals, matchedMeals: theMatchedMeals)
             }
                 
                 // API call unsuccessful
@@ -108,13 +115,53 @@ class Meal: NSObject {
 
     }
     
+    func deleteUnMatchedMeal(emailAddress: String, authToken: String, mealKey: String) {
+        // Create Meal Service Object
+        let mealServiceObject = createMealServiceObject()
+        
+        // Create User Service Request Message
+        let mealMessage = GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage()
+        mealMessage.emailAddress = emailAddress
+        mealMessage.authToken = authToken
+        if (mealKey.characters.count > 0) {
+            mealMessage.mealKey = mealKey
+        }
+        
+        // Create User Service Query
+        let query: GTLQueryMealService = GTLQueryMealService.queryForDeleteUnMatchedMealWithObject(mealMessage)
+        
+        // Call API with query
+        mealServiceObject!.executeQuery(query, completionHandler: { (ticket: GTLServiceTicket!, object: AnyObject!, error: NSError!) -> Void in
+            
+            let response: GTLMealServiceApisMealApiDeleteUnMatchedMealResponseMessage = object as! GTLMealServiceApisMealApiDeleteUnMatchedMealResponseMessage
+            
+            // API call successful
+            if response.errorNumber == 200 {
+                self.mealCallback?.deleteUnMatchedMeal(true, errorMessage: "Success", mealKeyDeleted: mealKey)
+            }
+                
+                // API call unsuccessful
+            else if (response.errorNumber == -100 || response.errorNumber == -2 || response.errorNumber == -3 || response.errorNumber == -4) {
+                self.mealCallback?.deleteUnMatchedMeal(false, errorMessage: response.errorMessage, mealKeyDeleted: "")
+            }
+                
+                // API call unsuccessful
+            else {
+                self.mealCallback?.deleteUnMatchedMeal(false, errorMessage: APPLICATION_ERROR_OR_NETWORK_PROBLEM, mealKeyDeleted: "")
+            }
+        })
+
+    }
+    
+    
+    // MARK: - Helper Methods
     
     func convertAPIMatchedMealsArrayToClientMatchedMealsArray(matchedMealsAPI: NSArray) -> [MatchedMeal] {
         var matchedMeals = [MatchedMeal]()
         for theMatchedMeal in matchedMealsAPI {
             matchedMeals.append(convertAPIMatchedMealToClientMatchedMeal(theMatchedMeal as! GTLMealServiceApisMealApiMatchedMealMessage))
         }
-        return [MatchedMeal]()
+        return matchedMeals
     }
 
     func convertAPIUnMatchedMealsArrayToClientUnMatchedMealsArray(unMatchedMealsAPI: NSArray) -> [UnMatchedMeal] {
@@ -122,7 +169,7 @@ class Meal: NSObject {
         for theUnMatchedMeal in unMatchedMealsAPI {
             unMatchedMeals.append(convertAPIUnMatchedMealToClientUnMatchedMeal(theUnMatchedMeal as! GTLMealServiceApisMealApiUnMatchedMealMessage))
         }
-        return [UnMatchedMeal]()
+        return unMatchedMeals
     }
     
     func convertAPIMatchedMealToClientMatchedMeal(matchedMealAPI : GTLMealServiceApisMealApiMatchedMealMessage) -> MatchedMeal {
@@ -132,6 +179,7 @@ class Meal: NSObject {
         theMatchedMeal.numPeople = matchedMealAPI.numPeople as Int
         theMatchedMeal.peopleKeys = matchedMealAPI.peopleKeys as! [String]
         theMatchedMeal.mealType = MealType(rawValue: matchedMealAPI.mealType as Int)
+        theMatchedMeal.mealKey = matchedMealAPI.mealKey
         return theMatchedMeal
     }
     
@@ -143,6 +191,7 @@ class Meal: NSObject {
         theUnMatchedMeal.numPeople = unMatchedMealApi.numPeople as Int
         theUnMatchedMeal.creatorKey = unMatchedMealApi.creatorKey
         theUnMatchedMeal.mealType = MealType(rawValue: unMatchedMealApi.mealType as Int)
+        theUnMatchedMeal.mealKey = unMatchedMealApi.mealKey
         return theUnMatchedMeal
     }
     
