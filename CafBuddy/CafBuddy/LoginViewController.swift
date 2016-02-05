@@ -65,7 +65,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UserAPICallbac
     }
     
     func initInterface() {
-        view.backgroundColor = COLOR_BLUE
+        view.backgroundColor = COLOR_MAIN
         
         // Email Address Field
         self.emailAddressField.placeholder = "Email Address"
@@ -121,28 +121,28 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UserAPICallbac
         // MARK: - Constraints
         
         // Email Address Field
-        self.emailAddressFieldConstraintLeft = NSLayoutConstraint(item: emailAddressField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (1/6)*SCREEN_WIDTH)
-        self.emailAddressFieldConstraintRight = NSLayoutConstraint(item: emailAddressField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-1/6)*SCREEN_WIDTH)
-        self.emailAddressFieldConstraintTop = NSLayoutConstraint(item: emailAddressField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: (1/3)*SCREEN_HEIGHT)
-        self.emailAddressFieldConstraintBottom = NSLayoutConstraint(item: emailAddressField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.emailAddressField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
+        self.emailAddressFieldConstraintLeft = NSLayoutConstraint(item: self.emailAddressField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (1/6)*SCREEN_WIDTH)
+        self.emailAddressFieldConstraintRight = NSLayoutConstraint(item: self.emailAddressField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-1/6)*SCREEN_WIDTH)
+        self.emailAddressFieldConstraintTop = NSLayoutConstraint(item: self.emailAddressField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: (1/3)*SCREEN_HEIGHT)
+        self.emailAddressFieldConstraintBottom = NSLayoutConstraint(item: self.emailAddressField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.emailAddressField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
         
         // Password Field
-        self.passwordFieldConstraintLeft = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.emailAddressField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
-        self.passwordFieldConstraintRight = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.emailAddressField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
-        self.passwordFieldConstraintTop = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.emailAddressField, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
-        self.passwordFieldConstraintBottom = NSLayoutConstraint(item: passwordField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.passwordField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
+        self.passwordFieldConstraintLeft = NSLayoutConstraint(item: self.passwordField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.emailAddressField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
+        self.passwordFieldConstraintRight = NSLayoutConstraint(item: self.passwordField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.emailAddressField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
+        self.passwordFieldConstraintTop = NSLayoutConstraint(item: self.passwordField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.emailAddressField, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+        self.passwordFieldConstraintBottom = NSLayoutConstraint(item: self.passwordField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.passwordField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
         
         // Login Button
-        self.loginButtonConstraintLeft = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.emailAddressField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
-        self.loginButtonConstraintRight = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.emailAddressField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
-        self.loginButtonConstraintTop = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.passwordField, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
-        self.loginButtonConstraintBottom = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.loginButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
+        self.loginButtonConstraintLeft = NSLayoutConstraint(item: self.loginButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.emailAddressField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
+        self.loginButtonConstraintRight = NSLayoutConstraint(item: self.loginButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.emailAddressField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
+        self.loginButtonConstraintTop = NSLayoutConstraint(item: self.loginButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.passwordField, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+        self.loginButtonConstraintBottom = NSLayoutConstraint(item: self.loginButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.loginButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
         
         // Goto Register Button
-        self.registerButtonConstraintLeft = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.emailAddressField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
-        self.registerButtonConstraintRight = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.emailAddressField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
-        self.registerButtonConstraintTop = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.loginButton, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
-        self.registerButtonConstraintBottom = NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.registerButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
+        self.registerButtonConstraintLeft = NSLayoutConstraint(item: self.registerButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.emailAddressField, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
+        self.registerButtonConstraintRight = NSLayoutConstraint(item: self.registerButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.emailAddressField, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
+        self.registerButtonConstraintTop = NSLayoutConstraint(item: self.registerButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.loginButton, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+        self.registerButtonConstraintBottom = NSLayoutConstraint(item: self.registerButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.registerButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
         
         // Activate all constraints
         NSLayoutConstraint.activateConstraints([self.emailAddressFieldConstraintLeft, self.emailAddressFieldConstraintRight, self.emailAddressFieldConstraintTop, self.emailAddressFieldConstraintBottom, self.passwordFieldConstraintLeft, self.passwordFieldConstraintRight, self.passwordFieldConstraintTop, self.passwordFieldConstraintBottom, self.loginButtonConstraintLeft, self.loginButtonConstraintRight, self.loginButtonConstraintTop, self.loginButtonConstraintBottom, self.registerButtonConstraintLeft, self.registerButtonConstraintRight, self.registerButtonConstraintTop, self.registerButtonConstraintBottom])
