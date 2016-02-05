@@ -13,8 +13,7 @@
 
 class UpcomingMealListingCell : MealCollectionCellTemplate {
     
-//    var labelMealDate = UILabel()
-//    var labelMealTime = UILabel()
+    var labelMealText = UILabel()
     
     
     //initializes everything in the cell
@@ -28,26 +27,70 @@ class UpcomingMealListingCell : MealCollectionCellTemplate {
     }
 
 
-    func initializeUpcomingMealCellContents(mealStatus : MealStatus, mealType : MealType) {
+    func initializeUpcomingMealCellContents(mealStatus : MealStatus, mealType : MealType, numBuddies: Int, startTime: NSDate, endTime: NSDate? = nil) {
         self.backgroundColor = COLOR_WHITE
         
         decorateButtons(mealStatus)
         setMealImage(mealType)
+    
+        // b{Breakfast}
+        // with b{1} other person
+        // on b{Monday}
+        // between b{11:00 AM} and b{12:00 PM}
+        
+        //this is the string that will ultimately be displayed.. lets build it up from this point
+        var totalMealTextString = String()
+        
+        if (mealType == MealType.Breakfast) {
+            totalMealTextString = "Breakfast"
+        }
+        else if (mealType == MealType.Lunch) {
+            totalMealTextString = "Lunch"
+        }
+        else {
+            totalMealTextString = "Dinner"
+        }
+        
+        totalMealTextString += "\nwith "
+        
+        let numBuddiesNSNumber = NSNumber(integer: numBuddies - 1)
+        let numberFormatter = NSNumberFormatter()
+        numberFormatter.numberStyle = NSNumberFormatterStyle.SpellOutStyle
+        totalMealTextString += numberFormatter.stringFromNumber(numBuddiesNSNumber)!
+        
+        if (numBuddies - 1 < 2) { totalMealTextString += " other buddy\non" }
+        else { totalMealTextString += " other buddies\non" }
+        
+        totalMealTextString += startTime.toReadableDateOnlyStringShort()
+        
+        totalMealTextString += "\nbetween "
+        
+        totalMealTextString += startTime.toReadableTimeOnlyString() + " and " + endTime!.toReadableTimeOnlyString()
         
         
         /*additional meal details needed*/
-//        labelMealDate.font = UIFont.systemFontOfSize(15)
-//        labelMealDate.textAlignment = NSTextAlignment.Center
-        //labelMealType.textColor = colorWithHexString()
-//        labelMealDate.frame = CGRectMake(0, labelMealType.frame.origin.y + labelMealType.frame.height + 10, contentView.frame.size.width, 20)
-//        
+        labelMealText.font = UIFont.systemFontOfSize(15)
+        labelMealText.textAlignment = NSTextAlignment.Left
+//        labelMealText.textColor = colorWithHexString()
+        labelMealText.frame = CGRectMake(15, 10, contentView.frame.size.width, contentView.frame.size.height)
+        labelMealText.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        labelMealText.numberOfLines = 0
+        
+        let mealText = NSMutableAttributedString(string: totalMealTextString,attributes: [NSFontAttributeName:UIFont.systemFontOfSize(15)])
+        mealText.addAttribute(NSFontAttributeName, value: UIFont.boldSystemFontOfSize(17), range: NSRange(location: 0, length: 9))
+
+        
+        
+        labelMealText.attributedText = mealText
+        labelMealText.sizeToFit()
+//
 //        labelMealTime.font = UIFont.systemFontOfSize(15)
 //        labelMealTime.textAlignment = NSTextAlignment.Center
         //labelMealType.textColor = colorWithHexString()
 //    labelMealTime.frame = CGRectMake(0, labelMealDate.frame.origin.y + labelMealDate.frame.height + 5, contentView.frame.size.width, 20)
 
         
-//        self.contentView.addSubview(labelMealDate)
+        self.contentView.addSubview(labelMealText)
 //        self.contentView.addSubview(labelMealTime)
 //
     }
@@ -55,7 +98,7 @@ class UpcomingMealListingCell : MealCollectionCellTemplate {
     private func decorateButtons(mealStatus : MealStatus) {
         // in this case there are two buttons
         if (mealStatus == MealStatus.Matched) {
-            decorateButton(withIndex: 0, title: "Add To Calendar", icon: UIImage(named: "addCalendarIcon"))
+            decorateButton(withIndex: 0, title: "Save The Date", icon: UIImage(named: "addCalendarIcon"))
             decorateButton(withIndex: 1, title: "Chat", icon: UIImage(named: "chatIcon"))
         }
         // in this case there is only one button

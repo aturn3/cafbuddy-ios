@@ -84,28 +84,15 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
         mealCollectionCell.cellSectionIndex = indexPath.section
         
         //if the seciton is MatchedMeals
+        var theMealType = MealType.Breakfast
         if (indexPath.section == 0) {
-            mealCollectionCell.initializeUpcomingMealCellContents(MealStatus(rawValue: indexPath.section)!, mealType: (matchedMeals[indexPath.row].mealType)!)
+            theMealType = (matchedMeals[indexPath.row].mealType)!
         }
         else {
-            mealCollectionCell.initializeUpcomingMealCellContents(MealStatus(rawValue: indexPath.section)!, mealType: (unMatchedMeals[indexPath.row].mealType)!)
+            theMealType = (unMatchedMeals[indexPath.row].mealType)!
         }
-        
-        
-        
-        
-//        //set some default values
-//        var theMealType = MealType.Breakfast
-//        if (indexPath.item%3 == 0) {
-//            historyCell.setMealDetails(MealType.Breakfast)
-//        }
-//        else if (indexPath.item%3 == 1) {
-//            historyCell.setMealDetails(MealType.Lunch)
-//        }
-//        else {
-//            historyCell.setMealDetails(MealType.Dinner)
-//        }
-        
+//        mealCollectionCell.initializeUpcomingMealCellContents(MealStatus(rawValue: indexPath.section)!, mealType: theMealType, )
+        mealCollectionCell.initializeUpcomingMealCellContents(MealStatus(rawValue: indexPath.section)!, mealType: theMealType, numBuddies: unMatchedMeals[indexPath.row].numPeople!, startTime: unMatchedMeals[indexPath.row].startRange!, endTime: unMatchedMeals[indexPath.row].endRange!)
         return mealCollectionCell
     }
     
