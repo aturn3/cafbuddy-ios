@@ -11,14 +11,14 @@ protocol MealAPICallback {
     // MARK: - Methods
     
     func getAllUpcomingMealsAPICallback(success: Bool, errorMessage: String, unMatchedMeals: [UnMatchedMeal], matchedMeals: [MatchedMeal]) -> Void
-    func deleteUnMatchedMeal(success: Bool, errorMessage: String, mealKeyDeleted: String)
+    func deleteUnMatchedMealAPICallback(success: Bool, errorMessage: String, mealKeyDeleted: String)
 }
 
 extension MealAPICallback {
     func getAllUpcomingMealsAPICallback(success: Bool, errorMessage: String, unMatchedMeals: [UnMatchedMeal], matchedMeals: [MatchedMeal]) -> Void {
         //nothing happens in default implementation
     }
-    func deleteUnMatchedMeal(success: Bool, errorMessage: String, mealKeyDeleted: String) {
+    func deleteUnMatchedMealAPICallback(success: Bool, errorMessage: String, mealKeyDeleted: String) {
         //nothing happens in default implmentation
     }
 }
@@ -137,17 +137,17 @@ class Meal: NSObject {
             
             // API call successful
             if response.errorNumber == 200 {
-                self.mealCallback?.deleteUnMatchedMeal(true, errorMessage: "Success", mealKeyDeleted: mealKey)
+                self.mealCallback?.deleteUnMatchedMealAPICallback(true, errorMessage: "Success", mealKeyDeleted: mealKey)
             }
                 
                 // API call unsuccessful
-            else if (response.errorNumber == -100 || response.errorNumber == -2 || response.errorNumber == -3 || response.errorNumber == -4) {
-                self.mealCallback?.deleteUnMatchedMeal(false, errorMessage: response.errorMessage, mealKeyDeleted: "")
+            else if (response.errorNumber == -100) {
+                self.mealCallback?.deleteUnMatchedMealAPICallback(false, errorMessage: response.errorMessage, mealKeyDeleted: "")
             }
                 
                 // API call unsuccessful
             else {
-                self.mealCallback?.deleteUnMatchedMeal(false, errorMessage: APPLICATION_ERROR_OR_NETWORK_PROBLEM, mealKeyDeleted: "")
+                self.mealCallback?.deleteUnMatchedMealAPICallback(false, errorMessage: APPLICATION_ERROR_OR_NETWORK_PROBLEM, mealKeyDeleted: "")
             }
         })
 
