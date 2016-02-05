@@ -108,7 +108,7 @@ class UpcomingMealListingCell : MealCollectionCellTemplate {
         // in this case there is only one button
         else {
             decorateButton(withIndex: 0, title: "Cancel Plan", color: COLOR_ACCENT_TWO)
-            decorateButton(withIndex: 1, title: "Edit Time", icon: UIImage(named: "timeIcon"))
+            decorateButton(withIndex: 1, title: "Edit Plan", icon: UIImage(named: "timeIcon"))
         }
     }
     
