@@ -125,10 +125,8 @@ func scaledImage(image : UIImage, scaledToSize newSize:CGSize) -> UIImage {
 // MARK: - General Functions
 
 func createAlert(title: String, message: String, actionMessage: String) -> UIAlertController {
-    let alertView = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-    let action = UIAlertAction(title: actionMessage, style: .Default, handler: nil)
-    alertView.addAction(action)
-    
+    let alertView = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+    alertView.addAction(UIAlertAction(title: actionMessage, style: UIAlertActionStyle.Default, handler: nil))
     return alertView
 }
 

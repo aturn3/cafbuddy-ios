@@ -11,13 +11,16 @@ import EventKit
 
 class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MealAPICallback, MealCollectionCellCallBack {
 
+    // MARK: properties
+    
     var collectionViewMeals : UICollectionView?
     
     let mealObject = Meal()
     
     var matchedMeals = [MatchedMeal]()
     var unMatchedMeals = [UnMatchedMeal]()
-//    var meals: [AnyObject] = [[, ]
+    
+    // MARK: - Initialization Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,17 +62,11 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
         updateAllMealsFromDatabase()
     }
     
+    // MARK: - Action Methods
+    
     func updateAllMealsFromDatabase() {
         let curUser = getCurrentUser()
         mealObject.getAllUpcomingMeals(curUser.emailAddress, authToken: curUser.authenticationToken)
-    }
-    
-    func getAllUpcomingMealsAPICallback(success: Bool, errorMessage: String, unMatchedMeals: [UnMatchedMeal], matchedMeals: [MatchedMeal]) -> Void {
-        if (success) {
-            self.matchedMeals = matchedMeals
-            self.unMatchedMeals = unMatchedMeals
-            collectionViewMeals?.reloadData()
-        }
     }
 
     func mealCellButtonWasPressed(buttonIndex: Int, sectionIndex: Int, rowIndex: Int) {
@@ -79,10 +76,21 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
             if (buttonIndex == 0) {
                 addMealToCalendar(rowIndex)
             }
+            // chat button
+            else {
+                
+            }
         }
         //  if dealing with unmatched meal buttons
         else {
-            
+            //if clicked the cancel meal plan button
+            if (buttonIndex == 0) {
+                
+            }
+            // edit time button
+            else {
+                
+            }
         }
         
     }
@@ -101,10 +109,16 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
         // now lets save the actual meal
         let calendarStore = EKEventStore()
         calendarStore.requestAccessToEntityType(.Event) {
+            // note that this block spawns a new background thread! SO in order to ensure that we don't introduce possible
+            // completely unpredictable behavior, we run the showing of alertViewController on the main thread only
+            // not the background thread that this block is currently running in... thats what the dispatch_async blocks are
             (accessGranted: Bool, error: NSError?) in
             // if the user has not granted us acess
             if (!accessGranted) {
-                createAlert("Oh no!", message: "You didn't grant CafBuddy access to your calendar. You can change this in settings.", actionMessage: "Okay")
+                dispatch_async(dispatch_get_main_queue(), {
+                    let theAlertView = createAlert("Oh no!", message: "You didn't grant CafBuddy access to your calendar. You can change this in settings.", actionMessage: "Okay")
+                    self.presentViewController(theAlertView, animated: true, completion: nil)
+                })
                 return
             }
             // if they have granted us access... then lets create the actual event
@@ -117,13 +131,23 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
             //actually add the event
             do {
                 try calendarStore.saveEvent(theMealEvent, span: EKSpan.ThisEvent, commit: true)
-                //self.savedEventId = event.eventIdentifier //the event identifier.. we dont need this now but if want to access later at some point we will need this
-                createAlert("Meal Reminder Created", message: "The meal '" + eventTitle + "' was saved to your calendar with a reminder set for two hours before the meal starts.", actionMessage: "Okay")
+                dispatch_async(dispatch_get_main_queue(), {
+                    let theAlertView = createAlert("Meal Reminder Created", message: "The meal '" + eventTitle + "' was saved to your calendar on " + theMeal.startTime!.toReadableDateOnlyStringShort() + " with a reminder set for two hours before the meal starts.", actionMessage: "Okay")
+                    self.presentViewController(theAlertView, animated: true, completion: nil)
+
+                })
+//                self.savedEventId = event.eventIdentifier //the event identifier.. we dont need this now but if want to access later at some point we will need this
             } catch {
-                createAlert("Oh no!", message: "There was a problem adding the event to your calendar. Please try again.", actionMessage: "Okay")
+                dispatch_async(dispatch_get_main_queue(), {
+                    let theAlertView = createAlert("Oh no!", message: "There was a problem adding the event to your calendar. Please try again.", actionMessage: "Okay")
+                    self.presentViewController(theAlertView, animated: true, completion: nil)
+                })
             }
         }
     }
+    
+    
+    // MARK: - Collection View Methods
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
@@ -166,6 +190,16 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
             return matchedMeals.count
         }
         return unMatchedMeals.count
+    }
+    
+    // MARK: - Api Callback
+    
+    func getAllUpcomingMealsAPICallback(success: Bool, errorMessage: String, unMatchedMeals: [UnMatchedMeal], matchedMeals: [MatchedMeal]) -> Void {
+        if (success) {
+            self.matchedMeals = matchedMeals
+            self.unMatchedMeals = unMatchedMeals
+            collectionViewMeals?.reloadData()
+        }
     }
 }
 
