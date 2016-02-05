@@ -71,7 +71,7 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
         }
     }
 
-    func mealCellButtonWasPressed(buttonIndex: Int, sectionIndex: Int) {
+    func mealCellButtonWasPressed(buttonIndex: Int, sectionIndex: Int, rowIndex: Int) {
         print("The button that was pressed was: " + String(buttonIndex) + " in the section: " + String(sectionIndex))
     }
     
