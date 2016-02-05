@@ -58,7 +58,8 @@ class MealCollectionCellTemplate : UICollectionViewCell {
         showImage = shouldShowImage
         
         if (showImage) {
-            imageMealType.frame = CGRectMake(15, 10, 32, 32)
+            // no constraints here because this should be pretty static and not change much
+            imageMealType.frame = CGRectMake(self.contentView.frame.width - 15 - 32, 10, 32, 32)
             self.contentView.addSubview(imageMealType)
         }
         
