@@ -82,6 +82,7 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
         // needed to receive the button presses from the cells
         mealCollectionCell.buttonCallBack = self;
         mealCollectionCell.cellSectionIndex = indexPath.section
+        mealCollectionCell.cellRowIndex = indexPath.row
         
         //if the seciton is MatchedMeals
         var theMealType = MealType.Breakfast

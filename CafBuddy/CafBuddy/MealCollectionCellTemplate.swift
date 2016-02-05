@@ -10,7 +10,7 @@ import UIKit
 
 
 protocol MealCollectionCellCallBack {
-    func mealCellButtonWasPressed(buttonIndex: Int, sectionIndex: Int) -> Void
+    func mealCellButtonWasPressed(buttonIndex: Int, sectionIndex: Int, rowIndex: Int) -> Void
 }
 
 // a standard meal cell with an spot for an image in the top left of the meal cell
@@ -27,6 +27,7 @@ class MealCollectionCellTemplate : UICollectionViewCell {
     var showImage = Bool()
     
     var cellSectionIndex = Int()
+    var cellRowIndex = Int()
     
     var buttonCallBack : MealCollectionCellCallBack?
     
@@ -96,7 +97,7 @@ class MealCollectionCellTemplate : UICollectionViewCell {
     }
     
     func buttonWasPressed(sender : UIButton!) {
-        buttonCallBack?.mealCellButtonWasPressed(sender.tag, sectionIndex: cellSectionIndex)
+        buttonCallBack?.mealCellButtonWasPressed(sender.tag, sectionIndex: cellSectionIndex, rowIndex: cellRowIndex)
     }
     
     func decorateButton(withIndex index: Int, title: String, color : UIColor = COLOR_ACCENT_ONE, icon: UIImage? = nil, isClickable : Bool = true) {

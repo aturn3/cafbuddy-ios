@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import EventKit
 
 
 class UpcomingMealListingCell : MealCollectionCellTemplate {
@@ -23,7 +24,6 @@ class UpcomingMealListingCell : MealCollectionCellTemplate {
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 
     func initializeUpcomingMealCellContents(mealStatus : MealStatus, mealType : MealType, numBuddies: Int, startTime: NSDate, endTime: NSDate? = nil) {
         self.backgroundColor = COLOR_WHITE
