@@ -49,7 +49,7 @@ class UpcomingMealListingCell : MealCollectionCellTemplate {
         totalStringArr.append(convertIntToWordEquivalent(numBuddies - 1))
         
         if (numBuddies - 1 < 2) { totalStringArr.append(" other buddy\non ") }
-        else { totalStringArr.append(" other buddies\non") }
+        else { totalStringArr.append(" other buddies\non ") }
         
         // get the meal date string
         totalStringArr.append(startTime.toReadableDateOnlyStringShort())
