@@ -13,12 +13,16 @@
 // Description:
 //   API for dealing with meals
 // Classes:
-//   GTLQueryMealService (5 custom class methods, 1 custom properties)
+//   GTLQueryMealService (7 custom class methods, 1 custom properties)
 
 #import "GTLQueryMealService.h"
 
 #import "GTLMealServiceApisMealApiCreateNewMealRequestMessage.h"
 #import "GTLMealServiceApisMealApiCreateNewMealResponseMessage.h"
+#import "GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage.h"
+#import "GTLMealServiceApisMealApiDeleteUnMatchedMealResponseMessage.h"
+#import "GTLMealServiceApisMealApiEditUnMatchedMealRequestMessage.h"
+#import "GTLMealServiceApisMealApiEditUnMatchedMealResponseMessage.h"
 #import "GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.h"
 #import "GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.h"
 #import "GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.h"
@@ -44,6 +48,30 @@
   GTLQueryMealService *query = [self queryWithMethodName:methodName];
   query.bodyObject = object;
   query.expectedObjectClass = [GTLMealServiceApisMealApiCreateNewMealResponseMessage class];
+  return query;
+}
+
++ (instancetype)queryForDeleteUnMatchedMealWithObject:(GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage *)object {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"mealService.deleteUnMatchedMeal";
+  GTLQueryMealService *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.expectedObjectClass = [GTLMealServiceApisMealApiDeleteUnMatchedMealResponseMessage class];
+  return query;
+}
+
++ (instancetype)queryForEditUnMatchedMealWithObject:(GTLMealServiceApisMealApiEditUnMatchedMealRequestMessage *)object {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"mealService.editUnMatchedMeal";
+  GTLQueryMealService *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.expectedObjectClass = [GTLMealServiceApisMealApiEditUnMatchedMealResponseMessage class];
   return query;
 }
 

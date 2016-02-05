@@ -13,7 +13,7 @@
 // Description:
 //   API for dealing with meals
 // Classes:
-//   GTLQueryMealService (5 custom class methods, 1 custom properties)
+//   GTLQueryMealService (7 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -22,6 +22,8 @@
 #endif
 
 @class GTLMealServiceApisMealApiCreateNewMealRequestMessage;
+@class GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage;
+@class GTLMealServiceApisMealApiEditUnMatchedMealRequestMessage;
 @class GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage;
 @class GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage;
 @class GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage;
@@ -44,6 +46,18 @@
 //   kGTLAuthScopeMealServiceUserinfoEmail
 // Fetches a GTLMealServiceApisMealApiCreateNewMealResponseMessage.
 + (instancetype)queryForCreateNewMealWithObject:(GTLMealServiceApisMealApiCreateNewMealRequestMessage *)object;
+
+// Method: mealService.deleteUnMatchedMeal
+//  Authorization scope(s):
+//   kGTLAuthScopeMealServiceUserinfoEmail
+// Fetches a GTLMealServiceApisMealApiDeleteUnMatchedMealResponseMessage.
++ (instancetype)queryForDeleteUnMatchedMealWithObject:(GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage *)object;
+
+// Method: mealService.editUnMatchedMeal
+//  Authorization scope(s):
+//   kGTLAuthScopeMealServiceUserinfoEmail
+// Fetches a GTLMealServiceApisMealApiEditUnMatchedMealResponseMessage.
++ (instancetype)queryForEditUnMatchedMealWithObject:(GTLMealServiceApisMealApiEditUnMatchedMealRequestMessage *)object;
 
 // Method: mealService.getAllUpcomingMeals
 //  Authorization scope(s):
