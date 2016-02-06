@@ -387,7 +387,7 @@
 			isa = PBXGroup;
 			children = (
 				FFCF47701C61C760003E682A /* Custom View Cells */,
-				FFCF47741C61C93B003E682A /* Api Classes */,
+				FFCF47741C61C93B003E682A /* API Classes */,
 				FFCF47731C61C929003E682A /* View Controllers */,
 				FF72B9681C32269A009B7308 /* CafBuddy-Bridging-Header.h */,
 				4949D44B1C2F4A80003C84DA /* AppDelegate.swift */,
@@ -669,13 +669,13 @@
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
-		FFCF47741C61C93B003E682A /* Api Classes */ = {
+		FFCF47741C61C93B003E682A /* API Classes */ = {
 			isa = PBXGroup;
 			children = (
 				492096F71C5A7AB100B6C204 /* User.swift */,
 				FFCF47B31C61D875003E682A /* Meal.swift */,
 			);
-			name = "Api Classes";
+			name = "API Classes";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -749,7 +749,7 @@
 				TargetAttributes = {
 					4949D4471C2F4A80003C84DA = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = MSHR782CLG;
+						DevelopmentTeam = 9ZZ2B2C5U2;
 					};
 					4949D45D1C2F4A81003C84DA = {
 						CreatedOnToolsVersion = 7.2;
@@ -1111,7 +1111,7 @@
 				INFOPLIST_FILE = CafBuddy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.quokka.andrew.cafbuddy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.quokka.cafbuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CafBuddy-Bridging-Header.h";
@@ -1131,7 +1131,7 @@
 				INFOPLIST_FILE = CafBuddy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.quokka.andrew.cafbuddy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.quokka.cafbuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CafBuddy-Bridging-Header.h";
