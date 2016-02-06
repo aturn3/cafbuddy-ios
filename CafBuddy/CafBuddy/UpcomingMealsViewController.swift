@@ -74,7 +74,7 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
         if (sectionIndex == 0) {
             // if clicked the add to calendar button
             if (buttonIndex == 0) {
-                addMealToCalendar(rowIndex)
+                addMatchedMealToCalendar(rowIndex)
             }
             // chat button
             else {
@@ -85,7 +85,13 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
         else {
             //if clicked the cancel meal plan button
             if (buttonIndex == 0) {
-                
+                // we know its an unmatchedmeal right now since thats all you can delete at this moment
+                let mealToDelete = unMatchedMeals[rowIndex]
+                let messageString = "Are you sure you want cancel plans for " + MealTypeStrings[mealToDelete.mealType!.rawValue]  + " on " + mealToDelete.startRange!.toReadableDateOnlyStringShort() + "?"
+                let theAlertView = createAlert("Are you sure?", message: messageString, actionMessage: "Cancel")
+                // add the callback that will actually call the right method to delete the meal if they want that
+                theAlertView.addAction(UIAlertAction(title: "Remove Plans", style: UIAlertActionStyle.Destructive ) { (_) in self.deleteUnmatchedMeal(rowIndex) })
+                self.presentViewController(theAlertView, animated: true, completion: nil)
             }
             // edit time button
             else {
@@ -95,8 +101,13 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
         
     }
     
+    func deleteUnmatchedMeal(cellRowIndex: Int) {
+        let curUser = getCurrentUser()
+        mealObject.deleteUnMatchedMeal(curUser.emailAddress, authToken: curUser.authenticationToken, mealKey: unMatchedMeals[cellRowIndex].mealKey!)
+    }
+    
     // add a matched meal to the calendar
-    func addMealToCalendar(cellRowIndex : Int) {
+    func addMatchedMealToCalendar(cellRowIndex : Int) {
         // get the actual meal
         let theMeal = matchedMeals[cellRowIndex]
 
@@ -199,6 +210,21 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
             self.matchedMeals = matchedMeals
             self.unMatchedMeals = unMatchedMeals
             collectionViewMeals?.reloadData()
+        }
+    }
+    
+    func deleteUnMatchedMealAPICallback(success: Bool, errorMessage: String, mealKeyDeleted: String) {
+        if (!success) {
+            let theAlertView = createAlert("Oh no!", message: "There was a problem deleting the meal plan! Please try again.", actionMessage: "Okay")
+            self.presentViewController(theAlertView, animated: true, completion: nil)
+        }
+        else {
+            //filter out the meal that was just deleted and then reload the collection view
+            unMatchedMeals = unMatchedMeals.filter({
+                (theMeal) -> Bool in
+                return (theMeal.mealKey != mealKeyDeleted)
+            })
+            [collectionViewMeals?.reloadSections(NSIndexSet(index: 1))]
         }
     }
 }
