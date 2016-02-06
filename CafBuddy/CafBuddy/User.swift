@@ -230,12 +230,7 @@ class User: NSObject {
                 }
                     
                 // API call unsuccessful
-                else if response.errorNumber == -1 {
-                    self.userCallback?.loginAccountUserAPICallback(false, errorMessage: response.errorMessage)
-                }
-                    
-                // API call unsuccessful
-                else if response.errorNumber == -3 {
+                else if response.errorNumber == -1 || response.errorNumber == -3 {
                     self.userCallback?.loginAccountUserAPICallback(false, errorMessage: response.errorMessage)
                 }
                     

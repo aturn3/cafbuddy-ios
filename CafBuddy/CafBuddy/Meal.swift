@@ -11,6 +11,7 @@ protocol MealAPICallback {
     // MARK: - Methods
     
     func getAllUpcomingMealsAPICallback(success: Bool, errorMessage: String, unMatchedMeals: [UnMatchedMeal], matchedMeals: [MatchedMeal]) -> Void
+    func deleteUnMatchedMeal(success: Bool, errorMessage: String, mealKeyDeleted: String)
     func createMealAPICallback(success: Bool, errorMessage: String) -> Void
 }
 
@@ -18,7 +19,10 @@ extension MealAPICallback {
     func getAllUpcomingMealsAPICallback(success: Bool, errorMessage: String, unMatchedMeals: [UnMatchedMeal], matchedMeals: [MatchedMeal]) -> Void {
         //nothing happens in default implementation
     }
-    func createMealAPICallback(success: Bool, errorMessage: String) {
+    func deleteUnMatchedMeal(success: Bool, errorMessage: String, mealKeyDeleted: String) {
+        //nothing happens in default implmentation
+    }
+    func createMealAPICallback(success: Bool, errorMessage: String) -> Void {
         // Default implementation
     }
 }
@@ -153,6 +157,89 @@ class Meal: NSObject {
 
     }
     
+    func createMeal(emailAddress: String, authenticationToken: String, day: String, startRange: NSDate, endRange: NSDate, numberOfPeople: Int) {
+        // Check if day is empty
+        if day.isEmpty {
+            self.mealCallback?.createMealAPICallback(false, errorMessage: "Please select a button for when")
+        }
+            
+            // Check if numberOfPeople is 0
+        else if numberOfPeople == 0 {
+            self.mealCallback?.createMealAPICallback(false, errorMessage: "Please select a button for how many people")
+        }
+            
+        else {
+            var startRange = startRange
+            var endRange = endRange
+            
+            if day == TOMORROW {
+                // Add 1 day to startRange and endRange day
+                startRange = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: startRange, options: NSCalendarOptions(rawValue: 0))!
+                endRange = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: endRange, options: NSCalendarOptions(rawValue: 0))!
+            }
+            else if day == DAY_AFTER_TOMORROW {
+                // Add 2 days to startRange and endRange day
+                startRange = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 2, toDate: startRange, options: NSCalendarOptions(rawValue: 0))!
+                endRange = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 2, toDate: endRange, options: NSCalendarOptions(rawValue: 0))!
+            }
+            else {
+                // Day is correct for startRange and endRange
+            }
+            
+            // Get Meal Type
+            let endDateComponents = NSCalendar.currentCalendar().components(NSCalendarUnit.Hour, fromDate: endRange)
+            var mealType = MealType(rawValue: 0)
+            
+            if endDateComponents.minute < 11 {
+                mealType = MealType.Breakfast
+            }
+            else if endDateComponents.minute > 11 && endDateComponents.minute < 16 {
+                mealType = MealType.Lunch
+            }
+            else {
+                // Dinner
+                mealType = MealType.Dinner
+            }
+            
+            // Create Meal Service Object
+            let mealServiceObject = createMealServiceObject()
+            
+            // Create User Service Request Message
+            let mealObject = GTLMealServiceApisMealApiCreateNewMealRequestMessage()
+            mealObject.emailAddress = emailAddress
+            mealObject.authToken = authenticationToken
+            mealObject.mealType = mealType?.rawValue
+            mealObject.startRange = startRange.toDatabaseString()
+            mealObject.endRange = endRange.toDatabaseString()
+            mealObject.numPeople = numberOfPeople
+            
+            // Create Meal Service Query
+            let query: GTLQueryMealService = GTLQueryMealService.queryForCreateNewMealWithObject(mealObject)
+            
+            // Call API with query
+            mealServiceObject!.executeQuery(query, completionHandler: { (ticket: GTLServiceTicket!, object: AnyObject!, error: NSError!) -> Void in
+                
+                let response: GTLMealServiceApisMealApiCreateNewMealResponseMessage = object as! GTLMealServiceApisMealApiCreateNewMealResponseMessage
+                
+                // API call successful
+                if response.errorNumber == 200 {
+                    self.mealCallback?.createMealAPICallback(true, errorMessage: "Meal created!")
+                }
+                    
+                // API call unsuccessful
+                else if response.errorNumber == -1 || response.errorNumber == -3 {
+                    self.mealCallback?.createMealAPICallback(false, errorMessage: response.errorMessage)
+                }
+                    
+                // API call unsuccessful
+                else {
+                    self.mealCallback?.createMealAPICallback(false, errorMessage: APPLICATION_ERROR_OR_NETWORK_PROBLEM)
+                }
+            })
+            
+        }
+    }
+    
     
     // MARK: - Helper Methods
     
@@ -193,9 +280,5 @@ class Meal: NSObject {
         theUnMatchedMeal.mealType = MealType(rawValue: unMatchedMealApi.mealType as Int)
         theUnMatchedMeal.mealKey = unMatchedMealApi.mealKey
         return theUnMatchedMeal
-    }
-    
-    func createMeal(user: User, day: String, time: String, numberOfPeople: String) {
-        
     }
 }
