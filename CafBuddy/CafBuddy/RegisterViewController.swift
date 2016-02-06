@@ -242,11 +242,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UserAPICall
 //        let userInfo: [NSObject : AnyObject] = sender.userInfo!
 //        let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
 //        self.view.frame.origin.y += keyboardSize.height
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
 //            print("before", self.view.frame.origin.y)
 //            self.view.frame.origin.y += keyboardSize.height
 //            print("after", self.view.frame.origin.y)
-        }
+//        }
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
