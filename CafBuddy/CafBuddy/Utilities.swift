@@ -230,6 +230,12 @@ extension NSDate {
         }
         return true
     }
+    
+    // returns true if the given date comes after the date we are calling this on
+    // if the dates are equal, it returns true
+    func isBeforeDate(theLaterDate : NSDate) -> Bool {
+        return (self.compare(theLaterDate) != NSComparisonResult.OrderedDescending)
+    }
 }
 
 extension String {

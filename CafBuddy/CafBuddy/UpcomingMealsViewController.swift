@@ -77,7 +77,7 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
             }
             // chat button
             else {
-                
+                segueToMealChat(rowIndex)
             }
         }
         //  if dealing with unmatched meal buttons
@@ -94,10 +94,27 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
             }
             // edit time button
             else {
-                
+                //segue to the chat screen goes here...
             }
         }
         
+    }
+
+    func segueToMealChat(cellRowIndex: Int) {
+        // get the actual meal
+        let theMeal = matchedMeals[cellRowIndex]
+        
+        // if we are not within 20 minutes of the meal then we should not show the chat window
+        if (theMeal.startTime!.timeIntervalSinceDate(NSDate()) > 60*30) {
+            var theMessage = "You must be within 30 minutes of the meal starting to chat with your "
+            if (theMeal.numPeople > 2) { theMessage += "buddies." } else { theMessage += "buddy." }
+            theMessage += " Check back soon!"
+            let theAlertView = createAlert("Not Yet!", message: theMessage, actionMessage: "Okay")
+            self.presentViewController(theAlertView, animated: true, completion: nil)
+        }
+        else {
+            
+        }
     }
     
     func deleteUnmatchedMeal(cellRowIndex: Int) {
