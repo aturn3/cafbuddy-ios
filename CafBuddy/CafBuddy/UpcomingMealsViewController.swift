@@ -25,10 +25,8 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //Set the navigation bar to be tinted main color and set title
-        navigationController?.navigationBar.barTintColor = COLOR_MAIN
+        //Set the title of the navigation bar
         navigationItem.title = "Upcoming Meals"
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         
         initInterface()
     }
@@ -213,7 +211,7 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
         }
     }
     
-    func deleteUnMatchedMealAPICallback(success: Bool, errorMessage: String, mealKeyDeleted: String) {
+    func deleteUnMatchedMealAPICallback(success: Bool, errorMessage: String, mealKeyDeleted: String) -> Void {
         if (!success) {
             let theAlertView = createAlert("Oh no!", message: "There was a problem deleting the meal plan! Please try again.", actionMessage: "Okay")
             self.presentViewController(theAlertView, animated: true, completion: nil)

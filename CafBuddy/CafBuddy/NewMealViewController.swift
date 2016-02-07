@@ -89,10 +89,8 @@ class NewMealViewController: MainScreenViewController, MealAPICallback {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Set the navigation bar to be tinted main color and set title
-        navigationController?.navigationBar.barTintColor = COLOR_MAIN
+        //Set the navigation bar title
         navigationItem.title = "Create A Meal"
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         
         self.initInterface()
         // Do any additional setup after loading the view, typically from a nib.
@@ -563,7 +561,7 @@ class NewMealViewController: MainScreenViewController, MealAPICallback {
         view.endEditing(true)
     }
     
-    func createMealAPICallback(success: Bool, errorMessage: String) {
+    func createMealAPICallback(success: Bool, errorMessage: String) -> Void {
         if success {
             // Reset all options on view
             self.howManyPeopleButtonPressed(nil)

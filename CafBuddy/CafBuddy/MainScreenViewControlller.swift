@@ -18,6 +18,14 @@ class MainScreenViewController: UIViewController {
         super.init(coder: aDecoder)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // set the tint of navbar to be the main color of the app
+        navigationController?.navigationBar.barTintColor = COLOR_MAIN
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+    }
+    
     // MARK: - Helper Methods
     func getCurrentUser() -> User {
         let dataController = self.tabBarController as! TabBarController

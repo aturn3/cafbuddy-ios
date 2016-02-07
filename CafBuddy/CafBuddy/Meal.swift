@@ -8,8 +8,7 @@
 import Foundation
 
 protocol MealAPICallback {
-    // MARK: - Methods
-    
+    // MARK: - Methods    
     func getAllUpcomingMealsAPICallback(success: Bool, errorMessage: String, unMatchedMeals: [UnMatchedMeal], matchedMeals: [MatchedMeal]) -> Void
     func deleteUnMatchedMealAPICallback(success: Bool, errorMessage: String, mealKeyDeleted: String)
     func createMealAPICallback(success: Bool, errorMessage: String) -> Void
@@ -19,7 +18,7 @@ extension MealAPICallback {
     func getAllUpcomingMealsAPICallback(success: Bool, errorMessage: String, unMatchedMeals: [UnMatchedMeal], matchedMeals: [MatchedMeal]) -> Void {
         //nothing happens in default implementation
     }
-    func deleteUnMatchedMealAPICallback(success: Bool, errorMessage: String, mealKeyDeleted: String) {
+    func deleteUnMatchedMealAPICallback(success: Bool, errorMessage: String, mealKeyDeleted: String) -> Void {
         //nothing happens in default implmentation
     }
     func createMealAPICallback(success: Bool, errorMessage: String) -> Void {
