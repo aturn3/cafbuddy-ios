@@ -13,17 +13,13 @@ class NewMealViewController: MainScreenViewController, MealAPICallback {
     
     var meal = Meal()
     
-    var when = String()
-    var startTime = NSDate()
-    var endTime = NSDate()
     var howManyPeople = Int()
     
     let whenLabel = UILabel()
-    let todayButton = UIButton()
-    let tomorrowButton = UIButton()
-    let dayAfterTomorrowButton = UIButton()
+    let whenTextField = UITextField()
+    let whenDatePicker = UIDatePicker()
     let whatTimeLabel = UILabel()
-    let toLabel = UILabel()
+    let andLabel = UILabel()
     let startTimeTextField = UITextField()
     let endTimeTextField = UITextField()
     let startTimePicker = UIDatePicker()
@@ -38,28 +34,19 @@ class NewMealViewController: MainScreenViewController, MealAPICallback {
     var whenLabelConstraintTop = NSLayoutConstraint()
     var whenLabelConstraintBottom = NSLayoutConstraint()
     
-    var todayButtonConstraintLeft = NSLayoutConstraint()
-    var todayButtonConstraintRight = NSLayoutConstraint()
-    var todayButtonConstraintTop = NSLayoutConstraint()
-    var todayButtonConstraintBottom = NSLayoutConstraint()
-    
-    var tomorrowButtonConstraintLeft = NSLayoutConstraint()
-    var tomorrowButtonConstraintRight = NSLayoutConstraint()
-    var tomorrowButtonConstraintTop = NSLayoutConstraint()
-    var tomorrowButtonConstraintBottom = NSLayoutConstraint()
-    
-    var dayAfterTomorrowButtonConstraintLeft = NSLayoutConstraint()
-    var dayAfterTomorrowButtonConstraintRight = NSLayoutConstraint()
-    var dayAfterTomorrowButtonConstraintTop = NSLayoutConstraint()
-    var dayAfterTomorrowButtonConstraintBottom = NSLayoutConstraint()
+    var whenTextFieldConstraintCenterX = NSLayoutConstraint()
+    var whenTextFieldConstraintLeft = NSLayoutConstraint()
+    var whenTextFieldConstraintRight = NSLayoutConstraint()
+    var whenTextFieldConstraintTop = NSLayoutConstraint()
+    var whenTextFieldConstraintBottom = NSLayoutConstraint()
     
     var whatTimeLabelConstraintCenterX = NSLayoutConstraint()
     var whatTimeLabelConstraintTop = NSLayoutConstraint()
     var whatTimeLabelConstraintBottom = NSLayoutConstraint()
     
-    var toLabelConstraintCenterX = NSLayoutConstraint()
-    var toLabelConstraintTop = NSLayoutConstraint()
-    var toLabelConstraintBottom = NSLayoutConstraint()
+    var andLabelConstraintCenterX = NSLayoutConstraint()
+    var andLabelConstraintTop = NSLayoutConstraint()
+    var andLabelConstraintBottom = NSLayoutConstraint()
 
     var startTimeTextFieldConstraintLeft = NSLayoutConstraint()
     var startTimeTextFieldConstraintRight = NSLayoutConstraint()
@@ -125,35 +112,22 @@ class NewMealViewController: MainScreenViewController, MealAPICallback {
         self.whenLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.whenLabel)
         
-        // Today Button
-        self.todayButton.titleLabel!.font = UIFont.systemFontOfSize(12)
-        self.todayButton.setTitle("Today", forState: UIControlState.Normal)
-        self.todayButton.setTitleColor(COLOR_BLACK, forState: UIControlState.Normal)
-        self.todayButton.backgroundColor = COLOR_WHITE
-        self.todayButton.layer.cornerRadius = 10
-        self.todayButton.addTarget(self, action: "whenButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.todayButton.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(self.todayButton)
+        // When Date Picker
+        self.whenDatePicker.timeZone = nil // User local time
+        self.whenDatePicker.datePickerMode = UIDatePickerMode.Date
+        self.whenDatePicker.minimumDate = getMinimumDay()
+        self.whenDatePicker.date = self.whenDatePicker.minimumDate!
+        self.whenDatePicker.maximumDate = getMaximumDay()
+        self.whenDatePicker.addTarget(self, action: Selector("whenDatePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
         
-        // Tomorrow Button
-        self.tomorrowButton.titleLabel!.font = UIFont.systemFontOfSize(12)
-        self.tomorrowButton.setTitle("Tomorrow", forState: UIControlState.Normal)
-        self.tomorrowButton.setTitleColor(COLOR_BLACK, forState: UIControlState.Normal)
-        self.tomorrowButton.backgroundColor = COLOR_WHITE
-        self.tomorrowButton.layer.cornerRadius = 10
-        self.tomorrowButton.addTarget(self, action: "whenButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.tomorrowButton.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(self.tomorrowButton)
-        
-        // Day After Tomorrow Button
-        self.dayAfterTomorrowButton.titleLabel!.font = UIFont.systemFontOfSize(12)
-        self.dayAfterTomorrowButton.setTitle("Day After Tomorrow", forState: UIControlState.Normal)
-        self.dayAfterTomorrowButton.setTitleColor(COLOR_BLACK, forState: UIControlState.Normal)
-        self.dayAfterTomorrowButton.backgroundColor = COLOR_WHITE
-        self.dayAfterTomorrowButton.layer.cornerRadius = 10
-        self.dayAfterTomorrowButton.addTarget(self, action: "whenButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.dayAfterTomorrowButton.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(self.dayAfterTomorrowButton)
+        // When Text Field
+        self.whenTextField.text = self.whenDatePicker.date.toReadableDateOnlyStringLong()
+        self.whenTextField.textAlignment = NSTextAlignment.Center
+        self.whenTextField.font = UIFont.systemFontOfSize(12)
+        self.whenTextField.borderStyle = UITextBorderStyle.RoundedRect
+        self.whenTextField.inputView = self.whenDatePicker
+        self.whenTextField.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.whenTextField)
         
         // What Time Label
         self.whatTimeLabel.font = UIFont.systemFontOfSize(24)
@@ -162,26 +136,26 @@ class NewMealViewController: MainScreenViewController, MealAPICallback {
         self.whatTimeLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.whatTimeLabel)
         
-        // To Label
-        self.toLabel.font = UIFont.systemFontOfSize(18)
-        self.toLabel.textAlignment = NSTextAlignment.Center
-        self.toLabel.text = "to"
-        self.toLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(self.toLabel)
+        // And Label
+        self.andLabel.font = UIFont.systemFontOfSize(18)
+        self.andLabel.textAlignment = NSTextAlignment.Center
+        self.andLabel.text = "and"
+        self.andLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.andLabel)
         
         // Start Time Picker
         self.startTimePicker.timeZone = nil // User local time
         self.startTimePicker.datePickerMode = UIDatePickerMode.Time
         self.startTimePicker.minuteInterval = 5
         self.startTimePicker.date = getMinimumDate(self.startTimePicker)
-        self.startTimePicker.addTarget(self, action: Selector("datePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+        self.startTimePicker.addTarget(self, action: Selector("whatTimeDatePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
         
         // End Time Picker
         self.endTimePicker.timeZone = nil // User local time
         self.endTimePicker.datePickerMode = UIDatePickerMode.Time
         self.endTimePicker.minuteInterval = 5
         self.endTimePicker.date = getMaximumDate(self.endTimePicker)
-        self.endTimePicker.addTarget(self, action: Selector("datePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+        self.endTimePicker.addTarget(self, action: Selector("whatTimeDatePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
         
         // Set minimum and maximum dates for Start and End Time Pickers after their dates have been set
         self.startTimePicker.minimumDate = getMinimumDate(self.startTimePicker)
@@ -215,6 +189,8 @@ class NewMealViewController: MainScreenViewController, MealAPICallback {
         self.view.addSubview(self.howManyPeopleLabel)
         
         // Individual Button
+        self.individualButton.titleLabel!.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        self.individualButton.titleLabel!.numberOfLines = 0
         self.individualButton.titleLabel!.font = UIFont.systemFontOfSize(12)
         self.individualButton.titleLabel!.textAlignment = NSTextAlignment.Center
         self.individualButton.setTitle("Individual\n(1 person)", forState: UIControlState.Normal)
@@ -226,6 +202,8 @@ class NewMealViewController: MainScreenViewController, MealAPICallback {
         self.view.addSubview(self.individualButton)
         
         // Small Group Button
+        self.smallGroupButton.titleLabel!.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        self.smallGroupButton.titleLabel!.numberOfLines = 0
         self.smallGroupButton.titleLabel!.font = UIFont.systemFontOfSize(12)
         self.smallGroupButton.titleLabel!.textAlignment = NSTextAlignment.Center
         self.smallGroupButton.setTitle("Small Group\n(2-5 people)", forState: UIControlState.Normal)
@@ -237,6 +215,8 @@ class NewMealViewController: MainScreenViewController, MealAPICallback {
         self.view.addSubview(self.smallGroupButton)
         
         // Large Group Button
+        self.largeGroupButton.titleLabel!.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        self.largeGroupButton.titleLabel!.numberOfLines = 0
         self.largeGroupButton.titleLabel!.font = UIFont.systemFontOfSize(12)
         self.largeGroupButton.titleLabel!.textAlignment = NSTextAlignment.Center
         self.largeGroupButton.setTitle("Large Group\n(6-10 people)", forState: UIControlState.Normal)
@@ -264,49 +244,38 @@ class NewMealViewController: MainScreenViewController, MealAPICallback {
         self.whenLabelConstraintTop = NSLayoutConstraint(item: self.whenLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: (1/10)*MAIN_VIEW_HEIGHT)
         self.whenLabelConstraintBottom = NSLayoutConstraint(item: self.whenLabel, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.whenLabel, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 50.0)
         
-        // Today Button
-        self.todayButtonConstraintLeft = NSLayoutConstraint(item: self.todayButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (1/52)*SCREEN_WIDTH)
-        self.todayButtonConstraintRight = NSLayoutConstraint(item: self.todayButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-35/52)*SCREEN_WIDTH)
-        self.todayButtonConstraintTop = NSLayoutConstraint(item: self.todayButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.whenLabel, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
-        self.todayButtonConstraintBottom = NSLayoutConstraint(item: self.todayButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.todayButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
-
-        // Tomorrow Button
-        self.tomorrowButtonConstraintLeft = NSLayoutConstraint(item: self.tomorrowButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (18/52)*SCREEN_WIDTH)
-        self.tomorrowButtonConstraintRight = NSLayoutConstraint(item: self.tomorrowButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-18/52)*SCREEN_WIDTH)
-        self.tomorrowButtonConstraintTop = NSLayoutConstraint(item: self.tomorrowButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.todayButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 0.0)
-        self.tomorrowButtonConstraintBottom = NSLayoutConstraint(item: self.tomorrowButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.todayButton, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0.0)
-        
-        // Day After Tomorrow Button
-        self.dayAfterTomorrowButtonConstraintLeft = NSLayoutConstraint(item: self.dayAfterTomorrowButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (35/52)*SCREEN_WIDTH)
-        self.dayAfterTomorrowButtonConstraintRight = NSLayoutConstraint(item: self.dayAfterTomorrowButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-1/52)*SCREEN_WIDTH)
-        self.dayAfterTomorrowButtonConstraintTop = NSLayoutConstraint(item: self.dayAfterTomorrowButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.todayButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 0.0)
-        self.dayAfterTomorrowButtonConstraintBottom = NSLayoutConstraint(item: self.dayAfterTomorrowButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.todayButton, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0.0)
+        // When Text Field
+        self.whenTextFieldConstraintCenterX = NSLayoutConstraint(item: self.whenTextField, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
+        self.whenTextFieldConstraintLeft = NSLayoutConstraint(item: self.whenTextField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (1/16)*SCREEN_WIDTH)
+        self.whenTextFieldConstraintRight = NSLayoutConstraint(item: self.whenTextField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-1/16)*SCREEN_WIDTH)
+        self.whenTextFieldConstraintTop = NSLayoutConstraint(item: self.whenTextField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.whenLabel, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+        self.whenTextFieldConstraintBottom = NSLayoutConstraint(item: self.whenTextField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.whenTextField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
         
         // What Time Label
         self.whatTimeLabelConstraintCenterX = NSLayoutConstraint(item: self.whatTimeLabel, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self.whenLabel, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
-        self.whatTimeLabelConstraintTop = NSLayoutConstraint(item: self.whatTimeLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.todayButton, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+        self.whatTimeLabelConstraintTop = NSLayoutConstraint(item: self.whatTimeLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.whenTextField, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
         self.whatTimeLabelConstraintBottom = NSLayoutConstraint(item: self.whatTimeLabel, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.whatTimeLabel, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 50.0)
         
-        // To Label
-        self.toLabelConstraintCenterX = NSLayoutConstraint(item: self.toLabel, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
-        self.toLabelConstraintTop = NSLayoutConstraint(item: self.toLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.whatTimeLabel, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
-        self.toLabelConstraintBottom = NSLayoutConstraint(item: self.toLabel, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.toLabel, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 50.0)
+        // And Label
+        self.andLabelConstraintCenterX = NSLayoutConstraint(item: self.andLabel, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
+        self.andLabelConstraintTop = NSLayoutConstraint(item: self.andLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.whatTimeLabel, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+        self.andLabelConstraintBottom = NSLayoutConstraint(item: self.andLabel, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.andLabel, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 50.0)
         
         // Start Time Text Field
         self.startTimeTextFieldConstraintLeft = NSLayoutConstraint(item: self.startTimeTextField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (1/16)*SCREEN_WIDTH)
         self.startTimeTextFieldConstraintRight = NSLayoutConstraint(item: self.startTimeTextField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-9/16)*SCREEN_WIDTH)
         self.startTimeTextFieldConstraintBottom = NSLayoutConstraint(item: self.startTimeTextField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.startTimeTextField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
-        self.startTimeTextFieldConstraintCenterY = NSLayoutConstraint(item: self.startTimeTextField, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self.toLabel, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0.0)
+        self.startTimeTextFieldConstraintCenterY = NSLayoutConstraint(item: self.startTimeTextField, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self.andLabel, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0.0)
         
         // End Time Text Field
         self.endTimeTextFieldConstraintLeft = NSLayoutConstraint(item: self.endTimeTextField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (9/16)*SCREEN_WIDTH)
         self.endTimeTextFieldConstraintRight = NSLayoutConstraint(item: self.endTimeTextField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-1/16)*SCREEN_WIDTH)
         self.endTimeTextFieldConstraintBottom = NSLayoutConstraint(item: self.endTimeTextField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.endTimeTextField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
-        self.endTimeTextFieldConstraintCenterY = NSLayoutConstraint(item: self.endTimeTextField, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self.toLabel, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0.0)
+        self.endTimeTextFieldConstraintCenterY = NSLayoutConstraint(item: self.endTimeTextField, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self.andLabel, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0.0)
         
         // How Many People Label
         self.howManyPeopleLabelConstraintCenterX = NSLayoutConstraint(item: self.howManyPeopleLabel, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
-        self.howManyPeopleLabelConstraintTop = NSLayoutConstraint(item: self.howManyPeopleLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.toLabel, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+        self.howManyPeopleLabelConstraintTop = NSLayoutConstraint(item: self.howManyPeopleLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.andLabel, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
         self.howManyPeopleLabelConstraintBottom = NSLayoutConstraint(item: self.howManyPeopleLabel, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.howManyPeopleLabel, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 50.0)
         
         // Individual Button
@@ -334,7 +303,7 @@ class NewMealViewController: MainScreenViewController, MealAPICallback {
         self.newMealButtonConstraintBottom = NSLayoutConstraint(item: self.newMealButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.newMealButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 70.0)
         
         // Activate all constraints
-        NSLayoutConstraint.activateConstraints([self.whenLabelConstraintCenterX, self.whenLabelConstraintTop, self.whenLabelConstraintBottom, self.todayButtonConstraintLeft, self.newMealButtonConstraintLeft, self.todayButtonConstraintRight, self.todayButtonConstraintTop, self.todayButtonConstraintBottom, self.tomorrowButtonConstraintLeft, self.tomorrowButtonConstraintRight, self.tomorrowButtonConstraintTop, self.tomorrowButtonConstraintBottom, self.dayAfterTomorrowButtonConstraintLeft, self.dayAfterTomorrowButtonConstraintRight, self.dayAfterTomorrowButtonConstraintTop, self.dayAfterTomorrowButtonConstraintBottom, self.whatTimeLabelConstraintCenterX, self.whatTimeLabelConstraintTop, self.whatTimeLabelConstraintBottom, self.toLabelConstraintCenterX, self.toLabelConstraintTop, self.toLabelConstraintBottom, self.startTimeTextFieldConstraintLeft, self.startTimeTextFieldConstraintRight, self.startTimeTextFieldConstraintBottom, self.startTimeTextFieldConstraintCenterY, self.endTimeTextFieldConstraintLeft, self.endTimeTextFieldConstraintRight, self.endTimeTextFieldConstraintBottom, self.endTimeTextFieldConstraintCenterY, self.howManyPeopleLabelConstraintCenterX, self.howManyPeopleLabelConstraintTop, self.howManyPeopleLabelConstraintBottom, self.individualButtonConstraintLeft, self.individualButtonConstraintRight, self.individualButtonConstraintTop, self.individualButtonConstraintBottom, self.smallGroupButtonConstraintLeft, self.smallGroupButtonConstraintRight, self.smallGroupButtonConstraintTop, self.smallGroupButtonConstraintBottom, self.largeGroupButtonConstraintLeft, self.largeGroupButtonConstraintRight, self.largeGroupButtonConstraintTop, self.largeGroupButtonConstraintBottom, self.newMealButtonConstraintLeft, self.newMealButtonConstraintRight, self.newMealButtonConstraintTop, self.newMealButtonConstraintBottom])
+        NSLayoutConstraint.activateConstraints([self.whenLabelConstraintCenterX, self.whenLabelConstraintTop, self.whenLabelConstraintBottom, self.whenTextFieldConstraintCenterX, self.whenTextFieldConstraintLeft, self.whenTextFieldConstraintRight, self.whenTextFieldConstraintTop, self.whenTextFieldConstraintBottom, self.whatTimeLabelConstraintCenterX, self.whatTimeLabelConstraintTop, self.whatTimeLabelConstraintBottom, self.andLabelConstraintCenterX, self.andLabelConstraintTop, self.andLabelConstraintBottom, self.startTimeTextFieldConstraintLeft, self.startTimeTextFieldConstraintRight, self.startTimeTextFieldConstraintBottom, self.startTimeTextFieldConstraintCenterY, self.endTimeTextFieldConstraintLeft, self.endTimeTextFieldConstraintRight, self.endTimeTextFieldConstraintBottom, self.endTimeTextFieldConstraintCenterY, self.howManyPeopleLabelConstraintCenterX, self.howManyPeopleLabelConstraintTop, self.howManyPeopleLabelConstraintBottom, self.individualButtonConstraintLeft, self.individualButtonConstraintRight, self.individualButtonConstraintTop, self.individualButtonConstraintBottom, self.smallGroupButtonConstraintLeft, self.smallGroupButtonConstraintRight, self.smallGroupButtonConstraintTop, self.smallGroupButtonConstraintBottom, self.largeGroupButtonConstraintLeft, self.largeGroupButtonConstraintRight, self.largeGroupButtonConstraintTop, self.largeGroupButtonConstraintBottom, self.newMealButtonConstraintLeft, self.newMealButtonConstraintRight, self.newMealButtonConstraintTop, self.newMealButtonConstraintBottom])
     }
     
     func getMinimumDate(datePicker: UIDatePicker) -> NSDate {
@@ -373,29 +342,13 @@ class NewMealViewController: MainScreenViewController, MealAPICallback {
         let dayStartDate = NSCalendar.currentCalendar().dateFromComponents(dayStart)
         let dayStopDate = NSCalendar.currentCalendar().dateFromComponents(dayStop)
         
-//        if when == self.todayButton.titleLabel!.text || when == String() {
-//            // Calculated day start and day stop from above are correct
-//        }
-//        
-//        else if when == self.tomorrowButton.titleLabel!.text {
-//            // Add 1 day to dayStart and dayStop
-//            dayStartDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: dayStartDate!, options: NSCalendarOptions(rawValue: 0))
-//            dayStopDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: dayStartDate!, options: NSCalendarOptions(rawValue: 0))
-//        }
-//        
-//        else {
-//            // Day after tomorrow
-//            // Add 2 days to dayStart and dayStop
-//            dayStartDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 2, toDate: dayStartDate!, options: NSCalendarOptions(rawValue: 0))
-//            dayStopDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 2, toDate: dayStartDate!, options: NSCalendarOptions(rawValue: 0))
-//        }
-        
-        if currentDate!.compare(dayStartDate!) == NSComparisonResult.OrderedAscending {
+        if currentDate!.compare(self.whenDatePicker.date) == NSComparisonResult.OrderedAscending || currentDate!.compare(dayStartDate!) == NSComparisonResult.OrderedAscending {
+            // Current Date is before the minimum dayStartDate for today or date chosen for when is after today
             returnDate = dayStartDate!
         }
             
         else if currentDate!.compare(dayStopDate!) == NSComparisonResult.OrderedDescending {
-            // Current Date is before dayStopDate
+            // Current Date is after dayStopDate
             returnDate = dayStopDate!
         }
             
@@ -476,6 +429,36 @@ class NewMealViewController: MainScreenViewController, MealAPICallback {
         }
     }
     
+    func getMinimumDay() -> NSDate {
+        let todayComponents = getCurrentTime()
+        let today = NSCalendar.currentCalendar().dateFromComponents(todayComponents)
+        
+        let currentDayStop = NSDateComponents()
+        currentDayStop.calendar = NSCalendar.currentCalendar()
+        currentDayStop.year = todayComponents.year
+        currentDayStop.month = todayComponents.month
+        currentDayStop.day = todayComponents.day
+        currentDayStop.hour = 19
+        currentDayStop.minute = 30
+        currentDayStop.second = 0
+        currentDayStop.nanosecond = 0
+        
+        let currentDayStopDate = NSCalendar.currentCalendar().dateFromComponents(currentDayStop)
+        
+        if today?.timeIntervalSinceDate(currentDayStopDate!) >= 0 {
+            // Current time is after minimum day stop; return tomorrow
+            return NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: today!, options: NSCalendarOptions(rawValue: 0))!
+        }
+        
+        return today!
+    }
+    
+    func getMaximumDay() -> NSDate {
+        let oneWeekFromMinimumDay = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 6, toDate: self.whenDatePicker.minimumDate!, options: NSCalendarOptions(rawValue: 0))
+        
+        return oneWeekFromMinimumDay!
+    }
+    
     // MARK: - Action Methods
     
     func newMealButtonPressed(sender: UIButton) {
@@ -483,10 +466,14 @@ class NewMealViewController: MainScreenViewController, MealAPICallback {
         
         let user = getCurrentUser()
         self.meal.mealCallback = self;
-        self.meal.createMeal(user.emailAddress, authenticationToken: user.authenticationToken, day: self.when, startRange: self.startTimePicker.date, endRange: self.endTimePicker.date, numberOfPeople: self.howManyPeople)
+        self.meal.createMeal(user.emailAddress, authenticationToken: user.authenticationToken, day: self.whenDatePicker.date, startRange: self.startTimePicker.date, endRange: self.endTimePicker.date, numberOfPeople: self.howManyPeople)
     }
     
-    func datePickerValueChanged(datePicker: UIDatePicker) {
+    func whenDatePickerValueChanged(datePicker: UIDatePicker) {
+        self.whenTextField.text = self.whenDatePicker.date.toReadableDateOnlyStringLong()
+    }
+    
+    func whatTimeDatePickerValueChanged(datePicker: UIDatePicker) {
         if datePicker == self.startTimePicker {
             self.endTimePicker.minimumDate = getMinimumDate(self.endTimePicker)
             if self.endTimePicker.minimumDate!.compare(self.endTimePicker.date) == NSComparisonResult.OrderedDescending {
@@ -501,47 +488,6 @@ class NewMealViewController: MainScreenViewController, MealAPICallback {
                 self.startTimePicker.date = self.startTimePicker.maximumDate!
             }
             self.endTimeTextField.text = self.endTimePicker.date.toReadableTimeOnlyString()
-        }
-    }
-    
-    // When Button Action
-    func whenButtonPressed(sender: UIButton?) {
-        self.view.endEditing(true)
-        
-        print(self.when)
-        
-        if sender == nil || self.when == sender?.titleLabel!.text! {
-            // User deselected chosen option
-            self.when = String()
-            self.changeWhenButtonColors(nil)
-        }
-        else {
-            self.when = sender!.titleLabel!.text!
-            self.changeWhenButtonColors(sender)
-        }
-    }
-    
-    func changeWhenButtonColors(sender: UIButton?) {
-        if sender == self.todayButton {
-            self.todayButton.backgroundColor = COLOR_BLUE
-            self.tomorrowButton.backgroundColor = COLOR_WHITE
-            self.dayAfterTomorrowButton.backgroundColor = COLOR_WHITE
-        }
-        else if sender == self.tomorrowButton {
-            self.todayButton.backgroundColor = COLOR_WHITE
-            self.tomorrowButton.backgroundColor = COLOR_BLUE
-            self.dayAfterTomorrowButton.backgroundColor = COLOR_WHITE
-        }
-        else if sender == self.dayAfterTomorrowButton {
-            self.todayButton.backgroundColor = COLOR_WHITE
-            self.tomorrowButton.backgroundColor = COLOR_WHITE
-            self.dayAfterTomorrowButton.backgroundColor = COLOR_BLUE
-        }
-        else {
-            // Sender is nil
-            self.todayButton.backgroundColor = COLOR_WHITE
-            self.tomorrowButton.backgroundColor = COLOR_WHITE
-            self.dayAfterTomorrowButton.backgroundColor = COLOR_WHITE
         }
     }
     
@@ -619,11 +565,12 @@ class NewMealViewController: MainScreenViewController, MealAPICallback {
         if success {
             // Reset all options on view
             self.howManyPeopleButtonPressed(nil)
-            self.whenButtonPressed(nil)
+            // Reset self.whenDatePicker.date to self.whenDatePicker.minimumDate
+            self.whenDatePicker.date = self.whenDatePicker.minimumDate!
             self.endTimePicker.date = getMaximumDate(self.endTimePicker)
-            self.datePickerValueChanged(self.endTimePicker)
+            self.whatTimeDatePickerValueChanged(self.endTimePicker)
             self.startTimePicker.date = getMinimumDate(self.startTimePicker)
-            self.datePickerValueChanged(self.startTimePicker)
+            self.whatTimeDatePickerValueChanged(self.startTimePicker)
             
             // Display success
             let alertView = createAlert("Success", message: errorMessage, actionMessage: "Ok")
