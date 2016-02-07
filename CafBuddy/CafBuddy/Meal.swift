@@ -11,7 +11,7 @@ protocol MealAPICallback {
     // MARK: - Methods
     
     func getAllUpcomingMealsAPICallback(success: Bool, errorMessage: String, unMatchedMeals: [UnMatchedMeal], matchedMeals: [MatchedMeal]) -> Void
-    func deleteUnMatchedMeal(success: Bool, errorMessage: String, mealKeyDeleted: String)
+    func deleteUnMatchedMealAPICallback(success: Bool, errorMessage: String, mealKeyDeleted: String)
     func createMealAPICallback(success: Bool, errorMessage: String) -> Void
 }
 
@@ -157,14 +157,9 @@ class Meal: NSObject {
 
     }
     
-    func createMeal(emailAddress: String, authenticationToken: String, day: String, startRange: NSDate, endRange: NSDate, numberOfPeople: Int) {
-        // Check if day is empty
-        if day.isEmpty {
-            self.mealCallback?.createMealAPICallback(false, errorMessage: "Please select a button for when")
-        }
-            
-            // Check if numberOfPeople is 0
-        else if numberOfPeople == 0 {
+    func createMeal(emailAddress: String, authenticationToken: String, day: NSDate, startRange: NSDate, endRange: NSDate, numberOfPeople: Int) {
+        // Check if numberOfPeople is 0
+        if numberOfPeople == 0 {
             self.mealCallback?.createMealAPICallback(false, errorMessage: "Please select a button for how many people")
         }
             
@@ -172,19 +167,13 @@ class Meal: NSObject {
             var startRange = startRange
             var endRange = endRange
             
-            if day == TOMORROW {
-                // Add 1 day to startRange and endRange day
-                startRange = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: startRange, options: NSCalendarOptions(rawValue: 0))!
-                endRange = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: endRange, options: NSCalendarOptions(rawValue: 0))!
-            }
-            else if day == DAY_AFTER_TOMORROW {
-                // Add 2 days to startRange and endRange day
-                startRange = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 2, toDate: startRange, options: NSCalendarOptions(rawValue: 0))!
-                endRange = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 2, toDate: endRange, options: NSCalendarOptions(rawValue: 0))!
-            }
-            else {
-                // Day is correct for startRange and endRange
-            }
+            // Change day of startRange and endRange based on day chosen for meal
+            let chosenDay = NSCalendar.currentCalendar().components(NSCalendarUnit.Day, fromDate: day)
+            let startRangeDay = NSCalendar.currentCalendar().components(NSCalendarUnit.Day, fromDate: startRange)
+            let dayDifference = chosenDay.day - startRangeDay.day
+            
+            startRange = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: dayDifference, toDate: startRange, options: NSCalendarOptions(rawValue: 0))!
+            endRange = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: dayDifference, toDate: endRange, options: NSCalendarOptions(rawValue: 0))!
             
             // Get Meal Type
             let endDateComponents = NSCalendar.currentCalendar().components(NSCalendarUnit.Hour, fromDate: endRange)

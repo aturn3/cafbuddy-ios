@@ -13,10 +13,6 @@ import UIKit
 
 let APPLICATION_ERROR_OR_NETWORK_PROBLEM = "Servers unavailable. Please try again later"
 
-let TODAY = "Today"
-let TOMORROW = "Tomorrow"
-let DAY_AFTER_TOMORROW = "Day After Tomorrow"
-
 // MARK: - User Keychain Constants
 
 let USER_FIRST_NAME_KEY = "userFirstName"
