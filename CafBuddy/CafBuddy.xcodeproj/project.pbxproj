@@ -63,6 +63,7 @@
 		FF5F6B0A1C6522D7008131A9 /* GTLMealServiceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6AF51C6522D7008131A9 /* GTLMealServiceConstants.m */; };
 		FF5F6B0B1C6522D7008131A9 /* GTLQueryMealService.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6AF71C6522D7008131A9 /* GTLQueryMealService.m */; };
 		FF5F6B0C1C6522D7008131A9 /* GTLServiceMealService.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6AF91C6522D7008131A9 /* GTLServiceMealService.m */; };
+		FF5F6B0E1C6713A7008131A9 /* UpcomingMealCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6B0D1C6713A7008131A9 /* UpcomingMealCollectionViewHeader.swift */; };
 		FF72B9951C32269B009B7308 /* GTLObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B96B1C32269B009B7308 /* GTLObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FF72B9961C32269B009B7308 /* GTLQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B96D1C32269B009B7308 /* GTLQuery.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FF72B9971C32269B009B7308 /* GTLBatchQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B96F1C32269B009B7308 /* GTLBatchQuery.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -224,6 +225,7 @@
 		FF5F6AF71C6522D7008131A9 /* GTLQueryMealService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLQueryMealService.m; sourceTree = "<group>"; };
 		FF5F6AF81C6522D7008131A9 /* GTLServiceMealService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLServiceMealService.h; sourceTree = "<group>"; };
 		FF5F6AF91C6522D7008131A9 /* GTLServiceMealService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLServiceMealService.m; sourceTree = "<group>"; };
+		FF5F6B0D1C6713A7008131A9 /* UpcomingMealCollectionViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingMealCollectionViewHeader.swift; sourceTree = "<group>"; };
 		FF72B9681C32269A009B7308 /* CafBuddy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CafBuddy-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		FF72B9691C32269B009B7308 /* GTLDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLDefines.h; sourceTree = "<group>"; };
 		FF72B96A1C32269B009B7308 /* GTLObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLObject.h; sourceTree = "<group>"; };
@@ -650,6 +652,7 @@
 			children = (
 				FFCF47751C61CD05003E682A /* MealCollectionCellTemplate.swift */,
 				FFCF47711C61C777003E682A /* UpcomingMealListingCell.swift */,
+				FF5F6B0D1C6713A7008131A9 /* UpcomingMealCollectionViewHeader.swift */,
 			);
 			name = "Custom View Cells";
 			sourceTree = "<group>";
@@ -967,6 +970,7 @@
 				FF72B99E1C32269B009B7308 /* GTLFramework.m in Sources */,
 				FF5F6B0C1C6522D7008131A9 /* GTLServiceMealService.m in Sources */,
 				FF72B9A81C32269B009B7308 /* GTMMIMEDocument.m in Sources */,
+				FF5F6B0E1C6713A7008131A9 /* UpcomingMealCollectionViewHeader.swift in Sources */,
 				FF5F6B061C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.m in Sources */,
 				4949D44E1C2F4A80003C84DA /* UpcomingMealsViewController.swift in Sources */,
 				492097031C6159CE00B6C204 /* TabBarController.swift in Sources */,
