@@ -17,17 +17,19 @@
 
 #import "GTLMealServiceApisMealApiMatchedMealMessage.h"
 
+#import "GTLMealServiceApisMealApiUserMessage.h"
+
 // ----------------------------------------------------------------------------
 //
 //   GTLMealServiceApisMealApiMatchedMealMessage
 //
 
 @implementation GTLMealServiceApisMealApiMatchedMealMessage
-@dynamic matchedDate, mealKey, mealType, numPeople, peopleKeys, startTime;
+@dynamic matchedDate, mealKey, mealType, numPeople, people, startTime;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{
-    @"peopleKeys" : [NSString class]
+    @"people" : [GTLMealServiceApisMealApiUserMessage class]
   };
   return map;
 }

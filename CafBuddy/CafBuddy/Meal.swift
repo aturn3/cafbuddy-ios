@@ -57,8 +57,14 @@ class MatchedMeal {
     var startTime : NSDate? // the date and time that the meal is supposed to start
     var numPeople : Int? // the number of people attending the meal total
     var mealType : MealType? // the type of the meal
-    var peopleKeys = [String]() // the keys of all the people in the meal
+    var people = [MealUser]() // the keys / names of all the people in the meal
     var mealKey : String? // the unique identifier of the MatchedMeal in the backend database
+}
+
+class MealUser { // modified user with only limited information abou the user as returned in the meal API
+    var userKey : String? // the key of the user in the database
+    var firstName : String? // the first name of the user
+    var lastName : String? // the last name of the user
 }
 
 class Meal: NSObject {
@@ -252,9 +258,10 @@ class Meal: NSObject {
         theMatchedMeal.matchedDate = matchedMealAPI.matchedDate?.fromDatabaseStringToNSDate()
         theMatchedMeal.startTime = matchedMealAPI.startTime?.fromDatabaseStringToNSDate()
         theMatchedMeal.numPeople = matchedMealAPI.numPeople as Int
-        theMatchedMeal.peopleKeys = matchedMealAPI.peopleKeys as! [String]
         theMatchedMeal.mealType = MealType(rawValue: matchedMealAPI.mealType as Int)
         theMatchedMeal.mealKey = matchedMealAPI.mealKey
+        theMatchedMeal.people = matchedMealAPI.people as! [String]
+        
         return theMatchedMeal
     }
     
