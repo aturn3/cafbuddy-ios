@@ -40,7 +40,8 @@
     [GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage class],
     [GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage class],
     [GTLMealServiceApisMealApiMatchedMealMessage class],
-    [GTLMealServiceApisMealApiUnMatchedMealMessage class]
+    [GTLMealServiceApisMealApiUnMatchedMealMessage class],
+    [GTLMealServiceApisMealApiUserMessage class]
   ];
   return classes;
 }

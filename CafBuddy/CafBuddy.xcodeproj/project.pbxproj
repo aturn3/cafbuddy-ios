@@ -44,26 +44,28 @@
 		FF5F6AD01C6410BC008131A9 /* addCalendarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5F6ACC1C6410BC008131A9 /* addCalendarIcon@2x.png */; };
 		FF5F6AD11C6410BC008131A9 /* chatIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5F6ACD1C6410BC008131A9 /* chatIcon.png */; };
 		FF5F6AD21C6410BC008131A9 /* chatIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5F6ACE1C6410BC008131A9 /* chatIcon@2x.png */; };
-		FF5F6AFA1C6522D7008131A9 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6AD51C6522D7008131A9 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.m */; };
-		FF5F6AFB1C6522D7008131A9 /* GTLMealServiceApisMealApiCreateNewMealResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6AD71C6522D7008131A9 /* GTLMealServiceApisMealApiCreateNewMealResponseMessage.m */; };
-		FF5F6AFC1C6522D7008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6AD91C6522D7008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage.m */; };
-		FF5F6AFD1C6522D7008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6ADB1C6522D7008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealResponseMessage.m */; };
-		FF5F6AFE1C6522D7008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6ADD1C6522D7008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealRequestMessage.m */; };
-		FF5F6AFF1C6522D7008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6ADF1C6522D7008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealResponseMessage.m */; };
-		FF5F6B001C6522D7008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6AE11C6522D7008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.m */; };
-		FF5F6B011C6522D7008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6AE31C6522D7008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.m */; };
-		FF5F6B021C6522D7008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6AE51C6522D7008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.m */; };
-		FF5F6B031C6522D7008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6AE71C6522D7008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.m */; };
-		FF5F6B041C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6AE91C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.m */; };
-		FF5F6B051C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6AEB1C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.m */; };
-		FF5F6B061C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6AED1C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.m */; };
-		FF5F6B071C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6AEF1C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.m */; };
-		FF5F6B081C6522D7008131A9 /* GTLMealServiceApisMealApiMatchedMealMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6AF11C6522D7008131A9 /* GTLMealServiceApisMealApiMatchedMealMessage.m */; };
-		FF5F6B091C6522D7008131A9 /* GTLMealServiceApisMealApiUnMatchedMealMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6AF31C6522D7008131A9 /* GTLMealServiceApisMealApiUnMatchedMealMessage.m */; };
-		FF5F6B0A1C6522D7008131A9 /* GTLMealServiceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6AF51C6522D7008131A9 /* GTLMealServiceConstants.m */; };
-		FF5F6B0B1C6522D7008131A9 /* GTLQueryMealService.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6AF71C6522D7008131A9 /* GTLQueryMealService.m */; };
-		FF5F6B0C1C6522D7008131A9 /* GTLServiceMealService.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6AF91C6522D7008131A9 /* GTLServiceMealService.m */; };
 		FF5F6B0E1C6713A7008131A9 /* UpcomingMealCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6B0D1C6713A7008131A9 /* UpcomingMealCollectionViewHeader.swift */; };
+		FF5F6B101C686DE4008131A9 /* HistoryMealListingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6B0F1C686DE3008131A9 /* HistoryMealListingCell.swift */; };
+		FF5F6B3A1C687A14008131A9 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6B131C687A14008131A9 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.m */; };
+		FF5F6B3B1C687A14008131A9 /* GTLMealServiceApisMealApiCreateNewMealResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6B151C687A14008131A9 /* GTLMealServiceApisMealApiCreateNewMealResponseMessage.m */; };
+		FF5F6B3C1C687A14008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6B171C687A14008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage.m */; };
+		FF5F6B3D1C687A14008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6B191C687A14008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealResponseMessage.m */; };
+		FF5F6B3E1C687A14008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6B1B1C687A14008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealRequestMessage.m */; };
+		FF5F6B3F1C687A14008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6B1D1C687A14008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealResponseMessage.m */; };
+		FF5F6B401C687A14008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6B1F1C687A14008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.m */; };
+		FF5F6B411C687A14008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6B211C687A14008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.m */; };
+		FF5F6B421C687A14008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6B231C687A14008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.m */; };
+		FF5F6B431C687A14008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6B251C687A14008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.m */; };
+		FF5F6B441C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6B271C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.m */; };
+		FF5F6B451C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6B291C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.m */; };
+		FF5F6B461C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6B2B1C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.m */; };
+		FF5F6B471C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6B2D1C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.m */; };
+		FF5F6B481C687A14008131A9 /* GTLMealServiceApisMealApiMatchedMealMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6B2F1C687A14008131A9 /* GTLMealServiceApisMealApiMatchedMealMessage.m */; };
+		FF5F6B491C687A14008131A9 /* GTLMealServiceApisMealApiUnMatchedMealMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6B311C687A14008131A9 /* GTLMealServiceApisMealApiUnMatchedMealMessage.m */; };
+		FF5F6B4A1C687A14008131A9 /* GTLMealServiceApisMealApiUserMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6B331C687A14008131A9 /* GTLMealServiceApisMealApiUserMessage.m */; };
+		FF5F6B4B1C687A14008131A9 /* GTLMealServiceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6B351C687A14008131A9 /* GTLMealServiceConstants.m */; };
+		FF5F6B4C1C687A14008131A9 /* GTLQueryMealService.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6B371C687A14008131A9 /* GTLQueryMealService.m */; };
+		FF5F6B4D1C687A14008131A9 /* GTLServiceMealService.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5F6B391C687A14008131A9 /* GTLServiceMealService.m */; };
 		FF72B9951C32269B009B7308 /* GTLObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B96B1C32269B009B7308 /* GTLObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FF72B9961C32269B009B7308 /* GTLQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B96D1C32269B009B7308 /* GTLQuery.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FF72B9971C32269B009B7308 /* GTLBatchQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = FF72B96F1C32269B009B7308 /* GTLBatchQuery.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -186,46 +188,49 @@
 		FF5F6ACC1C6410BC008131A9 /* addCalendarIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addCalendarIcon@2x.png"; sourceTree = "<group>"; };
 		FF5F6ACD1C6410BC008131A9 /* chatIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatIcon.png; sourceTree = "<group>"; };
 		FF5F6ACE1C6410BC008131A9 /* chatIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatIcon@2x.png"; sourceTree = "<group>"; };
-		FF5F6AD31C6522D7008131A9 /* GTLMealService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealService.h; sourceTree = "<group>"; };
-		FF5F6AD41C6522D7008131A9 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiCreateNewMealRequestMessage.h; sourceTree = "<group>"; };
-		FF5F6AD51C6522D7008131A9 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiCreateNewMealRequestMessage.m; sourceTree = "<group>"; };
-		FF5F6AD61C6522D7008131A9 /* GTLMealServiceApisMealApiCreateNewMealResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiCreateNewMealResponseMessage.h; sourceTree = "<group>"; };
-		FF5F6AD71C6522D7008131A9 /* GTLMealServiceApisMealApiCreateNewMealResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiCreateNewMealResponseMessage.m; sourceTree = "<group>"; };
-		FF5F6AD81C6522D7008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage.h; sourceTree = "<group>"; };
-		FF5F6AD91C6522D7008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage.m; sourceTree = "<group>"; };
-		FF5F6ADA1C6522D7008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiDeleteUnMatchedMealResponseMessage.h; sourceTree = "<group>"; };
-		FF5F6ADB1C6522D7008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiDeleteUnMatchedMealResponseMessage.m; sourceTree = "<group>"; };
-		FF5F6ADC1C6522D7008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiEditUnMatchedMealRequestMessage.h; sourceTree = "<group>"; };
-		FF5F6ADD1C6522D7008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiEditUnMatchedMealRequestMessage.m; sourceTree = "<group>"; };
-		FF5F6ADE1C6522D7008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiEditUnMatchedMealResponseMessage.h; sourceTree = "<group>"; };
-		FF5F6ADF1C6522D7008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiEditUnMatchedMealResponseMessage.m; sourceTree = "<group>"; };
-		FF5F6AE01C6522D7008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.h; sourceTree = "<group>"; };
-		FF5F6AE11C6522D7008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.m; sourceTree = "<group>"; };
-		FF5F6AE21C6522D7008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.h; sourceTree = "<group>"; };
-		FF5F6AE31C6522D7008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.m; sourceTree = "<group>"; };
-		FF5F6AE41C6522D7008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.h; sourceTree = "<group>"; };
-		FF5F6AE51C6522D7008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.m; sourceTree = "<group>"; };
-		FF5F6AE61C6522D7008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.h; sourceTree = "<group>"; };
-		FF5F6AE71C6522D7008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.m; sourceTree = "<group>"; };
-		FF5F6AE81C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.h; sourceTree = "<group>"; };
-		FF5F6AE91C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.m; sourceTree = "<group>"; };
-		FF5F6AEA1C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.h; sourceTree = "<group>"; };
-		FF5F6AEB1C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.m; sourceTree = "<group>"; };
-		FF5F6AEC1C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.h; sourceTree = "<group>"; };
-		FF5F6AED1C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.m; sourceTree = "<group>"; };
-		FF5F6AEE1C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.h; sourceTree = "<group>"; };
-		FF5F6AEF1C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.m; sourceTree = "<group>"; };
-		FF5F6AF01C6522D7008131A9 /* GTLMealServiceApisMealApiMatchedMealMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiMatchedMealMessage.h; sourceTree = "<group>"; };
-		FF5F6AF11C6522D7008131A9 /* GTLMealServiceApisMealApiMatchedMealMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiMatchedMealMessage.m; sourceTree = "<group>"; };
-		FF5F6AF21C6522D7008131A9 /* GTLMealServiceApisMealApiUnMatchedMealMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiUnMatchedMealMessage.h; sourceTree = "<group>"; };
-		FF5F6AF31C6522D7008131A9 /* GTLMealServiceApisMealApiUnMatchedMealMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiUnMatchedMealMessage.m; sourceTree = "<group>"; };
-		FF5F6AF41C6522D7008131A9 /* GTLMealServiceConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceConstants.h; sourceTree = "<group>"; };
-		FF5F6AF51C6522D7008131A9 /* GTLMealServiceConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceConstants.m; sourceTree = "<group>"; };
-		FF5F6AF61C6522D7008131A9 /* GTLQueryMealService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLQueryMealService.h; sourceTree = "<group>"; };
-		FF5F6AF71C6522D7008131A9 /* GTLQueryMealService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLQueryMealService.m; sourceTree = "<group>"; };
-		FF5F6AF81C6522D7008131A9 /* GTLServiceMealService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLServiceMealService.h; sourceTree = "<group>"; };
-		FF5F6AF91C6522D7008131A9 /* GTLServiceMealService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLServiceMealService.m; sourceTree = "<group>"; };
 		FF5F6B0D1C6713A7008131A9 /* UpcomingMealCollectionViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingMealCollectionViewHeader.swift; sourceTree = "<group>"; };
+		FF5F6B0F1C686DE3008131A9 /* HistoryMealListingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryMealListingCell.swift; sourceTree = "<group>"; };
+		FF5F6B111C687A14008131A9 /* GTLMealService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealService.h; sourceTree = "<group>"; };
+		FF5F6B121C687A14008131A9 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiCreateNewMealRequestMessage.h; sourceTree = "<group>"; };
+		FF5F6B131C687A14008131A9 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiCreateNewMealRequestMessage.m; sourceTree = "<group>"; };
+		FF5F6B141C687A14008131A9 /* GTLMealServiceApisMealApiCreateNewMealResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiCreateNewMealResponseMessage.h; sourceTree = "<group>"; };
+		FF5F6B151C687A14008131A9 /* GTLMealServiceApisMealApiCreateNewMealResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiCreateNewMealResponseMessage.m; sourceTree = "<group>"; };
+		FF5F6B161C687A14008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage.h; sourceTree = "<group>"; };
+		FF5F6B171C687A14008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage.m; sourceTree = "<group>"; };
+		FF5F6B181C687A14008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiDeleteUnMatchedMealResponseMessage.h; sourceTree = "<group>"; };
+		FF5F6B191C687A14008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiDeleteUnMatchedMealResponseMessage.m; sourceTree = "<group>"; };
+		FF5F6B1A1C687A14008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiEditUnMatchedMealRequestMessage.h; sourceTree = "<group>"; };
+		FF5F6B1B1C687A14008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiEditUnMatchedMealRequestMessage.m; sourceTree = "<group>"; };
+		FF5F6B1C1C687A14008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiEditUnMatchedMealResponseMessage.h; sourceTree = "<group>"; };
+		FF5F6B1D1C687A14008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiEditUnMatchedMealResponseMessage.m; sourceTree = "<group>"; };
+		FF5F6B1E1C687A14008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.h; sourceTree = "<group>"; };
+		FF5F6B1F1C687A14008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.m; sourceTree = "<group>"; };
+		FF5F6B201C687A14008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.h; sourceTree = "<group>"; };
+		FF5F6B211C687A14008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.m; sourceTree = "<group>"; };
+		FF5F6B221C687A14008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.h; sourceTree = "<group>"; };
+		FF5F6B231C687A14008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.m; sourceTree = "<group>"; };
+		FF5F6B241C687A14008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.h; sourceTree = "<group>"; };
+		FF5F6B251C687A14008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.m; sourceTree = "<group>"; };
+		FF5F6B261C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.h; sourceTree = "<group>"; };
+		FF5F6B271C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.m; sourceTree = "<group>"; };
+		FF5F6B281C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.h; sourceTree = "<group>"; };
+		FF5F6B291C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.m; sourceTree = "<group>"; };
+		FF5F6B2A1C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.h; sourceTree = "<group>"; };
+		FF5F6B2B1C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.m; sourceTree = "<group>"; };
+		FF5F6B2C1C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.h; sourceTree = "<group>"; };
+		FF5F6B2D1C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.m; sourceTree = "<group>"; };
+		FF5F6B2E1C687A14008131A9 /* GTLMealServiceApisMealApiMatchedMealMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiMatchedMealMessage.h; sourceTree = "<group>"; };
+		FF5F6B2F1C687A14008131A9 /* GTLMealServiceApisMealApiMatchedMealMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiMatchedMealMessage.m; sourceTree = "<group>"; };
+		FF5F6B301C687A14008131A9 /* GTLMealServiceApisMealApiUnMatchedMealMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiUnMatchedMealMessage.h; sourceTree = "<group>"; };
+		FF5F6B311C687A14008131A9 /* GTLMealServiceApisMealApiUnMatchedMealMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiUnMatchedMealMessage.m; sourceTree = "<group>"; };
+		FF5F6B321C687A14008131A9 /* GTLMealServiceApisMealApiUserMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceApisMealApiUserMessage.h; sourceTree = "<group>"; };
+		FF5F6B331C687A14008131A9 /* GTLMealServiceApisMealApiUserMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceApisMealApiUserMessage.m; sourceTree = "<group>"; };
+		FF5F6B341C687A14008131A9 /* GTLMealServiceConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLMealServiceConstants.h; sourceTree = "<group>"; };
+		FF5F6B351C687A14008131A9 /* GTLMealServiceConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLMealServiceConstants.m; sourceTree = "<group>"; };
+		FF5F6B361C687A14008131A9 /* GTLQueryMealService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLQueryMealService.h; sourceTree = "<group>"; };
+		FF5F6B371C687A14008131A9 /* GTLQueryMealService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLQueryMealService.m; sourceTree = "<group>"; };
+		FF5F6B381C687A14008131A9 /* GTLServiceMealService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLServiceMealService.h; sourceTree = "<group>"; };
+		FF5F6B391C687A14008131A9 /* GTLServiceMealService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLServiceMealService.m; sourceTree = "<group>"; };
 		FF72B9681C32269A009B7308 /* CafBuddy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CafBuddy-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		FF72B9691C32269B009B7308 /* GTLDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLDefines.h; sourceTree = "<group>"; };
 		FF72B96A1C32269B009B7308 /* GTLObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLObject.h; sourceTree = "<group>"; };
@@ -469,45 +474,47 @@
 		FF72B9661C322674009B7308 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				FF5F6AD31C6522D7008131A9 /* GTLMealService.h */,
-				FF5F6AD41C6522D7008131A9 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.h */,
-				FF5F6AD51C6522D7008131A9 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.m */,
-				FF5F6AD61C6522D7008131A9 /* GTLMealServiceApisMealApiCreateNewMealResponseMessage.h */,
-				FF5F6AD71C6522D7008131A9 /* GTLMealServiceApisMealApiCreateNewMealResponseMessage.m */,
-				FF5F6AD81C6522D7008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage.h */,
-				FF5F6AD91C6522D7008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage.m */,
-				FF5F6ADA1C6522D7008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealResponseMessage.h */,
-				FF5F6ADB1C6522D7008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealResponseMessage.m */,
-				FF5F6ADC1C6522D7008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealRequestMessage.h */,
-				FF5F6ADD1C6522D7008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealRequestMessage.m */,
-				FF5F6ADE1C6522D7008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealResponseMessage.h */,
-				FF5F6ADF1C6522D7008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealResponseMessage.m */,
-				FF5F6AE01C6522D7008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.h */,
-				FF5F6AE11C6522D7008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.m */,
-				FF5F6AE21C6522D7008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.h */,
-				FF5F6AE31C6522D7008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.m */,
-				FF5F6AE41C6522D7008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.h */,
-				FF5F6AE51C6522D7008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.m */,
-				FF5F6AE61C6522D7008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.h */,
-				FF5F6AE71C6522D7008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.m */,
-				FF5F6AE81C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.h */,
-				FF5F6AE91C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.m */,
-				FF5F6AEA1C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.h */,
-				FF5F6AEB1C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.m */,
-				FF5F6AEC1C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.h */,
-				FF5F6AED1C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.m */,
-				FF5F6AEE1C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.h */,
-				FF5F6AEF1C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.m */,
-				FF5F6AF01C6522D7008131A9 /* GTLMealServiceApisMealApiMatchedMealMessage.h */,
-				FF5F6AF11C6522D7008131A9 /* GTLMealServiceApisMealApiMatchedMealMessage.m */,
-				FF5F6AF21C6522D7008131A9 /* GTLMealServiceApisMealApiUnMatchedMealMessage.h */,
-				FF5F6AF31C6522D7008131A9 /* GTLMealServiceApisMealApiUnMatchedMealMessage.m */,
-				FF5F6AF41C6522D7008131A9 /* GTLMealServiceConstants.h */,
-				FF5F6AF51C6522D7008131A9 /* GTLMealServiceConstants.m */,
-				FF5F6AF61C6522D7008131A9 /* GTLQueryMealService.h */,
-				FF5F6AF71C6522D7008131A9 /* GTLQueryMealService.m */,
-				FF5F6AF81C6522D7008131A9 /* GTLServiceMealService.h */,
-				FF5F6AF91C6522D7008131A9 /* GTLServiceMealService.m */,
+				FF5F6B111C687A14008131A9 /* GTLMealService.h */,
+				FF5F6B121C687A14008131A9 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.h */,
+				FF5F6B131C687A14008131A9 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.m */,
+				FF5F6B141C687A14008131A9 /* GTLMealServiceApisMealApiCreateNewMealResponseMessage.h */,
+				FF5F6B151C687A14008131A9 /* GTLMealServiceApisMealApiCreateNewMealResponseMessage.m */,
+				FF5F6B161C687A14008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage.h */,
+				FF5F6B171C687A14008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage.m */,
+				FF5F6B181C687A14008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealResponseMessage.h */,
+				FF5F6B191C687A14008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealResponseMessage.m */,
+				FF5F6B1A1C687A14008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealRequestMessage.h */,
+				FF5F6B1B1C687A14008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealRequestMessage.m */,
+				FF5F6B1C1C687A14008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealResponseMessage.h */,
+				FF5F6B1D1C687A14008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealResponseMessage.m */,
+				FF5F6B1E1C687A14008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.h */,
+				FF5F6B1F1C687A14008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.m */,
+				FF5F6B201C687A14008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.h */,
+				FF5F6B211C687A14008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.m */,
+				FF5F6B221C687A14008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.h */,
+				FF5F6B231C687A14008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.m */,
+				FF5F6B241C687A14008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.h */,
+				FF5F6B251C687A14008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.m */,
+				FF5F6B261C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.h */,
+				FF5F6B271C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.m */,
+				FF5F6B281C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.h */,
+				FF5F6B291C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.m */,
+				FF5F6B2A1C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.h */,
+				FF5F6B2B1C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.m */,
+				FF5F6B2C1C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.h */,
+				FF5F6B2D1C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.m */,
+				FF5F6B2E1C687A14008131A9 /* GTLMealServiceApisMealApiMatchedMealMessage.h */,
+				FF5F6B2F1C687A14008131A9 /* GTLMealServiceApisMealApiMatchedMealMessage.m */,
+				FF5F6B301C687A14008131A9 /* GTLMealServiceApisMealApiUnMatchedMealMessage.h */,
+				FF5F6B311C687A14008131A9 /* GTLMealServiceApisMealApiUnMatchedMealMessage.m */,
+				FF5F6B321C687A14008131A9 /* GTLMealServiceApisMealApiUserMessage.h */,
+				FF5F6B331C687A14008131A9 /* GTLMealServiceApisMealApiUserMessage.m */,
+				FF5F6B341C687A14008131A9 /* GTLMealServiceConstants.h */,
+				FF5F6B351C687A14008131A9 /* GTLMealServiceConstants.m */,
+				FF5F6B361C687A14008131A9 /* GTLQueryMealService.h */,
+				FF5F6B371C687A14008131A9 /* GTLQueryMealService.m */,
+				FF5F6B381C687A14008131A9 /* GTLServiceMealService.h */,
+				FF5F6B391C687A14008131A9 /* GTLServiceMealService.m */,
 				FFCF47771C61D7BB003E682A /* GTLQueryUserService.h */,
 				FFCF47781C61D7BB003E682A /* GTLQueryUserService.m */,
 				FFCF47791C61D7BB003E682A /* GTLServiceUserService.h */,
@@ -652,6 +659,7 @@
 			children = (
 				FFCF47751C61CD05003E682A /* MealCollectionCellTemplate.swift */,
 				FFCF47711C61C777003E682A /* UpcomingMealListingCell.swift */,
+				FF5F6B0F1C686DE3008131A9 /* HistoryMealListingCell.swift */,
 				FF5F6B0D1C6713A7008131A9 /* UpcomingMealCollectionViewHeader.swift */,
 			);
 			name = "Custom View Cells";
@@ -900,48 +908,56 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF5F6B3C1C687A14008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage.m in Sources */,
 				FFCF47A61C61D7BB003E682A /* GTLUserServiceApisUserApiIncrementPositiveRatingRequestMessage.m in Sources */,
+				FF5F6B4D1C687A14008131A9 /* GTLServiceMealService.m in Sources */,
 				FF72B99A1C32269B009B7308 /* GTLUploadParameters.m in Sources */,
-				FF5F6B071C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.m in Sources */,
+				FF5F6B3A1C687A14008131A9 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.m in Sources */,
 				FFCF47AA1C61D7BB003E682A /* GTLUserServiceApisUserApiLogOutUserRequestMessage.m in Sources */,
+				FF5F6B3F1C687A14008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealResponseMessage.m in Sources */,
+				FF5F6B441C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.m in Sources */,
+				FF5F6B411C687A14008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.m in Sources */,
 				4949D4801C307767003C84DA /* Utilities.swift in Sources */,
 				FFCF47B21C61D7BB003E682A /* GTLUserServiceConstants.m in Sources */,
+				FF5F6B481C687A14008131A9 /* GTLMealServiceApisMealApiMatchedMealMessage.m in Sources */,
 				FF72B9A01C32269B009B7308 /* GTLUtilities.m in Sources */,
+				FF5F6B3E1C687A14008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealRequestMessage.m in Sources */,
 				FF72B9AC1C3226F3009B7308 /* GTMSessionFetcher.m in Sources */,
 				FFCF47721C61C777003E682A /* UpcomingMealListingCell.swift in Sources */,
-				FF5F6B0A1C6522D7008131A9 /* GTLMealServiceConstants.m in Sources */,
-				FF5F6AFD1C6522D7008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealResponseMessage.m in Sources */,
 				FFCF47A41C61D7BB003E682A /* GTLUserServiceApisUserApiIncrementNegativeRatingRequestMessage.m in Sources */,
 				FFCF47A81C61D7BB003E682A /* GTLUserServiceApisUserApiLogInUserRequestMessage.m in Sources */,
 				FFFB22241C6153BE005D7816 /* ProfileViewController.swift in Sources */,
+				FF5F6B4C1C687A14008131A9 /* GTLQueryMealService.m in Sources */,
+				FF5F6B431C687A14008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.m in Sources */,
 				FF72B9971C32269B009B7308 /* GTLBatchQuery.m in Sources */,
-				FF5F6B051C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.m in Sources */,
 				FF72B99F1C32269B009B7308 /* GTLJSONParser.m in Sources */,
-				FF5F6B031C6522D7008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.m in Sources */,
 				FFCF47B61C62CEE3003E682A /* MainScreenViewControlller.swift in Sources */,
-				FF5F6B0B1C6522D7008131A9 /* GTLQueryMealService.m in Sources */,
 				4949D47C1C2F56E1003C84DA /* RegisterViewController.swift in Sources */,
 				FFCF479F1C61D7BB003E682A /* GTLQueryUserService.m in Sources */,
 				FFCF47A01C61D7BB003E682A /* GTLServiceUserService.m in Sources */,
 				FF72B99B1C32269B009B7308 /* GTLDateTime.m in Sources */,
 				FF72B9A71C32269B009B7308 /* GTMGatherInputStream.m in Sources */,
+				FF5F6B3B1C687A14008131A9 /* GTLMealServiceApisMealApiCreateNewMealResponseMessage.m in Sources */,
 				FF72B9A61C32269B009B7308 /* GTMHTTPUploadFetcher.m in Sources */,
+				FF5F6B421C687A14008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.m in Sources */,
 				FF72B9991C32269B009B7308 /* GTLBatchResult.m in Sources */,
-				FF5F6AFE1C6522D7008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealRequestMessage.m in Sources */,
-				FF5F6AFC1C6522D7008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealRequestMessage.m in Sources */,
-				FF5F6B041C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsRequestMessage.m in Sources */,
+				FF5F6B461C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.m in Sources */,
+				FF5F6B3D1C687A14008131A9 /* GTLMealServiceApisMealApiDeleteUnMatchedMealResponseMessage.m in Sources */,
+				FF5F6B451C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingMatchedMealsResponseMessage.m in Sources */,
+				FF5F6B101C686DE4008131A9 /* HistoryMealListingCell.swift in Sources */,
 				FFCF47A31C61D7BB003E682A /* GTLUserServiceApisUserApiAddReportToUserResponseMessage.m in Sources */,
 				FF72B9A21C32269B009B7308 /* GTMHTTPFetcherService.m in Sources */,
 				FFCF47B11C61D7BB003E682A /* GTLUserServiceApisUserApiValidateUserResponseMessage.m in Sources */,
 				FFCF47B41C61D875003E682A /* Meal.swift in Sources */,
-				FF5F6B081C6522D7008131A9 /* GTLMealServiceApisMealApiMatchedMealMessage.m in Sources */,
 				FFFB22221C615373005D7816 /* MealHistoryViewController.swift in Sources */,
+				FF5F6B4B1C687A14008131A9 /* GTLMealServiceConstants.m in Sources */,
 				FFCF47AE1C61D7BB003E682A /* GTLUserServiceApisUserApiSignUpUserRequestMessage.m in Sources */,
 				FF72B9981C32269B009B7308 /* GTLService.m in Sources */,
-				FF5F6AFB1C6522D7008131A9 /* GTLMealServiceApisMealApiCreateNewMealResponseMessage.m in Sources */,
 				FFCF47A21C61D7BB003E682A /* GTLUserServiceApisUserApiAddReportToUserRequestMessage.m in Sources */,
 				FF72B99C1C32269B009B7308 /* GTLErrorObject.m in Sources */,
 				FF72B9961C32269B009B7308 /* GTLQuery.m in Sources */,
+				FF5F6B471C687A14008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.m in Sources */,
+				FF5F6B401C687A14008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.m in Sources */,
 				FFCF47A71C61D7BB003E682A /* GTLUserServiceApisUserApiIncrementPositiveRatingResponseMessage.m in Sources */,
 				FFCF47AB1C61D7BB003E682A /* GTLUserServiceApisUserApiLogOutUserResponseMessage.m in Sources */,
 				FF72B9A91C32269B009B7308 /* GTMReadMonitorInputStream.m in Sources */,
@@ -949,29 +965,23 @@
 				FF72B9AF1C322713009B7308 /* GTMSessionFetcherService.m in Sources */,
 				FF72B9A11C32269B009B7308 /* GTLBase64.m in Sources */,
 				FFCF47B01C61D7BB003E682A /* GTLUserServiceApisUserApiValidateUserRequestMessage.m in Sources */,
-				FF5F6B001C6522D7008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsRequestMessage.m in Sources */,
-				FF5F6AFA1C6522D7008131A9 /* GTLMealServiceApisMealApiCreateNewMealRequestMessage.m in Sources */,
 				FF72B9951C32269B009B7308 /* GTLObject.m in Sources */,
 				FF72B9A41C32269B009B7308 /* GTMHTTPFetcherLogging.m in Sources */,
 				FF72B99D1C32269B009B7308 /* GTLRuntimeCommon.m in Sources */,
 				492096F81C5A7AB100B6C204 /* User.swift in Sources */,
-				FF5F6AFF1C6522D7008131A9 /* GTLMealServiceApisMealApiEditUnMatchedMealResponseMessage.m in Sources */,
 				FFCF47AC1C61D7BB003E682A /* GTLUserServiceApisUserApiSendNewEmailVerificationRequestMessage.m in Sources */,
 				FF72B9A31C32269B009B7308 /* GTMHTTPFetcher.m in Sources */,
 				4949D4501C2F4A80003C84DA /* NewMealViewController.swift in Sources */,
 				4949D44C1C2F4A80003C84DA /* AppDelegate.swift in Sources */,
-				FF5F6B021C6522D7008131A9 /* GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage.m in Sources */,
 				FFCF47A91C61D7BB003E682A /* GTLUserServiceApisUserApiLogInUserResponseMessage.m in Sources */,
-				FF5F6B091C6522D7008131A9 /* GTLMealServiceApisMealApiUnMatchedMealMessage.m in Sources */,
-				FF5F6B011C6522D7008131A9 /* GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage.m in Sources */,
+				FF5F6B4A1C687A14008131A9 /* GTLMealServiceApisMealApiUserMessage.m in Sources */,
 				4949D47E1C2F6E03003C84DA /* LoginViewController.swift in Sources */,
 				FFCF47AF1C61D7BB003E682A /* GTLUserServiceApisUserApiSignUpUserResponseMessage.m in Sources */,
 				FFCF47761C61CD05003E682A /* MealCollectionCellTemplate.swift in Sources */,
+				FF5F6B491C687A14008131A9 /* GTLMealServiceApisMealApiUnMatchedMealMessage.m in Sources */,
 				FF72B99E1C32269B009B7308 /* GTLFramework.m in Sources */,
-				FF5F6B0C1C6522D7008131A9 /* GTLServiceMealService.m in Sources */,
 				FF72B9A81C32269B009B7308 /* GTMMIMEDocument.m in Sources */,
 				FF5F6B0E1C6713A7008131A9 /* UpcomingMealCollectionViewHeader.swift in Sources */,
-				FF5F6B061C6522D7008131A9 /* GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsRequestMessage.m in Sources */,
 				4949D44E1C2F4A80003C84DA /* UpcomingMealsViewController.swift in Sources */,
 				492097031C6159CE00B6C204 /* TabBarController.swift in Sources */,
 				FF72B9A51C32269B009B7308 /* GTMHTTPFetchHistory.m in Sources */,

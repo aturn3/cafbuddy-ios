@@ -31,6 +31,7 @@
 #import "GTLMealServiceApisMealApiGetUpcomingUnMatchedMealsResponseMessage.h"
 #import "GTLMealServiceApisMealApiMatchedMealMessage.h"
 #import "GTLMealServiceApisMealApiUnMatchedMealMessage.h"
+#import "GTLMealServiceApisMealApiUserMessage.h"
 
 #import "GTLQueryMealService.h"
 #import "GTLServiceMealService.h"
