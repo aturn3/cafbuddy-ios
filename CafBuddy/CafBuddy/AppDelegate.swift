@@ -24,8 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate { //GCMReceiverDelegate, G
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        //set the tint of the tab bar
+        //set the text and icon color of the tab bar
         UITabBar.appearance().tintColor = COLOR_MAIN
+        
+        //set the text color of the navbar
+        UINavigationBar.appearance().tintColor = COLOR_WHITE
         
         
         // Configure the Google context: parses the GoogleService-Info.plist, and initializes

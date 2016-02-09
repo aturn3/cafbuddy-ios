@@ -224,10 +224,10 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
         let headerView = collectionViewMeals!.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "header", forIndexPath: indexPath) as! UpcomingMealCollectionViewHeader
         
         if (indexPath.section == 0) {
-            headerView.setTitle("Confirmed Meals (Matched With Others)", sectionIndex : indexPath.section)
+            headerView.setTitle("Confirmed Meals (Matched With Buddies)", sectionIndex : indexPath.section)
         }
         else {
-            headerView.setTitle("Searching For Matches...", sectionIndex : indexPath.section)
+            headerView.setTitle("Searching For Buddies...", sectionIndex : indexPath.section)
         }
         
         return headerView

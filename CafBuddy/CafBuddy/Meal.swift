@@ -150,31 +150,27 @@ class Meal: NSObject {
         // Call API with query
         mealServiceObject!.executeQuery(query, completionHandler: { (ticket: GTLServiceTicket!, object: AnyObject!, error: NSError!) -> Void in
             
-            let response: GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage = object as! GTLMealServiceApisMealApiGetAllUpcomingMealsResponseMessage
+            let response: GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage = object as! GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage
             
             // API call successful
             if response.errorNumber == 200 {
-                //test if either of the lists are nil (means they are empty) and actually make them empty arrays if so
-                var theUnMatchedMeals = [UnMatchedMeal]()
+                //test if the matched meals are nil (means there were no meals in that range)
                 var theMatchedMeals = [MatchedMeal]()
                 if (response.matchedMeals != nil) {
                     theMatchedMeals = self.convertAPIMatchedMealsArrayToClientMatchedMealsArray(response.matchedMeals)
                 }
-                if (response.unMatchedMeals != nil) {
-                    theUnMatchedMeals = self.convertAPIUnMatchedMealsArrayToClientUnMatchedMealsArray(response.unMatchedMeals)
-                }
                 
-                self.mealCallback?.getAllUpcomingMealsAPICallback(true, errorMessage: "Success", unMatchedMeals: theUnMatchedMeals, matchedMeals: theMatchedMeals)
+                self.mealCallback?.getMatchedMealsInRangeAPICallback(true, errorMessage: "Success", matchedMeals: theMatchedMeals)
             }
                 
                 // API call unsuccessful
-            else if response.errorNumber == -100 {
-                self.mealCallback?.getAllUpcomingMealsAPICallback(false, errorMessage: response.errorMessage, unMatchedMeals: [UnMatchedMeal](), matchedMeals: [MatchedMeal]())
+            else if (response.errorNumber == -100 || response.errorNumber == -5) {
+                self.mealCallback?.getMatchedMealsInRangeAPICallback(false, errorMessage: response.errorMessage, matchedMeals: [MatchedMeal]())
             }
                 
                 // API call unsuccessful
             else {
-                self.mealCallback?.getAllUpcomingMealsAPICallback(false, errorMessage: APPLICATION_ERROR_OR_NETWORK_PROBLEM, unMatchedMeals: [UnMatchedMeal](), matchedMeals: [MatchedMeal]())
+                self.mealCallback?.getMatchedMealsInRangeAPICallback(false, errorMessage: APPLICATION_ERROR_OR_NETWORK_PROBLEM, matchedMeals: [MatchedMeal]())
             }
         })
 
