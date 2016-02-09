@@ -24,6 +24,13 @@
 		FF074D5A1C5F186B000DBBC1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF074D581C5F186B000DBBC1 /* GoogleService-Info.plist */; };
 		FF074D5B1C5F186B000DBBC1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF074D581C5F186B000DBBC1 /* GoogleService-Info.plist */; };
 		FF33D5961C5F12ED00A9A320 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = FF33D5951C5F12ED00A9A320 /* Podfile */; };
+		FF3479541C691E17004FC99E /* feedbackIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3479521C691E17004FC99E /* feedbackIcon.png */; };
+		FF3479551C691E17004FC99E /* feedbackIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3479531C691E17004FC99E /* feedbackIcon@2x.png */; };
+		FF3479571C69939F004FC99E /* MealFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3479561C69939F004FC99E /* MealFeedbackViewController.swift */; };
+		FF34795C1C69A982004FC99E /* thumbsDownIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3479581C69A982004FC99E /* thumbsDownIcon.png */; };
+		FF34795D1C69A982004FC99E /* thumbsDownIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3479591C69A982004FC99E /* thumbsDownIcon@2x.png */; };
+		FF34795E1C69A982004FC99E /* thumbsUpIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF34795A1C69A982004FC99E /* thumbsUpIcon.png */; };
+		FF34795F1C69A982004FC99E /* thumbsUpIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF34795B1C69A982004FC99E /* thumbsUpIcon@2x.png */; };
 		FF5F6AA61C631157008131A9 /* addMealIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5F6AA51C631157008131A9 /* addMealIcon@2x.png */; };
 		FF5F6AA81C6311DB008131A9 /* settingsIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5F6AA71C6311DB008131A9 /* settingsIcon@2x.png */; };
 		FF5F6AAA1C631244008131A9 /* mealHistoryIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5F6AA91C631244008131A9 /* mealHistoryIcon@2x.png */; };
@@ -168,6 +175,13 @@
 		E337D8867002A5D30DB14F01 /* Pods-CafBuddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CafBuddy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CafBuddy/Pods-CafBuddy.debug.xcconfig"; sourceTree = "<group>"; };
 		FF074D581C5F186B000DBBC1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FF33D5951C5F12ED00A9A320 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		FF3479521C691E17004FC99E /* feedbackIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = feedbackIcon.png; sourceTree = "<group>"; };
+		FF3479531C691E17004FC99E /* feedbackIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedbackIcon@2x.png"; sourceTree = "<group>"; };
+		FF3479561C69939F004FC99E /* MealFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealFeedbackViewController.swift; sourceTree = "<group>"; };
+		FF3479581C69A982004FC99E /* thumbsDownIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbsDownIcon.png; sourceTree = "<group>"; };
+		FF3479591C69A982004FC99E /* thumbsDownIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbsDownIcon@2x.png"; sourceTree = "<group>"; };
+		FF34795A1C69A982004FC99E /* thumbsUpIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbsUpIcon.png; sourceTree = "<group>"; };
+		FF34795B1C69A982004FC99E /* thumbsUpIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbsUpIcon@2x.png"; sourceTree = "<group>"; };
 		FF5F6AA51C631157008131A9 /* addMealIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addMealIcon@2x.png"; sourceTree = "<group>"; };
 		FF5F6AA71C6311DB008131A9 /* settingsIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingsIcon@2x.png"; sourceTree = "<group>"; };
 		FF5F6AA91C631244008131A9 /* mealHistoryIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mealHistoryIcon@2x.png"; sourceTree = "<group>"; };
@@ -467,6 +481,12 @@
 				FF5F6ACC1C6410BC008131A9 /* addCalendarIcon@2x.png */,
 				FF5F6ACD1C6410BC008131A9 /* chatIcon.png */,
 				FF5F6ACE1C6410BC008131A9 /* chatIcon@2x.png */,
+				FF3479521C691E17004FC99E /* feedbackIcon.png */,
+				FF3479531C691E17004FC99E /* feedbackIcon@2x.png */,
+				FF3479581C69A982004FC99E /* thumbsDownIcon.png */,
+				FF3479591C69A982004FC99E /* thumbsDownIcon@2x.png */,
+				FF34795A1C69A982004FC99E /* thumbsUpIcon.png */,
+				FF34795B1C69A982004FC99E /* thumbsUpIcon@2x.png */,
 			);
 			name = "Miscellaneous Icons";
 			sourceTree = "<group>";
@@ -676,6 +696,7 @@
 				4949D44F1C2F4A80003C84DA /* NewMealViewController.swift */,
 				FFFB22211C615373005D7816 /* MealHistoryViewController.swift */,
 				FFFB22231C6153BE005D7816 /* ProfileViewController.swift */,
+				FF3479561C69939F004FC99E /* MealFeedbackViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -811,20 +832,25 @@
 				FF5F6AD11C6410BC008131A9 /* chatIcon.png in Resources */,
 				FFCF47591C61943A003E682A /* upcomingMealsIcon.png in Resources */,
 				FF5F6AB41C63CE31008131A9 /* breakfastIcon.png in Resources */,
+				FF34795E1C69A982004FC99E /* thumbsUpIcon.png in Resources */,
 				FF5F6AAA1C631244008131A9 /* mealHistoryIcon@2x.png in Resources */,
 				FFCF475F1C61957B003E682A /* addMealIcon.png in Resources */,
 				FF5F6AA81C6311DB008131A9 /* settingsIcon@2x.png in Resources */,
+				FF34795F1C69A982004FC99E /* thumbsUpIcon@2x.png in Resources */,
 				FFCF475D1C619462003E682A /* upcomingMealsIcon@3x -- too big.png in Resources */,
 				FFCF47611C61958A003E682A /* addMealIconOrig64px@2x.png in Resources */,
 				FF5F6AB91C63CE31008131A9 /* lunchIcon@2x.png in Resources */,
 				FFCF47681C6195D3003E682A /* settingsIcon@3x -- too big.png in Resources */,
+				FF34795C1C69A982004FC99E /* thumbsDownIcon.png in Resources */,
 				FF5F6ABD1C63E0E7008131A9 /* cancelIcon.png in Resources */,
 				FF5F6ACF1C6410BC008131A9 /* addCalendarIcon.png in Resources */,
 				FFCF476F1C619614003E682A /* mealHistoryIcon.png in Resources */,
+				FF3479551C691E17004FC99E /* feedbackIcon@2x.png in Resources */,
 				FF5F6AB51C63CE31008131A9 /* breakfastIcon@2x.png in Resources */,
 				FF074D591C5F186B000DBBC1 /* GoogleService-Info.plist in Resources */,
 				FFCF47631C619595003E682A /* addMealIcon@3x -- too big.png in Resources */,
 				4949D4551C2F4A81003C84DA /* Assets.xcassets in Resources */,
+				FF34795D1C69A982004FC99E /* thumbsDownIcon@2x.png in Resources */,
 				FF5F6AA61C631157008131A9 /* addMealIcon@2x.png in Resources */,
 				4949D4531C2F4A80003C84DA /* Main.storyboard in Resources */,
 				FF5F6AC11C640CB0008131A9 /* timeIcon.png in Resources */,
@@ -832,6 +858,7 @@
 				FF5F6AC21C640CB0008131A9 /* timeIcon@2x.png in Resources */,
 				FFCF47691C6195D3003E682A /* settingsIcon.png in Resources */,
 				FF5F6AD01C6410BC008131A9 /* addCalendarIcon@2x.png in Resources */,
+				FF3479541C691E17004FC99E /* feedbackIcon.png in Resources */,
 				FF5F6AB71C63CE31008131A9 /* dinnerIcon@2x.png in Resources */,
 				FFCF475B1C619451003E682A /* upcomingMealsIcon@2x.png in Resources */,
 			);
@@ -932,6 +959,7 @@
 				FF72B9971C32269B009B7308 /* GTLBatchQuery.m in Sources */,
 				FF72B99F1C32269B009B7308 /* GTLJSONParser.m in Sources */,
 				FFCF47B61C62CEE3003E682A /* MainScreenViewControlller.swift in Sources */,
+				FF3479571C69939F004FC99E /* MealFeedbackViewController.swift in Sources */,
 				4949D47C1C2F56E1003C84DA /* RegisterViewController.swift in Sources */,
 				FFCF479F1C61D7BB003E682A /* GTLQueryUserService.m in Sources */,
 				FFCF47A01C61D7BB003E682A /* GTLServiceUserService.m in Sources */,
