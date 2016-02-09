@@ -83,23 +83,54 @@ class MealFeedbackViewController: MainScreenViewController {
         labelHowWasMeal.frame = CGRectMake(0, labelHowWasMeal.frame.minY, screenSize.width, labelHowWasMeal.frame.height)
         
         
+        let buttonWidth = CGFloat(125)
+        let spacingSideButtons = (screenSize.width - CGFloat(buttonWidth * 2)) / CGFloat(3)
         //BUTTON THUMBS UP
         // New Meal Button
-        buttonThumbsDown.titleLabel!.font = UIFont.systemFontOfSize(24)
-        buttonThumbsDown.setTitle("", forState: UIControlState.Normal)
+//        buttonThumbsDown.titleLabel!.font = UIFont.systemFontOfSize(15)
+//        buttonThumbsDown.setTitle("", forState: UIControlState.Normal)
         buttonThumbsDown.setTitleColor(COLOR_BLACK, forState: UIControlState.Normal)
-        buttonThumbsDown.backgroundColor = COLOR_RED
-        buttonThumbsDown.layer.cornerRadius = 10
+        buttonThumbsDown.backgroundColor = COLOR_MAIN
+        buttonThumbsDown.layer.cornerRadius = 3.0
         buttonThumbsDown.addTarget(self, action: "thumbsDownButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        buttonThumbsDown.frame = CGRectMake(spacingSideButtons, labelHowWasMeal.frame.maxY + 5, buttonWidth, 50)
+        buttonThumbsDown.setImage(filledImageFrom(UIImage(named: "thumbsDownIcon")!, color: COLOR_WHITE), forState: UIControlState.Normal)
+        buttonThumbsDown.tag = 0 // 0 means not clicked.. tag will be used to track
         
-        
-        
-        
+        buttonThumbsUp.setTitleColor(COLOR_BLACK, forState: UIControlState.Normal)
+        buttonThumbsUp.backgroundColor = COLOR_MAIN
+        buttonThumbsUp.layer.cornerRadius = 3.0
+        buttonThumbsUp.addTarget(self, action: "thumbsUpButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        buttonThumbsUp.frame = CGRectMake(buttonThumbsDown.frame.maxX + spacingSideButtons, labelHowWasMeal.frame.maxY + 5, buttonWidth, 50)
+        buttonThumbsUp.setImage(filledImageFrom(UIImage(named: "thumbsUpIcon")!, color: COLOR_WHITE), forState: UIControlState.Normal)
+        buttonThumbsUp.tag = 0 // 0 means not clicked.. tag will be used to track
         
         self.view.addSubview(buttonThumbsDown)
         self.view.addSubview(buttonThumbsUp)
         self.view.addSubview(labelMealHeader)
         self.view.addSubview(labelHowWasMeal)
+    }
+    
+    func thumbsDownButtonPressed(_ : UIButton!) {
+        buttonThumbsDown.setImage(filledImageFrom(UIImage(named: "thumbsDownIcon")!, color: COLOR_DARK_GRAY), forState: UIControlState.Normal)
+        buttonThumbsUp.setImage(filledImageFrom(UIImage(named: "thumbsUpIcon")!, color: COLOR_WHITE), forState: UIControlState.Normal)
+        
+        buttonThumbsDown.tag = 1
+        buttonThumbsUp.tag = 0
+        
+//        hideThumbsUpExtras()
+//        showThumbsDownExtras()
+    }
+    
+    func thumbsUpButtonPressed(_ : UIButton!) {
+        buttonThumbsUp.setImage(filledImageFrom(UIImage(named: "thumbsUpIcon")!, color: COLOR_DARK_GRAY), forState: UIControlState.Normal)
+        buttonThumbsDown.setImage(filledImageFrom(UIImage(named: "thumbsDownIcon")!, color: COLOR_WHITE), forState: UIControlState.Normal)
+        
+        buttonThumbsDown.tag = 0
+        buttonThumbsUp.tag = 1
+        
+//        hideThumbsDownExtras()
+//        showThumbsUpExtras()
     }
     
     
