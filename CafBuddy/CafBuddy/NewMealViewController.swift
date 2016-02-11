@@ -7,13 +7,15 @@
 
 import UIKit
 
-class NewMealViewController: MainScreenViewController, MealAPICallback {
+class NewMealViewController: MainScreenViewController, MealAPICallback, UIPickerViewDataSource,UIPickerViewDelegate {
     
     // MARK: - Properties
     
     var meal = Meal()
     
-    var howManyPeople = Int()
+    let howManyPeoplePickerData = ["1", "3", "5"]
+    
+//    var howManyPeople = Int()
     
     let whenLabel = UILabel()
     let whenTextField = UITextField()
@@ -25,9 +27,11 @@ class NewMealViewController: MainScreenViewController, MealAPICallback {
     let startTimePicker = UIDatePicker()
     let endTimePicker = UIDatePicker()
     let howManyPeopleLabel = UILabel()
-    let individualButton = UIButton()
-    let smallGroupButton = UIButton()
-    let largeGroupButton = UIButton()
+    let howManyPeopleTextField = UITextField()
+    let howManyPeoplePicker = UIPickerView()
+//    let individualButton = UIButton()
+//    let smallGroupButton = UIButton()
+//    let largeGroupButton = UIButton()
     let newMealButton = UIButton()
     
     var whenLabelConstraintCenterX = NSLayoutConstraint()
@@ -64,20 +68,26 @@ class NewMealViewController: MainScreenViewController, MealAPICallback {
     var howManyPeopleLabelConstraintTop = NSLayoutConstraint()
     var howManyPeopleLabelConstraintBottom = NSLayoutConstraint()
     
-    var individualButtonConstraintLeft = NSLayoutConstraint()
-    var individualButtonConstraintRight = NSLayoutConstraint()
-    var individualButtonConstraintTop = NSLayoutConstraint()
-    var individualButtonConstraintBottom = NSLayoutConstraint()
+//    var individualButtonConstraintLeft = NSLayoutConstraint()
+//    var individualButtonConstraintRight = NSLayoutConstraint()
+//    var individualButtonConstraintTop = NSLayoutConstraint()
+//    var individualButtonConstraintBottom = NSLayoutConstraint()
+//    
+//    var smallGroupButtonConstraintLeft = NSLayoutConstraint()
+//    var smallGroupButtonConstraintRight = NSLayoutConstraint()
+//    var smallGroupButtonConstraintTop = NSLayoutConstraint()
+//    var smallGroupButtonConstraintBottom = NSLayoutConstraint()
+//    
+//    var largeGroupButtonConstraintLeft = NSLayoutConstraint()
+//    var largeGroupButtonConstraintRight = NSLayoutConstraint()
+//    var largeGroupButtonConstraintTop = NSLayoutConstraint()
+//    var largeGroupButtonConstraintBottom = NSLayoutConstraint()
     
-    var smallGroupButtonConstraintLeft = NSLayoutConstraint()
-    var smallGroupButtonConstraintRight = NSLayoutConstraint()
-    var smallGroupButtonConstraintTop = NSLayoutConstraint()
-    var smallGroupButtonConstraintBottom = NSLayoutConstraint()
-    
-    var largeGroupButtonConstraintLeft = NSLayoutConstraint()
-    var largeGroupButtonConstraintRight = NSLayoutConstraint()
-    var largeGroupButtonConstraintTop = NSLayoutConstraint()
-    var largeGroupButtonConstraintBottom = NSLayoutConstraint()
+    var howManyPeopleTextFieldConstraintCenterX = NSLayoutConstraint()
+    var howManyPeopleTextFieldConstraintLeft = NSLayoutConstraint()
+    var howManyPeopleTextFieldConstraintRight = NSLayoutConstraint()
+    var howManyPeopleTextFieldConstraintTop = NSLayoutConstraint()
+    var howManyPeopleTextFieldConstraintBottom = NSLayoutConstraint()
     
     var newMealButtonConstraintLeft = NSLayoutConstraint()
     var newMealButtonConstraintRight = NSLayoutConstraint()
@@ -188,44 +198,57 @@ class NewMealViewController: MainScreenViewController, MealAPICallback {
         self.howManyPeopleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.howManyPeopleLabel)
         
-        // Individual Button
-        self.individualButton.titleLabel!.lineBreakMode = NSLineBreakMode.ByWordWrapping
-        self.individualButton.titleLabel!.numberOfLines = 0
-        self.individualButton.titleLabel!.font = UIFont.systemFontOfSize(12)
-        self.individualButton.titleLabel!.textAlignment = NSTextAlignment.Center
-        self.individualButton.setTitle("Individual\n(1 person)", forState: UIControlState.Normal)
-        self.individualButton.setTitleColor(COLOR_BLACK, forState: UIControlState.Normal)
-        self.individualButton.backgroundColor = COLOR_WHITE
-        self.individualButton.layer.cornerRadius = 10
-        self.individualButton.addTarget(self, action: "howManyPeopleButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.individualButton.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(self.individualButton)
+        // How Many People Picker
+        self.howManyPeoplePicker.dataSource = self
+        self.howManyPeoplePicker.delegate = self
         
-        // Small Group Button
-        self.smallGroupButton.titleLabel!.lineBreakMode = NSLineBreakMode.ByWordWrapping
-        self.smallGroupButton.titleLabel!.numberOfLines = 0
-        self.smallGroupButton.titleLabel!.font = UIFont.systemFontOfSize(12)
-        self.smallGroupButton.titleLabel!.textAlignment = NSTextAlignment.Center
-        self.smallGroupButton.setTitle("Small Group\n(2-5 people)", forState: UIControlState.Normal)
-        self.smallGroupButton.setTitleColor(COLOR_BLACK, forState: UIControlState.Normal)
-        self.smallGroupButton.backgroundColor = COLOR_WHITE
-        self.smallGroupButton.layer.cornerRadius = 10
-        self.smallGroupButton.addTarget(self, action: "howManyPeopleButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.smallGroupButton.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(self.smallGroupButton)
+        // How Many People Text Field
+        self.howManyPeopleTextField.text = self.howManyPeoplePickerData[self.howManyPeoplePicker.selectedRowInComponent(0)]
+        self.howManyPeopleTextField.textAlignment = NSTextAlignment.Center
+        self.howManyPeopleTextField.font = UIFont.systemFontOfSize(12)
+        self.howManyPeopleTextField.borderStyle = UITextBorderStyle.RoundedRect
+        self.howManyPeopleTextField.inputView = self.howManyPeoplePicker
+        self.howManyPeopleTextField.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.howManyPeopleTextField)
         
-        // Large Group Button
-        self.largeGroupButton.titleLabel!.lineBreakMode = NSLineBreakMode.ByWordWrapping
-        self.largeGroupButton.titleLabel!.numberOfLines = 0
-        self.largeGroupButton.titleLabel!.font = UIFont.systemFontOfSize(12)
-        self.largeGroupButton.titleLabel!.textAlignment = NSTextAlignment.Center
-        self.largeGroupButton.setTitle("Large Group\n(6-10 people)", forState: UIControlState.Normal)
-        self.largeGroupButton.setTitleColor(COLOR_BLACK, forState: UIControlState.Normal)
-        self.largeGroupButton.backgroundColor = COLOR_WHITE
-        self.largeGroupButton.layer.cornerRadius = 10
-        self.largeGroupButton.addTarget(self, action: "howManyPeopleButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.largeGroupButton.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(self.largeGroupButton)
+//        // Individual Button
+//        self.individualButton.titleLabel!.lineBreakMode = NSLineBreakMode.ByWordWrapping
+//        self.individualButton.titleLabel!.numberOfLines = 0
+//        self.individualButton.titleLabel!.font = UIFont.systemFontOfSize(12)
+//        self.individualButton.titleLabel!.textAlignment = NSTextAlignment.Center
+//        self.individualButton.setTitle("Individual\n(1 person)", forState: UIControlState.Normal)
+//        self.individualButton.setTitleColor(COLOR_BLACK, forState: UIControlState.Normal)
+//        self.individualButton.backgroundColor = COLOR_WHITE
+//        self.individualButton.layer.cornerRadius = 10
+//        self.individualButton.addTarget(self, action: "howManyPeopleButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+//        self.individualButton.translatesAutoresizingMaskIntoConstraints = false
+//        self.view.addSubview(self.individualButton)
+//        
+//        // Small Group Button
+//        self.smallGroupButton.titleLabel!.lineBreakMode = NSLineBreakMode.ByWordWrapping
+//        self.smallGroupButton.titleLabel!.numberOfLines = 0
+//        self.smallGroupButton.titleLabel!.font = UIFont.systemFontOfSize(12)
+//        self.smallGroupButton.titleLabel!.textAlignment = NSTextAlignment.Center
+//        self.smallGroupButton.setTitle("Small Group\n(2-5 people)", forState: UIControlState.Normal)
+//        self.smallGroupButton.setTitleColor(COLOR_BLACK, forState: UIControlState.Normal)
+//        self.smallGroupButton.backgroundColor = COLOR_WHITE
+//        self.smallGroupButton.layer.cornerRadius = 10
+//        self.smallGroupButton.addTarget(self, action: "howManyPeopleButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+//        self.smallGroupButton.translatesAutoresizingMaskIntoConstraints = false
+//        self.view.addSubview(self.smallGroupButton)
+//        
+//        // Large Group Button
+//        self.largeGroupButton.titleLabel!.lineBreakMode = NSLineBreakMode.ByWordWrapping
+//        self.largeGroupButton.titleLabel!.numberOfLines = 0
+//        self.largeGroupButton.titleLabel!.font = UIFont.systemFontOfSize(12)
+//        self.largeGroupButton.titleLabel!.textAlignment = NSTextAlignment.Center
+//        self.largeGroupButton.setTitle("Large Group\n(6-10 people)", forState: UIControlState.Normal)
+//        self.largeGroupButton.setTitleColor(COLOR_BLACK, forState: UIControlState.Normal)
+//        self.largeGroupButton.backgroundColor = COLOR_WHITE
+//        self.largeGroupButton.layer.cornerRadius = 10
+//        self.largeGroupButton.addTarget(self, action: "howManyPeopleButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+//        self.largeGroupButton.translatesAutoresizingMaskIntoConstraints = false
+//        self.view.addSubview(self.largeGroupButton)
         
         // New Meal Button
         self.newMealButton.titleLabel!.font = UIFont.systemFontOfSize(24)
@@ -278,23 +301,30 @@ class NewMealViewController: MainScreenViewController, MealAPICallback {
         self.howManyPeopleLabelConstraintTop = NSLayoutConstraint(item: self.howManyPeopleLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.andLabel, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
         self.howManyPeopleLabelConstraintBottom = NSLayoutConstraint(item: self.howManyPeopleLabel, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.howManyPeopleLabel, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 50.0)
         
-        // Individual Button
-        self.individualButtonConstraintLeft = NSLayoutConstraint(item: self.individualButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (1/52)*SCREEN_WIDTH)
-        self.individualButtonConstraintRight = NSLayoutConstraint(item: self.individualButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-35/52)*SCREEN_WIDTH)
-        self.individualButtonConstraintTop = NSLayoutConstraint(item: self.individualButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.howManyPeopleLabel, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
-        self.individualButtonConstraintBottom = NSLayoutConstraint(item: self.individualButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.individualButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
+//        // Individual Button
+//        self.individualButtonConstraintLeft = NSLayoutConstraint(item: self.individualButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (1/52)*SCREEN_WIDTH)
+//        self.individualButtonConstraintRight = NSLayoutConstraint(item: self.individualButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-35/52)*SCREEN_WIDTH)
+//        self.individualButtonConstraintTop = NSLayoutConstraint(item: self.individualButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.howManyPeopleLabel, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+//        self.individualButtonConstraintBottom = NSLayoutConstraint(item: self.individualButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.individualButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
+//        
+//        // Small Group Button
+//        self.smallGroupButtonConstraintLeft = NSLayoutConstraint(item: self.smallGroupButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (18/52)*SCREEN_WIDTH)
+//        self.smallGroupButtonConstraintRight = NSLayoutConstraint(item: self.smallGroupButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-18/52)*SCREEN_WIDTH)
+//        self.smallGroupButtonConstraintTop = NSLayoutConstraint(item: self.smallGroupButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.individualButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 0.0)
+//        self.smallGroupButtonConstraintBottom = NSLayoutConstraint(item: self.smallGroupButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.individualButton, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0.0)
+//        
+//        // Large Group Button
+//        self.largeGroupButtonConstraintLeft = NSLayoutConstraint(item: self.largeGroupButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (35/52)*SCREEN_WIDTH)
+//        self.largeGroupButtonConstraintRight = NSLayoutConstraint(item: self.largeGroupButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-1/52)*SCREEN_WIDTH)
+//        self.largeGroupButtonConstraintTop = NSLayoutConstraint(item: self.largeGroupButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.individualButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 0.0)
+//        self.largeGroupButtonConstraintBottom = NSLayoutConstraint(item: self.largeGroupButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.individualButton, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0.0)
         
-        // Small Group Button
-        self.smallGroupButtonConstraintLeft = NSLayoutConstraint(item: self.smallGroupButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (18/52)*SCREEN_WIDTH)
-        self.smallGroupButtonConstraintRight = NSLayoutConstraint(item: self.smallGroupButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-18/52)*SCREEN_WIDTH)
-        self.smallGroupButtonConstraintTop = NSLayoutConstraint(item: self.smallGroupButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.individualButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 0.0)
-        self.smallGroupButtonConstraintBottom = NSLayoutConstraint(item: self.smallGroupButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.individualButton, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0.0)
-        
-        // Large Group Button
-        self.largeGroupButtonConstraintLeft = NSLayoutConstraint(item: self.largeGroupButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (35/52)*SCREEN_WIDTH)
-        self.largeGroupButtonConstraintRight = NSLayoutConstraint(item: self.largeGroupButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-1/52)*SCREEN_WIDTH)
-        self.largeGroupButtonConstraintTop = NSLayoutConstraint(item: self.largeGroupButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.individualButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 0.0)
-        self.largeGroupButtonConstraintBottom = NSLayoutConstraint(item: self.largeGroupButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.individualButton, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0.0)
+        // How Many People Text Field
+        self.howManyPeopleTextFieldConstraintCenterX = NSLayoutConstraint(item: self.howManyPeopleTextField, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
+        self.howManyPeopleTextFieldConstraintLeft = NSLayoutConstraint(item: self.howManyPeopleTextField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (1/16)*SCREEN_WIDTH)
+        self.howManyPeopleTextFieldConstraintRight = NSLayoutConstraint(item: self.howManyPeopleTextField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-1/16)*SCREEN_WIDTH)
+        self.howManyPeopleTextFieldConstraintTop = NSLayoutConstraint(item: self.howManyPeopleTextField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.howManyPeopleLabel, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+        self.howManyPeopleTextFieldConstraintBottom = NSLayoutConstraint(item: self.howManyPeopleTextField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.howManyPeopleTextField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
         
         // New Meal Button
         self.newMealButtonConstraintLeft = NSLayoutConstraint(item: self.newMealButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (1/6)*SCREEN_WIDTH)
@@ -303,7 +333,7 @@ class NewMealViewController: MainScreenViewController, MealAPICallback {
         self.newMealButtonConstraintBottom = NSLayoutConstraint(item: self.newMealButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.newMealButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 70.0)
         
         // Activate all constraints
-        NSLayoutConstraint.activateConstraints([self.whenLabelConstraintCenterX, self.whenLabelConstraintTop, self.whenLabelConstraintBottom, self.whenTextFieldConstraintCenterX, self.whenTextFieldConstraintLeft, self.whenTextFieldConstraintRight, self.whenTextFieldConstraintTop, self.whenTextFieldConstraintBottom, self.whatTimeLabelConstraintCenterX, self.whatTimeLabelConstraintTop, self.whatTimeLabelConstraintBottom, self.andLabelConstraintCenterX, self.andLabelConstraintTop, self.andLabelConstraintBottom, self.startTimeTextFieldConstraintLeft, self.startTimeTextFieldConstraintRight, self.startTimeTextFieldConstraintBottom, self.startTimeTextFieldConstraintCenterY, self.endTimeTextFieldConstraintLeft, self.endTimeTextFieldConstraintRight, self.endTimeTextFieldConstraintBottom, self.endTimeTextFieldConstraintCenterY, self.howManyPeopleLabelConstraintCenterX, self.howManyPeopleLabelConstraintTop, self.howManyPeopleLabelConstraintBottom, self.individualButtonConstraintLeft, self.individualButtonConstraintRight, self.individualButtonConstraintTop, self.individualButtonConstraintBottom, self.smallGroupButtonConstraintLeft, self.smallGroupButtonConstraintRight, self.smallGroupButtonConstraintTop, self.smallGroupButtonConstraintBottom, self.largeGroupButtonConstraintLeft, self.largeGroupButtonConstraintRight, self.largeGroupButtonConstraintTop, self.largeGroupButtonConstraintBottom, self.newMealButtonConstraintLeft, self.newMealButtonConstraintRight, self.newMealButtonConstraintTop, self.newMealButtonConstraintBottom])
+        NSLayoutConstraint.activateConstraints([self.whenLabelConstraintCenterX, self.whenLabelConstraintTop, self.whenLabelConstraintBottom, self.whenTextFieldConstraintCenterX, self.whenTextFieldConstraintLeft, self.whenTextFieldConstraintRight, self.whenTextFieldConstraintTop, self.whenTextFieldConstraintBottom, self.whatTimeLabelConstraintCenterX, self.whatTimeLabelConstraintTop, self.whatTimeLabelConstraintBottom, self.andLabelConstraintCenterX, self.andLabelConstraintTop, self.andLabelConstraintBottom, self.startTimeTextFieldConstraintLeft, self.startTimeTextFieldConstraintRight, self.startTimeTextFieldConstraintBottom, self.startTimeTextFieldConstraintCenterY, self.endTimeTextFieldConstraintLeft, self.endTimeTextFieldConstraintRight, self.endTimeTextFieldConstraintBottom, self.endTimeTextFieldConstraintCenterY, self.howManyPeopleLabelConstraintCenterX, self.howManyPeopleLabelConstraintTop, self.howManyPeopleLabelConstraintBottom, self.howManyPeopleTextFieldConstraintCenterX, self.howManyPeopleTextFieldConstraintLeft, self.howManyPeopleTextFieldConstraintRight, self.howManyPeopleTextFieldConstraintTop, self.howManyPeopleTextFieldConstraintBottom, self.newMealButtonConstraintLeft, self.newMealButtonConstraintRight, self.newMealButtonConstraintTop, self.newMealButtonConstraintBottom])
     }
     
     func getMinimumDate(datePicker: UIDatePicker) -> NSDate {
@@ -465,8 +495,9 @@ class NewMealViewController: MainScreenViewController, MealAPICallback {
         self.view.endEditing(true)
         
         let user = getCurrentUser()
+        let howManyPeople = Int(self.howManyPeopleTextField.text!)
         self.meal.mealCallback = self;
-        self.meal.createMeal(user.emailAddress, authenticationToken: user.authenticationToken, day: self.whenDatePicker.date, startRange: self.startTimePicker.date, endRange: self.endTimePicker.date, numberOfPeople: self.howManyPeople)
+        self.meal.createMeal(user.emailAddress, authenticationToken: user.authenticationToken, day: self.whenDatePicker.date, startRange: self.startTimePicker.date, endRange: self.endTimePicker.date, numberOfPeople: howManyPeople!)
     }
     
     func whenDatePickerValueChanged(datePicker: UIDatePicker) {
@@ -491,69 +522,69 @@ class NewMealViewController: MainScreenViewController, MealAPICallback {
         }
     }
     
-    // How Many People Button Action
-    func howManyPeopleButtonPressed(sender: UIButton?) {
-        self.view.endEditing(true)
-        
-        if sender == nil || self.howManyPeople == getHowManyPeopleButtonValue(sender!) {
-            // User deselected chosen option
-            self.howManyPeople = 0
-            self.changeHowManyPeopleButtonColors(nil)
-        }
-        else {
-            self.howManyPeople = getHowManyPeopleButtonValue(sender!)
-            self.changeHowManyPeopleButtonColors(sender)
-        }
-    }
+//    // How Many People Button Action
+//    func howManyPeopleButtonPressed(sender: UIButton?) {
+//        self.view.endEditing(true)
+//        
+//        if sender == nil || self.howManyPeople == getHowManyPeopleButtonValue(sender!) {
+//            // User deselected chosen option
+//            self.howManyPeople = 0
+//            self.changeHowManyPeopleButtonColors(nil)
+//        }
+//        else {
+//            self.howManyPeople = getHowManyPeopleButtonValue(sender!)
+//            self.changeHowManyPeopleButtonColors(sender)
+//        }
+//    }
     
-    func changeHowManyPeopleButtonColors(sender: UIButton?) {
-        if sender == self.individualButton {
-            self.individualButton.backgroundColor = COLOR_BLUE
-            self.smallGroupButton.backgroundColor = COLOR_WHITE
-            self.largeGroupButton.backgroundColor = COLOR_WHITE
-        }
-        else if sender == self.smallGroupButton {
-            self.individualButton.backgroundColor = COLOR_WHITE
-            self.smallGroupButton.backgroundColor = COLOR_BLUE
-            self.largeGroupButton.backgroundColor = COLOR_WHITE
-        }
-        else if sender == self.largeGroupButton {
-            self.individualButton.backgroundColor = COLOR_WHITE
-            self.smallGroupButton.backgroundColor = COLOR_WHITE
-            self.largeGroupButton.backgroundColor = COLOR_BLUE
-        }
-        else {
-            // Sender is nil
-            self.individualButton.backgroundColor = COLOR_WHITE
-            self.smallGroupButton.backgroundColor = COLOR_WHITE
-            self.largeGroupButton.backgroundColor = COLOR_WHITE
-        }
-    }
-    
-    func getHowManyPeopleButtonValue(button: UIButton) -> Int {
-        var returnValue = 0
-        
-        if button == self.individualButton {
-            returnValue = 1
-        }
-        
-        else if button == self.smallGroupButton {
-            returnValue = 3
-        }
-        
-        else if button == self.largeGroupButton {
-            returnValue = 5
-        }
-        
-        else {
-            return returnValue
-        }
-        
-        // Add 1 for including user in meal size
-        returnValue += 1
-        
-        return returnValue
-    }
+//    func changeHowManyPeopleButtonColors(sender: UIButton?) {
+//        if sender == self.individualButton {
+//            self.individualButton.backgroundColor = COLOR_BLUE
+//            self.smallGroupButton.backgroundColor = COLOR_WHITE
+//            self.largeGroupButton.backgroundColor = COLOR_WHITE
+//        }
+//        else if sender == self.smallGroupButton {
+//            self.individualButton.backgroundColor = COLOR_WHITE
+//            self.smallGroupButton.backgroundColor = COLOR_BLUE
+//            self.largeGroupButton.backgroundColor = COLOR_WHITE
+//        }
+//        else if sender == self.largeGroupButton {
+//            self.individualButton.backgroundColor = COLOR_WHITE
+//            self.smallGroupButton.backgroundColor = COLOR_WHITE
+//            self.largeGroupButton.backgroundColor = COLOR_BLUE
+//        }
+//        else {
+//            // Sender is nil
+//            self.individualButton.backgroundColor = COLOR_WHITE
+//            self.smallGroupButton.backgroundColor = COLOR_WHITE
+//            self.largeGroupButton.backgroundColor = COLOR_WHITE
+//        }
+//    }
+//    
+//    func getHowManyPeopleButtonValue(button: UIButton) -> Int {
+//        var returnValue = 0
+//        
+//        if button == self.individualButton {
+//            returnValue = 1
+//        }
+//        
+//        else if button == self.smallGroupButton {
+//            returnValue = 3
+//        }
+//        
+//        else if button == self.largeGroupButton {
+//            returnValue = 5
+//        }
+//        
+//        else {
+//            return returnValue
+//        }
+//        
+//        // Add 1 for including user in meal size
+//        returnValue += 1
+//        
+//        return returnValue
+//    }
     
     // Check for single or multiple taps on view to dismiss keyboard - resign all text fields
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -561,10 +592,31 @@ class NewMealViewController: MainScreenViewController, MealAPICallback {
         view.endEditing(true)
     }
     
+    // MARK: - Delegates and data sources
+    // MARK: Data Sources
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return howManyPeoplePickerData.count
+    }
+    
+    // MARK: Delegates
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return howManyPeoplePickerData[row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        howManyPeopleTextField.text = howManyPeoplePickerData[row]
+    }
+    
+    // MARK: - API Callback
+    
     func createMealAPICallback(success: Bool, errorMessage: String) -> Void {
         if success {
             // Reset all options on view
-            self.howManyPeopleButtonPressed(nil)
+//            self.howManyPeopleButtonPressed(nil)
             // Reset self.whenDatePicker.date to self.whenDatePicker.minimumDate
             self.whenDatePicker.date = self.whenDatePicker.minimumDate!
             self.endTimePicker.date = getMaximumDate(self.endTimePicker)
