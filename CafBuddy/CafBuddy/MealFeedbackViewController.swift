@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MealFeedbackViewController: MainScreenViewController {
+class MealFeedbackViewController: MainScreenViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var mealToFeedback : MatchedMeal?
     
@@ -15,6 +15,10 @@ class MealFeedbackViewController: MainScreenViewController {
     var labelHowWasMeal = UILabel()
     var buttonThumbsUp = UIButton()
     var buttonThumbsDown = UIButton()
+    
+    var pickerViewWho = UIPickerView()
+    var textFieldWho = UITextField()
+    var textFieldComplimentOrReport = UITextField()
     
     var buttonSubmitFeedback = UIButton()
     
@@ -24,6 +28,7 @@ class MealFeedbackViewController: MainScreenViewController {
         
         //Set the title of the navigation bar
         navigationItem.title = "Meal Feedback"
+        navigationItem.backBarButtonItem?.title = "" // get rid of the back button text
         
         initInterface()
     }
@@ -85,10 +90,9 @@ class MealFeedbackViewController: MainScreenViewController {
         
         let buttonWidth = CGFloat(125)
         let spacingSideButtons = (screenSize.width - CGFloat(buttonWidth * 2)) / CGFloat(3)
+
         //BUTTON THUMBS UP
         // New Meal Button
-//        buttonThumbsDown.titleLabel!.font = UIFont.systemFontOfSize(15)
-//        buttonThumbsDown.setTitle("", forState: UIControlState.Normal)
         buttonThumbsDown.setTitleColor(COLOR_BLACK, forState: UIControlState.Normal)
         buttonThumbsDown.backgroundColor = COLOR_MAIN
         buttonThumbsDown.layer.cornerRadius = 3.0
@@ -105,6 +109,9 @@ class MealFeedbackViewController: MainScreenViewController {
         buttonThumbsUp.setImage(filledImageFrom(UIImage(named: "thumbsUpIcon")!, color: COLOR_WHITE), forState: UIControlState.Normal)
         buttonThumbsUp.tag = 0 // 0 means not clicked.. tag will be used to track
         
+        pickerViewWho.dataSource = self
+        pickerViewWho.delegate = self
+        
         self.view.addSubview(buttonThumbsDown)
         self.view.addSubview(buttonThumbsUp)
         self.view.addSubview(labelMealHeader)
@@ -112,7 +119,7 @@ class MealFeedbackViewController: MainScreenViewController {
     }
     
     func thumbsDownButtonPressed(_ : UIButton!) {
-        buttonThumbsDown.setImage(filledImageFrom(UIImage(named: "thumbsDownIcon")!, color: COLOR_DARK_GRAY), forState: UIControlState.Normal)
+        buttonThumbsDown.setImage(filledImageFrom(UIImage(named: "thumbsDownIcon")!, color: COLOR_ACCENT_TWO), forState: UIControlState.Normal)
         buttonThumbsUp.setImage(filledImageFrom(UIImage(named: "thumbsUpIcon")!, color: COLOR_WHITE), forState: UIControlState.Normal)
         
         buttonThumbsDown.tag = 1
@@ -123,7 +130,7 @@ class MealFeedbackViewController: MainScreenViewController {
     }
     
     func thumbsUpButtonPressed(_ : UIButton!) {
-        buttonThumbsUp.setImage(filledImageFrom(UIImage(named: "thumbsUpIcon")!, color: COLOR_DARK_GRAY), forState: UIControlState.Normal)
+        buttonThumbsUp.setImage(filledImageFrom(UIImage(named: "thumbsUpIcon")!, color: COLOR_ACCENT_ONE), forState: UIControlState.Normal)
         buttonThumbsDown.setImage(filledImageFrom(UIImage(named: "thumbsDownIcon")!, color: COLOR_WHITE), forState: UIControlState.Normal)
         
         buttonThumbsDown.tag = 0
@@ -133,5 +140,29 @@ class MealFeedbackViewController: MainScreenViewController {
 //        showThumbsUpExtras()
     }
     
+    func updateWhoTextField() {
+        let selectedRow = pickerViewWho.selectedRowInComponent(0)
+        if (selectedRow  < 1) {
+            textFieldWho.text = "Everyone"
+        }
+        else {
+            textFieldWho.text = mealToFeedback!.people[selectedRow - 1].firstName! + mealToFeedback!.people[selectedRow - 1].lastName!
+        }
+    }
     
+    //MARK: - UIPickerView Delegate and Datasource Methods
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return mealToFeedback!.people.count
+    }
+    
+    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        if (row  < 1) {
+            return NSAttributedString(string: "Everyone")
+        }
+        return NSAttributedString(string: mealToFeedback!.people[row - 1].firstName! + mealToFeedback!.people[row - 1].lastName!)
+    }
 }
