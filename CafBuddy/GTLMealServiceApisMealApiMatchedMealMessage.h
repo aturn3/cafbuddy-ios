@@ -21,6 +21,8 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLMealServiceApisMealApiUserMessage;
+
 // ----------------------------------------------------------------------------
 //
 //   GTLMealServiceApisMealApiMatchedMealMessage
@@ -31,6 +33,6 @@
 @property (nonatomic, copy) NSString *mealKey;
 @property (nonatomic, retain) NSNumber *mealType;  // longLongValue
 @property (nonatomic, retain) NSNumber *numPeople;  // longLongValue
-@property (nonatomic, retain) NSArray *peopleKeys;  // of NSString
+@property (nonatomic, retain) NSArray *people;  // of GTLMealServiceApisMealApiUserMessage
 @property (nonatomic, copy) NSString *startTime;
 @end

@@ -12,6 +12,7 @@ protocol MealAPICallback {
     func getAllUpcomingMealsAPICallback(success: Bool, errorMessage: String, unMatchedMeals: [UnMatchedMeal], matchedMeals: [MatchedMeal]) -> Void
     func deleteUnMatchedMealAPICallback(success: Bool, errorMessage: String, mealKeyDeleted: String) -> Void
     func createMealAPICallback(success: Bool, errorMessage: String) -> Void
+    func getMatchedMealsInRangeAPICallback(success: Bool, errorMessage: String, matchedMeals: [MatchedMeal]) -> Void
 }
 
 extension MealAPICallback {
@@ -22,6 +23,9 @@ extension MealAPICallback {
         //nothing happens in default implmentation
     }
     func createMealAPICallback(success: Bool, errorMessage: String) -> Void {
+        // Default implementation
+    }
+    func getMatchedMealsInRangeAPICallback(success: Bool, errorMessage: String, matchedMeals: [MatchedMeal]) -> Void {
         // Default implementation
     }
 }
@@ -57,8 +61,14 @@ class MatchedMeal {
     var startTime : NSDate? // the date and time that the meal is supposed to start
     var numPeople : Int? // the number of people attending the meal total
     var mealType : MealType? // the type of the meal
-    var peopleKeys = [String]() // the keys of all the people in the meal
+    var people = [MealUser]() // the keys / names of all the people in the meal
     var mealKey : String? // the unique identifier of the MatchedMeal in the backend database
+}
+
+class MealUser { // modified user with only limited information abou the user as returned in the meal API
+    var userKey : String? // the key of the user in the database
+    var firstName : String? // the first name of the user
+    var lastName : String? // the last name of the user
 }
 
 class Meal: NSObject {
@@ -113,6 +123,54 @@ class Meal: NSObject {
                 // API call unsuccessful
             else {
                 self.mealCallback?.getAllUpcomingMealsAPICallback(false, errorMessage: APPLICATION_ERROR_OR_NETWORK_PROBLEM, unMatchedMeals: [UnMatchedMeal](), matchedMeals: [MatchedMeal]())
+            }
+        })
+
+    }
+    
+    func getMatchedMealsInRange(emailAddress: String, authToken: String, startRange: NSDate, endRange: NSDate) {
+        // Create Meal Service Object
+        let mealServiceObject = createMealServiceObject()
+        
+        //first, just do a quick sanity check
+        if (endRange.isBeforeDate(startRange)) {
+            self.mealCallback?.getMatchedMealsInRangeAPICallback(false, errorMessage: "The end range can not be before the start range.", matchedMeals: [MatchedMeal]())
+        }
+        
+        // Create User Service Request Message
+        let mealMessage = GTLMealServiceApisMealApiGetMatchedMealsInRangeRequestMessage()
+        mealMessage.emailAddress = emailAddress
+        mealMessage.authToken = authToken
+        mealMessage.startRange = startRange.toDatabaseString()
+        mealMessage.endRange = endRange.toDatabaseString()
+        
+        // Create User Service Query
+        let query: GTLQueryMealService = GTLQueryMealService.queryForGetMatchedMealsInRangeWithObject(mealMessage)
+        
+        // Call API with query
+        mealServiceObject!.executeQuery(query, completionHandler: { (ticket: GTLServiceTicket!, object: AnyObject!, error: NSError!) -> Void in
+            
+            let response: GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage = object as! GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage
+            
+            // API call successful
+            if response.errorNumber == 200 {
+                //test if the matched meals are nil (means there were no meals in that range)
+                var theMatchedMeals = [MatchedMeal]()
+                if (response.matchedMeals != nil) {
+                    theMatchedMeals = self.convertAPIMatchedMealsArrayToClientMatchedMealsArray(response.matchedMeals)
+                }
+                
+                self.mealCallback?.getMatchedMealsInRangeAPICallback(true, errorMessage: "Success", matchedMeals: theMatchedMeals)
+            }
+                
+                // API call unsuccessful
+            else if (response.errorNumber == -100 || response.errorNumber == -5) {
+                self.mealCallback?.getMatchedMealsInRangeAPICallback(false, errorMessage: response.errorMessage, matchedMeals: [MatchedMeal]())
+            }
+                
+                // API call unsuccessful
+            else {
+                self.mealCallback?.getMatchedMealsInRangeAPICallback(false, errorMessage: APPLICATION_ERROR_OR_NETWORK_PROBLEM, matchedMeals: [MatchedMeal]())
             }
         })
 
@@ -244,9 +302,20 @@ class Meal: NSObject {
         theMatchedMeal.matchedDate = matchedMealAPI.matchedDate?.fromDatabaseStringToNSDate()
         theMatchedMeal.startTime = matchedMealAPI.startTime?.fromDatabaseStringToNSDate()
         theMatchedMeal.numPeople = matchedMealAPI.numPeople as Int
-        theMatchedMeal.peopleKeys = matchedMealAPI.peopleKeys as! [String]
         theMatchedMeal.mealType = MealType(rawValue: matchedMealAPI.mealType as Int)
         theMatchedMeal.mealKey = matchedMealAPI.mealKey
+
+        var mealUsers = [MealUser]()
+        for userMessage in matchedMealAPI.people {
+            let theUserMessage = userMessage as! GTLMealServiceApisMealApiUserMessage
+            let theMealUser = MealUser()
+            if (userMessage.userKey != nil) { theMealUser.userKey = theUserMessage.userKey }
+            if (userMessage.firstName != nil) { theMealUser.firstName = theUserMessage.firstName }
+            if (userMessage.lastName != nil) { theMealUser.lastName = theUserMessage.lastName }
+            mealUsers.append(theMealUser)
+        }
+        theMatchedMeal.people = mealUsers
+        
         return theMatchedMeal
     }
     

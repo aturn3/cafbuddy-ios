@@ -42,9 +42,9 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
         
         let collectionViewLayout : UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionViewLayout.minimumLineSpacing = 15
-        collectionViewLayout.sectionInset = UIEdgeInsetsMake(15, 15, 15, 15)
+        collectionViewLayout.sectionInset = UIEdgeInsetsMake(15, 15, 0, 15)
         collectionViewLayout.itemSize = CGSizeMake(screenSize.width - 30, 150)
-        
+        collectionViewLayout.headerReferenceSize = CGSizeMake(screenSize.width, 20)
         //the screen starts after the top bar but extends below the navbar
         let collectionViewHeight = screenSize.height - TAB_BAR_HEIGHT - NAV_BAR_HEIGHT - STATUS_BAR_HEIGHT
         collectionViewMeals = UICollectionView(frame: CGRectMake(0, 0, screenSize.width, collectionViewHeight), collectionViewLayout: collectionViewLayout)
@@ -53,6 +53,7 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
         collectionViewMeals!.dataSource = self;
         collectionViewMeals!.alwaysBounceVertical = true
         collectionViewMeals!.registerClass(UpcomingMealListingCell.self, forCellWithReuseIdentifier: "upcomingMealCell")
+        collectionViewMeals!.registerClass(UpcomingMealCollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "header")
         collectionViewMeals!.backgroundColor = COLOR_NEUTRAL_BACKGROUND
         
         self.view.addSubview(collectionViewMeals!)
@@ -76,7 +77,7 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
             }
             // chat button
             else {
-                
+                segueToMealChat(rowIndex)
             }
         }
         //  if dealing with unmatched meal buttons
@@ -93,10 +94,27 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
             }
             // edit time button
             else {
-                
+                //segue to the chat screen goes here...
             }
         }
         
+    }
+
+    func segueToMealChat(cellRowIndex: Int) {
+        // get the actual meal
+        let theMeal = matchedMeals[cellRowIndex]
+        
+        // if we are not within 20 minutes of the meal then we should not show the chat window
+        if (theMeal.startTime!.timeIntervalSinceDate(NSDate()) > 60*30) {
+            var theMessage = "You must be within 30 minutes of the meal starting to chat with your "
+            if (theMeal.numPeople > 2) { theMessage += "buddies." } else { theMessage += "buddy." }
+            theMessage += " Check back soon!"
+            let theAlertView = createAlert("Not Yet!", message: theMessage, actionMessage: "Okay")
+            self.presentViewController(theAlertView, animated: true, completion: nil)
+        }
+        else {
+            
+        }
     }
     
     func deleteUnmatchedMeal(cellRowIndex: Int) {
@@ -199,6 +217,20 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
             return matchedMeals.count
         }
         return unMatchedMeals.count
+    }
+    
+    // sets the text of the headers that split the matched meals and unmatched meals up
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        let headerView = collectionViewMeals!.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "header", forIndexPath: indexPath) as! UpcomingMealCollectionViewHeader
+        
+        if (indexPath.section == 0) {
+            headerView.setTitle("Confirmed Meals (Matched With Buddies)", sectionIndex : indexPath.section)
+        }
+        else {
+            headerView.setTitle("Searching For Buddies...", sectionIndex : indexPath.section)
+        }
+        
+        return headerView
     }
     
     // MARK: - Api Callback
