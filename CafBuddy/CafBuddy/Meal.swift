@@ -226,6 +226,9 @@ class Meal: NSObject {
         startRange = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: dayDifference, toDate: startRange, options: NSCalendarOptions(rawValue: 0))!
         endRange = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: dayDifference, toDate: endRange, options: NSCalendarOptions(rawValue: 0))!
         
+        // Account for user in total number of people for the meal
+        let numberOfPeopleTotal = numberOfPeople + 1
+        
         // Get Meal Type
         let endDateComponents = NSCalendar.currentCalendar().components(NSCalendarUnit.Hour, fromDate: endRange)
         var mealType = MealType(rawValue: 0)
@@ -251,7 +254,7 @@ class Meal: NSObject {
         mealObject.mealType = mealType?.rawValue
         mealObject.startRange = startRange.toDatabaseString()
         mealObject.endRange = endRange.toDatabaseString()
-        mealObject.numPeople = numberOfPeople
+        mealObject.numPeople = numberOfPeopleTotal
         
         // Create Meal Service Query
         let query: GTLQueryMealService = GTLQueryMealService.queryForCreateNewMealWithObject(mealObject)

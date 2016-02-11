@@ -13,6 +13,10 @@ import UIKit
 
 let APPLICATION_ERROR_OR_NETWORK_PROBLEM = "Servers unavailable. Please try again later"
 
+// MARK: - NSNotificationCenter Notifications
+
+let NEW_MEAL_NOTIFICATION = "NewMealNotification"
+
 // MARK: - User Keychain Constants
 
 let USER_FIRST_NAME_KEY = "userFirstName"

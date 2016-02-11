@@ -28,6 +28,9 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
         //Set the title of the navigation bar
         navigationItem.title = "Upcoming Meals"
         
+        // Register for new meal notification from new meal view controller
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("receiveNewMeal:"), name: NEW_MEAL_NOTIFICATION, object: nil)
+        
         initInterface()
     }
 
@@ -173,6 +176,11 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
         }
     }
     
+    // Receive new meal from NewMealViewController
+    func receiveNewMeal(notification: NSNotification) {
+        self.updateAllMealsFromDatabase()
+    }
+    
     
     // MARK: - Collection View Methods
     
@@ -231,6 +239,10 @@ class UpcomingMealsViewController: MainScreenViewController, UICollectionViewDat
         }
         
         return headerView
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: NEW_MEAL_NOTIFICATION, object: NewMealViewController.self)
     }
     
     // MARK: - Api Callback
