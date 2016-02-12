@@ -13,7 +13,7 @@
 // Description:
 //   API for dealing with meals
 // Classes:
-//   GTLMealServiceApisMealApiMatchedMealMessage (0 custom class methods, 6 custom properties)
+//   GTLMealServiceApisMealApiMatchedMealMessage (0 custom class methods, 7 custom properties)
 
 #import "GTLMealServiceApisMealApiMatchedMealMessage.h"
 
@@ -25,7 +25,8 @@
 //
 
 @implementation GTLMealServiceApisMealApiMatchedMealMessage
-@dynamic matchedDate, mealKey, mealType, numPeople, people, startTime;
+@dynamic feedbackGiven, matchedDate, mealKey, mealType, numPeople, people,
+         startTime;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{
