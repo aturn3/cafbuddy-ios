@@ -31,9 +31,9 @@ extension MealAPICallback {
 }
 
 enum MealType: Int {
-    case Breakfast = 0, Lunch = 1, Dinner = 2
+    case Breakfast = 0, Lunch = 1, Dinner = 2, Coffee = 3
 }
-let MealTypeStrings = ["Breakfast", "Lunch", "Dinner"]
+let MealTypeStrings = ["Breakfast", "Lunch", "Dinner", "Coffee"]
 
 enum MealStatus: Int {
     case Matched = 0, UnMatched = 1
