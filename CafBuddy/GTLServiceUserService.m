@@ -25,8 +25,15 @@
 + (NSArray *)checkClasses {
   NSArray *classes = @[
     [GTLQueryUserService class],
+    [GTLUserServiceApisUserApiAddComplimentRequestMessage class],
+    [GTLUserServiceApisUserApiAddComplimentResponseMessage class],
     [GTLUserServiceApisUserApiAddReportToUserRequestMessage class],
     [GTLUserServiceApisUserApiAddReportToUserResponseMessage class],
+    [GTLUserServiceApisUserApiComplimentMessage class],
+    [GTLUserServiceApisUserApiGetComplimentsGivenByUserRequestMessage class],
+    [GTLUserServiceApisUserApiGetComplimentsGivenByUserResponseMessage class],
+    [GTLUserServiceApisUserApiGetComplimentsGivenToUserRequestMessage class],
+    [GTLUserServiceApisUserApiGetComplimentsGivenToUserResponseMessage class],
     [GTLUserServiceApisUserApiIncrementNegativeRatingRequestMessage class],
     [GTLUserServiceApisUserApiIncrementNegativeRatingResponseMessage class],
     [GTLUserServiceApisUserApiIncrementPositiveRatingRequestMessage class],
