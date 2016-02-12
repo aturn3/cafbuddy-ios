@@ -63,6 +63,7 @@ class MatchedMeal {
     var mealType : MealType? // the type of the meal
     var people = [MealUser]() // the keys / names of all the people in the meal
     var mealKey : String? // the unique identifier of the MatchedMeal in the backend database
+    var feedbackGiven : Bool? // holds whether the current user of the app has given feedback for that given meal or not
 }
 
 class MealUser { // modified user with only limited information abou the user as returned in the meal API
@@ -307,7 +308,19 @@ class Meal: NSObject {
         theMatchedMeal.numPeople = matchedMealAPI.numPeople as Int
         theMatchedMeal.mealType = MealType(rawValue: matchedMealAPI.mealType as Int)
         theMatchedMeal.mealKey = matchedMealAPI.mealKey
-
+        
+        // if the givenFeedback optional field was given, include that. Have to do it roundabout like since the bool field on the message is 
+        // returned as an NSNumber instead of a Bool field as would be expected
+        if (matchedMealAPI.feedbackGiven != nil) {
+            if (matchedMealAPI.feedbackGiven == 0) {
+                theMatchedMeal.feedbackGiven = false
+            }
+            else {
+                theMatchedMeal.feedbackGiven = true
+            }
+        }
+        
+        // add the mealUsers objects
         var mealUsers = [MealUser]()
         for userMessage in matchedMealAPI.people {
             let theUserMessage = userMessage as! GTLMealServiceApisMealApiUserMessage
