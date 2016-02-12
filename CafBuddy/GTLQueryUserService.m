@@ -13,12 +13,18 @@
 // Description:
 //   API for working with a User
 // Classes:
-//   GTLQueryUserService (8 custom class methods, 1 custom properties)
+//   GTLQueryUserService (11 custom class methods, 1 custom properties)
 
 #import "GTLQueryUserService.h"
 
+#import "GTLUserServiceApisUserApiAddComplimentRequestMessage.h"
+#import "GTLUserServiceApisUserApiAddComplimentResponseMessage.h"
 #import "GTLUserServiceApisUserApiAddReportToUserRequestMessage.h"
 #import "GTLUserServiceApisUserApiAddReportToUserResponseMessage.h"
+#import "GTLUserServiceApisUserApiGetComplimentsGivenByUserRequestMessage.h"
+#import "GTLUserServiceApisUserApiGetComplimentsGivenByUserResponseMessage.h"
+#import "GTLUserServiceApisUserApiGetComplimentsGivenToUserRequestMessage.h"
+#import "GTLUserServiceApisUserApiGetComplimentsGivenToUserResponseMessage.h"
 #import "GTLUserServiceApisUserApiIncrementNegativeRatingRequestMessage.h"
 #import "GTLUserServiceApisUserApiIncrementNegativeRatingResponseMessage.h"
 #import "GTLUserServiceApisUserApiIncrementPositiveRatingRequestMessage.h"
@@ -41,6 +47,18 @@
 #pragma mark - Service level methods
 // These create a GTLQueryUserService object.
 
++ (instancetype)queryForAddComplimentWithObject:(GTLUserServiceApisUserApiAddComplimentRequestMessage *)object {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"userService.addCompliment";
+  GTLQueryUserService *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.expectedObjectClass = [GTLUserServiceApisUserApiAddComplimentResponseMessage class];
+  return query;
+}
+
 + (instancetype)queryForAddReportToUserWithObject:(GTLUserServiceApisUserApiAddReportToUserRequestMessage *)object {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
@@ -50,6 +68,30 @@
   GTLQueryUserService *query = [self queryWithMethodName:methodName];
   query.bodyObject = object;
   query.expectedObjectClass = [GTLUserServiceApisUserApiAddReportToUserResponseMessage class];
+  return query;
+}
+
++ (instancetype)queryForGetComplimentsGivenByUserWithObject:(GTLUserServiceApisUserApiGetComplimentsGivenByUserRequestMessage *)object {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"userService.getComplimentsGivenByUser";
+  GTLQueryUserService *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.expectedObjectClass = [GTLUserServiceApisUserApiGetComplimentsGivenByUserResponseMessage class];
+  return query;
+}
+
++ (instancetype)queryForGetComplimentsGivenToUserWithObject:(GTLUserServiceApisUserApiGetComplimentsGivenToUserRequestMessage *)object {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"userService.getComplimentsGivenToUser";
+  GTLQueryUserService *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.expectedObjectClass = [GTLUserServiceApisUserApiGetComplimentsGivenToUserResponseMessage class];
   return query;
 }
 

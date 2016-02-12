@@ -13,7 +13,7 @@
 // Description:
 //   API for working with a User
 // Classes:
-//   GTLQueryUserService (8 custom class methods, 1 custom properties)
+//   GTLQueryUserService (11 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -21,7 +21,10 @@
   #import "GTLQuery.h"
 #endif
 
+@class GTLUserServiceApisUserApiAddComplimentRequestMessage;
 @class GTLUserServiceApisUserApiAddReportToUserRequestMessage;
+@class GTLUserServiceApisUserApiGetComplimentsGivenByUserRequestMessage;
+@class GTLUserServiceApisUserApiGetComplimentsGivenToUserRequestMessage;
 @class GTLUserServiceApisUserApiIncrementNegativeRatingRequestMessage;
 @class GTLUserServiceApisUserApiIncrementPositiveRatingRequestMessage;
 @class GTLUserServiceApisUserApiLogInUserRequestMessage;
@@ -42,11 +45,29 @@
 #pragma mark - Service level methods
 // These create a GTLQueryUserService object.
 
+// Method: userService.addCompliment
+//  Authorization scope(s):
+//   kGTLAuthScopeUserServiceUserinfoEmail
+// Fetches a GTLUserServiceApisUserApiAddComplimentResponseMessage.
++ (instancetype)queryForAddComplimentWithObject:(GTLUserServiceApisUserApiAddComplimentRequestMessage *)object;
+
 // Method: userService.addReportToUser
 //  Authorization scope(s):
 //   kGTLAuthScopeUserServiceUserinfoEmail
 // Fetches a GTLUserServiceApisUserApiAddReportToUserResponseMessage.
 + (instancetype)queryForAddReportToUserWithObject:(GTLUserServiceApisUserApiAddReportToUserRequestMessage *)object;
+
+// Method: userService.getComplimentsGivenByUser
+//  Authorization scope(s):
+//   kGTLAuthScopeUserServiceUserinfoEmail
+// Fetches a GTLUserServiceApisUserApiGetComplimentsGivenByUserResponseMessage.
++ (instancetype)queryForGetComplimentsGivenByUserWithObject:(GTLUserServiceApisUserApiGetComplimentsGivenByUserRequestMessage *)object;
+
+// Method: userService.getComplimentsGivenToUser
+//  Authorization scope(s):
+//   kGTLAuthScopeUserServiceUserinfoEmail
+// Fetches a GTLUserServiceApisUserApiGetComplimentsGivenToUserResponseMessage.
++ (instancetype)queryForGetComplimentsGivenToUserWithObject:(GTLUserServiceApisUserApiGetComplimentsGivenToUserRequestMessage *)object;
 
 // Method: userService.incrementNegativeRating
 //  Authorization scope(s):

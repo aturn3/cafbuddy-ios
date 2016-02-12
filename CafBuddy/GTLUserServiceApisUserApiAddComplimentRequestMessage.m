@@ -3,7 +3,7 @@
  */
 
 //
-//  GTLUserServiceApisUserApiAddReportToUserRequestMessage.m
+//  GTLUserServiceApisUserApiAddComplimentRequestMessage.m
 //
 
 // ----------------------------------------------------------------------------
@@ -13,18 +13,17 @@
 // Description:
 //   API for working with a User
 // Classes:
-//   GTLUserServiceApisUserApiAddReportToUserRequestMessage (0 custom class methods, 7 custom properties)
+//   GTLUserServiceApisUserApiAddComplimentRequestMessage (0 custom class methods, 5 custom properties)
 
-#import "GTLUserServiceApisUserApiAddReportToUserRequestMessage.h"
+#import "GTLUserServiceApisUserApiAddComplimentRequestMessage.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLUserServiceApisUserApiAddReportToUserRequestMessage
+//   GTLUserServiceApisUserApiAddComplimentRequestMessage
 //
 
-@implementation GTLUserServiceApisUserApiAddReportToUserRequestMessage
-@dynamic authToken, comments, emailAddress, fromUserKey, mealKey, reportType,
-         userKeys;
+@implementation GTLUserServiceApisUserApiAddComplimentRequestMessage
+@dynamic authToken, comment, emailAddress, mealKey, userKeys;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{
