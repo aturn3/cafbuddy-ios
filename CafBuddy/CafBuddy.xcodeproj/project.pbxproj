@@ -130,6 +130,8 @@
 		FFCF47B21C61D7BB003E682A /* GTLUserServiceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FFCF479E1C61D7BB003E682A /* GTLUserServiceConstants.m */; };
 		FFCF47B41C61D875003E682A /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCF47B31C61D875003E682A /* Meal.swift */; };
 		FFCF47B61C62CEE3003E682A /* MainScreenViewControlller.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCF47B51C62CEE3003E682A /* MainScreenViewControlller.swift */; };
+		FFF38E4D1C6E2DF90046E23C /* coffeeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF38E4B1C6E2DF90046E23C /* coffeeIcon.png */; };
+		FFF38E4E1C6E2DF90046E23C /* coffeeIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF38E4C1C6E2DF90046E23C /* coffeeIcon@2x.png */; };
 		FFFB22221C615373005D7816 /* MealHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFB22211C615373005D7816 /* MealHistoryViewController.swift */; };
 		FFFB22241C6153BE005D7816 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFB22231C6153BE005D7816 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
@@ -348,6 +350,8 @@
 		FFCF479E1C61D7BB003E682A /* GTLUserServiceConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLUserServiceConstants.m; sourceTree = "<group>"; };
 		FFCF47B31C61D875003E682A /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		FFCF47B51C62CEE3003E682A /* MainScreenViewControlller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenViewControlller.swift; sourceTree = "<group>"; };
+		FFF38E4B1C6E2DF90046E23C /* coffeeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coffeeIcon.png; sourceTree = "<group>"; };
+		FFF38E4C1C6E2DF90046E23C /* coffeeIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coffeeIcon@2x.png"; sourceTree = "<group>"; };
 		FFFB22211C615373005D7816 /* MealHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealHistoryViewController.swift; sourceTree = "<group>"; };
 		FFFB22231C6153BE005D7816 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -464,6 +468,8 @@
 				FF5F6AB11C63CE31008131A9 /* dinnerIcon@2x.png */,
 				FF5F6AB21C63CE31008131A9 /* lunchIcon.png */,
 				FF5F6AB31C63CE31008131A9 /* lunchIcon@2x.png */,
+				FFF38E4B1C6E2DF90046E23C /* coffeeIcon.png */,
+				FFF38E4C1C6E2DF90046E23C /* coffeeIcon@2x.png */,
 			);
 			name = MealTypeIcons;
 			sourceTree = "<group>";
@@ -820,6 +826,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFF38E4E1C6E2DF90046E23C /* coffeeIcon@2x.png in Resources */,
 				FFCF47671C6195D3003E682A /* settingsIconOrig64@2x.png in Resources */,
 				FF33D5961C5F12ED00A9A320 /* Podfile in Resources */,
 				FF5F6AC91C640EA7008131A9 /* cancelMinimalIcon.png in Resources */,
@@ -834,6 +841,7 @@
 				FF5F6AB41C63CE31008131A9 /* breakfastIcon.png in Resources */,
 				FF34795E1C69A982004FC99E /* thumbsUpIcon.png in Resources */,
 				FF5F6AAA1C631244008131A9 /* mealHistoryIcon@2x.png in Resources */,
+				FFF38E4D1C6E2DF90046E23C /* coffeeIcon.png in Resources */,
 				FFCF475F1C61957B003E682A /* addMealIcon.png in Resources */,
 				FF5F6AA81C6311DB008131A9 /* settingsIcon@2x.png in Resources */,
 				FF34795F1C69A982004FC99E /* thumbsUpIcon@2x.png in Resources */,

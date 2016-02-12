@@ -119,8 +119,11 @@ class HistoryMealListingCell : MealCollectionCellTemplate {
         else if (theMealType == MealType.Lunch){
             decorateImage(withImage: UIImage(named: "lunchIcon")!, coloredAs: COLOR_MAIN_DARK)
         }
-        else {
+        else if (theMealType == MealType.Breakfast) {
             decorateImage(withImage: UIImage(named: "breakfastIcon")!, coloredAs: COLOR_MAIN_DARK)
+        }
+        else {
+            decorateImage(withImage: UIImage(named: "coffeeIcon")!, coloredAs: COLOR_MAIN_DARK)
         }
     }
     
