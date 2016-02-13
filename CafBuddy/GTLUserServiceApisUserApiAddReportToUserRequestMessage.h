@@ -13,7 +13,7 @@
 // Description:
 //   API for working with a User
 // Classes:
-//   GTLUserServiceApisUserApiAddReportToUserRequestMessage (0 custom class methods, 4 custom properties)
+//   GTLUserServiceApisUserApiAddReportToUserRequestMessage (0 custom class methods, 7 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -30,5 +30,8 @@
 @property (nonatomic, copy) NSString *authToken;
 @property (nonatomic, copy) NSString *comments;
 @property (nonatomic, copy) NSString *emailAddress;
+@property (nonatomic, copy) NSString *fromUserKey;
+@property (nonatomic, copy) NSString *mealKey;
 @property (nonatomic, retain) NSNumber *reportType;  // longLongValue
+@property (nonatomic, retain) NSArray *userKeys;  // of NSString
 @end

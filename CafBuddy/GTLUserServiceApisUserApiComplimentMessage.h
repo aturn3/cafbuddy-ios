@@ -3,7 +3,7 @@
  */
 
 //
-//  GTLUserServiceApisUserApiIncrementNegativeRatingRequestMessage.h
+//  GTLUserServiceApisUserApiComplimentMessage.h
 //
 
 // ----------------------------------------------------------------------------
@@ -13,7 +13,7 @@
 // Description:
 //   API for working with a User
 // Classes:
-//   GTLUserServiceApisUserApiIncrementNegativeRatingRequestMessage (0 custom class methods, 5 custom properties)
+//   GTLUserServiceApisUserApiComplimentMessage (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -23,13 +23,12 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLUserServiceApisUserApiIncrementNegativeRatingRequestMessage
+//   GTLUserServiceApisUserApiComplimentMessage
 //
 
-@interface GTLUserServiceApisUserApiIncrementNegativeRatingRequestMessage : GTLObject
-@property (nonatomic, copy) NSString *authToken;
-@property (nonatomic, copy) NSString *emailAddress;
-@property (nonatomic, copy) NSString *fromUserKey;
+@interface GTLUserServiceApisUserApiComplimentMessage : GTLObject
+@property (nonatomic, copy) NSString *comment;
+@property (nonatomic, copy) NSString *giverUserKey;
 @property (nonatomic, copy) NSString *mealKey;
-@property (nonatomic, retain) NSArray *userKeys;  // of NSString
+@property (nonatomic, copy) NSString *toUserKey;
 @end

@@ -13,7 +13,7 @@
 // Description:
 //   API for working with a User
 // Classes:
-//   GTLUserServiceApisUserApiIncrementPositiveRatingRequestMessage (0 custom class methods, 2 custom properties)
+//   GTLUserServiceApisUserApiIncrementPositiveRatingRequestMessage (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -29,4 +29,7 @@
 @interface GTLUserServiceApisUserApiIncrementPositiveRatingRequestMessage : GTLObject
 @property (nonatomic, copy) NSString *authToken;
 @property (nonatomic, copy) NSString *emailAddress;
+@property (nonatomic, copy) NSString *fromUserKey;
+@property (nonatomic, copy) NSString *mealKey;
+@property (nonatomic, retain) NSArray *userKeys;  // of NSString
 @end
