@@ -44,7 +44,7 @@ class MealFeedbackViewController: MainScreenViewController, UIPickerViewDataSour
         
         //LABEL HEADER FOR THE MEAL
         labelMealHeader.textAlignment = NSTextAlignment.Center
-        labelMealHeader.frame = CGRectMake(0, NAV_BAR_HEIGHT + STATUS_BAR_HEIGHT + 10, screenSize.width, 50)
+        labelMealHeader.frame = CGRectMake(0, 10, screenSize.width, 50)
         // next two lines allow the label to wrap on the text at a newline character
         labelMealHeader.lineBreakMode = NSLineBreakMode.ByWordWrapping
         labelMealHeader.numberOfLines = 0

@@ -139,8 +139,10 @@
 		FFF38EDA1C6E5B110046E23C /* GTLMealServiceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF38EC41C6E5B110046E23C /* GTLMealServiceConstants.m */; };
 		FFF38EDB1C6E5B110046E23C /* GTLQueryMealService.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF38EC61C6E5B110046E23C /* GTLQueryMealService.m */; };
 		FFF38EDC1C6E5B110046E23C /* GTLServiceMealService.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF38EC81C6E5B110046E23C /* GTLServiceMealService.m */; };
+		FFF38EDE1C6ECCFF0046E23C /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF38EDD1C6ECCFF0046E23C /* WebViewViewController.swift */; };
+		FFF38EE01C6EF8BF0046E23C /* ComplimentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF38EDF1C6EF8BF0046E23C /* ComplimentsViewController.swift */; };
 		FFFB22221C615373005D7816 /* MealHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFB22211C615373005D7816 /* MealHistoryViewController.swift */; };
-		FFFB22241C6153BE005D7816 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFB22231C6153BE005D7816 /* ProfileViewController.swift */; };
+		FFFB22241C6153BE005D7816 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFB22231C6153BE005D7816 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -373,8 +375,10 @@
 		FFF38EC61C6E5B110046E23C /* GTLQueryMealService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLQueryMealService.m; sourceTree = "<group>"; };
 		FFF38EC71C6E5B110046E23C /* GTLServiceMealService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLServiceMealService.h; sourceTree = "<group>"; };
 		FFF38EC81C6E5B110046E23C /* GTLServiceMealService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLServiceMealService.m; sourceTree = "<group>"; };
+		FFF38EDD1C6ECCFF0046E23C /* WebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
+		FFF38EDF1C6EF8BF0046E23C /* ComplimentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplimentsViewController.swift; sourceTree = "<group>"; };
 		FFFB22211C615373005D7816 /* MealHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealHistoryViewController.swift; sourceTree = "<group>"; };
-		FFFB22231C6153BE005D7816 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		FFFB22231C6153BE005D7816 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -644,8 +648,10 @@
 				FFCF47B51C62CEE3003E682A /* MainScreenViewControlller.swift */,
 				4949D44F1C2F4A80003C84DA /* NewMealViewController.swift */,
 				FFFB22211C615373005D7816 /* MealHistoryViewController.swift */,
-				FFFB22231C6153BE005D7816 /* ProfileViewController.swift */,
+				FFFB22231C6153BE005D7816 /* SettingsViewController.swift */,
 				FF3479561C69939F004FC99E /* MealFeedbackViewController.swift */,
+				FFF38EDD1C6ECCFF0046E23C /* WebViewViewController.swift */,
+				FFF38EDF1C6EF8BF0046E23C /* ComplimentsViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -1010,7 +1016,7 @@
 				FFCF47721C61C777003E682A /* UpcomingMealListingCell.swift in Sources */,
 				FFF38E961C6E2F9C0046E23C /* GTLUserServiceApisUserApiLogOutUserResponseMessage.m in Sources */,
 				FFF38E9C1C6E2F9C0046E23C /* GTLUserServiceApisUserApiValidateUserResponseMessage.m in Sources */,
-				FFFB22241C6153BE005D7816 /* ProfileViewController.swift in Sources */,
+				FFFB22241C6153BE005D7816 /* SettingsViewController.swift in Sources */,
 				FFF38E911C6E2F9C0046E23C /* GTLUserServiceApisUserApiIncrementPositiveRatingRequestMessage.m in Sources */,
 				FF72B9971C32269B009B7308 /* GTLBatchQuery.m in Sources */,
 				FFF38E921C6E2F9C0046E23C /* GTLUserServiceApisUserApiIncrementPositiveRatingResponseMessage.m in Sources */,
@@ -1055,6 +1061,7 @@
 				FF72B9AF1C322713009B7308 /* GTMSessionFetcherService.m in Sources */,
 				FF72B9A11C32269B009B7308 /* GTLBase64.m in Sources */,
 				FFF38EDC1C6E5B110046E23C /* GTLServiceMealService.m in Sources */,
+				FFF38EDE1C6ECCFF0046E23C /* WebViewViewController.swift in Sources */,
 				FFF38ED21C6E5B110046E23C /* GTLMealServiceApisMealApiGetMatchedMealsInRangeResponseMessage.m in Sources */,
 				FF72B9951C32269B009B7308 /* GTLObject.m in Sources */,
 				FFF38E841C6E2F9C0046E23C /* GTLQueryUserService.m in Sources */,
@@ -1069,6 +1076,7 @@
 				4949D44C1C2F4A80003C84DA /* AppDelegate.swift in Sources */,
 				4949D47E1C2F6E03003C84DA /* LoginViewController.swift in Sources */,
 				FFCF47761C61CD05003E682A /* MealCollectionCellTemplate.swift in Sources */,
+				FFF38EE01C6EF8BF0046E23C /* ComplimentsViewController.swift in Sources */,
 				FFF38E9A1C6E2F9C0046E23C /* GTLUserServiceApisUserApiSignUpUserResponseMessage.m in Sources */,
 				FF72B99E1C32269B009B7308 /* GTLFramework.m in Sources */,
 				FFF38E901C6E2F9C0046E23C /* GTLUserServiceApisUserApiIncrementNegativeRatingResponseMessage.m in Sources */,
