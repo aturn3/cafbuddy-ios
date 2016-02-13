@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileViewController: MainScreenViewController, UITableViewDelegate, UITableViewDataSource {
+class SettingsViewController: MainScreenViewController, UITableViewDelegate, UITableViewDataSource {
     
     var scrollViewMain = UIScrollView()
     var tableViewMainOptions = UITableView()
@@ -17,6 +17,9 @@ class ProfileViewController: MainScreenViewController, UITableViewDelegate, UITa
         ["Log Out"]
     ]
     var rowHeight = CGFloat(50)
+    
+    var webViewTitle : String?
+    var webViewURL : String?
 
     
     override func viewDidLoad() {
@@ -24,7 +27,7 @@ class ProfileViewController: MainScreenViewController, UITableViewDelegate, UITa
         // Do any additional setup after loading the view, typically from a nib.
         
         //Set the title of the navigation bar
-        navigationItem.title = "Meal History"
+        navigationItem.title = "Settings"
         
         initInterface()
     }
@@ -73,6 +76,35 @@ class ProfileViewController: MainScreenViewController, UITableViewDelegate, UITa
     }
     
     
+    //MARK: - Action Methods
+    
+    func toWebView(url: String, title: String) {
+        webViewURL = url
+        webViewTitle = title
+        self.performSegueWithIdentifier("toWebViewFromSettings", sender: self)
+    }
+    
+    func toLogIn() {
+        self.performSegueWithIdentifier("toLoginFromSettings", sender: self)
+    }
+    
+    func toComplementsView() {
+        self.performSegueWithIdentifier("toComplementsFromSettings", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // before going to the webview screen, need to set the url that the webview should load to
+        // and what the title of the page should be
+        if segue.identifier == "toWebViewFromSettings" {
+            let destinationController = segue.destinationViewController as! WebViewViewController
+            destinationController.navigationTitle = webViewTitle
+            destinationController.webViewURL = webViewURL
+            webViewTitle = nil
+            webViewURL = nil
+        }
+    }
+    
+    
     //MARK: - Table View Delegate Methods
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -106,6 +138,38 @@ class ProfileViewController: MainScreenViewController, UITableViewDelegate, UITa
         return settingsOptions.count
     }
     
-    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // first we have to unselect the chosen row so that it doesn't stay highlighted
+        tableViewMainOptions.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        // profile actions
+        if (indexPath.section == 0) {
+            if (indexPath.row == 0) {
+                toComplementsView()
+            }
+            
+        }
+        // content sections about CafBuddy
+        if (indexPath.section == 1) {
+            if (indexPath.row == 0) {
+                toWebView("https://cafbuddy.appspot.com/howitworks", title: "How Cafbuddy Works")
+            }
+            else if (indexPath.row == 1) {
+                toWebView("https://cafbuddy.appspot.com/termsofservice", title: "Terms Of Service")
+            }
+            else if (indexPath.row == 2) {
+                toWebView("https://cafbuddy.appspot.com/privacypolicy", title: "Privacy Policy")
+            }
+            else if (indexPath.row == 3) {
+                toWebView("https://cafbuddy.appspot.com/credits", title: "Credits")
+            }
+        }
+        // actions (log out)
+        else if (indexPath.section == 2){
+            let curUser = getCurrentUser()
+            curUser.logout()
+            toLogIn()
+        }
+    }
     
 }
