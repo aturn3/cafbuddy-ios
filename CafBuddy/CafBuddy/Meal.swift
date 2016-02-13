@@ -214,7 +214,11 @@ class Meal: NSObject {
 
     }
     
-    func createMeal(emailAddress: String, authenticationToken: String, day: NSDate, startRange: NSDate, endRange: NSDate, numberOfPeople: Int) {
+    func createMeal(emailAddress: String, authenticationToken: String, day: NSDate, startRange: NSDate, endRange: NSDate, numberOfPeople: Int, mealChoice: String) {
+        if mealChoice.isEmpty {
+            self.mealCallback?.createMealAPICallback(false, errorMessage: "Please select a type of meal")
+        }
+        
         var startRange = startRange
         var endRange = endRange
         

@@ -15,6 +15,11 @@ class NewMealViewController: MainScreenViewController, MealAPICallback, UIPicker
     
     let howManyPeoplePickerData = ["1", "3", "5"]
     
+    var mealChoice = String()
+    
+    let mealChoiceLabel = UILabel()
+    let mealChoiceFoodButton = UIButton()
+    let mealChoiceCoffeeButton = UIButton()
     let whenLabel = UILabel()
     let whenTextField = UITextField()
     let whenDatePicker = UIDatePicker()
@@ -29,9 +34,22 @@ class NewMealViewController: MainScreenViewController, MealAPICallback, UIPicker
     let howManyPeoplePicker = UIPickerView()
     let newMealButton = UIButton()
     
+    var mealChoiceLabelConstraintCenterX = NSLayoutConstraint()
+    var mealChoiceLabelConstraintTop = NSLayoutConstraint()
+    
+    var mealChoiceFoodButtonConstraintLeft = NSLayoutConstraint()
+    var mealChoiceFoodButtonConstraintRight = NSLayoutConstraint()
+    var mealChoiceFoodButtonConstraintTop = NSLayoutConstraint()
+    var mealChoiceFoodButtonConstraintBottom = NSLayoutConstraint()
+    
+    var mealChoiceCoffeeButtonConstraintLeft = NSLayoutConstraint()
+    var mealChoiceCoffeeButtonConstraintRight = NSLayoutConstraint()
+    var mealChoiceCoffeeButtonConstraintTop = NSLayoutConstraint()
+    var mealChoiceCoffeeButtonConstraintBottom = NSLayoutConstraint()
+    
     var whenLabelConstraintCenterX = NSLayoutConstraint()
     var whenLabelConstraintTop = NSLayoutConstraint()
-    var whenLabelConstraintBottom = NSLayoutConstraint()
+//    var whenLabelConstraintBottom = NSLayoutConstraint()
     
     var whenTextFieldConstraintCenterX = NSLayoutConstraint()
     var whenTextFieldConstraintLeft = NSLayoutConstraint()
@@ -41,11 +59,12 @@ class NewMealViewController: MainScreenViewController, MealAPICallback, UIPicker
     
     var whatTimeLabelConstraintCenterX = NSLayoutConstraint()
     var whatTimeLabelConstraintTop = NSLayoutConstraint()
-    var whatTimeLabelConstraintBottom = NSLayoutConstraint()
+//    var whatTimeLabelConstraintBottom = NSLayoutConstraint()
     
     var andLabelConstraintCenterX = NSLayoutConstraint()
-    var andLabelConstraintTop = NSLayoutConstraint()
-    var andLabelConstraintBottom = NSLayoutConstraint()
+//    var andLabelConstraintTop = NSLayoutConstraint()
+//    var andLabelConstraintBottom = NSLayoutConstraint()
+    var andLabelConstraintCenterY = NSLayoutConstraint()
 
     var startTimeTextFieldConstraintLeft = NSLayoutConstraint()
     var startTimeTextFieldConstraintRight = NSLayoutConstraint()
@@ -61,7 +80,7 @@ class NewMealViewController: MainScreenViewController, MealAPICallback, UIPicker
     
     var howManyPeopleLabelConstraintCenterX = NSLayoutConstraint()
     var howManyPeopleLabelConstraintTop = NSLayoutConstraint()
-    var howManyPeopleLabelConstraintBottom = NSLayoutConstraint()
+//    var howManyPeopleLabelConstraintBottom = NSLayoutConstraint()
     
     var howManyPeopleTextFieldConstraintCenterX = NSLayoutConstraint()
     var howManyPeopleTextFieldConstraintLeft = NSLayoutConstraint()
@@ -95,8 +114,35 @@ class NewMealViewController: MainScreenViewController, MealAPICallback, UIPicker
         
         self.view.backgroundColor = COLOR_NEUTRAL_BACKGROUND
         
+        // Meal Choice Label
+        self.mealChoiceLabel.font = UIFont.systemFontOfSize(16)
+        self.mealChoiceLabel.textAlignment = NSTextAlignment.Center
+        self.mealChoiceLabel.text = "Meal type?"
+        self.mealChoiceLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.mealChoiceLabel)
+        
+        // Meal Choice Food Button
+        self.mealChoiceFoodButton.titleLabel!.font = UIFont.systemFontOfSize(16)
+        self.mealChoiceFoodButton.setTitle("Food", forState: UIControlState.Normal)
+        self.mealChoiceFoodButton.setTitleColor(COLOR_BLACK, forState: UIControlState.Normal)
+        self.mealChoiceFoodButton.backgroundColor = COLOR_WHITE
+        self.mealChoiceFoodButton.layer.cornerRadius = 10
+        self.mealChoiceFoodButton.addTarget(self, action: "mealChoiceButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.mealChoiceFoodButton.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.mealChoiceFoodButton)
+        
+        // Meal Choice Coffee Button
+        self.mealChoiceCoffeeButton.titleLabel!.font = UIFont.systemFontOfSize(16)
+        self.mealChoiceCoffeeButton.setTitle("Coffee", forState: UIControlState.Normal)
+        self.mealChoiceCoffeeButton.setTitleColor(COLOR_BLACK, forState: UIControlState.Normal)
+        self.mealChoiceCoffeeButton.backgroundColor = COLOR_WHITE
+        self.mealChoiceCoffeeButton.layer.cornerRadius = 10
+        self.mealChoiceCoffeeButton.addTarget(self, action: "mealChoiceButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.mealChoiceCoffeeButton.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.mealChoiceCoffeeButton)
+        
         // When Label
-        self.whenLabel.font = UIFont.systemFontOfSize(24)
+        self.whenLabel.font = UIFont.systemFontOfSize(16)
         self.whenLabel.textAlignment = NSTextAlignment.Center
         self.whenLabel.text = "When?"
         self.whenLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -113,21 +159,21 @@ class NewMealViewController: MainScreenViewController, MealAPICallback, UIPicker
         // When Text Field
         self.whenTextField.text = self.whenDatePicker.date.toReadableDateOnlyStringLong()
         self.whenTextField.textAlignment = NSTextAlignment.Center
-        self.whenTextField.font = UIFont.systemFontOfSize(12)
+        self.whenTextField.font = UIFont.systemFontOfSize(16)
         self.whenTextField.borderStyle = UITextBorderStyle.RoundedRect
         self.whenTextField.inputView = self.whenDatePicker
         self.whenTextField.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.whenTextField)
         
         // What Time Label
-        self.whatTimeLabel.font = UIFont.systemFontOfSize(24)
+        self.whatTimeLabel.font = UIFont.systemFontOfSize(16)
         self.whatTimeLabel.textAlignment = NSTextAlignment.Center
         self.whatTimeLabel.text = "Start meal between"
         self.whatTimeLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.whatTimeLabel)
         
         // And Label
-        self.andLabel.font = UIFont.systemFontOfSize(18)
+        self.andLabel.font = UIFont.systemFontOfSize(16)
         self.andLabel.textAlignment = NSTextAlignment.Center
         self.andLabel.text = "and"
         self.andLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -156,7 +202,7 @@ class NewMealViewController: MainScreenViewController, MealAPICallback, UIPicker
         // Start Time Text Field
         self.startTimeTextField.text = self.startTimePicker.date.toReadableTimeOnlyString()
         self.startTimeTextField.textAlignment = NSTextAlignment.Center
-        self.startTimeTextField.font = UIFont.systemFontOfSize(12)
+        self.startTimeTextField.font = UIFont.systemFontOfSize(16)
         self.startTimeTextField.borderStyle = UITextBorderStyle.RoundedRect
         self.startTimeTextField.inputView = self.startTimePicker
         self.startTimeTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -165,14 +211,14 @@ class NewMealViewController: MainScreenViewController, MealAPICallback, UIPicker
         // End Time Text Field
         self.endTimeTextField.text = self.endTimePicker.date.toReadableTimeOnlyString()
         self.endTimeTextField.textAlignment = NSTextAlignment.Center
-        self.endTimeTextField.font = UIFont.systemFontOfSize(12)
+        self.endTimeTextField.font = UIFont.systemFontOfSize(16)
         self.endTimeTextField.borderStyle = UITextBorderStyle.RoundedRect
         self.endTimeTextField.inputView = self.endTimePicker
         self.endTimeTextField.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.endTimeTextField)
         
         // How Many People Label
-        self.howManyPeopleLabel.font = UIFont.systemFontOfSize(24)
+        self.howManyPeopleLabel.font = UIFont.systemFontOfSize(16)
         self.howManyPeopleLabel.textAlignment = NSTextAlignment.Center
         self.howManyPeopleLabel.text = "With how many other people?"
         self.howManyPeopleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -185,14 +231,14 @@ class NewMealViewController: MainScreenViewController, MealAPICallback, UIPicker
         // How Many People Text Field
         self.howManyPeopleTextField.text = self.howManyPeoplePickerData[self.howManyPeoplePicker.selectedRowInComponent(0)]
         self.howManyPeopleTextField.textAlignment = NSTextAlignment.Center
-        self.howManyPeopleTextField.font = UIFont.systemFontOfSize(12)
+        self.howManyPeopleTextField.font = UIFont.systemFontOfSize(16)
         self.howManyPeopleTextField.borderStyle = UITextBorderStyle.RoundedRect
         self.howManyPeopleTextField.inputView = self.howManyPeoplePicker
         self.howManyPeopleTextField.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.howManyPeopleTextField)
         
         // New Meal Button
-        self.newMealButton.titleLabel!.font = UIFont.systemFontOfSize(24)
+        self.newMealButton.titleLabel!.font = UIFont.systemFontOfSize(16)
         self.newMealButton.setTitle("Create Meal!", forState: UIControlState.Normal)
         self.newMealButton.setTitleColor(COLOR_BLACK, forState: UIControlState.Normal)
         self.newMealButton.backgroundColor = COLOR_RED
@@ -203,10 +249,26 @@ class NewMealViewController: MainScreenViewController, MealAPICallback, UIPicker
         
         // MARK: - Constraints
         
+        // Meal Choice Label
+        self.mealChoiceLabelConstraintCenterX = NSLayoutConstraint(item: self.mealChoiceLabel, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
+        self.mealChoiceLabelConstraintTop = NSLayoutConstraint(item: self.mealChoiceLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: (1/50)*MAIN_VIEW_HEIGHT)
+        
+        // Meal Choice Food Button
+        self.mealChoiceFoodButtonConstraintLeft = NSLayoutConstraint(item: self.mealChoiceFoodButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (1/16)*SCREEN_WIDTH)
+        self.mealChoiceFoodButtonConstraintRight = NSLayoutConstraint(item: self.mealChoiceFoodButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-9/16)*SCREEN_WIDTH)
+        self.mealChoiceFoodButtonConstraintTop = NSLayoutConstraint(item: self.mealChoiceFoodButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.mealChoiceLabel, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+        self.mealChoiceFoodButtonConstraintBottom = NSLayoutConstraint(item: self.mealChoiceFoodButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.mealChoiceFoodButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
+        
+        // Meal Choice Coffee Button
+        self.mealChoiceCoffeeButtonConstraintLeft = NSLayoutConstraint(item: self.mealChoiceCoffeeButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (9/16)*SCREEN_WIDTH)
+        self.mealChoiceCoffeeButtonConstraintRight = NSLayoutConstraint(item: self.mealChoiceCoffeeButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-1/16)*SCREEN_WIDTH)
+        self.mealChoiceCoffeeButtonConstraintTop = NSLayoutConstraint(item: self.mealChoiceCoffeeButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.mealChoiceFoodButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 0.0)
+        self.mealChoiceCoffeeButtonConstraintBottom = NSLayoutConstraint(item: self.mealChoiceCoffeeButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.mealChoiceFoodButton, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0.0)
+        
         // When Label
         self.whenLabelConstraintCenterX = NSLayoutConstraint(item: self.whenLabel, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
-        self.whenLabelConstraintTop = NSLayoutConstraint(item: self.whenLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: (1/10)*MAIN_VIEW_HEIGHT)
-        self.whenLabelConstraintBottom = NSLayoutConstraint(item: self.whenLabel, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.whenLabel, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 50.0)
+        self.whenLabelConstraintTop = NSLayoutConstraint(item: self.whenLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.mealChoiceFoodButton, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+//        self.whenLabelConstraintBottom = NSLayoutConstraint(item: self.whenLabel, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.whenLabel, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 50.0)
         
         // When Text Field
         self.whenTextFieldConstraintCenterX = NSLayoutConstraint(item: self.whenTextField, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
@@ -218,29 +280,31 @@ class NewMealViewController: MainScreenViewController, MealAPICallback, UIPicker
         // What Time Label
         self.whatTimeLabelConstraintCenterX = NSLayoutConstraint(item: self.whatTimeLabel, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self.whenLabel, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
         self.whatTimeLabelConstraintTop = NSLayoutConstraint(item: self.whatTimeLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.whenTextField, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
-        self.whatTimeLabelConstraintBottom = NSLayoutConstraint(item: self.whatTimeLabel, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.whatTimeLabel, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 50.0)
+//        self.whatTimeLabelConstraintBottom = NSLayoutConstraint(item: self.whatTimeLabel, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.whatTimeLabel, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 50.0)
         
         // And Label
         self.andLabelConstraintCenterX = NSLayoutConstraint(item: self.andLabel, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
-        self.andLabelConstraintTop = NSLayoutConstraint(item: self.andLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.whatTimeLabel, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
-        self.andLabelConstraintBottom = NSLayoutConstraint(item: self.andLabel, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.andLabel, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 50.0)
+//        self.andLabelConstraintTop = NSLayoutConstraint(item: self.andLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.whatTimeLabel, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+//        self.andLabelConstraintBottom = NSLayoutConstraint(item: self.andLabel, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.andLabel, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 50.0)
+        self.andLabelConstraintCenterY = NSLayoutConstraint(item: self.andLabel, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self.startTimeTextField, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0.0)
         
         // Start Time Text Field
         self.startTimeTextFieldConstraintLeft = NSLayoutConstraint(item: self.startTimeTextField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (1/16)*SCREEN_WIDTH)
         self.startTimeTextFieldConstraintRight = NSLayoutConstraint(item: self.startTimeTextField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-9/16)*SCREEN_WIDTH)
+        self.startTimeTextFieldConstraintTop = NSLayoutConstraint(item: self.startTimeTextField, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.whatTimeLabel, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
         self.startTimeTextFieldConstraintBottom = NSLayoutConstraint(item: self.startTimeTextField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.startTimeTextField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
-        self.startTimeTextFieldConstraintCenterY = NSLayoutConstraint(item: self.startTimeTextField, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self.andLabel, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0.0)
+//        self.startTimeTextFieldConstraintCenterY = NSLayoutConstraint(item: self.startTimeTextField, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self.andLabel, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0.0)
         
         // End Time Text Field
         self.endTimeTextFieldConstraintLeft = NSLayoutConstraint(item: self.endTimeTextField, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (9/16)*SCREEN_WIDTH)
         self.endTimeTextFieldConstraintRight = NSLayoutConstraint(item: self.endTimeTextField, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-1/16)*SCREEN_WIDTH)
         self.endTimeTextFieldConstraintBottom = NSLayoutConstraint(item: self.endTimeTextField, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.endTimeTextField, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 35.0)
-        self.endTimeTextFieldConstraintCenterY = NSLayoutConstraint(item: self.endTimeTextField, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self.andLabel, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0.0)
+        self.endTimeTextFieldConstraintCenterY = NSLayoutConstraint(item: self.endTimeTextField, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self.startTimeTextField, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0.0)
         
         // How Many People Label
         self.howManyPeopleLabelConstraintCenterX = NSLayoutConstraint(item: self.howManyPeopleLabel, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
-        self.howManyPeopleLabelConstraintTop = NSLayoutConstraint(item: self.howManyPeopleLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.andLabel, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
-        self.howManyPeopleLabelConstraintBottom = NSLayoutConstraint(item: self.howManyPeopleLabel, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.howManyPeopleLabel, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 50.0)
+        self.howManyPeopleLabelConstraintTop = NSLayoutConstraint(item: self.howManyPeopleLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.startTimeTextField, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+//        self.howManyPeopleLabelConstraintBottom = NSLayoutConstraint(item: self.howManyPeopleLabel, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.howManyPeopleLabel, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 50.0)
         
         // How Many People Text Field
         self.howManyPeopleTextFieldConstraintCenterX = NSLayoutConstraint(item: self.howManyPeopleTextField, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
@@ -252,11 +316,11 @@ class NewMealViewController: MainScreenViewController, MealAPICallback, UIPicker
         // New Meal Button
         self.newMealButtonConstraintLeft = NSLayoutConstraint(item: self.newMealButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: (1/6)*SCREEN_WIDTH)
         self.newMealButtonConstraintRight = NSLayoutConstraint(item: self.newMealButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: (-1/6)*SCREEN_WIDTH)
-        self.newMealButtonConstraintTop = NSLayoutConstraint(item: self.newMealButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: (5/6)*MAIN_VIEW_HEIGHT)
-        self.newMealButtonConstraintBottom = NSLayoutConstraint(item: self.newMealButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.newMealButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 70.0)
+        self.newMealButtonConstraintTop = NSLayoutConstraint(item: self.newMealButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.howManyPeopleTextField, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+        self.newMealButtonConstraintBottom = NSLayoutConstraint(item: self.newMealButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.newMealButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 50.0)
         
         // Activate all constraints
-        NSLayoutConstraint.activateConstraints([self.whenLabelConstraintCenterX, self.whenLabelConstraintTop, self.whenLabelConstraintBottom, self.whenTextFieldConstraintCenterX, self.whenTextFieldConstraintLeft, self.whenTextFieldConstraintRight, self.whenTextFieldConstraintTop, self.whenTextFieldConstraintBottom, self.whatTimeLabelConstraintCenterX, self.whatTimeLabelConstraintTop, self.whatTimeLabelConstraintBottom, self.andLabelConstraintCenterX, self.andLabelConstraintTop, self.andLabelConstraintBottom, self.startTimeTextFieldConstraintLeft, self.startTimeTextFieldConstraintRight, self.startTimeTextFieldConstraintBottom, self.startTimeTextFieldConstraintCenterY, self.endTimeTextFieldConstraintLeft, self.endTimeTextFieldConstraintRight, self.endTimeTextFieldConstraintBottom, self.endTimeTextFieldConstraintCenterY, self.howManyPeopleLabelConstraintCenterX, self.howManyPeopleLabelConstraintTop, self.howManyPeopleLabelConstraintBottom, self.howManyPeopleTextFieldConstraintCenterX, self.howManyPeopleTextFieldConstraintLeft, self.howManyPeopleTextFieldConstraintRight, self.howManyPeopleTextFieldConstraintTop, self.howManyPeopleTextFieldConstraintBottom, self.newMealButtonConstraintLeft, self.newMealButtonConstraintRight, self.newMealButtonConstraintTop, self.newMealButtonConstraintBottom])
+        NSLayoutConstraint.activateConstraints([self.mealChoiceLabelConstraintCenterX, self.mealChoiceLabelConstraintTop, self.mealChoiceFoodButtonConstraintLeft, self.mealChoiceFoodButtonConstraintRight, self.mealChoiceFoodButtonConstraintTop, self.mealChoiceFoodButtonConstraintBottom, self.mealChoiceCoffeeButtonConstraintLeft, self.mealChoiceCoffeeButtonConstraintRight, self.mealChoiceCoffeeButtonConstraintTop, self.mealChoiceCoffeeButtonConstraintBottom, self.whenLabelConstraintCenterX, self.whenLabelConstraintTop, self.whenTextFieldConstraintCenterX, self.whenTextFieldConstraintLeft, self.whenTextFieldConstraintRight, self.whenTextFieldConstraintTop, self.whenTextFieldConstraintBottom, self.whatTimeLabelConstraintCenterX, self.whatTimeLabelConstraintTop, self.andLabelConstraintCenterX, self.andLabelConstraintCenterY, self.startTimeTextFieldConstraintLeft, self.startTimeTextFieldConstraintRight, self.startTimeTextFieldConstraintTop, self.startTimeTextFieldConstraintBottom, self.endTimeTextFieldConstraintLeft, self.endTimeTextFieldConstraintRight, self.endTimeTextFieldConstraintBottom, self.endTimeTextFieldConstraintCenterY, self.howManyPeopleLabelConstraintCenterX, self.howManyPeopleLabelConstraintTop, self.howManyPeopleTextFieldConstraintCenterX, self.howManyPeopleTextFieldConstraintLeft, self.howManyPeopleTextFieldConstraintRight, self.howManyPeopleTextFieldConstraintTop, self.howManyPeopleTextFieldConstraintBottom, self.newMealButtonConstraintLeft, self.newMealButtonConstraintRight, self.newMealButtonConstraintTop, self.newMealButtonConstraintBottom])
     }
     
     func getMinimumDate(datePicker: UIDatePicker) -> NSDate {
@@ -420,7 +484,7 @@ class NewMealViewController: MainScreenViewController, MealAPICallback, UIPicker
         let user = getCurrentUser()
         let howManyPeople = Int(self.howManyPeopleTextField.text!)
         self.meal.mealCallback = self;
-        self.meal.createMeal(user.emailAddress, authenticationToken: user.authenticationToken, day: self.whenDatePicker.date, startRange: self.startTimePicker.date, endRange: self.endTimePicker.date, numberOfPeople: howManyPeople!)
+        self.meal.createMeal(user.emailAddress, authenticationToken: user.authenticationToken, day: self.whenDatePicker.date, startRange: self.startTimePicker.date, endRange: self.endTimePicker.date, numberOfPeople: howManyPeople!, mealChoice: self.mealChoice)
     }
     
     func whenDatePickerValueChanged() {
@@ -442,6 +506,37 @@ class NewMealViewController: MainScreenViewController, MealAPICallback, UIPicker
                 self.startTimePicker.date = self.startTimePicker.maximumDate!
             }
             self.endTimeTextField.text = self.endTimePicker.date.toReadableTimeOnlyString()
+        }
+    }
+    
+    func mealChoiceButtonPressed(sender: UIButton?) {
+        self.view.endEditing(true)
+        
+        if sender == nil || self.mealChoice == sender?.titleLabel!.text! {
+            // User deselected chosen option
+            self.mealChoice = String()
+            self.changeMealChoiceButtonColors(nil)
+        }
+        else {
+            self.mealChoice = sender!.titleLabel!.text!
+            self.changeMealChoiceButtonColors(sender)
+        }
+    }
+    
+    func changeMealChoiceButtonColors(sender: UIButton?) {
+        if sender == self.mealChoiceFoodButton {
+            self.mealChoiceFoodButton.backgroundColor = COLOR_ACCENT_ONE
+            self.mealChoiceCoffeeButton.backgroundColor = COLOR_WHITE
+        }
+        
+        else if sender == self.mealChoiceCoffeeButton {
+            self.mealChoiceFoodButton.backgroundColor = COLOR_WHITE
+            self.mealChoiceCoffeeButton.backgroundColor = COLOR_ACCENT_ONE
+        }
+        
+        else {
+            self.mealChoiceFoodButton.backgroundColor = COLOR_WHITE
+            self.mealChoiceCoffeeButton.backgroundColor = COLOR_WHITE
         }
     }
     
