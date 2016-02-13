@@ -215,11 +215,7 @@ class Meal: NSObject {
 
     }
     
-    func createMeal(emailAddress: String, authenticationToken: String, day: NSDate, startRange: NSDate, endRange: NSDate, numberOfPeople: Int, mealChoice: String) {
-        if mealChoice.isEmpty {
-            self.mealCallback?.createMealAPICallback(false, errorMessage: "Please select a type of meal")
-        }
-        
+    func createMeal(emailAddress: String, authenticationToken: String, day: NSDate, startRange: NSDate, endRange: NSDate, numberOfPeople: Int, mealType: MealType) {
         var startRange = startRange
         var endRange = endRange
         
@@ -236,17 +232,19 @@ class Meal: NSObject {
         
         // Get Meal Type
         let endDateComponents = NSCalendar.currentCalendar().components(NSCalendarUnit.Hour, fromDate: endRange)
-        var mealType = MealType(rawValue: 0)
+        var mealType = mealType
         
-        if endDateComponents.minute < 11 {
-            mealType = MealType.Breakfast
-        }
-        else if endDateComponents.minute > 11 && endDateComponents.minute < 16 {
-            mealType = MealType.Lunch
-        }
-        else {
-            // Dinner
-            mealType = MealType.Dinner
+        if mealType != MealType.Coffee {
+            if endDateComponents.minute < 11 {
+                mealType = MealType.Breakfast
+            }
+            else if endDateComponents.minute > 11 && endDateComponents.minute < 16 {
+                mealType = MealType.Lunch
+            }
+            else {
+                // Dinner
+                mealType = MealType.Dinner
+            }
         }
         
         // Create Meal Service Object
@@ -256,7 +254,7 @@ class Meal: NSObject {
         let mealObject = GTLMealServiceApisMealApiCreateNewMealRequestMessage()
         mealObject.emailAddress = emailAddress
         mealObject.authToken = authenticationToken
-        mealObject.mealType = mealType?.rawValue
+        mealObject.mealType = mealType.rawValue
         mealObject.startRange = startRange.toDatabaseString()
         mealObject.endRange = endRange.toDatabaseString()
         mealObject.numPeople = numberOfPeopleTotal
