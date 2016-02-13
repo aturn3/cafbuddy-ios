@@ -13,7 +13,7 @@
 // Description:
 //   API for working with a User
 // Classes:
-//   GTLUserServiceApisUserApiIncrementNegativeRatingRequestMessage (0 custom class methods, 2 custom properties)
+//   GTLUserServiceApisUserApiIncrementNegativeRatingRequestMessage (0 custom class methods, 5 custom properties)
 
 #import "GTLUserServiceApisUserApiIncrementNegativeRatingRequestMessage.h"
 
@@ -23,5 +23,13 @@
 //
 
 @implementation GTLUserServiceApisUserApiIncrementNegativeRatingRequestMessage
-@dynamic authToken, emailAddress;
+@dynamic authToken, emailAddress, fromUserKey, mealKey, userKeys;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map = @{
+    @"userKeys" : [NSString class]
+  };
+  return map;
+}
+
 @end

@@ -15,8 +15,15 @@
 
 #import "GTLUserServiceConstants.h"
 
+#import "GTLUserServiceApisUserApiAddComplimentRequestMessage.h"
+#import "GTLUserServiceApisUserApiAddComplimentResponseMessage.h"
 #import "GTLUserServiceApisUserApiAddReportToUserRequestMessage.h"
 #import "GTLUserServiceApisUserApiAddReportToUserResponseMessage.h"
+#import "GTLUserServiceApisUserApiComplimentMessage.h"
+#import "GTLUserServiceApisUserApiGetComplimentsGivenByUserRequestMessage.h"
+#import "GTLUserServiceApisUserApiGetComplimentsGivenByUserResponseMessage.h"
+#import "GTLUserServiceApisUserApiGetComplimentsGivenToUserRequestMessage.h"
+#import "GTLUserServiceApisUserApiGetComplimentsGivenToUserResponseMessage.h"
 #import "GTLUserServiceApisUserApiIncrementNegativeRatingRequestMessage.h"
 #import "GTLUserServiceApisUserApiIncrementNegativeRatingResponseMessage.h"
 #import "GTLUserServiceApisUserApiIncrementPositiveRatingRequestMessage.h"

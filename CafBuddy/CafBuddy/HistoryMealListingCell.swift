@@ -24,9 +24,17 @@ class HistoryMealListingCell : MealCollectionCellTemplate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func initializeHistoryMealCellContents(mealType : MealType, people: [MealUser], startTime: NSDate, curUser: User) {
+    func initializeHistoryMealCellContents(mealType : MealType, people: [MealUser], startTime: NSDate, curUser: User, feedbackGiven: Bool = false) {
         
-        decorateButton(withIndex: 0, title: "Leave Feedback", icon: UIImage(named: "feedbackIcon"))
+        //if feedback hasn't been given, ask for it
+        if (!feedbackGiven) {
+            decorateButton(withIndex: 0, title: "Leave Feedback", icon: UIImage(named: "feedbackIcon"))
+        }
+        else { // otherwise, dispaly a thanks and disable the button
+            decorateButton(withIndex: 0, title: "Thanks for your feedback!", color: COLOR_ACCENT_ONE, icon: nil, isClickable: false)
+        }
+        
+        
         setMealImage(mealType)
         
         // set up the label that will hold all of the text
@@ -119,8 +127,11 @@ class HistoryMealListingCell : MealCollectionCellTemplate {
         else if (theMealType == MealType.Lunch){
             decorateImage(withImage: UIImage(named: "lunchIcon")!, coloredAs: COLOR_MAIN_DARK)
         }
-        else {
+        else if (theMealType == MealType.Breakfast) {
             decorateImage(withImage: UIImage(named: "breakfastIcon")!, coloredAs: COLOR_MAIN_DARK)
+        }
+        else {
+            decorateImage(withImage: UIImage(named: "coffeeIcon")!, coloredAs: COLOR_MAIN_DARK)
         }
     }
     
