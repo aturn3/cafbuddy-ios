@@ -97,7 +97,8 @@ class MealHistoryViewController: MainScreenViewController, UICollectionViewDataS
             theMeal.mealType!,
             people: theMeal.people,
             startTime: theMeal.startTime!,
-            curUser: getCurrentUser()
+            curUser: getCurrentUser(),
+            feedbackGiven: theMeal.feedbackGiven!
         )
         
         return historyCollectionCell
